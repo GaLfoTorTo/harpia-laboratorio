@@ -12,6 +12,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('clientes') }}">Clientes</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('equipamentos') }}">Equipamentos</a>
+          </li>
         </ul>
       </div>
     </div>
