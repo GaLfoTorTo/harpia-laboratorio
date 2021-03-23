@@ -129,8 +129,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <button type="submit" class="btn btn-success w-25 justify-content-end">
+        <div class="col" align="end">
+            <button type="submit" class="btn btn-success w-25 hover-shadow">
                 Salvar 
                 <i class="fas fa-save"></i>
             </button>

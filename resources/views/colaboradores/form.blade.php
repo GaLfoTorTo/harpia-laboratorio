@@ -88,8 +88,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2 offset-10">
-            <button type="submit" class="btn btn-success w-100 hover-shadow">
+        <div class="col" align="end">
+            <button type="submit" class="btn btn-success w-25 hover-shadow">
                 Salvar 
                 <i class="fas fa-save"></i>
             </button>
