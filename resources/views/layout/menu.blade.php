@@ -9,8 +9,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('clientes') }}">Clientes</a>
+            <a class="nav-link" href="{{ route('documentos_externos') }}">Documentos Externos</a>
           </li>
         </ul>
       </div>
