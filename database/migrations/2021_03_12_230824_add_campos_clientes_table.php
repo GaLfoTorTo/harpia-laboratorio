@@ -13,7 +13,7 @@ class AddCamposClientesTable extends Migration
      */
     public function up()
     {
-        Schema::table('clientes', function (Blueprint $table) {
+        /* Schema::table('clientes', function (Blueprint $table) {
             $table->string('telefone', 15)->nullable();
             $table->string('cep', 9)->nullable();
             $table->string('logradouro', 150)->nullable();
@@ -23,7 +23,7 @@ class AddCamposClientesTable extends Migration
             $table->string('cidade', 70)->nullable();
             $table->string('uf', 2)->nullable();
 
-        });
+        }); */
     }
 
     /**
