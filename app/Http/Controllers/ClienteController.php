@@ -18,11 +18,35 @@ class ClienteController extends Controller
         return view('clientes.index', compact('clientes'));
     } 
     public function novo() {
-        return view('clientes.form');
+        $tipo_unidade = Cliente::select('tipo_unidade')->where('tipo_unidade', '=', 'matriz')
+                                ->orWhere('tipo_unidade', '=', 'filial')
+                                ->groupBy('tipo_unidade')
+                                ->get();
+        $responsavel_tecnico = Cliente::select('responsavel_tecnico')->where('responsavel_tecnico', '=', 'fransisco')
+                                ->orWhere('responsavel_tecnico', '=', 'juraildo')
+                                ->groupBy('responsavel_tecnico')
+                                ->get();
+        $responsavel_financeiro = Cliente::select('responsavel_financeiro')->where('responsavel_financeiro', '=', 'marconi')
+                                ->orWhere('responsavel_financeiro', '=', 'persival')
+                                ->groupBy('responsavel_financeiro')
+                                ->get();
+        return view('clientes.form', compact('tipo_unidade', 'responsavel_tecnico', 'responsavel_financeiro'));
     }
     public function editar($id) {
         $cliente = Cliente::find($id);
-        return view('clientes.form', compact('cliente'));
+        $tipo_unidade = Cliente::select('tipo_unidade')->where('tipo_unidade', '=', 'matriz')
+                                ->orWhere('tipo_unidade', '=', 'filial')
+                                ->groupBy('tipo_unidade')
+                                ->get();
+        $responsavel_tecnico = Cliente::select('responsavel_tecnico')->where('responsavel_tecnico', '=', 'fransisco')
+                                ->orWhere('responsavel_tecnico', '=', 'juraildo')
+                                ->groupBy('responsavel_tecnico')
+                                ->get();
+        $responsavel_financeiro = Cliente::select('responsavel_financeiro')->where('responsavel_financeiro', '=', 'marconi')
+                                ->orWhere('responsavel_financeiro', '=', 'persival')
+                                ->groupBy('responsavel_financeiro')
+                                ->get();
+        return view('clientes.form', compact('cliente', 'tipo_unidade', 'responsavel_tecnico', 'responsavel_financeiro'));
     }
     public function salvar(Request $request) {
         if($request->id != '') {

@@ -7,10 +7,13 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link {{ request()->segment(1) == '' ? 'active' : '' }}" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('clientes') }}">Clientes</a>
+            <a class="nav-link {{ request()->segment(1) == 'clientes' ? 'active' : '' }}" href="{{ route('clientes') }}">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->segment(1) == 'colaboradores' ? 'active' : '' }}" href="{{ route('colaboradores') }}">Colaboradores</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('equipamentos') }}">Equipamentos</a>
