@@ -14,10 +14,10 @@
         <form action="">
           <div class="input-group justify-content-end">
             <div class="form-outline ">
-              <input type="search" id="form1" class="form-control" name="pesquisa"/>
+              <input type="search" placeholder="pesquisar" id="form1" class="form-control" name="pesquisa"/>
               <label class="form-label" for="form1">Pesquisar</label>
             </div>
-            <button type="button" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary">
               <i class="fas fa-search"></i>
             </button>
           </div>
@@ -30,20 +30,27 @@
               <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Nome</th>
-                    <th>CPF/CNPJ</th>
-                    <th>E-mail</th>
+                    <th>Equipamento</th>
+                    <th>Modelo</th>
+                    <th>Fabricante</th>
+                    <th>fornecedor</th>
                     <th>Ações</th>
                 </tr>
               </thead>
-              
+              @foreach ($equipamentos as $item)
               <tbody>
                 <tr>
+                <td>{{ $item->id }}</td>
+                    <td>{{ $item->equipamento }}</td>
+                    <td>{{ $item->modelo }}</td>
+                    <td>{{ $item->fabricante }}</td>
+                    <td>{{ $item->fornecedor }}</td>
+                    <td>
                     
-                      <a href="" class="btn btn-warning">
+                      <a href="equipamentos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="equipamentos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
 
@@ -51,12 +58,12 @@
                     </td>
                 </tr>
               </tbody>
-             
+             @endforeach
           </table>
 
         </div>
         <div>
-        
+        {{ $equipamentos->links() }}
         </div>
   </div>
 </div>

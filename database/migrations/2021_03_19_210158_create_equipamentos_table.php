@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Equipamentos extends Migration
+class CreateEquipamentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class Equipamentos extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
+        Schema::create('equipamentos', function (Blueprint $table) {
             $table->id();
             $table->enum('equipamento_proprio', ['Sim', 'Não']);
             $table->string('equipamento', 100);
             $table->string('marca', 50);
             $table->string('modelo', 50);
-            $table->string('tensao', 10);
-            $table->string('manual', ['Sim', 'Não']);
+            $table->enum('tensao', ['110', '220']);
+            $table->enum('manual', ['Sim', 'Não']);
             $table->string('num_serie', 90);
             $table->string('localizacao_manual')->nullable();
             $table->string('doc_instrucao')->nullable();
