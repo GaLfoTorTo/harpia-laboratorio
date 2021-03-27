@@ -9,7 +9,9 @@
           <li class="nav-item">
             <a class="nav-link {{ request()->segment(1) == '' ? 'active' : '' }}" aria-current="page" href="/">Home</a>
           </li>
+          
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('documentos_externos') }}">Documentos Externos</a>
             <a class="nav-link {{ request()->segment(1) == 'clientes' ? 'active' : '' }}" href="{{ route('clientes') }}">Clientes</a>
           </li>
           <li class="nav-item">
