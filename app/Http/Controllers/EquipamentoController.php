@@ -42,6 +42,11 @@ class EquipamentoController extends Controller
             } else {
                 return redirect('equipamentos')->with('danger', 'Registro não encontrado!');
             }
-        }
+    }
+    public function list() {
+        $equipamentos = Equipamentos::paginate();
+
+        return response()->json($equipamentos, 200);
+    }
         
-        }
+}
