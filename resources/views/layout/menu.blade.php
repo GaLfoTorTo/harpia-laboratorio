@@ -15,6 +15,9 @@
           <li class="nav-item">
             <a class="nav-link {{ request()->segment(1) == 'colaboradores' ? 'active' : '' }}" href="{{ route('colaboradores') }}">Colaboradores</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->segment(1) == 'servicos' ? 'active' : '' }}" href="{{ route('servicos') }}">Serviços</a>
+          </li>
         </ul>
       </div>
     </div>
