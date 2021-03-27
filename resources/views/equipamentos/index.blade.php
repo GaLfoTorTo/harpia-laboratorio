@@ -1,12 +1,12 @@
 @include('layout.header')
 @include('layout.menu')
 <div class="container corpo">
-  <h2>Serviços</h2>
+  <h2>Equipamentos</h2>
 
   <div class="row">
       <div class="col">
-          <a href="/servicos/novo" class="btn btn-primary">
-            Novo serviço 
+          <a href="/equipamentos/novo" class="btn btn-primary">
+            Novo Equipamento 
             <i class="fas fa-plus"></i>
           </a>
       </div>
@@ -14,10 +14,10 @@
         <form action="">
           <div class="input-group justify-content-end">
             <div class="form-outline ">
-              <input type="search" id="form1" class="form-control" name="pesquisa"/>
+              <input type="search" placeholder="pesquisar" id="form1" class="form-control" name="pesquisa"/>
               <label class="form-label" for="form1">Pesquisar</label>
             </div>
-            <button type="button" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary">
               <i class="fas fa-search"></i>
             </button>
           </div>
@@ -30,26 +30,27 @@
               <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Descrição</th>
-                    <th>Tipo material</th>
-                    <th>Tipo serviço</th>
-                    <th>Serviço crítico</th>
+                    <th>Equipamento</th>
+                    <th>Modelo</th>
+                    <th>Fabricante</th>
+                    <th>fornecedor</th>
                     <th>Ações</th>
                 </tr>
               </thead>
-              @foreach ($servicos as $item)
+              @foreach ($equipamentos as $item)
               <tbody>
                 <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->descricao }}</td>
-                    <td>{{ $item->tipo_material }}</td>
-                    <td>{{ $item->tipo_servico }}</td>
-                    <td>{{ $item->servico_critico }}</td>
+                <td>{{ $item->id }}</td>
+                    <td>{{ $item->equipamento }}</td>
+                    <td>{{ $item->modelo }}</td>
+                    <td>{{ $item->fabricante }}</td>
+                    <td>{{ $item->fornecedor }}</td>
                     <td>
-                      <a href="servicos/editar/{{ $item->id }}" class="btn btn-warning">
+                    
+                      <a href="equipamentos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="servicos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="equipamentos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
 
@@ -57,13 +58,15 @@
                     </td>
                 </tr>
               </tbody>
-              @endforeach
+             @endforeach
           </table>
 
         </div>
         <div>
-          {{ $servicos->links() }}
+        {{ $equipamentos->links() }}
         </div>
   </div>
 </div>
 @include('layout.footer')
+
+

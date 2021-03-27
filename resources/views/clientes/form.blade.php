@@ -78,15 +78,13 @@
      <div class="row">
         <div class="col-4">
             <div class="form-outline">
-                <select name="tipo_unidade" id="tipo_unidade" class="form-control">
-                    @isset($cliente)
-                        <option class="form-control tipo_unidade" value="{{$cliente->tipo_unidade}}">{{$cliente->tipo_unidade}}</option>
-                    @endisset
+                <select name="tipo_unidade" id="tipo_unidade" class="form-select">
+                    <option value=""></option>
                     @foreach ($tipo_unidade as $key => $tipo)
-                        <option class="form-control tipo_unidade" value="">{{$tipo->tipo_unidade}}</option>
+                        <option class=" tipo_unidade" value="{{$tipo->tipo_unidade}}" @if(isset($cliente) && $cliente->tipo_unidade == $tipo->tipo_unidade) selected @endif>{{$tipo->tipo_unidade}}</option>
                     @endforeach
                 </select>
-                <label for="tipo_unidade" class="form-label">Tipo de Unidade:</label>
+                {{-- <label for="tipo_unidade" class="form-label">Tipo de Unidade:</label> --}}
             </div>
         </div>
         <div class="col-4">
