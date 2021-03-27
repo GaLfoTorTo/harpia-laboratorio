@@ -1,32 +1,55 @@
 @include('layout.header')
-@include('layout.menu')
-<div class="container corpo">
-  <h2>Serviços</h2>
+@include('layout.navbar')
+@include('layout.sidebar')
 
-  <div class="row">
-      <div class="col">
-          <a href="/servicos/novo" class="btn btn-primary">
-            Novo serviço 
-            <i class="fas fa-plus"></i>
-          </a>
-      </div>
-      <div class="col ">
-        <form action="">
-          <div class="input-group justify-content-end">
-            <div class="form-outline ">
-              <input type="search" id="form1" class="form-control" name="pesquisa"/>
-              <label class="form-label" for="form1">Pesquisar</label>
-            </div>
-            <button type="button" class="btn btn-primary">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </form>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Serviços</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
+              <li class="breadcrumb-item active">Serviços</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-  </div>
-  <div class="row">
-      <div class="col">
-          <table class="table table-bordered table-hover">
+    <!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <!-- Main row -->
+
+    <div class="card">
+      <div class="card-header">
+        <a href="/servicos/novo" class="btn btn-primary">
+          Novo serviço
+          <i class="fas fa-plus"></i>
+        </a>
+
+        <div class="card-tools">
+          <form action="">
+            <div class="input-group input-group" style="width: 150px;">
+              <input type="text" name="pesquisa" class="form-control float-right" placeholder="Pesquisar" value="{{ $pesquisa }}">
+
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap table-bordered ">
               <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -58,12 +81,19 @@
                 </tr>
               </tbody>
               @endforeach
-          </table>
-
+          <</div>
+          <!-- /.card-body -->
         </div>
-        <div>
-          {{ $servicos->links() }}
-        </div>
+  <div class="row">
+    <div class="col">
+      {{ $servicos->links() }}
+    </div>
   </div>
+
+  <!-- /.row (main row) -->
+</div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 </div>
+
 @include('layout.footer')
