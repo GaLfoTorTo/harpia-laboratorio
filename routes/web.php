@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
+use App\Http\Controllers\ServicoController;
 
 
 Route::get('/', [DashboardController::class, 'index']);
@@ -28,3 +29,8 @@ Route::get('/colaboradores/editar/{id}', [ColaboradorController::class, 'editar'
 Route::post('colaboradores/salvar', [ColaboradorController::class, 'salvar'])->name('colaboradores.salvar');
 Route::get('/colaboradores/deletar/{id}', [ColaboradorController::class, 'deletar'])->name('colaboradores.deletar');
 
+Route::get('/servicos', [ServicoController::class, 'index'])->name('servicos');
+Route::get('/servicos/novo', [ServicoController::class, 'novo'])->name('servicos.novo');
+Route::get('/servicos/editar/{id}', [ServicoController::class, 'editar'])->name('servicos.editar');
+Route::post('servicos/salvar', [ServicoController::class, 'salvar'])->name('servicos.salvar');
+Route::get('/servicos/deletar/{id}', [ServicoController::class, 'deletar'])->name('servicos.deletar');
