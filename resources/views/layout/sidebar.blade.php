@@ -56,36 +56,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="clientes" class="nav-link">
+                <a href="/clientes" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-clipboard-list"></i>
-              <p>
-                Serviços
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/servicos/novo" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Novo</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="servicos" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
