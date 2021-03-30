@@ -15,7 +15,7 @@ class ClienteController extends Controller
         } else {
             $clientes = Cliente::paginate(10);
         }
-        return view('clientes.index', compact('clientes'));
+        return view('clientes.index', compact('clientes','pesquisa'));
     } 
     public function novo() {
         $tipo_unidade = Cliente::select('tipo_unidade')->where('tipo_unidade', '=', 'matriz')
