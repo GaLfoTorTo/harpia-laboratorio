@@ -1,12 +1,12 @@
 @include('layout.header')
 @include('layout.menu')
 <div class="container corpo">
-  <h2>Serviços</h2>
+  <h2>Colaboradores</h2>
 
   <div class="row">
       <div class="col">
-          <a href="/servicos/novo" class="btn btn-primary">
-            Novo serviço 
+          <a href="/colaboradores/novo" class="btn btn-primary">
+            Novo colaborador 
             <i class="fas fa-plus"></i>
           </a>
       </div>
@@ -30,26 +30,24 @@
               <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Descrição</th>
-                    <th>Tipo material</th>
-                    <th>Tipo serviço</th>
-                    <th>Serviço crítico</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>E-mail</th>
                     <th>Ações</th>
                 </tr>
               </thead>
-              @foreach ($servicos as $item)
+              @foreach ($colaboradores as $item)
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->descricao }}</td>
-                    <td>{{ $item->tipo_material }}</td>
-                    <td>{{ $item->tipo_servico }}</td>
-                    <td>{{ $item->servico_critico }}</td>
+                    <td>{{ $item->nome }}</td>
+                    <td>{{ $item->cpf }}</td>
+                    <td>{{ $item->email }}</td>
                     <td>
-                      <a href="servicos/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="colaboradores/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="servicos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="colaboradores/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
 
@@ -62,7 +60,7 @@
 
         </div>
         <div>
-          {{ $servicos->links() }}
+          {{ $colaboradores->links() }}
         </div>
   </div>
 </div>
