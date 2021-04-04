@@ -13,17 +13,42 @@ class EquipamentoController extends Controller
 
         if($pesquisa != '') {
         $equipamentos = Equipamentos::where('equipamento', 'like', "%".$pesquisa."%")->paginate(1000);
+
         } else {
         $equipamentos = Equipamentos::paginate(10);
         }
-        return view('equipamentos.index', compact('equipamentos'));
+        return view('equipamentos.index', compact('equipamentos', 'pesquisa'));
 } 
         public function novo() {
-            return view('equipamentos.form');
+            $equipamento_proprio = Equipamentos::select('equipamento_proprio')->where('equipamento_proprio', '=', 'Sim')
+            ->orWhere('equipamento_proprio', '=', 'Não')
+            ->groupBy('equipamento_proprio')
+            ->get();
+            $tensao = Equipamentos::select('tensao')->where('tensao', '=', '110')
+            ->orWhere('tensao', '=', '220')
+            ->groupBy('tensao')
+            ->get();
+            $manual = Equipamentos::select('manual')->where('manual', '=', 'Sim')
+            ->orWhere('manual', '=', 'Não')
+            ->groupBy('manual')
+            ->get();
+        return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual'));
         }
         public function editar($id) {
             $equipamentos = Equipamentos::find($id);
-            return view('equipamentos.form', compact('equipamentos'));
+            $equipamento_proprio = Equipamentos::select('equipamento_proprio')->where('equipamento_proprio', '=', 'Sim')
+                                    ->orWhere('equipamento_proprio', '=', 'Não')
+                                    ->groupBy('equipamento_proprio')
+                                    ->get();
+            $tensao = Equipamentos::select('tensao')->where('tensao', '=', '110')
+                                    ->orWhere('tensao', '=', '220')
+                                    ->groupBy('tensao')
+                                    ->get();
+            $manual = Equipamentos::select('manual')->where('manual', '=', 'Sim')
+                                    ->orWhere('manual', '=', 'Não')
+                                    ->groupBy('manual')
+                                    ->get();
+            return view('equipamentos.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual'));
         }
         public function salvar(Request $request) {
             if($request->id != '') {

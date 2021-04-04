@@ -11,6 +11,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/clientes" class="nav-link">Clientes</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/equipamentos" class="nav-link">Equipamentos</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
