@@ -40,6 +40,7 @@
               @foreach ($equipamentos as $item)
               <tbody>
                 <tr>
+                
                 <td>{{ $item->id }}</td>
                     <td>{{ $item->equipamento }}</td>
                     <td>{{ $item->modelo }}</td>
