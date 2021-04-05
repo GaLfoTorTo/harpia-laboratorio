@@ -56,7 +56,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="clientes" class="nav-link">
+                <a href="/clientes" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
@@ -178,7 +178,6 @@
               </li>
             </ul>
           </li>
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

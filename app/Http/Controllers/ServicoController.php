@@ -10,10 +10,17 @@ class ServicoController extends Controller
     public $tipo_material = ['MR', 'MRC'];
     public $tipo_servico = ['Manutenção corretiva', 'Manutenção preventiva', 'Calibração', 'Qualificação', 'Auditoria', 'Consultoria', 'Manutenção predial', 'Terceirização'];
 
-    public function index() {
+    public function index(Request $request) {
+        $pesquisa = $request->pesquisa;
+
+        if($pesquisa != '') {
+            $servicos = Servico::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+        } else {
+            $servicos = Servico::paginate(10);
+        }
         $servicos = Servico::paginate();
 
-        return view('servicos.index', compact('servicos'));
+        return view('servicos.index', compact('servicos','pesquisa'));
     }
     public function novo() {
         $tipo_material = $this->tipo_material;
