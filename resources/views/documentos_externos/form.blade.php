@@ -1,5 +1,6 @@
 @include('layout.header')
-@include('layout.menu')
+@include('layout.navbar')
+@include('layout.sidebar')
 <div class="container corpo">
   <h2>{{ isset($documentos_externos) ? 'Editar' : 'Novo' }} Documentos Externos</h2>
 
