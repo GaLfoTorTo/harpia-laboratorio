@@ -13,6 +13,8 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/equipamentos" class="nav-link">Equipamentos</a>
+       <li class="nav-item d-none d-sm-inline-block">
+        <a href="/documentos_externos" class="nav-link">Documentos Externos</a>
       </li>
     </ul>
 
