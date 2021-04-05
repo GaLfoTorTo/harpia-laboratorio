@@ -19,7 +19,7 @@ class CreateEquipamentosTable extends Migration
             $table->string('equipamento', 100);
             $table->string('marca', 50);
             $table->string('modelo', 50);
-            $table->enum('tensao', ['110', '220']);
+            $table->enum('tensao', ['110', '220'])->nullable();
             $table->enum('manual', ['Sim', 'Não']);
             $table->string('num_serie', 90);
             $table->string('localizacao_manual')->nullable();

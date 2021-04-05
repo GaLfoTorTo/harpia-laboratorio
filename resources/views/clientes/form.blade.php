@@ -31,7 +31,7 @@
             <div class="col card-body">
 
 
-  <form action="/colaboradores/salvar" method="POST">
+  <form action="/clientes/salvar" method="POST">
     @csrf
     <input type="hidden" name="id" value="@isset($cliente){{$cliente->id}}@endisset">
     <input type="hidden" name="codigo_cliente" value="@isset($cliente){{$cliente->codigo_cliente}}@endisset">
