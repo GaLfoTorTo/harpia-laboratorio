@@ -15,7 +15,7 @@ class ColaboradorController extends Controller
         }else {
             $colaboradores = Colaborador::paginate(10);
         }
-        return view('colaboradores.index', compact('colaboradores'));
+        return view('colaboradores.index', compact('colaboradores', 'pesquisa'));
     }
 
     public function novo(){
