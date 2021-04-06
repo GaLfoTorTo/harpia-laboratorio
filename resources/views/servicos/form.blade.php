@@ -29,13 +29,26 @@
       <div class="row card">
         <div class="col card-body">
 
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+
+        @foreach($errors->all() as $error)
+            {{ $error }}<br/>
+        @endforeach
+    </div>
+@endif
+
+
   <form action="/servicos/salvar" method="POST">
     @csrf
     <input type="hidden" name="id" value="@isset($servico){{$servico->id}}@endisset">
     <div class="row">
         <div class="col-6">
             <div class="form-outline">
-                <input type="text" name="descricao" class="form-control" required value="@isset($servico){{$servico->descricao}}@endisset">
+                <input type="text" name="descricao" class="form-control" required value="@if(isset($servico)){{$servico->descricao}} @else {{ old('descricao')}}  @endif">
                 <label for="descricao" class="form-label">Descrição:</label>
             </div>
         </div>

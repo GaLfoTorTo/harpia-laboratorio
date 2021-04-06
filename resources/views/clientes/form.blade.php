@@ -44,8 +44,8 @@
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="cpf" class="form-label">CPF:</label>
-                <input type="text" name="cpf" class="form-control cpf" required value="@isset($cliente){{$cliente->cpf_cnpj}}@endisset">
+                <label for="cpf_cnpj" class="form-label">CPF/CNPJ:</label>
+                <input type="text" name="cpf_cnpj" class="form-control cpf" required value="@isset($cliente){{$cliente->cpf_cnpj}}@endisset">
             </div>
         </div>
     </div>

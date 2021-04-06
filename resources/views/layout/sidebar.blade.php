@@ -33,10 +33,10 @@
           </li>
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-cogs"></i>
               <p>
                 Configurações
-                <span class="right badge badge-danger">New</span>
+                <span class="right badge badge-danger">Novo</span>
               </p>
             </a>
           </li>
@@ -111,7 +111,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tools"></i>
+              <i class="nav-icon fas fa-vial"></i>
               <p>
                 Equipamentos
                 <i class="right fas fa-angle-left"></i>
@@ -134,7 +134,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-people-carry"></i>
+              <i class="nav-icon fas fa-dolly-flatbed"></i>
               <p>
                 Fornecedores
                 <i class="right fas fa-angle-left"></i>
@@ -157,7 +157,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-poll-h"></i>
+              <i class="nav-icon fas fa-toolbox"></i>
               <p>
                 Serviços
                 <i class="right fas fa-angle-left"></i>

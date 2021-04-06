@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ServicoRequest;
 use App\Models\Servico;
 
 class ServicoController extends Controller
@@ -28,7 +29,10 @@ class ServicoController extends Controller
         
         return view('servicos.form', compact('tipo_material', 'tipo_servico'));
     }
-    public function salvar(Request $request) {
+    public function salvar(ServicoRequest $request) {
+
+        $ehValido = $request->validated();
+  
         if($request->id == '') {
             $servico = Servico::create($request->all());
         } else {

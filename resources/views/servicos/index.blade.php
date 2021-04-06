@@ -30,7 +30,7 @@
       <div class="card">
         <div class="card-header">
           <a href="/servicos/novo" class="btn btn-primary">
-            Novo cliente 
+            Novo serviço 
             <i class="fas fa-plus"></i>
           </a>
 
