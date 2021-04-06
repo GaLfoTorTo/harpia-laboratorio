@@ -15,6 +15,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('equipamentos') }}">Equipamentos</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('fornecedores') }}">Fornecedores</a>
+          </li>
         </ul>
       </div>
     </div>
