@@ -66,38 +66,9 @@
               @foreach ($equipamentos as $item)
               <tbody>
                 <tr>
-
-@include('layout.menu')
-<div class="container corpo">
-  <h2>Equipamentos</h2>
-
-  <div class="row">
-      <div class="col">
-          <a href="/equipamentos/novo" class="btn btn-primary">
-            Novo Equipamento 
-            <i class="fas fa-plus"></i>
-          </a>
-      </div>
-      <div class="col ">
-        <form action="">
-          <div class="input-group justify-content-end">
-            <div class="form-outline ">
-              <input type="search" placeholder="pesquisar" id="form1" class="form-control" name="pesquisa"/>
-              <label class="form-label" for="form1">Pesquisar</label>
-            </div>
-            <button type="submit" class="btn btn-primary">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </form>
-    </div>
-  </div>
-               
-
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->equipamento }}</td>
                     <td>{{ $item->marca }}</td>
-                    <td>{{ $item->equipamento }}</td>
                     <td>{{ $item->modelo }}</td>
                     <td>{{ $item->fabricante }}</td>
                     <td>{{ $item->fornecedor }}</td>
