@@ -1,0 +1,12 @@
+.navbar {
+    height: 128px;
+}
+
+.fas {
+    width: 64px;
+    font-size: 34px;
+}
+
+.camposLocalizacao {
+    display: none;
+}
