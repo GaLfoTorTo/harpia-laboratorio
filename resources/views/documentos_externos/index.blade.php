@@ -23,7 +23,7 @@
     </div>
 
 <div class="container corpo">
-  <h2>Documentos Externos</h2>
+  
 
   <section class="content">
       <div class="container-fluid">
@@ -77,17 +77,13 @@
                     <td>{{ $item->data_da_atualizacao }}</td>
                     <td>{{ $item->analise_critica_verificacao }}</td>
                     <td>{{ $item->atualizacao_em }}</td>
-
                     <td>
-                  
                       <a href="documentos_externos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
                       <a href="documentos_externos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
-
-
                     </td>
                 </tr>
               </tbody>
@@ -100,7 +96,8 @@
         </div>
   </div>
 </div>
-
-
-
+</div>
+  </div>
 @include('layout.footer')
+
+
