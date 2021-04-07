@@ -40,7 +40,8 @@
          {{ $error }}<br/>
         @endforeach
         </div>
-         @endif               
+         @endif       
+                 
 
 
   <form action="/equipamentos/salvar" method="POST">
