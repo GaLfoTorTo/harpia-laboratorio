@@ -12,10 +12,10 @@ class D_externo extends Model
     protected $fillable = [
         'titulo',
         'revisao_edicao_n',
-        'codgo',
+        'codigo',
         'n_de_exemplares',
         'localizacao',
-        'data_atualizacao',
+        'data_da_atualizacao',
         'analise_critica_verificacao',
         'atualizacao_em'
         

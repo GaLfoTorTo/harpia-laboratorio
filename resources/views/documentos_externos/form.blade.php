@@ -29,7 +29,7 @@
             <div class="row card">
                 <div class="col card-body">
 
-                    <form action="/documento/salvar" method="POST">
+                    <form action="/documentos_externos/salvar" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="@isset($documento){{$documento->id}}@endisset">
                         <div class="row">
@@ -68,8 +68,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="data_atualizacao" class="form-label">Data da atualização:</label>
-                                    <input type="text" name="data_atualizacao" class="form-control" value="@isset($documento){{$documento->telefone}}@endisset">
+                                    <label for="data_da_atualizacao" class="form-label">Data da atualização:</label>
+                                    <input type="text" name="data_da_atualizacao" class="form-control" value="@isset($documento){{$documento->telefone}}@endisset">
                                 </div>
                             </div>
                         </div>
