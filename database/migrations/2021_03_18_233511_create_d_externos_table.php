@@ -18,11 +18,11 @@ class CreateDExternosTable extends Migration
             $table->string('titulo', 100);
             $table->string('revisao_edicao_n', 14);
             $table->string('codigo', 15);
-            $table->string("n_de_exemplares", 255);
-            $table->string("localizacao", 50);
-            $table->string("data_da_atualizacao", 10);
-            $table->string("analise_critica_verificacao", 255);
-            $table->string("atualizacao_em", 10);
+            $table->string('localizacao', 255);
+            $table->string('data_da_atualizacao', 50);
+            $table->string('analise_critica_verificacao', 10);
+            $table->string('atualizacao_em', 255);
+            $table->string('n_de_exemplares' , 10);
             $table->timestamps();
         });
     }
