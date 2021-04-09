@@ -29,18 +29,17 @@
       <div class="row card">
         <div class="col card-body">
 
-@if($errors->any())
-    <div class="alert alert-danger" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-
-        @foreach($errors->all() as $error)
-            {{ $error }}<br/>
-        @endforeach
-    </div>
-@endif
-
+          @if($errors->any())
+          <div class="alert alert-danger" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+              </button>
+      
+              @foreach($errors->all() as $error)
+                  {{ $error }}<br/>
+              @endforeach
+          </div>
+      @endif 
 
   <form action="/servicos/salvar" method="POST">
     @csrf
@@ -48,16 +47,17 @@
     <div class="row">
         <div class="col-6">
             <div class="form-outline">
-                <input type="text" name="descricao" class="form-control" required value="@if(isset($servico)){{$servico->descricao}} @else {{ old('descricao')}}  @endif">
-                <label for="descricao" class="form-label">Descrição:</label>
+              <input type="text" name="descricao" class="form-control" required value="@if(isset($servico)){{$servico->descricao}} @else {{ old('descricao')}}  @endif">
+              <label for="descricao" class="form-label">Descrição:</label>
             </div>
         </div>
         <div class="col-6">
             <div class="form-outline">
                 <select name="tipo_material" id="tipo_material" class="form-control">
                     <option value="">Selecione tipo material</option>
-                    @foreach ($tipo_material as $key => $item)
-                    <option value="{{ $item }}" {{ isset($servico) && $servico->tipo_material == $item ? 'selected' : '' }}>{{ $item }}</option>
+                    @foreach ($tipo_material as $key => $tipo)
+                    <option class="tipo_material" value="{{$tipo}}" @if(@isset($servico) && $servico->tipo_material == $tipo)selected @elseif(old('tipo_material') == $tipo) selected @endif >{{$tipo}}   
+                    </option>
                     @endforeach
                     
                 </select>
@@ -69,8 +69,9 @@
             <div class="form-outline">
                 <select name="tipo_servico" id="tipo_servico" class="form-control">
                     <option value="">Selecione o tipo do serviço</option>
-                    @foreach ($tipo_servico as $key => $item)
-                        <option value="{{ $item }}" {{ isset($servico) && $servico->tipo_servico == $item ? 'selected' : '' }}>{{ $item }}</option>
+                    @foreach ($tipo_servico as $key => $tipo)
+                    <option class="tipo_servico" value="{{$tipo}}" @if(@isset($servico) && $servico->tipo_servico == $tipo)selected @elseif(old('tipo_servico') == $tipo) selected @endif >{{$tipo}}   
+                    </option>
                     @endforeach
                     
                 </select>
@@ -80,8 +81,8 @@
             <div class="form-outline">
                 <select name="servico_critico" id="servico_critico" class="form-control">
                     <option value="">Serviço crítico?</option>
-                    <option value="Sim" {{ isset($servico) && $servico->servico_critico == 'Sim' ? 'selected' : '' }}>Sim</option>
-                    <option value="Não" {{ isset($servico) && $servico->servico_critico == 'Não' ? 'selected' : '' }}>Não</option>
+                    <option value="Sim" {{ isset($servico) && $servico->servico_critico == 'Sim'  || old('servico_critico') == 'Sim' ? 'selected' : '' }}>Sim</option>
+                    <option value="Não" {{ isset($servico) && $servico->servico_critico == 'Não' || old('servico_critico') == 'Não' ? 'selected' : '' }}>Não</option>
                     
                 </select>
             </div>
