@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
+
+use App\Http\Controllers\documentos_internos;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\DExternoController;
 use App\Http\Controllers\EquipamentoController;
@@ -21,6 +23,7 @@ Route::get('/documentos_externos/deletar/{id}', [DExternoController::class, 'del
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ServicoController;
+use App\Http\Controllers\DocumentosInternosController;
 
 Route::get('/', [DashboardController::class, 'index']);
 
@@ -48,6 +51,12 @@ Route::get('/servicos/novo', [ServicoController::class, 'novo'])->name('servicos
 Route::get('/servicos/editar/{id}', [ServicoController::class, 'editar'])->name('servicos.editar');
 Route::post('servicos/salvar', [ServicoController::class, 'salvar'])->name('servicos.salvar');
 Route::get('/servicos/deletar/{id}', [ServicoController::class, 'deletar'])->name('servicos.deletar');
+
+Route::get('/documentos_internos', [DocumentosInternosController::class, 'index'])->name('documentos_internos');
+Route::get('/documentos_internos/novo', [DocumentosInternosController::class, 'novo'])->name('documentos_internos.novo');
+Route::get('/documentos_internos/editar/{id}', [DocumentosInternosController::class, 'editar'])->name('documentos_internos.editar');
+Route::post('documentos_internos/salvar', [DocumentosInternosController::class, 'salvar'])->name('documentos_internos.salvar');
+Route::get('/documentos_internos/deletar/{id}', [DocumentosInternosController::class, 'deletar'])->name('documentos_internos.deletar');
 
 Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('fornecedores');
 Route::get('/fornecedores/novo', [FornecedorController::class, 'novo'])->name('fornecedores.novo');
