@@ -28,6 +28,7 @@ class EquipamentoController extends Controller
             ->groupBy('tensao')
             ->get();
             $manual = Equipamentos::select('manual')
+
             ->groupBy('manual')
             ->get();
         return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual'));
