@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
-
+use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\DExternoController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
@@ -17,6 +17,10 @@ Route::get('/documentos_externos/novo', [DExternoController::class, 'novo'])->na
 Route::get('/documentos_externos/editar/{id}', [DExternoController::class, 'editar'])->name('documentos_externos.editar');
 Route::post('/documentos_externos/salvar', [DExternoController::class, 'salvar'])->name('documentos_externos.salvar');
 Route::get('/documentos_externos/deletar/{id}', [DExternoController::class, 'deletar'])->name('documentos_externos.deletar');
+
+use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\ColaboradorController;
+use App\Http\Controllers\ServicoController;
 
 Route::get('/', [DashboardController::class, 'index']);
 
@@ -45,6 +49,11 @@ Route::get('/servicos/editar/{id}', [ServicoController::class, 'editar'])->name(
 Route::post('servicos/salvar', [ServicoController::class, 'salvar'])->name('servicos.salvar');
 Route::get('/servicos/deletar/{id}', [ServicoController::class, 'deletar'])->name('servicos.deletar');
 
+Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('fornecedores');
+Route::get('/fornecedores/novo', [FornecedorController::class, 'novo'])->name('fornecedores.novo');
+Route::get('/fornecedores/editar/{id}', [FornecedorController::class, 'editar'])->name('fornecedores.editar');
+Route::post('fornecedores/salvar', [FornecedorController::class, 'salvar'])->name('fornecedores.salvar');
+Route::get('/fornecedores/deletar/{id}', [FornecedorController::class, 'deletar'])->name('fornecedores.deletar');
 
 Route::get('/equipamentos_insumos', [EquipamentosInsumosController::class, 'index'])->name('equipamentos_insumos');
 Route::get('/equipamentos_insumos/novo', [EquipamentosInsumosController::class, 'novo'])->name('equipamentos_insumos.novo');
