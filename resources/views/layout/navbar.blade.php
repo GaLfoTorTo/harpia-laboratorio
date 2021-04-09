@@ -16,6 +16,9 @@
        <li class="nav-item d-none d-sm-inline-block">
         <a href="/documentos_externos" class="nav-link">Documentos Externos</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/equipamentos_insumos" class="nav-link">Equipamentos Insumos</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
