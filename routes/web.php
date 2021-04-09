@@ -35,7 +35,6 @@ Route::get('/servicos/editar/{id}', [ServicoController::class, 'editar'])->name(
 Route::post('servicos/salvar', [ServicoController::class, 'salvar'])->name('servicos.salvar');
 Route::get('/servicos/deletar/{id}', [ServicoController::class, 'deletar'])->name('servicos.deletar');
 
-Route::get('/', [DExternoController::class, 'index']);
 Route::get('/documentos_externos', [DExternoController::class, 'index'])->name('documentos_externos');
 Route::get('/documentos_externos/novo', [DExternoController::class, 'novo'])->name('documentos_externos.novo');
 Route::get('/documentos_externos/editar/{id}', [DExternoController::class, 'editar'])->name('documentos_externos.editar');
