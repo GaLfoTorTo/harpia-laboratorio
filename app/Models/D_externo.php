@@ -10,15 +10,14 @@ class D_externo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tipo',
-        'codigo',
         'titulo',
-        'revisao_edicao',
-        'data_aprovacao',
-        'num_copias',
-        'data_atualizacao',
+        'revisao_edicao_n',
+        'codigo',
+        'localizacao',
+        'data_da_atualizacao',
         'analise_critica_verificacao',
-        'atualizacao_em'
+        'atualizacao_em',
+        'n_de_exemplares'
         
     ]; 
 
