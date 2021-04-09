@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ isset($equipamentos) ? 'Editar' : 'Novo' }} Equipamentos</h1>
+            <h1 class="m-0">{{ isset($equipamentos) ? 'Editar' : 'Novo' }} Equipamento</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -29,6 +29,18 @@
           <!-- Main row -->
           <div class="row card">
             <div class="col card-body">
+                
+@if($errors->any())
+     <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">×</span>
+        </button>
+            
+        @foreach($errors->all() as $error)
+         {{ $error }}<br/>
+        @endforeach
+        </div>
+         @endif               
 
 
   <form action="/equipamentos/salvar" method="POST">
@@ -81,7 +93,7 @@
         <div class="col-4">
         <div class="form-group">
                 <label for="manual" class="form-label">Manual:</label>
-                <select name="manual" id="manual" class="form-control selecao">
+                <select name="manual" id="manual" class="form-control selecao alteraManual">
                         <option value=""></option>
                     @foreach ($manual as $key => $man)
                         <option value="{{ $man->manual }}" {{ isset($equipamentos) && $equipamentos->manual == $man->manual ? 'selected' : ''}} >{{$man->manual}}</option>
@@ -97,7 +109,9 @@
                 <input type="number" name="num_serie" class="form-control" value="@isset($equipamentos){{$equipamentos->num_serie}}@endisset">
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-6 camposLocalizacao" >
+
+
         <div class="form-group">
                 <label for="localizacao_manual" class="form-label">Localização Manual:</label>
                 <input type="text" name="localizacao_manual" class="form-control" value="@isset($equipamentos){{$equipamentos->localizacao_manual}}@endisset">
@@ -153,7 +167,6 @@
         </div>
     </div>
   </form>
-
 </div>
          
 </div>
@@ -162,6 +175,7 @@
 </section>
 <!-- /.content -->
 </div>
+
 
   
 

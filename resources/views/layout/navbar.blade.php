@@ -18,6 +18,7 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/fornecedores" class="nav-link">Fornecedores</a>
+        <a href="/equipamentos_insumos" class="nav-link">Equipamentos Insumos</a>
       </li>
     </ul>
 

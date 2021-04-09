@@ -15,14 +15,14 @@ class DExternoController extends Controller
         } else {
             $documento = D_externo::paginate(10);
         }
-        return view('documentos_externos\index', compact('documento'));
+        return view('documentos_externos/index', compact('documento'));
     } 
     public function novo() {
-        return view('documentos_externos\form');
+        return view('documentos_externos/form');
     }
     public function editar($id) {
         $documento = D_externo::find($id);
-        return view('documentos_externos\form', compact('documento'));
+        return view('documentos_externos/form', compact('documento'));
     }
     public function salvar(Request $request) {
         if($request->id != '') {
@@ -31,7 +31,7 @@ class DExternoController extends Controller
         } else {
             $documento = D_externo::create($request->all());
         }
-        return redirect('/documentos_externos/editar/'. $documento->id)->with('success', 'Salvo com sucesso!');
+        return redirect('documentos_externos/editar/'. $documento->id)->with('success', 'Salvo com sucesso!');
     }
     public function deletar($id) {
         $documento = D_externo::find($id);

@@ -5,19 +5,22 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\DExternoController;
+use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\ColaboradorController;
+use App\Http\Controllers\ServicoController;
+use App\Http\Controllers\EquipamentosInsumosController;
 
 
 Route::get('/', [DExternoController::class, 'index']);
 Route::get('/documentos_externos', [DExternoController::class, 'index'])->name('documentos_externos');
 Route::get('/documentos_externos/novo', [DExternoController::class, 'novo'])->name('documentos_externos.novo');
 Route::get('/documentos_externos/editar/{id}', [DExternoController::class, 'editar'])->name('documentos_externos.editar');
-Route::post('/documentos_externos/salvar/{id}', [DExternoController::class, 'salvar'])->name('documentos_externos.salvar');
+Route::post('/documentos_externos/salvar', [DExternoController::class, 'salvar'])->name('documentos_externos.salvar');
 Route::get('/documentos_externos/deletar/{id}', [DExternoController::class, 'deletar'])->name('documentos_externos.deletar');
 
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ServicoController;
-
 
 Route::get('/', [DashboardController::class, 'index']);
 
@@ -51,3 +54,9 @@ Route::get('/fornecedores/novo', [FornecedorController::class, 'novo'])->name('f
 Route::get('/fornecedores/editar/{id}', [FornecedorController::class, 'editar'])->name('fornecedores.editar');
 Route::post('fornecedores/salvar', [FornecedorController::class, 'salvar'])->name('fornecedores.salvar');
 Route::get('/fornecedores/deletar/{id}', [FornecedorController::class, 'deletar'])->name('fornecedores.deletar');
+
+Route::get('/equipamentos_insumos', [EquipamentosInsumosController::class, 'index'])->name('equipamentos_insumos');
+Route::get('/equipamentos_insumos/novo', [EquipamentosInsumosController::class, 'novo'])->name('equipamentos_insumos.novo');
+Route::get('/equipamentos_insumos/editar/{id}', [EquipamentosInsumosController::class, 'editar'])->name('equipamentos_insumos.editar');
+Route::post('equipamentos_insumos/salvar', [EquipamentosInsumosController::class, 'salvar'])->name('equipamentos_insumos.salvar');
+Route::get('/equipamentos_insumos/deletar/{id}', [EquipamentosInsumosController::class, 'deletar'])->name('equipamentos_insumos.deletar');
