@@ -31,7 +31,7 @@
         <div class="card">
           <div class="card-header">
             <a href="/fornecedores/novo" class="btn btn-primary">
-              Novo cliente 
+              Novo fornecedor 
               <i class="fas fa-plus"></i>
             </a>
 
@@ -54,18 +54,22 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th>Nome</th>
-                  <th>CPF/CNPJ</th>
-                  <th>E-mail</th>
-                  <th>Ações</th>
+                  
+                  <th>tipo</th>
+                  <th>cnpj</th>
+                  <th>razao_social</th>
+                  <th>telefone</th>
+                  <th>email</th>
                 </tr>
               </thead>
               @foreach ($fornecedores as $item)
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->nome }}</td>
-                    <td>{{ $item->cpf_cnpj }}</td>
+                    <td>{{ $item->tipo }}</td>
+                    <td>{{ $item->cnpj }}</td>
+                    <td>{{ $item->razao_social }}</td>
+                    <td>{{ $item->telefone }}</td>
                     <td>{{ $item->email }}</td>
                     <td>
                       <a href="fornecedores/editar/{{ $item->id }}" class="btn btn-warning">
@@ -74,8 +78,6 @@
                       <a href="fornecedores/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
-
-
                     </td>
                 </tr>
               </tbody>

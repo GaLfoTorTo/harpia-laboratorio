@@ -17,11 +17,11 @@ class CreateFornecedoresTable extends Migration
             $table->id();
             $table->enum('tipo', ['produto', 'servico']);
             $table->string('cnpj', 14);
-            $table->string('razão_social', 100);
-            $table->string('nome_fantasia', 100);
+            $table->string('razao_social', 100);
             $table->string('telefone', 100);
             $table->string('email', 100);
-            $table->string('nome_do_contato', 100);
+            $table->string('nome_fantasia', 100)->nullable();
+            $table->string('nome_do_contato', 100)->nullable();
             $table->string('cep', 9)->nullable();
             $table->string('logradouro', 100)->nullable();
             $table->string('número', 10)->nullable();

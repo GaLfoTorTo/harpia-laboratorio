@@ -29,37 +29,79 @@
           <!-- Main row -->
           <div class="row card">
             <div class="col card-body">
+                
+            @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+
+                    @foreach($errors->all() as $error)
+                        {{ $error }}<br/>
+                    @endforeach
+                </div>
+            @endif
 
 
   <form action="/fornecedores/salvar" method="POST">
     @csrf
     <input type="hidden" name="id" value="@isset($fornecedor){{$fornecedor->id}}@endisset">
-    <input type="hidden" name="codigo_fornecedor" value="@isset($fornecedor){{$fornecedor->codigo_fornecedor}}@endisset">
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
             <div class="form-group">
-                <label for="nome" class="form-label">Nome:</label>
-                <input type="text" name="nome" class="form-control" required value="@isset($fornecedor){{$fornecedor->nome}}@endisset">
+                <label for="tipo " class="form-label">Tipo</label>
+                <select name="tipo" id="tipo" class="form-control">
+                    <option value="">Selecione</option>
+                    @foreach ($tipos as $item)
+                        <option value="{{ $item }}">{{ $item }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             <div class="form-group">
-                <label for="cpf" class="form-label">CPF:</label>
-                <input type="text" name="cpf" class="form-control cpf" required value="@isset($fornecedor){{$fornecedor->cpf_cnpj}}@endisset">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-8">
-            <div class="form-group">
-                <label for="email" class="form-label">E-mail:</label>
-                <input type="email" name="email" class="form-control" value="@isset($fornecedor){{$fornecedor->email}}@endisset">
+                <label for="cnpj" class="form-label">CPNJ:</label>
+                <input type="text" name="cnpj" class="form-control cpf" required value="@if(isset($fornecedor)){{$fornecedor->cnpj}} @else {{ old('cnpj')}}  @endif">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="telefone" class="form-label">Telefone:</label>
-                <input type="text" name="telefone" class="form-control fone" value="@isset($fornecedor){{$fornecedor->telefone}}@endisset">
+                <input type="text" name="telefone" class="form-control fone" required value="@if(isset($fornecedor)){{$fornecedor->telefone}} @else {{ old('telefone')}}  @endif">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="razao_social" class="form-label">Razão Social:</label>
+                <input type="text" name="razao_social" class="form-control" required value="@if(isset($fornecedor)){{$fornecedor->razao_social}} @else {{ old('razao_social')}}  @endif">
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="form-group">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="email" name="email" class="form-control" required value="@if(isset($fornecedor)){{$fornecedor->email}} @else {{ old('email')}}  @endif">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="nome_contato" class="form-label">Nome do contato</label>
+                <input type="text" name="nome_contato" class="form-control"  value="@if(isset($fornecedor)){{$fornecedor->nome_contato}} @else {{ old('nome_contato')}}  @endif">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="nome_fantasia" class="form-label">Nome fantasia</label>
+                <input type="text" name="nome_fantasia" class="form-control" value="@if(isset($fornecedor)){{$fornecedor->nome_fantasia}} @else {{ old('nome_fantasia')}}  @endif">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="complemento" class="form-label">Complemento</label>
+                <input type="text" name="complemento" class="form-control" value="@if(isset($fornecedor)){{$fornecedor->complemento}} @else {{ old('complemento')}}  @endif">
             </div>
         </div>
     </div>
@@ -67,77 +109,41 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="cep" class="form-label">CEP</label>
-                <input type="text" name="cep" class="form-control cep" value="@isset($fornecedor){{$fornecedor->cep}}@endisset">
+                <input type="text" name="cep" class="form-control cep" value="@if(isset($fornecedor)){{$fornecedor->cep}} @else {{ old('cep')}}  @endif">
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="logradouro" class="form-label">Logradouro</label>
-                <input type="text" name="logradouro" class="form-control" value="@isset($fornecedor){{$fornecedor->logradouro}}@endisset">
+                <input type="text" name="logradouro" class="form-control" value="@if(isset($fornecedor)){{$fornecedor->logradouro}} @else {{ old('logradouro')}}  @endif">
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
                 <label for="numero" class="form-label">Numero</label>
-                <input type="number" name="numero" class="form-control" value="@isset($fornecedor){{$fornecedor->numero}}@endisset">
+                <input type="number" name="numero" class="form-control" value="@if(isset($fornecedor)){{$fornecedor->numero}} @else {{ old('numero')}}  @endif">
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-5">
             <div class="form-group">
                 <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" name="cidade" class="form-control" value="@isset($fornecedor){{$fornecedor->cidade}}@endisset">
+                <input type="text" name="cidade" class="form-control" value="@if(isset($fornecedor)){{$fornecedor->cidade}} @else {{ old('cidade')}}  @endif">
             </div>
         </div>
         <div class="col-5">
             <div class="form-group">
                 <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" name="bairro" class="form-control" value="@isset($fornecedor){{$fornecedor->bairro}}@endisset">
+                <input type="text" name="bairro" class="form-control" value="@if(isset($fornecedor)){{$fornecedor->bairro}} @else {{ old('bairro')}}  @endif">
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <div class="form-group">
                 <label for="uf" class="form-label">UF</label>
-                <input type="text" name="uf" class="form-control" value="@isset($fornecedor){{$fornecedor->uf}}@endisset">
+                <input type="text" name="uf" class="form-control" value="@if(isset($fornecedor)){{$fornecedor->uf}} @else {{ old('uf')}}  @endif">
             </div>
-        </div>
-    </div>
-     <div class="row">
-        <div class="col-4">
-            <div class="form-group">
-                <label for="tipo_unidade" class="form-label">Tipo de Unidade:</label>
-                <select name="tipo_unidade" id="tipo_unidade" class="form-control">
-                    <option value=""></option>
-                    @foreach ($tipo_unidade as $key => $tipo)
-                        <option class=" tipo_unidade" value="{{$tipo->tipo_unidade}}" @if(isset($fornecedor) && $fornecedor->tipo_unidade == $tipo->tipo_unidade) selected @endif>{{$tipo->tipo_unidade}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="responsavel_tecnico" class="form-label">Responsável Técnico:</label>
-                <select name="responsavel_tecnico" id="responsavel_tecnico" class="form-control selecao">
-                        <option value=""></option>
-                    @foreach ($responsavel_tecnico as $key => $tecnico)
-                        <option value="{{ $tecnico->id }}" {{ isset($fornecedor) && $fornecedor->responsavel_tecnico == $tecnico->responsavel_tecnico ? 'selected' : ''}} >{{$tecnico->responsavel_tecnico}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="responsavel_financeiro" class="form-label">Responsável Financeiro:</label>
-                <select name="responsavel_financeiro" id="responsavel_financeiro" class="form-control selecao">
-                    <option value=""></option>
-                    @foreach ($responsavel_financeiro as $key => $financeiro)
-                        <option value=""  {{ isset($fornecedor) && $fornecedor->responsavel_financeiro == $financeiro->responsavel_financeiro ? 'selected' : ''}}>{{$financeiro->responsavel_financeiro}}</option>
-                    @endforeach
-                </select>
-
-            </div>
-        </div>
+        </div>   
     </div>
     <div class="row">
         <div class="col" align="end">

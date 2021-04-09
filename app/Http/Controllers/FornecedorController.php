@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FornecedoresRequest;
 use App\Models\Fornecedor;
 
 class FornecedorController extends Controller
 {
+    public $tipos = ['servico', 'produto', ];
+
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
-
+        
         if($pesquisa != '') {
             $fornecedores = Fornecedor::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
@@ -18,13 +21,18 @@ class FornecedorController extends Controller
         return view('fornecedores.index', compact('fornecedores'));
     } 
     public function novo() {
-        return view('fornecedores.form');
+        $tipos = $this->tipos;
+        return view('fornecedores.form', compact('tipos'));
     }
     public function editar($id) {
+        $tipos = $this->tipos;
         $fornecedor = Fornecedor::find($id);
-        return view('fornecedores.form', compact('fornecedor'));
+        return view('fornecedores.form', compact('fornecedor', 'tipos'));
     }
-    public function salvar(Request $request) {
+    public function salvar(FornecedoresRequest $request) {
+        
+        $ehValido = $request->validated();
+
         if($request->id != '') {
             $fornecedor = Fornecedor::find($request->id);
             $fornecedor->update($request->all());
@@ -37,9 +45,9 @@ class FornecedorController extends Controller
         $fornecedor = Fornecedor::find($id);
         if(!empty($fornecedor)){
             $fornecedor->delete();
-            return redirect('Fornecedores')->with('success', 'Deletado com sucesso!');
+            return redirect('fornecedores')->with('success', 'Deletado com sucesso!');
         } else {
-            return redirect('Fornecedores')->with('danger', 'Registro não encontrado!');
+            return redirect('fornecedores')->with('danger', 'Registro não encontrado!');
         }
     }
 }
