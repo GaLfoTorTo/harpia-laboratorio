@@ -72,11 +72,11 @@
                     <td>{{ $item->titulo }}</td>
                     <td>{{ $item->revisao_edicao_n }}</td>
                     <td>{{ $item->codigo }}</td>
-                    <td>{{ $item->n_de_exemplares}}</td>
                     <td>{{ $item->localizacao }}</td>
                     <td>{{ $item->data_da_atualizacao }}</td>
                     <td>{{ $item->analise_critica_verificacao }}</td>
                     <td>{{ $item->atualizacao_em }}</td>
+                    <td>{{ $item->n_de_exemplares}}</td>
                     <td>
                       <a href="documentos_externos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>

@@ -13,11 +13,11 @@ class D_externo extends Model
         'titulo',
         'revisao_edicao_n',
         'codigo',
-        'n_de_exemplares',
         'localizacao',
         'data_da_atualizacao',
         'analise_critica_verificacao',
-        'atualizacao_em'
+        'atualizacao_em',
+        'n_de_exemplares'
         
     ]; 
 
