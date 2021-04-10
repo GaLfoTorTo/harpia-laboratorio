@@ -9,6 +9,7 @@ class Equipamentos_Insumos extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'equipamentos_insumos',
         'materiais',
         'nome',
         'codigo',
@@ -19,6 +20,5 @@ class Equipamentos_Insumos extends Model
         'quantidade',
         'unidade'
     ];
-
 }
 

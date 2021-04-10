@@ -10,36 +10,35 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Documentos Externos</h1>
+            <h1 class="m-0">Fornecedores</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Documentos Externos</li>
+              <li class="breadcrumb-item active">Fornecedores</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+    <!-- /.content-header -->
 
-<div class="container corpo">
-  
-
-  <section class="content">
+    <!-- Main content -->
+    <section class="content">
       <div class="container-fluid">
+        <!-- Main row -->
 
-  <div class="card">
+        <div class="card">
           <div class="card-header">
-            <a href="/documentos_externos/novo" class="btn btn-primary">
-              Novo documento 
+            <a href="/fornecedores/novo" class="btn btn-primary">
+              Novo fornecedor 
               <i class="fas fa-plus"></i>
             </a>
 
             <div class="card-tools">
               <form action="">
                 <div class="input-group input-group" style="width: 150px;">
-                <input type="search" id="form1" class="form-control" name="pesquisa"/>
-              <label class="form-label" for="form1"></label>
+                  <input type="search" id="form1" class="form-control" name="pesquisa">
                   <div class="input-group-append">
                     <button type="submit" class="btn btn-default">
                       <i class="fas fa-search"></i>
@@ -54,50 +53,49 @@
             <table class="table table-hover text-nowrap table-bordered ">
               <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th>Título:</th>
-                    <th>Revisão/Edição n°:</th>
-                    <th>Código:</th>
-                    <th>Localização</th>
-                    <th>Data da atualização</th>
-                    <th>Análise critica/verificação</th>
-                    <th>Atualização em</th>
-                    <th>N° de Exemplares</th>
+                  <th scope="col">#</th>
+                  
+                  <th>tipo</th>
+                  <th>cnpj</th>
+                  <th>razao_social</th>
+                  <th>telefone</th>
+                  <th>email</th>
                 </tr>
               </thead>
-              @foreach ($documento as $item)
+              @foreach ($fornecedores as $item)
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->titulo }}</td>
-                    <td>{{ $item->revisao_edicao_n }}</td>
-                    <td>{{ $item->codigo }}</td>
-                    <td>{{ $item->localizacao }}</td>
-                    <td>{{ $item->data_da_atualizacao }}</td>
-                    <td>{{ $item->analise_critica_verificacao }}</td>
-                    <td>{{ $item->atualizacao_em }}</td>
-                    <td>{{ $item->n_de_exemplares}}</td>
+                    <td>{{ $item->tipo }}</td>
+                    <td>{{ $item->cnpj }}</td>
+                    <td>{{ $item->razao_social }}</td>
+                    <td>{{ $item->telefone }}</td>
+                    <td>{{ $item->email }}</td>
                     <td>
-                      <a href="documentos_externos/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="fornecedores/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="documentos_externos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="fornecedores/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
                     </td>
                 </tr>
               </tbody>
               @endforeach
-          </table>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+  <div class="row">
+    <div class="col">
+      {{ $fornecedores->links() }}
+    </div>
+  </div>
 
-        </div>
-        <div>
-          {{ $documento->links() }}
-        </div>
-  </div>
+  <!-- /.row (main row) -->
+</div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 </div>
-</div>
-  </div>
+
 @include('layout.footer')
-
-

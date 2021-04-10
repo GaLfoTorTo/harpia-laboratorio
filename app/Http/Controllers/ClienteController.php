@@ -35,8 +35,7 @@ class ClienteController extends Controller
         $responsavel_tecnico = Cliente::select('responsavel_tecnico')
                                 ->groupBy('responsavel_tecnico')
                                 ->get();
-        $responsavel_financeiro = Cliente::select('responsavel_financeiro')->where('responsavel_financeiro', '=', 'marconi')
-                                ->orWhere('responsavel_financeiro', '=', 'persival')
+        $responsavel_financeiro = Cliente::select('responsavel_financeiro')
                                 ->groupBy('responsavel_financeiro')
                                 ->get();
         return view('clientes.form', compact('cliente', 'tipo_unidade', 'responsavel_tecnico', 'responsavel_financeiro'));

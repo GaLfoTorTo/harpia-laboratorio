@@ -43,6 +43,7 @@ class EquipamentosInsumosController extends Controller
             return view('equipamentos_insumos.form', compact('equipamentos_insumos','materiais', 'materiais_referencia', 'produto_critico', 'unidade'));
         }
         public function salvar(Request $request) {
+            
             if($request->id != '') {
                 $equipamentos_insumos = Equipamentos_Insumos::find($request->id);
                 $equipamentos_insumos->update($request->all());

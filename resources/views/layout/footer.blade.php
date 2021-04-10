@@ -45,5 +45,17 @@
 <script src="/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/js/pages/dashboard.js"></script>
+
+<script>
+  $('.alteraManual').on('change', function(){
+    if($(this).val() == 'Sim') {
+      $('.camposLocalizacao').show();
+    }else {
+      $('.camposLocalizacao').hide();
+
+    }
+  })
+</script>
+
 </body>
 </html>
