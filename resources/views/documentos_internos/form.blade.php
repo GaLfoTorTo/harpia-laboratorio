@@ -29,7 +29,7 @@
             <div class="row card">
                 <div class="col card-body">
 
-                    <form action="/documentos_internos/salvar/" method="POST">
+                    <form action="/documentos_internos/salvar/" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="@isset($documento){{$documento->id}}@endisset">
                         <div class="row">
@@ -47,8 +47,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="codigo" class="form-label">Codigo:</label>
-                                    <input type="text" name="codigo" class="form-control" required value="@isset($documento){{$documento->cpf_cnpj}}@endisset">
+                                    <label for="codigo" class="form-label">Código:</label>
+                                    <input type="text" name="codigo" class="form-control" required value="@isset($documento){{$documento->codigo}}@endisset">
                                 </div>
                             </div>
                         </div>
@@ -56,25 +56,25 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="titulo:" class="form-label">Titulo::</label>
+                                    <label for="titulo" class="form-label">Título:</label>
                                     <input type="text" name="titulo" class="form-control" required value="@isset($documento){{$documento->nome}}@endisset">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="revisao_edicao" class="form-label">Revisão_Edição:</label>
+                                    <label for="revisao_edicao" class="form-label">Revisão Edição:</label>
                                     <input type="text" name="revisao_edicao" class="form-control" required value="@isset($documento){{$documento->nome}}@endisset">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="data_aprovacao" class="form-label">Data da Aprovação:</label>
-                                    <input type="text" name="data_aprovacao" class="form-control" value="@isset($documento){{$documento->email}}@endisset">
+                                    <input type="date" name="data_aprovacao" class="form-control" value="@isset($documento){{$documento->email}}@endisset">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="num_copias" class="form-label">Nº de copias:</label>
+                                    <label for="num_copias" class="form-label">Nº de cópias:</label>
                                     <input type="text" name="num_copias" class="form-control" value="@isset($documento){{$documento->telefone}}@endisset">
                                 </div>
                             </div>
@@ -90,7 +90,10 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="carregar documento:" class="form-label">Carregar documento:</label>
-                                    <input type="file" name="carregar documento:" class="form-control" value="@isset($documento){{$documento->email}}@endisset">
+                                    <input type="file" name="documento_temp" class="form-control">
+                                    @if(isset($documento) && $documento->documento != '')
+                                        <a href="{{ $documento->documento }}" target="_blank">Ver documento</a>
+                                    @endif
                                 </div>
                             </div>
                             

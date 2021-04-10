@@ -11,7 +11,7 @@ use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\EquipamentosInsumosController;
-
+use App\Http\Controllers\DocumentosInternosController;
 
 Route::get('/', [DExternoController::class, 'index']);
 Route::get('/documentos_externos', [DExternoController::class, 'index'])->name('documentos_externos');
@@ -20,10 +20,6 @@ Route::get('/documentos_externos/editar/{id}', [DExternoController::class, 'edit
 Route::post('/documentos_externos/salvar', [DExternoController::class, 'salvar'])->name('documentos_externos.salvar');
 Route::get('/documentos_externos/deletar/{id}', [DExternoController::class, 'deletar'])->name('documentos_externos.deletar');
 
-use App\Http\Controllers\EquipamentoController;
-use App\Http\Controllers\ColaboradorController;
-use App\Http\Controllers\ServicoController;
-use App\Http\Controllers\DocumentosInternosController;
 
 Route::get('/', [DashboardController::class, 'index']);
 
