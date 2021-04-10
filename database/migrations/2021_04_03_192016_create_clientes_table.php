@@ -28,8 +28,8 @@ class CreateClientesTable extends Migration
             $table->string('uf', 2)->nullable();
             $table->enum('tipo_unidade', ['matriz', 'filial']);
             $table->string('codigo_cliente', 70);
-            $table->enum('responsavel_tecnico', ['fransisco', 'juraildo'] );
-            $table->enum('responsavel_financeiro', ['marconi', 'persival'] );
+            $table->string('responsavel_tecnico', 70);
+            $table->string('responsavel_financeiro', 70);
             $table->timestamps();
         });
     }

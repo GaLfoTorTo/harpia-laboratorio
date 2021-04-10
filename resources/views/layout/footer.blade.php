@@ -45,5 +45,44 @@
 <script src="/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/js/pages/dashboard.js"></script>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/jquery.maskedinput.js"></script>
+<script>
+    $('.telefone').mask('(99) 99999-9999');
+    $('.cep').mask('99999-999');
+    // var options = {
+    //   onKeyPress: function (cpf, ev, el, op) {
+    //       var masks = ['999.999.999-99', '99.999.999/9999-99'];
+    //       $('.cpf_cnpj').mask((cpf.length < 14) ? masks[0] : masks[1], op);
+    //   }
+    // }
+
+    // $('.cpf_cnpj').length > 11 ? $('.cpf_cnpj').mask('99.999.999/9999-99', options) : $('.cpf_cnpj').mask('999.999.999-99', options);
+    $(".cpf_cnpj").keydown(function(){
+    try {
+        $(".cpf_cnpj").unmask();
+    } catch (e) {}
+
+    var tamanho = $(".cpf_cnpj").val().length;
+
+    if(tamanho < 11){
+        $(".cpf_cnpj").mask("999.999.999-99");
+    } else {
+        $(".cpf_cnpj").mask("99.999.999/9999-99");
+    }
+
+    // ajustando foco
+    var elem = this;
+    setTimeout(function(){
+        // mudo a posição do seletor
+        elem.selectionStart = elem.selectionEnd = 10000;
+    }, 0);
+    // reaplico o valor para mudar o foco
+    var currentValue = $(this).val();
+    $(this).val('');
+    $(this).val(currentValue);
+});
+    
+</script>
 </body>
 </html>

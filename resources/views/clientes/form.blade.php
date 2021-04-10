@@ -30,22 +30,32 @@
           <div class="row card">
             <div class="col card-body">
 
+            @if($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    @foreach($errors->all() as $error)
+                        {{ $error }}<br/>
+                    @endforeach
+                </div>
+            @endif
 
   <form action="/clientes/salvar" method="POST">
     @csrf
-    <input type="hidden" name="id" value="@isset($cliente){{$cliente->id}}@endisset">
-    <input type="hidden" name="codigo_cliente" value="@isset($cliente){{$cliente->codigo_cliente}}@endisset">
+    <input type="hidden" name="id" value="@if(isset($cliente)){{$cliente->id}}@else{{ old('id') }}@endif">
+    <input type="hidden" name="codigo_cliente" value="@isset($cliente){{$cliente->codigo_cliente}}@else{{ rand($min = 10000000000, $max = 99999999999) }}@endisset">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
                 <label for="nome" class="form-label">Nome:</label>
-                <input type="text" name="nome" class="form-control" required value="@isset($cliente){{$cliente->nome}}@endisset">
+                <input type="text" name="nome" class="form-control" required value="@if(isset($cliente)){{$cliente->nome}}@else{{ old('nome') }}@endif">
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="cpf_cnpj" class="form-label">CPF/CNPJ:</label>
-                <input type="text" name="cpf_cnpj" class="form-control cpf" required value="@isset($cliente){{$cliente->cpf_cnpj}}@endisset">
+                <input type="text" name="cpf_cnpj" class="form-control cpf_cnpj" required value="@if(isset($cliente)){{$cliente->cpf_cnpj}}@else {{old('cpf_cnpj')}} @endisset">
             </div>
         </div>
     </div>
@@ -53,13 +63,13 @@
         <div class="col-8">
             <div class="form-group">
                 <label for="email" class="form-label">E-mail:</label>
-                <input type="email" name="email" class="form-control" value="@isset($cliente){{$cliente->email}}@endisset">
+                <input type="email" name="email" class="form-control" value="@if(isset($cliente)){{$cliente->email}}@else {{old('email')}} @endif" >
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="telefone" class="form-label">Telefone:</label>
-                <input type="text" name="telefone" class="form-control fone" value="@isset($cliente){{$cliente->telefone}}@endisset">
+                <input type="text" name="telefone" class="form-control telefone" value="@if(isset($cliente)){{$cliente->telefone}}@else{{ old('telefone') }}@endif">
             </div>
         </div>
     </div>
@@ -67,19 +77,19 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="cep" class="form-label">CEP</label>
-                <input type="text" name="cep" class="form-control cep" value="@isset($cliente){{$cliente->cep}}@endisset">
+                <input type="text" name="cep" class="form-control cep" value="@if(isset($cliente)){{$cliente->cep}}@else{{old('cep')}}@endif">
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="logradouro" class="form-label">Logradouro</label>
-                <input type="text" name="logradouro" class="form-control" value="@isset($cliente){{$cliente->logradouro}}@endisset">
+                <input type="text" name="logradouro" class="form-control" value="@if(isset($cliente)){{$cliente->logradouro}}@else{{old('logradouro')}}@endif ">
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
                 <label for="numero" class="form-label">Numero</label>
-                <input type="number" name="numero" class="form-control" value="@isset($cliente){{$cliente->numero}}@endisset">
+                <input type="number" name="numero" class="form-control" value="@if(isset($cliente)){{$cliente->numero}}@else{{old('numero')}}@endif ">
             </div>
         </div>
     </div>
@@ -87,55 +97,44 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" name="cidade" class="form-control" value="@isset($cliente){{$cliente->cidade}}@endisset">
+                <input type="text" name="cidade" class="form-control" value="@if(isset($cliente)){{$cliente->cidade}}@else{{old('cidade')}}@endif ">
             </div>
         </div>
         <div class="col-5">
             <div class="form-group">
                 <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" name="bairro" class="form-control" value="@isset($cliente){{$cliente->bairro}}@endisset">
+                <input type="text" name="bairro" class="form-control" value="@if(isset($cliente)){{$cliente->bairro}}@else{{old('bairro')}}@endif ">
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
                 <label for="uf" class="form-label">UF</label>
-                <input type="text" name="uf" class="form-control" value="@isset($cliente){{$cliente->uf}}@endisset">
+                <input type="text" name="uf" class="form-control" value="@if(isset($cliente)){{$cliente->uf}}@else{{old('uf')}}@endif ">
             </div>
         </div>
     </div>
      <div class="row">
         <div class="col-4">
             <div class="form-group">
-                <label for="tipo_unidade" class="form-label">Tipo de Unidade:</label>
-                <select name="tipo_unidade" id="tipo_unidade" class="form-control">
-                    <option value=""></option>
-                    @foreach ($tipo_unidade as $key => $tipo)
-                        <option class=" tipo_unidade" value="{{$tipo->tipo_unidade}}" @if(isset($cliente) && $cliente->tipo_unidade == $tipo->tipo_unidade) selected @endif>{{$tipo->tipo_unidade}}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
                 <label for="responsavel_tecnico" class="form-label">Responsável Técnico:</label>
-                <select name="responsavel_tecnico" id="responsavel_tecnico" class="form-control selecao">
-                        <option value=""></option>
-                    @foreach ($responsavel_tecnico as $key => $tecnico)
-                        <option value="{{ $tecnico->id }}" {{ isset($cliente) && $cliente->responsavel_tecnico == $tecnico->responsavel_tecnico ? 'selected' : ''}} >{{$tecnico->responsavel_tecnico}}</option>
-                    @endforeach
-                </select>
+                <input type="text" name="uf" class="form-control" value="@if(isset($cliente)){{$cliente->responsavel_tecnico}}@else{{old('responsavel_tecnico')}}@endif ">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="responsavel_financeiro" class="form-label">Responsável Financeiro:</label>
-                <select name="responsavel_financeiro" id="responsavel_financeiro" class="form-control selecao">
+                <input type="text" name="uf" class="form-control" value="@if(isset($cliente)){{$cliente->responsavel_financeiro}}@else{{old('responsavel_financeiro')}}@endif ">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="tipo_unidade" class="form-label">Tipo de Unidade:</label>
+                <select name="tipo_unidade" id="tipo_unidade" class="form-control">
                     <option value=""></option>
-                    @foreach ($responsavel_financeiro as $key => $financeiro)
-                        <option value=""  {{ isset($cliente) && $cliente->responsavel_financeiro == $financeiro->responsavel_financeiro ? 'selected' : ''}}>{{$financeiro->responsavel_financeiro}}</option>
+                    @foreach ($tipos_unidade as $key => $tipo)
+                        <option class=" tipo_unidade" value="{{$tipo}}" @if(isset($cliente) && $cliente->tipo_unidade == $tipo) selected @elseif(old('tipo_unidade') == $tipo) selected @endif >{{$tipo}}</option>
                     @endforeach
                 </select>
-
             </div>
         </div>
     </div>
@@ -148,6 +147,7 @@
         </div>
     </div>
   </form>
+
 
 </div>
          
