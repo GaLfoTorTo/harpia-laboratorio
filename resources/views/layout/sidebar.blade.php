@@ -88,7 +88,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-paste"></i>
+              <i class="nav-icon far fa-copy"></i>
               <p>
                 Documentos Externos
                 <i class="right fas fa-angle-left"></i>
@@ -102,7 +102,30 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="documentos_externos" class="nav-link">
+                <a href="{{ url('/') }}/documentos_externos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Documentos Internos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/documentos_internos/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/documentos_internos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
@@ -148,7 +171,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="fornecedores" class="nav-link">
+                <a href="/fornecedores" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>

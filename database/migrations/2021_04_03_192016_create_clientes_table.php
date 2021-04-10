@@ -16,7 +16,7 @@ class CreateClientesTable extends Migration
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 100);
-            $table->string('cpf_cnpj', 14);
+            $table->string('cpf_cnpj', 18);
             $table->string('email')->nullable();
             $table->string('telefone', 15)->nullable();
             $table->string('cep', 9)->nullable();
@@ -28,8 +28,8 @@ class CreateClientesTable extends Migration
             $table->string('uf', 2)->nullable();
             $table->enum('tipo_unidade', ['matriz', 'filial']);
             $table->string('codigo_cliente', 70);
-            $table->enum('responsavel_tecnico', ['fransisco', 'juraildo'] );
-            $table->enum('responsavel_financeiro', ['marconi', 'persival'] );
+            $table->string('responsavel_tecnico', 70);
+            $table->string('responsavel_financeiro', 70);
             $table->timestamps();
         });
     }

@@ -45,7 +45,38 @@
 <script src="/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/js/pages/dashboard.js"></script>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/jquery.maskedinput.js"></script>
+<script>
+    $('.telefone').mask('(99) 99999-9999');
+    $('.cep').mask('99999-999');
+    $(document).ready(function(){
+      var valor = document.querySelector('.cpf_cnpj');
+      if(valor.value == ''){
+        $('.tipo').click(function(){
+          var id = $(this).attr('id');
+          if(id == 'tipo_cpf'){
+            $('.cpf_cnpj').removeAttr('readonly');
+            $(".cpf_cnpj").mask("999.999.999-99");
+          }else if(id == 'tipo_cnpj'){
+            $('.cpf_cnpj').removeAttr('readonly');
+            $(".cpf_cnpj").mask("99.999.999/9999-99");
+          }
+        });
+      }else if( valor.value.length > 0 && valor.value.length <= 14){
+        $('.cpf_cnpj').removeAttr('readonly');
+        $('#tipo_cpf').attr('checked', true);
 
+      }else if(valor.value.length > 14){
+        $('.cpf_cnpj').removeAttr('readonly');
+        $('#tipo_cnpj').attr('checked', true);
+      }
+      
+    });
+    $(".cpf").mask("999.999.999-99");
+    $(".cnpj").mask("99.999.999/9999-99");
+     
+</script>
 <script>
   $('.alteraManual').on('change', function(){
     if($(this).val() == 'Sim') {
@@ -56,6 +87,5 @@
     }
   })
 </script>
-
 </body>
 </html>
