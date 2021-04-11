@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClienteRequest;
 use App\Models\Cliente;
-use App\Models\Colaborador;
 
 class ClienteController extends Controller
 {
@@ -22,16 +21,15 @@ class ClienteController extends Controller
         return view('clientes.index', compact('clientes','pesquisa'));
     } 
     public function novo() {
+
         $tipos_unidade = $this->tipos_unidade;
-        $colaborador = Colaborador::select('id', 'nome')->get();
-        return view('clientes.form', compact('tipos_unidade', 'colaborador'));
+        return view('clientes.form', compact('tipos_unidade'));
     }
     public function editar($id) {
+
         $cliente = Cliente::find($id);
         $tipos_unidade = $this->tipos_unidade;
-        $colaborador = Colaborador::select('id', 'nome')->get();
-        
-        return view('clientes.form', compact('cliente', 'tipos_unidade', 'colaborador'));
+        return view('clientes.form', compact('cliente', 'tipos_unidade'));
     }
     public function salvar(ClienteRequest $request) {
 

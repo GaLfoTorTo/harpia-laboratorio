@@ -50,39 +50,42 @@
 <script>
     $('.telefone').mask('(99) 99999-9999');
     $('.cep').mask('99999-999');
-    // var options = {
-    //   onKeyPress: function (cpf, ev, el, op) {
-    //       var masks = ['999.999.999-99', '99.999.999/9999-99'];
-    //       $('.cpf_cnpj').mask((cpf.length < 14) ? masks[0] : masks[1], op);
-    //   }
-    // }
+    $(document).ready(function(){
+      var valor = document.querySelector('.cpf_cnpj');
+      if(valor.value == ''){
+        $('.tipo').click(function(){
+          var id = $(this).attr('id');
+          if(id == 'tipo_cpf'){
+            $('.cpf_cnpj').removeAttr('readonly');
+            $(".cpf_cnpj").mask("999.999.999-99");
+          }else if(id == 'tipo_cnpj'){
+            $('.cpf_cnpj').removeAttr('readonly');
+            $(".cpf_cnpj").mask("99.999.999/9999-99");
+          }
+        });
+      }else if( valor.value.length > 0 && valor.value.length <= 14){
+        $('.cpf_cnpj').removeAttr('readonly');
+        $('#tipo_cpf').attr('checked', true);
 
-    // $('.cpf_cnpj').length > 11 ? $('.cpf_cnpj').mask('99.999.999/9999-99', options) : $('.cpf_cnpj').mask('999.999.999-99', options);
-    $(".cpf_cnpj").keydown(function(){
-    try {
-        $(".cpf_cnpj").unmask();
-    } catch (e) {}
+      }else if(valor.value.length > 14){
+        $('.cpf_cnpj').removeAttr('readonly');
+        $('#tipo_cnpj').attr('checked', true);
+      }
+      
+    });
+    $(".cpf").mask("999.999.999-99");
+    $(".cnpj").mask("99.999.999/9999-99");
+     
+</script>
+<script>
+  $('.alteraManual').on('change', function(){
+    if($(this).val() == 'Sim') {
+      $('.camposLocalizacao').show();
+    }else {
+      $('.camposLocalizacao').hide();
 
-    var tamanho = $(".cpf_cnpj").val().length;
-
-    if(tamanho < 11){
-        $(".cpf_cnpj").mask("999.999.999-99");
-    } else {
-        $(".cpf_cnpj").mask("99.999.999/9999-99");
     }
-
-    // ajustando foco
-    var elem = this;
-    setTimeout(function(){
-        // mudo a posição do seletor
-        elem.selectionStart = elem.selectionEnd = 10000;
-    }, 0);
-    // reaplico o valor para mudar o foco
-    var currentValue = $(this).val();
-    $(this).val('');
-    $(this).val(currentValue);
-});
-    
+  })
 </script>
 </body>
 </html>

@@ -44,7 +44,7 @@
   <form action="/clientes/salvar" method="POST">
     @csrf
     <input type="hidden" name="id" value="@if(isset($cliente)){{$cliente->id}}@else{{ old('id') }}@endif">
-    <input type="hidden" name="codigo_cliente" value="@isset($cliente){{$cliente->codigo_cliente}}@else{{ rand($min = 10000000000, $max = 99999999999) }}@endisset">
+    <input type="hidden" name="codigo_cliente" value="@isset($cliente){{$cliente->codigo_cliente}}@else {{rand($min = 100000000, $max = 999999999)}}@endisset">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
@@ -54,8 +54,11 @@
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="cpf_cnpj" class="form-label">CPF/CNPJ:</label>
-                <input type="text" name="cpf_cnpj" class="form-control cpf_cnpj" required value="@if(isset($cliente)){{$cliente->cpf_cnpj}}@else {{old('cpf_cnpj')}} @endisset">
+                <label for="servico">CPF</label>
+                <input type="radio" class="tipo" name="tipo" id="tipo_cpf">
+                <label for="servico">CNPJ</label>
+                <input type="radio" class="tipo" name="tipo" id="tipo_cnpj">
+                <input type="text" name="cpf_cnpj" class="form-control cpf_cnpj" id="cpf_cnpj" readonly required value="@if(isset($cliente)){{$cliente->cpf_cnpj}}@else{{old('cpf_cnpj')}}@endisset">
             </div>
         </div>
     </div>
@@ -63,7 +66,7 @@
         <div class="col-8">
             <div class="form-group">
                 <label for="email" class="form-label">E-mail:</label>
-                <input type="email" name="email" class="form-control" value="@if(isset($cliente)){{$cliente->email}}@else {{old('email')}} @endif" >
+                <input type="email" name="email" class="form-control" value="@if(isset($cliente)){{$cliente->email}}@else{{old('email')}} @endif" >
             </div>
         </div>
         <div class="col-4">
@@ -83,13 +86,13 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="logradouro" class="form-label">Logradouro</label>
-                <input type="text" name="logradouro" class="form-control" value="@if(isset($cliente)){{$cliente->logradouro}}@else{{old('logradouro')}}@endif ">
+                <input type="text" name="logradouro" class="form-control" value="@if(isset($cliente)){{$cliente->logradouro}}@else{{old('logradouro')}}@endif">
             </div>
         </div>
         <div class="col-2">
             <div class="form-group">
                 <label for="numero" class="form-label">Numero</label>
-                <input type="number" name="numero" class="form-control" value="@if(isset($cliente)){{$cliente->numero}}@else{{old('numero')}}@endif ">
+                <input type="number" name="numero" class="form-control" value="@if(isset($cliente)){{$cliente->numero}}@else{{old('numero')}}@endif">
             </div>
         </div>
     </div>
@@ -97,19 +100,19 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" name="cidade" class="form-control" value="@if(isset($cliente)){{$cliente->cidade}}@else{{old('cidade')}}@endif ">
+                <input type="text" name="cidade" class="form-control" value="@if(isset($cliente)){{$cliente->cidade}}@else{{old('cidade')}}@endif">
             </div>
         </div>
         <div class="col-5">
             <div class="form-group">
                 <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" name="bairro" class="form-control" value="@if(isset($cliente)){{$cliente->bairro}}@else{{old('bairro')}}@endif ">
+                <input type="text" name="bairro" class="form-control" value="@if(isset($cliente)){{$cliente->bairro}}@else{{old('bairro')}}@endif">
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
                 <label for="uf" class="form-label">UF</label>
-                <input type="text" name="uf" class="form-control" value="@if(isset($cliente)){{$cliente->uf}}@else{{old('uf')}}@endif ">
+                <input type="text" name="uf" class="form-control" value="@if(isset($cliente)){{$cliente->uf}}@else{{old('uf')}}@endif">
             </div>
         </div>
     </div>
@@ -117,22 +120,21 @@
         <div class="col-4">
             <div class="form-group">
                 <label for="responsavel_tecnico" class="form-label">Responsável Técnico:</label>
-                <input type="text" name="uf" class="form-control" value="@if(isset($cliente)){{$cliente->responsavel_tecnico}}@else{{old('responsavel_tecnico')}}@endif ">
+                <input type="text" name="responsavel_tecnico" class="form-control" value="@if(isset($cliente)){{$cliente->responsavel_tecnico}}@else{{old('responsavel_tecnico')}}@endif">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="responsavel_financeiro" class="form-label">Responsável Financeiro:</label>
-                <input type="text" name="uf" class="form-control" value="@if(isset($cliente)){{$cliente->responsavel_financeiro}}@else{{old('responsavel_financeiro')}}@endif ">
+                <input type="text" name="responsavel_financeiro" class="form-control" value="@if(isset($cliente)){{$cliente->responsavel_financeiro}}@else{{old('responsavel_financeiro')}}@endif">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="tipo_unidade" class="form-label">Tipo de Unidade:</label>
                 <select name="tipo_unidade" id="tipo_unidade" class="form-control">
-                    <option value=""></option>
                     @foreach ($tipos_unidade as $key => $tipo)
-                        <option class=" tipo_unidade" value="{{$tipo}}" @if(isset($cliente) && $cliente->tipo_unidade == $tipo) selected @elseif(old('tipo_unidade') == $tipo) selected @endif >{{$tipo}}</option>
+                        <option class=" tipo_unidade" value="{{$tipo}}"@if(isset($cliente) && $cliente->tipo_unidade == $tipo) selected @elseif(old('tipo_unidade') == $tipo) selected @endif>{{$tipo}}</option>
                     @endforeach
                 </select>
             </div>
@@ -147,7 +149,6 @@
         </div>
     </div>
   </form>
-
 
 </div>
          

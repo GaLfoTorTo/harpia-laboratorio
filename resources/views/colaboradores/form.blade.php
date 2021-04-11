@@ -44,7 +44,7 @@
                         <div class="col-5">
                             <div class="form-outline">
                                 <label for="cpf" class="form-label">CPF:</label>
-                                <input type="text" data-mask-for-cpf-cnpj  name="cpf" class="form-control cpf_cnpj" required value="@if(isset($colaborador)){{$colaborador->cpf}}@else{{ old('cpf') }}@endif">
+                                <input type="text" data-mask-for-cpf-cnpj  name="cpf" class="form-control cpf" required value="@if(isset($colaborador)){{$colaborador->cpf}}@else{{ old('cpf') }}@endif">
                             </div>
                         </div>
                     </div>
