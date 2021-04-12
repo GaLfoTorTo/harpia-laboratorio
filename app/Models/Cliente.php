@@ -26,6 +26,5 @@ class Cliente extends Model
         'responsavel_tecnico',
         'responsavel_financeiro'
     ]; 
-
     
 }

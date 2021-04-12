@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ClienteRequest;
 use App\Models\Cliente;
 
 class ClienteController extends Controller
 {
+    public $tipos_unidade = ['Matriz', 'Filial'];
+
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
 
@@ -18,29 +21,19 @@ class ClienteController extends Controller
         return view('clientes.index', compact('clientes','pesquisa'));
     } 
     public function novo() {
-        $tipo_unidade = Cliente::select('tipo_unidade')
-                                ->groupBy('tipo_unidade')
-                                ->get();
-        $responsavel_tecnico = Cliente::select('responsavel_tecnico')
-                                ->groupBy('responsavel_tecnico')
-                                ->get();
-        $responsavel_financeiro = Cliente::select('responsavel_financeiro')
-                                ->get();
-        return view('clientes.form', compact('tipo_unidade', 'responsavel_tecnico', 'responsavel_financeiro'));
+
+        $tipos_unidade = $this->tipos_unidade;
+        return view('clientes.form', compact('tipos_unidade'));
     }
     public function editar($id) {
+
         $cliente = Cliente::find($id);
-        $tipo_unidade = Cliente::select('tipo_unidade')
-                                ->get();
-        $responsavel_tecnico = Cliente::select('responsavel_tecnico')
-                                ->groupBy('responsavel_tecnico')
-                                ->get();
-        $responsavel_financeiro = Cliente::select('responsavel_financeiro')
-                                ->groupBy('responsavel_financeiro')
-                                ->get();
-        return view('clientes.form', compact('cliente', 'tipo_unidade', 'responsavel_tecnico', 'responsavel_financeiro'));
+        $tipos_unidade = $this->tipos_unidade;
+        return view('clientes.form', compact('cliente', 'tipos_unidade'));
     }
-    public function salvar(Request $request) {
+    public function salvar(ClienteRequest $request) {
+
+        $ehvalido = $request->validated();
         if($request->id != '') {
             $cliente = Cliente::find($request->id);
             $cliente->update($request->all());

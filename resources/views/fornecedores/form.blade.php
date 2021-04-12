@@ -60,8 +60,8 @@
         </div>
         <div class="col-4">
             <div class="form-group">
-                <label for="cnpj" class="form-label">CPNJ:</label>
-                <input type="text" name="cnpj" class="form-control cpf" required value="@if(isset($fornecedor)){{$fornecedor->cnpj}} @else {{ old('cnpj')}}  @endif">
+                <label for="cnpj" class="form-label">CNPJ:</label>
+                <input type="text" name="cnpj" class="form-control cnpj" required value="@if(isset($fornecedor)){{$fornecedor->cnpj}} @else {{ old('cnpj')}}  @endif">
             </div>
         </div>
         <div class="col-4">
