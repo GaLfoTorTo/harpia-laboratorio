@@ -21,6 +21,7 @@ class CreateEquipamentosInsumosTable extends Migration
                 $table->string('fabricante', 50)->nullable();
                 $table->string('fornecedor', 50)->nullable();
                 $table->enum('produto_critico', ['Sim', 'Não'])->nullable();
+                $table->enum('materiais_referencia', ['MR', 'MRC'])->nullable();
                 $table->string('desc_produto', 90)->nullable();
                 $table->string('quantidade', 100)->nullable();
                 $table->enum('unidade', ['mg', 'g', 'kg', 'ml', 'l', 'unidade'])->nullable();

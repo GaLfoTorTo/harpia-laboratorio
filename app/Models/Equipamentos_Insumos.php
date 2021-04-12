@@ -16,6 +16,7 @@ class equipamentos_insumos extends Model
         'fabricante',
         'fornecedor',
         'produto_critico',
+        'materiais_referencia',
         'desc_produto',
         'quantidade',
         'unidade'
