@@ -116,6 +116,8 @@
             </div>
         </div>
         <div class="col-6 camposLocalizacao" >
+
+
         <div class="form-group">
                 <label for="localizacao_manual" class="form-label">Localização Manual:</label>
                 <input type="text" name="localizacao_manual" class="form-control" value="@isset($equipamentos){{$equipamentos->localizacao_manual}}@else {{ old('localizacao_manual')}} @endisset">
@@ -171,7 +173,6 @@
         </div>
     </div>
   </form>
-
 </div>
          
 </div>
@@ -180,6 +181,7 @@
 </section>
 <!-- /.content -->
 </div>
+
 
   
 
