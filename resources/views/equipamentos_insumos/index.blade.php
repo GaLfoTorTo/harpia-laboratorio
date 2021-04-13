@@ -63,7 +63,7 @@
                   <th>Descrição do Produto</th>
                 </tr>
               </thead>
-              @foreach ($equipamentos as $item)
+              @foreach ($equipamentos_insumos as $item)
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
