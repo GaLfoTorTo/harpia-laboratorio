@@ -50,10 +50,10 @@
            </div>
             <div class="col-4">
             <div class="form-group">
-                  <label for="fabricante" class="form-label">Fabricante:</label>
-                  <input type="text" name="fabricante" class="form-control fone" value="@isset($equipamentos_insumos){{$equipamentos_insumos->fabricante}}@endisset">
-              </div>
+                <label for="fabricante" class="form-label">Fabricante:</label>
+                <input type="text" name="fabricante" class="form-control fone" value="@isset($equipamentos_insumos){{$equipamentos_insumos->fabricante}}@endisset">
             </div>
+          </div>
     </div>
     <div class="row">
     <div class="col-4">

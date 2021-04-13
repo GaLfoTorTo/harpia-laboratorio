@@ -15,6 +15,7 @@ class CreateEquipamentosInsumosTable extends Migration
     {
             Schema::create('equipamentos_insumos', function (Blueprint $table) {
                 $table->id();
+
                 $table->enum('materiais', ['Consumíveis', 'Reagente', 'Insumo', 'Materiais de Referência'])->nullable();
                 $table->string('nome', 100)->nullable();
                 $table->string('codigo', 50)->nullable();
