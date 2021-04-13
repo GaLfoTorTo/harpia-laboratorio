@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="/" class="nav-link active">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href/" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Clientes
@@ -64,7 +64,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href/" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user-friends"></i>
               <p>
                 Colaboradores
@@ -79,7 +79,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="colaboradores" class="nav-link">
+                <a href="/colaboradores" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
@@ -87,7 +87,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href/" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon far fa-copy"></i>
               <p>
                 Documentos Externos
@@ -102,7 +102,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/') }}/documentos_externos" class="nav-link">
+                <a href="/documentos_externos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
@@ -110,7 +110,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href/" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Documentos Internos
@@ -133,7 +133,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href/" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
                 Equipamentos
@@ -148,7 +148,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="equipamentos" class="nav-link">
+                <a href="/equipamentos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
