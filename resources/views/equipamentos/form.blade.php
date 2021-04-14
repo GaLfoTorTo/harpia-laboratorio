@@ -52,13 +52,8 @@
     <div class="form-group">
                 <label for="equipamento_proprio" class="form-label">Equipamento Próprio:</label>
                 <select name="equipamento_proprio" id="equipamento_proprio" class="form-control">
-                    <option value=""></option>
                     @foreach ($equipamento_proprio as $key => $proprio)
-                        <option class="equipamento_proprio" value="{{$proprio}}" @if(@isset
-                        ($equipamentos) && $equipamentos->equipamento_proprio == $proprio)selected
-                        @elseif(old('equipamento_proprio') == $proprio) selected @endif>
-                            {{$proprio}}
-                    </option>
+                        <option value="{{ $proprio->equipamento_proprio }}" {{ isset($equipamentos) && $equipamentos->equipamento_proprio == $proprio->equipamento_proprio ? 'selected' : ''}} >{{$proprio->equipamento_proprio}}</option>
                     @endforeach
                     
                 </select>
@@ -186,12 +181,3 @@
   
 
 @include('layout.footer')
-
-
-        
-
-
-            
-
-            
-            

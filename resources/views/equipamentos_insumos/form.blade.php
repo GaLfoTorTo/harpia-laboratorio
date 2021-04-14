@@ -44,16 +44,16 @@
         </div>
         <div class="col-4">
         <div class="form-group">
-                <label for="código" class="form-label">Código:</label>
-                <input type="text" name="código" class="form-control" value="@isset($equipamentos_insumos){{$equipamentos_insumos->código}}@endisset">
+                <label for="codigo" class="form-label">Código:</label>
+                <input type="text" name="codigo" class="form-control" value="@if(isset($equipamentos_insumos) && $equipamentos_insumos){{$equipamentos_insumos->codigo}}@else{{old("codigo")}}@endif">
             </div>
            </div>
             <div class="col-4">
             <div class="form-group">
-                    <label for="fabricante" class="form-label">Fabricante:</label>
-                    <input type="number" name="fabricante" class="form-control fone" value="@isset($equipamentos_insumos){{$equipamentos_insumos->fabricante}}@endisset">
-                </div>
+                <label for="fabricante" class="form-label">Fabricante:</label>
+                <input type="text" name="fabricante" class="form-control fone" value="@isset($equipamentos_insumos){{$equipamentos_insumos->fabricante}}@endisset">
             </div>
+          </div>
     </div>
     <div class="row">
     <div class="col-4">
@@ -73,9 +73,8 @@
               <select name="materiais_referencia" id="materiais_referencia" class="form-control selecao">
                 <option value="">Selecione</option>
                     @foreach ($materiais_referencia as $key => $t)
-                      <option value="{{ $t }}" @if(isset($equipamentos_insumos) && $equipamentos_insumos->materiais_referencia == $t)  selected @elseif(old('materiais_referencia') == $t) selected @endif >{{$t}}</option>
-                  @endforeach
-
+                      <option value="{{ $t }}" @if(isset($equipamentos_insumos) && $equipamentos_insumos->materiais_referencia == $t) selected @elseif(old('materiais_referencia') == $t) selected @endif >{{$t}}</option>
+                    @endforeach
               </select>
           </div>
       </div>
@@ -83,7 +82,7 @@
       <div class="form-group">
               <label for="materiais" class="form-label">Materiais:</label>
               <select name="materiais" id="materiais" class="form-control selecao">
-                <option value="">Selecione</option>
+                <option value="">Selecione:</option>
                   @foreach ($materiais as $key => $t)
                       <option value="{{ $t }}" @if(isset($equipamentos_insumos) && $equipamentos_insumos->materiais == $t)  selected @elseif(old('materiais') == $t) selected @endif >{{$t}}</option>
                   @endforeach

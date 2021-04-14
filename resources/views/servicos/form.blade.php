@@ -47,7 +47,7 @@
     <div class="row">
         <div class="col-6">
             <div class="form-outline">
-              <input type="text" name="descricao" class="form-control" required value="@if(isset($servico)){{$servico->descricao}} @else {{ old('descricao')}}  @endif">
+              <input type="text" name="descricao" class="form-control" required value="@if(isset($servico)){{$servico->descricao}}@else{{ old('descricao')}}@endif">
               <label for="descricao" class="form-label">Descrição:</label>
             </div>
         </div>

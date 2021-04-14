@@ -23,7 +23,7 @@ class ClientesSeeder extends Seeder
             DB::table('clientes')->insert([
                 'nome' => $faker->name(),
                 'email' => $faker->email(),
-                'cpf_cnpj' => $faker->numberBetween($min = 100, $max = 999).'.'.$faker->numberBetween($min = 100, $max = 999).'.'.$faker->numberBetween($min = 100, $max = 999).'-'.$faker->numberBetween($min = 10, $max = 99),
+                'cpf_cnpj' => rand(1,0) == 0 ? $faker->numberBetween($min = 100, $max = 999).'.'.$faker->numberBetween($min = 100, $max = 999).'.'.$faker->numberBetween($min = 100, $max = 999).'-'.$faker->numberBetween($min = 10, $max = 99) : $faker->numberBetween($min = 10, $max = 99).'.'.$faker->numberBetween($min = 100, $max = 999).'.'.$faker->numberBetween($min = 100, $max = 999).'/'.$faker->numberBetween($min = 1000, $max = 9999).'-'.$faker->numberBetween($min = 10, $max = 99),
                 'telefone' => '('.$faker->numberBetween($min = 10, $max = 99).') '.$faker->numberBetween($min = 10000, $max = 99999).'-'.$faker->numberBetween($min = 1000, $max = 9999),
                 'cep' => $faker->numberBetween($min = 10000, $max = 99999).'-'.$faker->numberBetween($min = 100, $max = 999),
                 'logradouro' => rand(1,0) == 0 ? 'rua '.$faker->name() : 'quadra '. $faker->numberBetween($min = 01, $max = 99),
@@ -31,11 +31,11 @@ class ClientesSeeder extends Seeder
                 'numero'=> $faker->numberBetween($min = 01, $max = 99),
                 'complemento'=> rand(1,0) == 0 ? '' : $faker->name(),
                 'cidade'=> $faker->name(),
-                'uf'=> 'DF',
+                'uf'=> rand(1,0) == 0 ? 'DF' : 'SP',
                 'tipo_unidade'=> rand(1,0) == 0 ? 'matriz' : 'filial',
                 'codigo_cliente'=> $faker->bankAccounTNumber(),
-                'responsavel_tecnico'=> rand(1,0) == 0 ? 'fransisco' : 'juraildo',
-                'responsavel_financeiro'=> rand(1,0) == 0 ? 'marconi' : 'persival'
+                'responsavel_tecnico'=> $faker->name(),
+                'responsavel_financeiro'=> $faker->name()
             ]);
         }
     }
