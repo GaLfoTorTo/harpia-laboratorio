@@ -16,13 +16,13 @@ class CreateDExternosTable extends Migration
         Schema::create('d_externos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo', 100);
-            $table->string('revisao_edicao_n', 14);
+            $table->integer('revisao_edicao_n')->nullable();
             $table->string('codigo', 15);
-            $table->string('localizacao', 255);
-            $table->string('data_da_atualizacao', 50);
-            $table->string('analise_critica_verificacao', 10);
-            $table->string('atualizacao_em', 255);
-            $table->string('n_de_exemplares' , 10);
+            $table->string('localizacao', 255)->nullable();
+            $table->date('data_da_atualizacao')->nullable();
+            $table->string('analise_critica_verificacao', 255);
+            $table->date('atualizacao_em')->nullable();
+            $table->integer('n_de_exemplares')->nullable();
             $table->timestamps();
         });
     }
