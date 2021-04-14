@@ -8,10 +8,11 @@ use App\Models\Equipamentos_Insumos;
 class EquipamentosInsumosController extends Controller
 {  
 
-        public $materiais = ['consumíveis', 'reagente', 'insumo', 'materiais de referência'];
+
+        public $materiais = ['Consumíveis', 'Reagente', 'Insumo', 'Materiais de Referência'];
         public $materiais_referencia = ['MR', 'MRC'];
         public $produto_critico = ['Sim', 'Não'];
-        public $unidade = ['mg', 'g', 'kg', 'ml', 'l', 'unidade'];
+        public $unidade = ['mg', 'g', 'kg', 'ml', 'l', 'un'];
 
         public function index(Request $request) {
         $pesquisa = $request->pesquisa;

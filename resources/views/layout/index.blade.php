@@ -29,6 +29,7 @@
         <div class="row">
           <div class="col">
             Conteúdo
+            {{ \Auth::user() }}
           </div>
          
         </div>
