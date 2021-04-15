@@ -30,6 +30,7 @@ class CreateFornecedoresTable extends Migration
             $table->string('cidade', 70)->nullable();
             $table->string('uf', 2)->nullable();
             $table->timestamps();
+            
         });
     }
 
