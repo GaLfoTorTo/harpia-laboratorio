@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use APP\Models\User;
 
 class UserController extends Controller
@@ -11,11 +12,11 @@ class UserController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $user = User::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $users = User::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
-            $user = User::paginate(10);
+            $users = User::paginate(10);
         }
-        return view('user.index', compact('user','pesquisa'));
+        return view('user.index', compact('users','pesquisa'));
     } 
     public function novo() {
 

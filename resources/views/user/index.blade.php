@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Clientes</h1>
+          <h1 class="m-0">Usuários</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-            <li class="breadcrumb-item active">Clientes</li>
+            <li class="breadcrumb-item active">Usuários</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -30,8 +30,8 @@
 
       <div class="card">
         <div class="card-header">
-          <a href="/clientes/novo" class="btn btn-primary">
-            Novo cliente 
+          <a href="/user/novo" class="btn btn-primary">
+            Novo usuário 
             <i class="fas fa-plus"></i>
           </a>
           <div class="card-tools">
@@ -55,23 +55,21 @@
               <tr>
                 <th scope="col">#</th>
                 <th>Nome</th>
-                <th>CPF/CNPJ</th>
                 <th>E-mail</th>
                 <th>Ações</th>
               </tr>
             </thead>
-            @foreach ($clientes as $item)
+            @foreach ($users as $item)
             <tbody>
               <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->nome }}</td>
-                  <td>{{ $item->cpf_cnpj }}</td>
+                  <td>{{ $item->name }}</td>
                   <td>{{ $item->email }}</td>
                   <td>
-                    <a href="clientes/editar/{{ $item->id }}" class="btn btn-warning">
+                    <a href="user/editar/{{ $item->id }}" class="btn btn-warning">
                       <i class="fas fa-edit"></i>
                     </a>
-                    <a href="clientes/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                    <a href="user/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                       <i class="fas fa-trash"></i>
                     </a>
                   </td>
@@ -84,7 +82,7 @@
       </div>
       <div class="row">
         <div class="col">
-          {{ $clientes->links() }}
+          {{ $users->links() }}
         </div>
       </div>
 
