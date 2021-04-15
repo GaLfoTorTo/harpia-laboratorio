@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory;
 use Faker\Provider\pt_BR\Person;
+use Faker\Provider\ar_SA\Payment;
 
 class FornecedorSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class FornecedorSeeder extends Seeder
       for ($i=0; $i < 50; $i++) { 
          
        
-        DB::table('equipamentos')->insert([
+        DB::table('fornecedores')->insert([
       [      
         'tipo' => rand(1,0) == 0 ? 'produto' : 'servico',
         'cnpj' => $faker->numberBetween($min = 10, $max = 99).'.'.$faker->numberBetween($min = 100, $max = 999).'.'.$faker->numberBetween($min = 100, $max = 999).'/'.$faker->numberBetween($min = 1000, $max = 9999).'-'.$faker->numberBetween($min = 10, $max = 99),
@@ -37,7 +38,7 @@ class FornecedorSeeder extends Seeder
         'complemento'=> rand(1,0) == 0 ? '' : $faker->name(),
         'bairro'=> $faker->name(),
         'cidade'=> $faker->name(),
-        'uf'=> rand(1,0) == 0 ? 'DF' : 'SP',
+        'uf'=> rand(1,0) == 0 ? 'DF' : 'SP'
         ]
 
         ]);
