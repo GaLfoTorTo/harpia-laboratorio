@@ -40,20 +40,20 @@
             <div class="row card">
                 <div class="col card-body">
 
-                    <form action="/documentos_externos/salvar" method="POST">
+                    <form action="/documentos_externos/salvar" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="@isset($documento){{$documento->id}}@endisset">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="titulo" class="form-label">Titulo:</label>
-                                    <input type="text" name="titulo" class="form-control" required value="@isset($documento){{$documento->nome}}@endisset">
+                                    <input type="text" name="titulo" class="form-control" required value="@if(isset($documento)){{$documento->titulo}}@else{{ old('titulo')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="revisao_edicao_n" class="form-label">Revisão/Edição/N°:</label>
-                                    <input type="text" name="revisao_edicao_n" class="form-control" required value="@isset($documento){{$documento->cpf_cnpj}}@endisset">
+                                    <input type="text" name="revisao_edicao_n" class="form-control" required value="@if(isset($documento)){{$documento->revisao_edicao_n}}@else{{ old('revisao_edicao_n')}}@endif">
                                 </div>
                             </div>
                         </div>
@@ -62,25 +62,25 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="codigo" class="form-label">Código:</label>
-                                    <input type="text" name="codigo" class="form-control" required value="@isset($documento){{$documento->nome}}@endisset">
+                                    <input type="text" name="codigo" class="form-control" required value="@if(isset($documento)){{$documento->codigo}}@else{{ old('codigo')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="n_de_exemplares" class="form-label">N° de exemplares:</label>
-                                    <input type="text" name="n_de_exemplares" class="form-control" required value="@isset($documento){{$documento->nome}}@endisset">
+                                    <input type="number" name="n_de_exemplares" class="form-control" required value="@if(isset($documento)){{$documento->n_de_exemplares}}@else{{ old('n_de_exemplares')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="localizacao" class="form-label">Localização:</label>
-                                    <input type="text" name="localizacao" class="form-control" value="@isset($documento){{$documento->email}}@endisset">
+                                    <input type="text" name="localizacao" class="form-control" required value="@if(isset($documento)){{$documento->localizacao}}@else{{ old('localizacao')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="data_da_atualizacao" class="form-label">Data da atualização:</label>
-                                    <input type="text" name="data_da_atualizacao" class="form-control" value="@isset($documento){{$documento->telefone}}@endisset">
+                                    <input type="date" name="data_da_atualizacao" class="form-control" required value="@if(isset($documento)){{$documento->data_da_atualizacao}}@else{{ old('data_da_atualizacao')}}@endif">
                                 </div>
                             </div>
                         </div>
@@ -89,13 +89,26 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="analise_critica_verificacao" class="form-label">Análise Critica/Verificação:</label>
-                                    <input type="text" name="analise_critica_verificacao" class="form-control" value="@isset($documento){{$documento->email}}@endisset">
+                                    <input type="text" name="analise_critica_verificacao" class="form-control" required value="@if(isset($documento)){{$documento->analise_critica_verificacao}}@else{{ old('analise_critica_verificacao')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="atualizacao_em" class="form-label">Atualização em:</label>
-                                    <input type="text" name="atualizacao_em" class="form-control" value="@isset($documento){{$documento->email}}@endisset">
+                                    <input type="date" name="atualizacao_em" class="form-control" required value="@if(isset($documento)){{$documento->atualizacao_em}}@else{{ old('atualizacao_em')}}@endif">
+                                </div>
+                            </div>
+                                <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="carregar documento:" class="form-label">Carregar documento:</label>
+                                        <input type="file" name="documento_temp" class="form-control">
+                                        @if(isset($documento) && $documento->documento != '')@else{{ old('documento')}}
+                                            <a href="{{ $documento->documento }}" target="_blank">Ver documento</a>
+                                        
+                                        @endif
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             
@@ -105,7 +118,7 @@
                                     <i class="fas fa-save"></i>
                                 </button>
                             </div>
-                        </div>
+                        
 
                     </form>
                 </div>

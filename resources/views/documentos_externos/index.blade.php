@@ -63,6 +63,7 @@
                     <th>Análise critica/verificação</th>
                     <th>Atualização em</th>
                     <th>N° de Exemplares</th>
+                    <th>Documento</th>
                 </tr>
               </thead>
               @foreach ($documento as $item)
@@ -77,6 +78,7 @@
                     <td>{{ $item->analise_critica_verificacao }}</td>
                     <td>{{ $item->atualizacao_em }}</td>
                     <td>{{ $item->n_de_exemplares}}</td>
+                    <td>{{ $item->documento}}</td>
                     <td>
                       <a href="documentos_externos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
