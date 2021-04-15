@@ -47,7 +47,7 @@
     @csrf
     <input type="hidden" name="id" value="@isset($fornecedor){{$fornecedor->id}}@endisset">
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <div class="form-group">
                 <label for="tipo" class="form-label">Tipo:</label>
                 <select name="tipo" id="tipo" class="form-control">
@@ -58,30 +58,30 @@
                 </select>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-9">
             <div class="form-group">
-                <label for="cnpj" class="form-label">CNPJ:</label>
-                <input type="text" name="cnpj" class="form-control cnpj"required value="@if(isset($fornecedor)){{$fornecedor->cnpj}}@else{{ old('cnpj')}}@endif">
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="telefone" class="form-label">Telefone:</label>
-                <input type="text" name="telefone" class="form-control telefone"required value="@if(isset($fornecedor)){{$fornecedor->telefone}}@else{{ old('telefone')}}@endif">
+                <label for="razao_social" class="form-label">Razão Social:</label>
+                <input type="text" name="razao_social" class="form-control name"required value="@if(isset($fornecedor)){{$fornecedor->razao_social}}@else{{ old('razao_social')}}@endif">
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-3">
             <div class="form-group">
-                <label for="razao_social" class="form-label">Razão Social:</label>
-                <input type="text" name="razao_social" class="form-control name"required value="@if(isset($fornecedor)){{$fornecedor->razao_social}}@else{{ old('razao_social')}}@endif">
+                <label for="cnpj" class="form-label">CNPJ:</label>
+                <input type="text" name="cnpj" class="form-control cnpj"required value="@if(isset($fornecedor)){{$fornecedor->cnpj}}@else{{ old('cnpj')}}@endif">
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="email" class="form-label">E-mail:</label>
                 <input type="email" name="email" class="form-control email"required value="@if(isset($fornecedor)){{$fornecedor->email}}@else{{ old('email')}}@endif">
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="telefone" class="form-label">Telefone:</label>
+                <input type="text" name="telefone" class="form-control telefone"required value="@if(isset($fornecedor)){{$fornecedor->telefone}}@else{{ old('telefone')}}@endif">
             </div>
         </div>
     </div>
@@ -108,12 +108,6 @@
     <div class="row">
         <div class="col-5">
             <div class="form-group">
-                <label for="complemento" class="form-label">Complemento:</label>
-                <input type="text" name="complemento" class="form-control"value="@if(isset($fornecedor)){{$fornecedor->cep}}@else{{ old('cep')}}@endif">
-            </div>
-        </div>
-        <div class="col-5">
-            <div class="form-group">
                 <label for="logradouro" class="form-label">Logradouro:</label>
                 <input type="text" name="logradouro" class="form-control"value="@if(isset($fornecedor)){{$fornecedor->logradouro}}@else{{ old('logradouro')}}@endif">
             </div>
@@ -122,6 +116,12 @@
             <div class="form-group">
                 <label for="numero" class="form-label">Número:</label>
                 <input type="number" name="numero" class="form-control"value="@if(isset($fornecedor)){{$fornecedor->numero}}@else{{ old('numero')}}@endif">
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="form-group">
+                <label for="complemento" class="form-label">Complemento:</label>
+                <input type="text" name="complemento" class="form-control"value="@if(isset($fornecedor)){{$fornecedor->cep}}@else{{ old('cep')}}@endif">
             </div>
         </div>
     </div>
