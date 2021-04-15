@@ -47,5 +47,4 @@ class UserController extends Controller
             return redirect('user')->with('danger', 'Registro não encontrado!');
         }
     }
-
 }

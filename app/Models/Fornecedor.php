@@ -21,7 +21,7 @@ class Fornecedor extends Model
         'nome_do_contato',
         'cep',
         'logradouro',
-        'número',
+        'numero',
         'complemento',
         'bairro',
         'cidade',

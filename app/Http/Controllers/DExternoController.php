@@ -25,14 +25,27 @@ class DExternoController extends Controller
         return view('documentos_externos/form', compact('documento'));
     }
     public function salvar(Request $request) {
-        if($request->id != '') {
-            $documento = D_externo::find($request->id);
-            $documento->update($request->all());
-        } else {
-            $documento = D_externo::create($request->all());
-        }
-        return redirect('documentos_externos/editar/'. $documento->id)->with('success', 'Salvo com sucesso!');
-    }
+        //dd($request->all());
+ 
+         if($request->hasFile('documento_temp')) {
+             echo 'tem documento';
+             // renomeando documento 
+             $nome_documento = date('YmdHmi').'.'.$request->documento_temp->getClientOriginalExtension();
+ 
+             $request['documento'] = '/uploads/doc_externos/' . $nome_documento;
+ 
+             $request->documento_temp->move(public_path('uploads/doc_externos'), $nome_documento);
+         }
+ 
+         if($request->id != '') {
+             $documento = D_externo::find($request->id);
+             $documento->update($request->all());
+         } else {
+             $documento = D_externo::create($request->all());
+         }
+         return redirect('/documentos_externos/editar/'. $documento->id)->with('success', 'Salvo com sucesso!');
+     }
+ 
     public function deletar($id) {
         $documento = D_externo::find($id);
         if(!empty($documento)){
