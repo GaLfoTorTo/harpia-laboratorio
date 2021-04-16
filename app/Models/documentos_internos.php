@@ -14,7 +14,7 @@ class Documentos_internos extends Model
         'codigo',
         'titulo',
         'revisao_edicao',
-        'data_aprovacao	',
+        'data_aprovacao',
         'num_copias',
         'localizacao',
         'documento'
