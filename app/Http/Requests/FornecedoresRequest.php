@@ -36,7 +36,7 @@ class FornecedoresRequest extends FormRequest
     {
         return [
             'tipo.required' => 'O tipo é obrigatório',
-            'cnpj.required' => 'O cnpj é obrigatório',
+            'cnpj.required' => 'CNPJ incorreto',
             'razao_social.required' => 'Informe o nome em Razão social ',
             'telefone.required' => 'O telefone é obrigatório',
             'email.required' => 'O email é obrigatório'

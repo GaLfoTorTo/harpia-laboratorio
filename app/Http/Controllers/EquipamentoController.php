@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\EquipamentoRequest;
 use App\Models\Equipamentos;
+use App\Models\Fornecedor;
 
 class EquipamentoController extends Controller
 {  
@@ -13,12 +14,7 @@ class EquipamentoController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-        $equipamentos = Equipamentos::where('equipamento', 'like', "%".$pesquisa."%")
-                                        ->orWhere('marca', 'like', "%".$pesquisa."%")
-                                        ->orWhere('modelo', 'like', "%".$pesquisa."%")
-                                        ->orWhere('fabricante', 'like', "%".$pesquisa."%")
-                                        ->orWhere('fornecedor', 'like', "%".$pesquisa."%")
-                                        ->paginate(1000);
+        $equipamentos = Equipamentos::where('equipamento', 'like', "%".$pesquisa."%")->paginate(1000);
 
         } else {
         $equipamentos = Equipamentos::paginate(10);
@@ -26,6 +22,8 @@ class EquipamentoController extends Controller
         return view('equipamentos.index', compact('equipamentos', 'pesquisa'));
 } 
         public function novo() {
+            $fornecedores = Fornecedor::select('razao_social')->get();
+
             $equipamento_proprio = Equipamentos::select('equipamento_proprio')
             ->groupBy('equipamento_proprio')
             ->get();
@@ -36,9 +34,12 @@ class EquipamentoController extends Controller
 
             ->groupBy('manual')
             ->get();
-        return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual'));
+        return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
         }
         public function editar($id) {
+
+            $fornecedores = Fornecedor::select('razao_social')->get();
+
             $equipamentos = Equipamentos::find($id);
             $equipamento_proprio = Equipamentos::select('equipamento_proprio')
                                     ->groupBy('equipamento_proprio')
@@ -49,7 +50,7 @@ class EquipamentoController extends Controller
             $manual = Equipamentos::select('manual')
                                     ->groupBy('manual')
                                     ->get();
-            return view('equipamentos.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual'));
+            return view('equipamentos.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
         }
         public function salvar(EquipamentoRequest $request) {
 

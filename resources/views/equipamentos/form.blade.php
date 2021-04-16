@@ -52,24 +52,23 @@
     <div class="form-group">
                 <label for="equipamento_proprio" class="form-label">Equipamento Próprio:</label>
                 <select name="equipamento_proprio" id="equipamento_proprio" class="form-control">
+                    <option value=""></option>
                     @foreach ($equipamento_proprio as $key => $proprio)
-                        <option value="{{ $proprio->equipamento_proprio }}" {{ isset($equipamentos) && $equipamentos->equipamento_proprio == $proprio->equipamento_proprio ? 'selected' : ''}} >{{$proprio->equipamento_proprio}}</option>
+                        <option class=" equipamento_proprio" value="{{$proprio->equipamento_proprio}}" @if(isset($equipamentos) && $equipamentos->equipamento_proprio == $proprio->equipamento_proprio) selected @endif>{{$proprio->equipamento_proprio}}</option>
                     @endforeach
-                    
                 </select>
-                
             </div>
         </div>
         <div class="col-4">
         <div class="form-group">
                 <label for="equipamento" class="form-label">Equipamento:</label>
-                <input type="text" name="equipamento" class="form-control equipamento" required value="@isset($equipamentos){{$equipamentos->equipamento}} @else {{ old('equipamento')}} @endisset">
+                <input type="text" name="equipamento" class="form-control equipamento" required value="@isset($equipamentos){{$equipamentos->equipamento}}@endisset">
             </div>
         </div>
         <div class="col-4">
         <div class="form-group">
                 <label for="marca" class="form-label">Marca:</label>
-                <input type="text" name="marca" class="form-control" value="@isset($equipamentos){{$equipamentos->marca}}@else {{ old('marca')}} @endisset">
+                <input type="text" name="marca" class="form-control" value="@isset($equipamentos){{$equipamentos->marca}}@endisset">
             </div>
             </div>
     </div>
@@ -77,7 +76,7 @@
         <div class="col-4">
         <div class="form-group">
                 <label for="modelo" class="form-label">Modelo:</label>
-                <input type="number" name="modelo" class="form-control fone" value="@isset($equipamentos){{$equipamentos->modelo}}@else {{ old('modelo')}} @endisset">
+                <input type="number" name="modelo" class="form-control fone" value="@isset($equipamentos){{$equipamentos->modelo}}@endisset">
             </div>
         </div>
         <div class="col-4">
@@ -107,7 +106,7 @@
         <div class="col-2">
         <div class="form-group">
                 <label for="num_serie" class="form-label">Número de Série:</label>
-                <input type="number" name="num_serie" class="form-control" value="@isset($equipamentos){{$equipamentos->num_serie}}@else {{ old('num_serie')}} @endisset">
+                <input type="number" name="num_serie" class="form-control" value="@isset($equipamentos){{$equipamentos->num_serie}}@endisset">
             </div>
         </div>
         <div class="col-6 camposLocalizacao" >
@@ -115,13 +114,13 @@
 
         <div class="form-group">
                 <label for="localizacao_manual" class="form-label">Localização Manual:</label>
-                <input type="text" name="localizacao_manual" class="form-control" value="@isset($equipamentos){{$equipamentos->localizacao_manual}}@else {{ old('localizacao_manual')}} @endisset">
+                <input type="text" name="localizacao_manual" class="form-control" value="@isset($equipamentos){{$equipamentos->localizacao_manual}}@endisset">
             </div>
         </div>
         <div class="col-4">
         <div class="form-group">
                 <label for="doc_instrucao" class="form-label">Documento de Instrução:</label>
-                <input type="text" name="doc_instrucao" class="form-control" value="@isset($equipamentos){{$equipamentos->doc_instrucao}}@else {{ old('doc_instrucao')}} @endisset">
+                <input type="text" name="doc_instrucao" class="form-control" value="@isset($equipamentos){{$equipamentos->doc_instrucao}}@endisset">
             </div>
         </div>
     </div>
@@ -129,33 +128,37 @@
         <div class="col-4">
         <div class="form-group">
                 <label for="codigo" class="form-label">Código:</label>
-                <input type="number" name="codigo" class="form-control" value="@isset($equipamentos){{$equipamentos->codigo}}@else {{ old('codigo')}} @endisset">
+                <input type="number" name="codigo" class="form-control" value="@isset($equipamentos){{$equipamentos->codigo}}@endisset">
             </div>
         </div>
         <div class="col-4">
         <div class="form-group">
                 <label for="patrimonio" class="form-label">Patrimônio:</label>
-                <input type="text" name="patrimonio" class="form-control" value="@isset($equipamentos){{$equipamentos->patrimonio}}@else {{ old('patrimonio')}} @endisset">
+                <input type="text" name="patrimonio" class="form-control" value="@isset($equipamentos){{$equipamentos->patrimonio}}@endisset">
             </div>
         </div>
         <div class="col-4">
         <div class="form-group">
                 <label for="fabricante" class="form-label">Fabricante:</label>
-                <input type="text" name="fabricante" class="form-control" value="@isset($equipamentos){{$equipamentos->fabricante}}@else {{ old('fabricante')}} @endisset">
+                <input type="text" name="fabricante" class="form-control" value="@isset($equipamentos){{$equipamentos->fabricante}}@endisset">
             </div>
         </div>
     </div>
      <div class="row">
         <div class="col-5">
         <div class="form-group">
-                <label for="fornecedor" class="form-label">Fornecedor:</label>
-                <input type="text" name="fornecedor" class="form-control" value="@isset($equipamentos){{$equipamentos->fornecedor}}@else {{ old('fornecedor')}} @endisset">
+            <label for="fornecedor" class="form-label">Fornecedor:</label>
+            <select name="fornecedor" id="fornecedor" class="form-control selecao">
+                @foreach ($fornecedores as $key => $t)
+                  <option value="{{ $t->razao_social }}" @if(isset($equipamentos) && $equipamentos->fornecedores == $t->razao_social)  selected @elseif(old('fornecedores') == $t->razao_social) selected @endif >{{$t->razao_social}}</option>
+              @endforeach
+            </select>
             </div>
         </div>
         <div class="col-7">
         <div class="form-group">
                 <label for="localizacao_equipamento" class="form-label">Localização Equipamento:</label>
-                <input type="text" name="localizacao_equipamento" class="form-control" value="@isset($equipamentos){{$equipamentos->localizacao_equipamento}}@else {{ old('localizacao_equipamento')}} @endisset">
+                <input type="text" name="localizacao_equipamento" class="form-control" value="@isset($equipamentos){{$equipamentos->localizacao_equipamento}}@endisset">
             </div>
         </div>
     </div>
@@ -181,3 +184,12 @@
   
 
 @include('layout.footer')
+
+
+        
+
+
+            
+
+            
+            
