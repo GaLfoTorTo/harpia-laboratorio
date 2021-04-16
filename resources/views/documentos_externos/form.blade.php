@@ -103,9 +103,8 @@
                                     <div class="form-group">
                                         <label for="carregar documento:" class="form-label">Carregar documento:</label>
                                         <input type="file" name="documento_temp" class="form-control">
-                                        @if(isset($documento) && $documento->documento != '')@else{{ old('documento')}}
+                                        @if(isset($documento) && $documento->documento != '')
                                             <a href="{{ $documento->documento }}" target="_blank">Ver documento</a>
-                                        
                                         @endif
                                     </div>
                                 </div>
