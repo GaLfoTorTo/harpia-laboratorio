@@ -17,7 +17,8 @@ class D_externo extends Model
         'data_da_atualizacao',
         'analise_critica_verificacao',
         'atualizacao_em',
-        'n_de_exemplares'
+        'n_de_exemplares',
+        'documento'
         
     ]; 
 
