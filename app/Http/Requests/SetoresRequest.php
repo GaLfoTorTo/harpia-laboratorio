@@ -24,8 +24,7 @@ class SetoresRequest extends FormRequest
     public function rules()
     {
         return [
-            'setor' => 'required',
-            'sub_setor' => 'required',
+            'setor' => 'required'
                
         ];
     }
@@ -33,8 +32,7 @@ class SetoresRequest extends FormRequest
     public function messages()
     {
         return [
-            'setor.required' => 'O setor é obrigatório',
-            'sub_setor.required' => 'O sub-setor é obrigatório',
+            'setor.required' => 'O setor é obrigatório'
             
         ];
     }

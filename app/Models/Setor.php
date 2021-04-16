@@ -10,7 +10,7 @@ class Setor extends Model
     use HasFactory;
     protected $fillable = [
         'setor',
-        'sub_setor'
+        'setors_id'
         
     ];
 

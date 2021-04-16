@@ -15,12 +15,9 @@ class CreateSetorsTable extends Migration
     {
         Schema::create('setors', function (Blueprint $table) {
             $table->id();
-            $table->string('setor', 50);    
-            $table->integer("setor_id")
-                ->nullable();      
-            $table->foreign("setor_id")
-                ->references('id')
-                ->on('setors');   
+            $table->string('setor', 50);
+            $table->unsignedBigInteger('setors_id')->nullable();
+            $table->foreign('setors_id')->references('id')->on('setors');
             $table->timestamps();     
 
         });

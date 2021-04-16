@@ -23,8 +23,8 @@ class SetoresController extends Controller
     }
     public function novo() {
        
-
-        return view('setores.form');
+        $setores = Setor::select('id', 'setor')->get();
+        return view('setores.form', compact('setores'));
     }
     public function salvar(SetoresRequest $request) {
         
@@ -42,8 +42,9 @@ class SetoresController extends Controller
         return redirect('setores/editar/' . $setor->id)->with('success', $message);
     } 
     public function editar($id) {
+        $setores = Setor::select('id', 'setor')->get();
         $setor = Setor::find($id);
-        return view('setores.form');
+        return view('setores.form', compact('setor', 'setores'));
     }
     public function deletar($id) {
         $setor = Setor::find($id);
