@@ -24,12 +24,13 @@ class CreateFornecedoresTable extends Migration
             $table->string('nome_do_contato', 100)->nullable();
             $table->string('cep', 9)->nullable();
             $table->string('logradouro', 100)->nullable();
-            $table->string('número', 10)->nullable();
+            $table->string('numero', 10)->nullable();
             $table->string('complemento', 100)->nullable();
             $table->string('bairro', 70)->nullable();
             $table->string('cidade', 70)->nullable();
             $table->string('uf', 2)->nullable();
             $table->timestamps();
+            
         });
     }
 

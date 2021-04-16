@@ -89,6 +89,12 @@
                   <p>Listar</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/usuarios" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Usuários</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -252,7 +258,29 @@
               </li>
             </ul>
           </li>
-          
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Usuários
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/user/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

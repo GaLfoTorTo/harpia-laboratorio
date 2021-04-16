@@ -12,6 +12,7 @@ use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\EquipamentosInsumosController;
 use App\Http\Controllers\DocumentosInternosController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
 
@@ -29,7 +30,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/documentos_externos/salvar', [DExternoController::class, 'salvar'])->name('documentos_externos.salvar');
     Route::get('/documentos_externos/deletar/{id}', [DExternoController::class, 'deletar'])->name('documentos_externos.deletar');
 
-
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user/novo', [UserController::class, 'novo'])->name('user.novo');
+    Route::get('/user/editar/{id}', [UserController::class, 'editar'])->name('user.editar');
+    Route::post('/user/salvar', [UserController::class, 'salvar'])->name('user.salvar');
+    Route::get('/user/deletar/{id}', [UserController::class, 'deletar'])->name('user.deletar');
 
     Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes');
     Route::get('/clientes/novo', [ClienteController::class, 'novo'])->name('clientes.novo');
