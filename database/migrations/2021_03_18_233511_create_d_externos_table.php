@@ -23,6 +23,7 @@ class CreateDExternosTable extends Migration
             $table->string('analise_critica_verificacao', 255);
             $table->date('atualizacao_em')->nullable();
             $table->integer('n_de_exemplares')->nullable();
+            $table->string('documento', 255)->nullable();
             $table->timestamps();
         });
     }
