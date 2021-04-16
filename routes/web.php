@@ -13,6 +13,7 @@ use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\EquipamentosInsumosController;
 use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\AutenticacaoController;
+use App\Http\Controllers\SetoresController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -72,5 +73,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/equipamentos_insumos/editar/{id}', [EquipamentosInsumosController::class, 'editar'])->name('equipamentos_insumos.editar');
     Route::post('equipamentos_insumos/salvar', [EquipamentosInsumosController::class, 'salvar'])->name('equipamentos_insumos.salvar');
     Route::get('/equipamentos_insumos/deletar/{id}', [EquipamentosInsumosController::class, 'deletar'])->name('equipamentos_insumos.deletar');
+
+    Route::get('/setores', [SetoresController::class, 'index'])->name('setores');
+    Route::get('/setores/novo', [SetoresController::class, 'novo'])->name('setores.novo');
+    Route::get('/setores/editar/{id}', [SetoresController::class, 'editar'])->name('setores.editar');
+    Route::post('setores/salvar', [SetoresController::class, 'salvar'])->name('setores.salvar');
+    Route::get('/setores/deletar/{id}', [SetoresController::class, 'deletar'])->name('setores.deletar');
 
 });
