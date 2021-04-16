@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Equipamentos_Insumos;
+use App\Models\Fornecedor;
 
 class EquipamentosInsumosController extends Controller
 {  
-
-
         public $materiais = ['Consumíveis', 'Reagente', 'Insumo', 'Materiais de Referência'];
         public $materiais_referencia = ['MR', 'MRC'];
         public $produto_critico = ['Sim', 'Não'];
@@ -31,8 +30,9 @@ class EquipamentosInsumosController extends Controller
             $materiais_referencia = $this->materiais_referencia;
             $produto_critico = $this->produto_critico;
             $unidade = $this->unidade;
+            $fornecedor = Fornecedor::select('id', 'razao_social')->get();
 
-            return view('equipamentos_insumos.form', compact('materiais', 'materiais_referencia', 'produto_critico', 'unidade'));
+            return view('equipamentos_insumos.form', compact('materiais', 'materiais_referencia', 'produto_critico', 'unidade','fornecedor'));
         }
         public function editar($id) {
             $equipamentos_insumos = Equipamentos_Insumos::find($id);
@@ -40,8 +40,9 @@ class EquipamentosInsumosController extends Controller
             $materiais_referencia = $this->materiais_referencia;
             $produto_critico = $this->produto_critico;
             $unidade = $this->unidade;
+            $fornecedor = Fornecedor::select('razao_social')->get();
 
-            return view('equipamentos_insumos.form', compact('equipamentos_insumos','materiais', 'materiais_referencia', 'produto_critico', 'unidade'));
+            return view('equipamentos_insumos.form', compact('equipamentos_insumos','materiais', 'materiais_referencia', 'produto_critico', 'unidade','fornecedor'));
         }
         public function salvar(Request $request) {
             

@@ -22,8 +22,6 @@
       </div><!-- /.container-fluid -->
     </div>
 
-<div class="container corpo">
-  <h2>Documentos Internos</h2>
 
   <section class="content">
       <div class="container-fluid">
@@ -69,14 +67,14 @@
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
+                    <td>{{ $item->tipo }}</td>
+                    <td>{{ $item->codigo}}</td>
                     <td>{{ $item->titulo }}</td>
-                    <td>{{ $item->revisao_edicao_n }}</td>
-                    <td>{{ $item->codigo }}</td>
-                    <td>{{ $item->n_de_exemplares}}</td>
-                    <td>{{ $item->localizacao }}</td>
-                    <td>{{ $item->data_da_atualizacao }}</td>
-                    <td>{{ $item->analise_critica_verificacao }}</td>
-                    <td>{{ $item->atualizacao_em }}</td>
+                    <td>{{ $item->revisao_edicao}}</td>
+                    <td>{{ $item->data_aprovacao}}</td>
+                    <td>{{ $item->num_copias}}</td>
+                    <td>{{ $item->localizacao}}</td>
+                    <td>{{ $item->documento}}</td>
 
                     <td>
                   
@@ -99,6 +97,8 @@
           {{ $documento->links() }}
         </div>
   </div>
+</div>
+</div>
 </div>
 
 

@@ -32,14 +32,17 @@ class ServicoController extends Controller
     public function salvar(ServicoRequest $request) {
 
         $ehValido = $request->validated();
-  
+        $message = '';
+
         if($request->id == '') {
             $servico = Servico::create($request->all());
+            $message = 'Salvo com sucesso';
         } else {
+            $message = 'Alterado com sucesso'; 
             $servico = Servico::find($request->id);
             $servico->update($request->all());
         }
-        return redirect('servicos/editar/' . $servico->id)->with('success', 'Alterado com sucesso!');
+        return redirect('servicos/editar/' . $servico->id)->with('success', $message);
     } 
     public function editar($id) {
         $servico = Servico::find($id);
