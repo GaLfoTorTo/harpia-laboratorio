@@ -14,8 +14,11 @@ class EquipamentoController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-        $equipamentos = Equipamentos::where('equipamento', 'like', "%".$pesquisa."%")->paginate(1000);
-
+        $equipamentos = Equipamentos::where('equipamento', 'like', "%".$pesquisa."%")->
+                                                orWhere('marca', 'like', "%".$pesquisa."%")->
+                                                orWhere('modelo', 'like', "%".$pesquisa."%")->
+                                                orWhere('fabricante', 'like', "%".$pesquisa."%")->
+                                                orWhere('fornecedor', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
         $equipamentos = Equipamentos::paginate(10);
         }
@@ -32,7 +35,7 @@ class EquipamentoController extends Controller
             ->get();
             $manual = Equipamentos::select('manual')
 
-            ->groupBy('manual')
+            ->groupBy('manual') 
             ->get();
         return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
         }
