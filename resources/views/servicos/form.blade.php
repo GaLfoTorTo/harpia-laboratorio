@@ -84,8 +84,7 @@
                 <select name="servico_critico" id="servico_critico" class="form-control">
                     <option value="">Serviço crítico?</option>
                     <option value="Sim" {{ isset($servico) && $servico->servico_critico == 'Sim'  || old('servico_critico') == 'Sim' ? 'selected' : '' }}>Sim</option>
-                    <option value="Não" {{ isset($servico) && $servico->servico_critico == 'Não' || old('servico_critico') == 'Não' ? 'selected' : '' }}>Não</option>
-                    
+                    <option value="Não" {{ isset($servico) && $servico->servico_critico == 'Não' || old('servico_critico') == 'Não' ? 'selected' : '' }}>Não</option> 
                 </select>
             </div>
         </div>
