@@ -29,6 +29,16 @@ class UserController extends Controller
     }
     public function salvar(UserRequest $request) {
 
+        if($request->hasFile('foto')) {
+             echo 'tem documento';
+             // renomeando documento 
+             $nome_documento = date('YmdHmi').'.'.$request->foto->getClientOriginalExtension();
+ 
+             $request['user'] = '/uploads/doc_externos/' . $nome_documento;
+ 
+             $request->foto->move(public_path('uploads/doc_externos'), $nome_documento);
+         }
+
         $ehvalido = $request->validated();
         if($request->id != '') {
             $user = User::find($request->id);

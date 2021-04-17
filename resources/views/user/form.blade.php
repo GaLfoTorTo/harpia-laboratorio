@@ -67,6 +67,17 @@
         </div>
     </div>
     <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="foto:" class="form-label">Carregar Foto:</label>
+          <input type="file" name="foto" class="form-control">
+          @if(isset($user) && $user->foto != '')
+              <a href="{{ $user->foto }}" target="_blank">Ver Foto</a>
+          @endif
+        </div>
+      </div>
+    </div>
+    <div class="row">
         <div class="col" align="end">
             <button type="submit" class="btn btn-success w-25 hover-shadow">
                 Salvar 
