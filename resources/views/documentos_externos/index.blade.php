@@ -36,14 +36,14 @@
             </a>
 
             <div class="card-tools">
-              <form action="">
-                <div class="input-group input-group" style="width: 150px;">
-                <input type="search" id="form1" class="form-control" name="pesquisa"/>
-              <label class="form-label" for="form1"></label>
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
+            <form action="">
+              <div class="input-group input-group" style="width: 150px;">
+                <input type="text" name="pesquisa" class="form-control float-right" placeholder="Pesquisar" value="{{ $pesquisa }}">
+
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-default">
+                    <i class="fas fa-search"></i>
+                  </button>
                   </div>
                 </div>
               </form>
