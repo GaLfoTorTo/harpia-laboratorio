@@ -11,7 +11,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="" class="img-circle elevation-2" alt="User Image">
+          <img src='{{ \Auth::user()->foto }}' class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="/" class="d-block">
@@ -87,12 +87,6 @@
                 <a href="/colaboradores" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/usuarios" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Usuários</p>
                 </a>
               </li>
             </ul>

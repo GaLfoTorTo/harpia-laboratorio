@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Colaborador;
+use App\Models\Setor;
 use App\Http\Requests\ColaboradorRequest;
 
 class ColaboradorController extends Controller
@@ -20,15 +21,28 @@ class ColaboradorController extends Controller
     }
 
     public function novo(){
-        return view('colaboradores.form');
+        $setores = Setor::select('setor')->get();
+        
+        return view('colaboradores.form', compact('setores'));
     }
 
     public function editar($id){
+        $setores = Setor::select('setor')->get();
         $colaborador = Colaborador::find($id);
-        return view('colaboradores.form', compact('colaborador'));
+        return view('colaboradores.form', compact('colaborador', 'setores'));
     }
 
     public function salvar(ColaboradorRequest $request){
+
+        if($request->hasFile('foto')) {
+             echo 'tem documento';
+             // renomeando documento 
+             $nome_documento = date('YmdHmi').'.'.$request->foto->getClientOriginalExtension();
+ 
+             $request['user'] = '/uploads/usuario/' . $nome_documento;
+ 
+             $request->foto->move(public_path('uploads/usuario'), $nome_documento);
+         }
         
         $ehValido = $request->validated();
 

@@ -28,13 +28,13 @@ class DExternoController extends Controller
         //dd($request->all());
  
          if($request->hasFile('documento_temp')) {
-             echo 'tem documento';
+            echo 'tem documento';
              // renomeando documento 
-             $nome_documento = date('YmdHmi').'.'.$request->documento_temp->getClientOriginalExtension();
+            $nome_documento = date('YmdHmi').'.'.$request->documento_temp->getClientOriginalExtension();
  
-             $request['documento'] = '/uploads/doc_externos/' . $nome_documento;
- 
-             $request->documento_temp->move(public_path('uploads/doc_externos'), $nome_documento);
+            $request['documento'] = '/uploads/doc_externos/' . $nome_documento;
+            
+            $request->documento_temp->move(public_path('uploads/doc_externos'), $nome_documento);
          }
  
          if($request->id != '') {

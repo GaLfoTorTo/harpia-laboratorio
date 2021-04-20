@@ -23,6 +23,7 @@ class Colaborador extends Model
         'uf',
         'formacao',
         'funcao',
+        'setores',
         'foto'
     ]; 
 }
