@@ -41,7 +41,7 @@
                 </div>
             @endif
 
-  <form action="/user/salvar" method="POST">
+  <form action="/user/salvar" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="id" value="@if(isset($user)){{$user->id}}@else{{ old('id') }}@endif">
     <div class="row">
@@ -52,9 +52,9 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="form-group">
-                <label for="password" class="form-label">Senha:</label>
-                <input type="password" name="password" class="form-control" required value="@if(isset($user)){{$user->password}}@else{{ old('password') }}@endif">
+            <div class="form-group cardSenha">
+                <label for="password" class="form-label lableSenha">Senha:</label>
+                <input type="password" name="password" class="form-control password" required value="@if(isset($user)){{$user->password}}@else{{ old('password') }}@endif">
             </div>
         </div>
     </div>
@@ -65,6 +65,17 @@
                 <input type="email" name="email" class="form-control" value="@if(isset($user)){{$user->email}}@else{{old('email')}} @endif" >
             </div>
         </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="foto" class="form-label">Carregar Foto:</label>
+          <input type="file" name="foto" class="form-control" value="@if(isset($user)){{$user->foto}}@else{{old('foto')}} @endif">
+          @if(isset($user) && $user->foto != '')
+              <a href="{{ $user->foto }}" target="_blank">Ver Foto</a>
+          @endif
+        </div>
+      </div>
     </div>
     <div class="row">
         <div class="col" align="end">
@@ -86,3 +97,33 @@
 </div>
 
 @include('layout.footer')
+<script>
+  $(document).ready(function(){
+    var form = $('.m-0').text();
+    if(form == 'Novo usuário'){
+      console.log('funfo')
+    }else if(form == 'Editar usuário'){
+      var senha = document.querySelector('.password').value;
+      if(senha != '' || senha != null){
+        $('.password').attr('readonly', true);
+        $('.lableSenha').empty()
+        $('.lableSenha').append(`Alterar a Senha: `)
+        $(`<label for="escolha">Sim</label>
+          <input type="radio" class="tipo" name="tipo" id="sim">
+          <label for="escolha">Não</label>
+          <input type="radio" class="tipo" name="tipo" id="nao">`).insertBefore($('.password'));
+        $('.tipo').click(function(){
+          var id = $(this).attr('id');
+          if(id == 'sim'){
+            $('.password').removeAttr('readonly');
+            $('.password').attr('value', '');
+          }else if(id == 'nao'){
+            $('.password').attr('readonly', true);
+            $('.password').attr('value', senha);
+          }
+        })
+      }
+    }
+
+  })
+</script>

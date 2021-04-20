@@ -33,6 +33,7 @@ class ColaboradorSeeder extends Seeder
                 'uf'=> 'DF',
                 'formacao'=> rand(1,0) == 0 ? 'administrador' : '',
                 'funcao'=> rand(1,0) == 0 ? 'supervisor' : 'tecnico',
+                'setor'=> rand(1,0) == 0 ? 'Financeiro': 'Recursos Humanos',
                 'foto'=> ''
             ]);
         }

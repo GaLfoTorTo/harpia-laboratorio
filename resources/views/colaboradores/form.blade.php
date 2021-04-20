@@ -112,7 +112,28 @@
                         <div class="col-6">
                             <div class="form-outline">
                                 <label for="funcao" class="form-label">Funcao:</label>
-                                <input type="text" name="funcao" class="form-control" readonly value="@if(isset($colaborador)){{$colaborador->funcao}}@else{{ old('funcao') }}@endif">
+                                <input type="text" name="funcao" class="form-control" value="@if(isset($colaborador)){{$colaborador->funcao}}@else{{ old('funcao') }}@endif">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="setor" class="form-label">Setor:</label>
+                                <select name="setor" id="setor" class="form-control">
+                                    @foreach ($setores as $key => $tipo)
+                                        <option class=" setor" value="{{$tipo->setor}}"@if(isset($colaborador) && $colaborador->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="foto:" class="form-label">Carregar Foto:</label>
+                                <input type="file" name="foto" class="form-control">
+                                @if(isset($colaborador) && $colaborador->foto != '')
+                                    <a href="{{ $colaborador->foto }}" target="_blank">Ver Foto</a>
+                                @endif
                             </div>
                         </div>
                     </div>
