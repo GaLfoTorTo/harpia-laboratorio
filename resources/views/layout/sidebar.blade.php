@@ -147,7 +147,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-                Equipamentos
+                Equipamentos Medição
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

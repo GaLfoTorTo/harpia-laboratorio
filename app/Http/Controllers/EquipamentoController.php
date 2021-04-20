@@ -19,7 +19,7 @@ class EquipamentoController extends Controller
         } else {
         $equipamentos = Equipamentos::paginate(10);
         }
-        return view('equipamentos.index', compact('equipamentos', 'pesquisa'));
+        return view('equipamentos_medicao.index', compact('equipamentos', 'pesquisa'));
 } 
         public function novo() {
             $fornecedores = Fornecedor::select('razao_social')->get();
@@ -34,7 +34,7 @@ class EquipamentoController extends Controller
 
             ->groupBy('manual')
             ->get();
-        return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
+        return view('equipamentos_medicao.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
         }
         public function editar($id) {
 
@@ -50,7 +50,7 @@ class EquipamentoController extends Controller
             $manual = Equipamentos::select('manual')
                                     ->groupBy('manual')
                                     ->get();
-            return view('equipamentos.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
+            return view('equipamentos_medicao.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
         }
         public function salvar(EquipamentoRequest $request) {
 
@@ -62,7 +62,7 @@ class EquipamentoController extends Controller
             } else {
                 $equipamentos = Equipamentos::create($request->all());
             }
-            return redirect('/equipamentos/editar/'. $equipamentos->id)->with('success', 'Salvo com sucesso!');
+            return redirect('/equipamentos_medicao/editar/'. $equipamentos->id)->with('success', 'Salvo com sucesso!');
         }
         public function deletar($id) {
             $equipamentos = Equipamentos::find($id);
