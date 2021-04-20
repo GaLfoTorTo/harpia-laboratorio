@@ -14,8 +14,8 @@
                 </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/documentos_externos">Documento Externo</a></li>
-                            <li class="breadcrumb-item active">{{ isset($documentos_externos) ? 'Editar' : 'Novo' }}</li>
+                            <li class="breadcrumb-item"><a href="/documentos_internos">Documento Externo</a></li>
+                            <li class="breadcrumb-item active">{{ isset($documentos_internos) ? 'Editar' : 'Novo' }}</li>
                         </ol>
                     </div><!-- /.col -->
             </div><!-- /.row -->
@@ -38,8 +38,8 @@
                                     <label for="tipo" class="form-label">Tipo:</label>
                                     <select name="tipo" id="" class="form-control">
                                         <option value="">Selecione</option>
-                                        @foreach($tipos as $tipo)
-                                            <option value="{{  $tipo }}">{{ $tipo }}</option>
+                                        @foreach($tipos as $t)
+                                            <option value="{{$t}}"@if(isset($documento) && $documento->tipo == $t) selected @elseif(old('tipo') == $t) selected @endif>{{$t}}</option>
                                         @endforeach
                                     </select>
                                    
@@ -48,7 +48,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="codigo" class="form-label">Código:</label>
-                                    <input type="text" name="codigo" class="form-control" required value="@isset($documento){{$documento->codigo}}@endisset">
+                                    <input type="text" name="codigo" class="form-control" required value="@if(isset($documento)){{$documento->codigo}}@else{{ old('codigo')}}@endif">
                                 </div>
                             </div>
                         </div>
@@ -57,25 +57,25 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="titulo" class="form-label">Título:</label>
-                                    <input type="text" name="titulo" class="form-control" required value="@isset($documento){{$documento->nome}}@endisset">
+                                    <input type="text" name="titulo" class="form-control"  required value="@if(isset($documento)){{$documento->titulo}}@else{{ old('titulo')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="revisao_edicao" class="form-label">Revisão Edição:</label>
-                                    <input type="text" name="revisao_edicao" class="form-control" required value="@isset($documento){{$documento->nome}}@endisset">
+                                    <input type="text" name="revisao_edicao" class="form-control" required value="@if(isset($documento)){{$documento->revisao_edicao}}@else{{ old('revisao_edicao')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="data_aprovacao" class="form-label">Data da Aprovação:</label>
-                                    <input type="date" name="data_aprovacao" class="form-control" value="@isset($documento){{$documento->email}}@endisset">
+                                    <input type="date" name="data_aprovacao" class="form-control" required value="@if(isset($documento)){{$documento->data_aprovacao}}@else{{ old('data_aprovacao')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="num_copias" class="form-label">Nº de cópias:</label>
-                                    <input type="text" name="num_copias" class="form-control" value="@isset($documento){{$documento->telefone}}@endisset">
+                                    <input type="text" name="num_copias" class="form-control" required value="@if(isset($documento)){{$documento->num_copias}}@else{{ old('num_copias')}}@endif">
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="localizacao" class="form-label">Localização:</label>
-                                    <input type="text" name="localizacao" class="form-control" value="@isset($documento){{$documento->email}}@endisset">
+                                    <input type="text" name="localizacao" class="form-control" required value="@if(isset($documento)){{$documento->localizacao}}@else{{ old('localizacao')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6">

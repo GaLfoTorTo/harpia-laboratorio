@@ -10,11 +10,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ isset($equipamentos_insumos) ? 'Editar' : 'Novo' }} Equipamentos (Insumos)</h1>
+            <h1 class="m-0">{{ isset($equipamentos_insumos) ? 'Editar' : 'Novo' }} Equipamento (Insumos)</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/equipamentos_insumos">Equipamentos (Insumos) </a></li>
+            <li class="breadcrumb-item"><a href="/equipamentos_insumos">Equipamento (Insumos) </a></li>
             <li class="breadcrumb-item active">{{ isset($equipamentos_insumos) ? 'Editar' : 'Novo' }}</li>
           </ol>
         </div><!-- /.col -->
@@ -94,7 +94,12 @@
       <div class="col-4">
         <div class="form-group">
             <label for="fornecedor" class="form-label">Fornecedor:</label>
-            <input type="text" name="fornecedor" class="form-control" value="@isset($equipamentos_insumos){{$equipamentos_insumos->fornecedor}}@endisset">
+            <select name="fornecedor" id="fornecedor" class="form-control selecao">
+              <option value="">Selecione</option>
+                @foreach ($fornecedor as $key => $t)
+                  <option value="{{ $t->razao_social }}" @if(isset($equipamentos_insumos) && $equipamentos_insumos->fornecedor == $t->razao_social)  selected @elseif(old('fornecedor') == $t->razao_social) selected @endif >{{$t->razao_social}}</option>
+              @endforeach
+          </select>
         </div>
       </div>
       <div class="col-4">

@@ -147,8 +147,12 @@
      <div class="row">
         <div class="col-5">
         <div class="form-group">
-                <label for="fornecedor" class="form-label">Fornecedor:</label>
-                <input type="text" name="fornecedor" class="form-control" value="@isset($equipamentos){{$equipamentos->fornecedor}}@endisset">
+            <label for="fornecedor" class="form-label">Fornecedor:</label>
+            <select name="fornecedor" id="fornecedor" class="form-control selecao">
+                @foreach ($fornecedores as $key => $t)
+                  <option value="{{ $t->razao_social }}" @if(isset($equipamentos) && $equipamentos->fornecedores == $t->razao_social)  selected @elseif(old('fornecedores') == $t->razao_social) selected @endif >{{$t->razao_social}}</option>
+              @endforeach
+            </select>
             </div>
         </div>
         <div class="col-7">

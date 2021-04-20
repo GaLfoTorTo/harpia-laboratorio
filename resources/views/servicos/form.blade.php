@@ -47,12 +47,12 @@
     <div class="row">
         <div class="col-6">
             <div class="form-outline">
-              <input type="text" name="descricao" class="form-control" required value="@if(isset($servico)){{$servico->descricao}}@else{{ old('descricao')}}@endif">
               <label for="descricao" class="form-label">Descrição:</label>
-            </div>
+              <input type="text" name="descricao" class="form-control" required value="@if(isset($servico)){{$servico->descricao}}@else{{ old('descricao')}}@endif">                  </div>
         </div>
         <div class="col-6">
             <div class="form-outline">
+              <label for="descricao" class="form-label">Tipo Material</label>
                 <select name="tipo_material" id="tipo_material" class="form-control">
                     <option value="">Selecione tipo material</option>
                     @foreach ($tipo_material as $key => $tipo)
@@ -67,6 +67,7 @@
     <div class="row">
         <div class="col-6">
             <div class="form-outline">
+              <label for="descricao" class="form-label">Tipo Serviço</label>
                 <select name="tipo_servico" id="tipo_servico" class="form-control">
                     <option value="">Selecione o tipo do serviço</option>
                     @foreach ($tipo_servico as $key => $tipo)
@@ -79,6 +80,7 @@
         </div>
         <div class="col-6">
             <div class="form-outline">
+              <label for="descricao" class="form-label">Serviço Crítico</label>
                 <select name="servico_critico" id="servico_critico" class="form-control">
                     <option value="">Serviço crítico?</option>
                     <option value="Sim" {{ isset($servico) && $servico->servico_critico == 'Sim'  || old('servico_critico') == 'Sim' ? 'selected' : '' }}>Sim</option>
