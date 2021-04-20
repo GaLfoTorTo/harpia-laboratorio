@@ -13,11 +13,10 @@ class SetoresController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $setores = Setor::where('setor', 'like', "%".$pesquisa."%")->paginate(1000);
+            $setores = Setor::with('setor_pai')->where('setor', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
-            $setores = Setor::paginate(10);
+            $setores = Setor::with('setor_pai')->paginate(10);
         }
-        $setores = Setor::paginate();
 
         return view('setores.index', compact('setores','pesquisa'));
     }
