@@ -11,11 +11,15 @@ class DExternoController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $documento = D_externo::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $documento = D_externo::where('titulo', 'like', "%".$pesquisa."%")->paginate(1000);
+            $documento = D_externo::where('localizacao', 'like', "%".$pesquisa."%")->paginate(1000);
+            $documento = D_externo::where('codigo', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
             $documento = D_externo::paginate(10);
         }
-        return view('documentos_externos/index', compact('documento'));
+        $documento = D_externo::paginate();
+
+        return view('documentos_externos/index', compact('documento','pesquisa'));
     } 
     public function novo() {
         return view('documentos_externos/form');
