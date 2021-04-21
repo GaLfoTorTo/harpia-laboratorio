@@ -71,12 +71,20 @@
                                     <input type="number" name="n_de_exemplares" class="form-control" required value="@if(isset($documento)){{$documento->n_de_exemplares}}@else{{ old('n_de_exemplares')}}@endif">
                                 </div>
                             </div>
+                        </div>
+                            <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="localizacao" class="form-label">Localização:</label>
-                                    <input type="text" name="localizacao" class="form-control" required value="@if(isset($documento)){{$documento->localizacao}}@else{{ old('localizacao')}}@endif">
+                                    <label for="setor" class="form-label">Localização:</label>
+                                    <select name="setor" id="setor" class="form-control">
+                                        @foreach ($setores as $key => $tipo)
+                                            <option class=" setor" value="{{$tipo->setor}}"@if(isset($documento) && $documento->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
+                            </div>
+                            
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="data_da_atualizacao" class="form-label">Data da atualização:</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\D_externo;
+use App\Models\Setor;
 
 class DExternoController extends Controller
 {
@@ -22,12 +23,15 @@ class DExternoController extends Controller
         return view('documentos_externos/index', compact('documento','pesquisa'));
     } 
     public function novo() {
-        return view('documentos_externos/form');
+        $setores = Setor::select('setor')->get();
+        return view('documentos_externos/form',  compact('setores'));
     }
     public function editar($id) {
+        $setores = Setor::select('setor')->get();
         $documento = D_externo::find($id);
-        return view('documentos_externos/form', compact('documento'));
+        return view('documentos_externos/form', compact('documento', 'setores'));
     }
+    
     public function salvar(Request $request) {
         //dd($request->all());
  
