@@ -66,6 +66,8 @@
                                     <input type="text" name="revisao_edicao" class="form-control" required value="@if(isset($documento)){{$documento->revisao_edicao}}@else{{ old('revisao_edicao')}}@endif">
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="data_aprovacao" class="form-label">Data da Aprovação:</label>
@@ -78,15 +80,19 @@
                                     <input type="number" name="num_copias" class="form-control" required value="@if(isset($documento)){{$documento->num_copias}}@else{{ old('num_copias')}}@endif">
                                 </div>
                             </div>
-                        </div>
-                    
+                        </div>                
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="localizacao" class="form-label">Localização:</label>
-                                    <input type="text" name="localizacao" class="form-control" required value="@if(isset($documento)){{$documento->localizacao}}@else{{ old('localizacao')}}@endif">
+                                    <label for="setor" class="form-label">Localização:</label>
+                                    <select name="setor" id="setor" class="form-control">
+                                        @foreach ($setores as $key => $tipo)
+                                            <option class=" setor" value="{{$tipo->setor}}"@if(isset($colaborador) && $colaborador->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
+
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="carregar documento:" class="form-label">Carregar documento:</label>
@@ -96,13 +102,16 @@
                                     @endif
                                 </div>
                             </div>
-                            
-                            <div class="col">
-                                <button type="submit" class="btn btn-success w-100">
-                                    Salvar 
-                                    <i class="fas fa-save"></i>
-                                </button>
+                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-success w-100">
+                                        Salvar 
+                                        <i class="fas fa-save"></i>
+                                    </button>
+                                </div> 
                             </div>
+                            
                         </div>
 
                     </form>
