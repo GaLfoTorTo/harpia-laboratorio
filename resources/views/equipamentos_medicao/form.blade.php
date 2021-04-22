@@ -145,41 +145,38 @@
             <label for="fornecedor" class="form-label">Fornecedor:</label>
             <select name="fornecedor" id="fornecedor" class="form-control selecao">
                 @foreach ($fornecedores as $key => $t)
-                  <option value="{{ $t->razao_social }}" @if(isset($equipamentos) && $equipamentos->fornecedores == $t)  selected @elseif(old('fornecedores') == $t) selected @endif >{{$t->razao_social}}</option>
+                  <option value="{{ $t->razao_social }}" @if(isset($equipamentos) && $equipamentos->fornecedores == $t)  selected @elseif(old('fornecedores') == $t) selected @endif >{{$t->razao_social}}</option> 
               @endforeach
             </select>
             </div>
         </div>
-        <div class="col-7">
-        <div class="form-group">
-                <label for="localizacao_equipamento" class="form-label">Localização Equipamento:</label>
-                <input type="text" name="localizacao_equipamento" class="form-control" value="@if(isset($equipamentos) && $equipamentos){{$equipamentos->localizacao_equipamento}}@else{{old("localizacao_equipamento")}}@endif">
+            <div class="col-7">
+                <div class="form-group">
+                    <label for="localizacao_equipamento" class="form-label">Localizacao Equipamento:</label>
+                    <select name="localizacao_equipamento" id="localizacao_equipamento" class="form-control">
+                        @foreach ($setores as $key => $tipo)
+                            <option class=" localizacao" value="{{$tipo->setor}}"@if(isset($equipamentos) && $equipamentos->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-        </div>
+            </div>
+            <div class="row">
+                <div class="col" align="end">
+                    <button type="submit" class="btn btn-success w-25 hover-shadow">
+                        Salvar 
+                        <i class="fas fa-save"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="row">
-        <div class="col" align="end">
-            <button type="submit" class="btn btn-success w-25 hover-shadow">
-                Salvar 
-                <i class="fas fa-save"></i>
-            </button>
-        </div>
-    </div>
-  </form>
-</div>
-         
-</div>
-<!-- /.row (main row) -->
+    <!-- /.row (main row) -->
 </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
 </div>
-
-
-  
-
 @include('layout.footer')
-
 
         
 
