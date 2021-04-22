@@ -75,16 +75,14 @@
                             <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="setor" class="form-label">Localização:</label>
-                                    <select name="setor" id="setor" class="form-control">
+                                    <label for="localizacao" class="form-label">Localização:</label>
+                                    <select name="localizacao" id="localizacao" class="form-control">
                                         @foreach ($setores as $key => $tipo)
-                                            <option class=" setor" value="{{$tipo->setor}}"@if(isset($documento) && $documento->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                                            <option class="localizacao" value="{{$tipo->setor}}"@if(isset($documento) && $documento->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            </div>
-                            
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="data_da_atualizacao" class="form-label">Data da atualização:</label>
@@ -92,7 +90,7 @@
                                 </div>
                             </div>
                         </div>
-                    
+                    </div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
@@ -106,6 +104,7 @@
                                     <input type="date" name="atualizacao_em" class="form-control" required value="@if(isset($documento)){{$documento->atualizacao_em}}@else{{ old('atualizacao_em')}}@endif">
                                 </div>
                             </div>
+                                </div>
                                 <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -118,9 +117,8 @@
                                         @endif
                                     </div>
                                 </div>
-                                </div>
                             </div>
-                            
+            
                             <div class="col">
                                 <button type="submit" class="btn btn-success w-100">
                                     Salvar 
@@ -134,7 +132,11 @@
             </div>
         </div>
     </div>
-
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
      
 @include('layout.footer')
