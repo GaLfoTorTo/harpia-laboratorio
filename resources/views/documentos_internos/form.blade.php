@@ -84,10 +84,10 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="setor" class="form-label">Localização:</label>
-                                    <select name="setor" id="setor" class="form-control">
+                                    <label for="localizacao" class="form-label">Localização:</label>
+                                    <select name="localizacao" id="localizacao" class="form-control">
                                         @foreach ($setores as $key => $tipo)
-                                            <option class=" setor" value="{{$tipo->setor}}"@if(isset($colaborador) && $colaborador->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                                            <option class=" localizacao" value="{{$tipo->setor}}"@if(isset($documento) && $documento->setor == $tipo->setor) selected @elseif(old('localizacao') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
                                         @endforeach
                                     </select>
                                 </div>
