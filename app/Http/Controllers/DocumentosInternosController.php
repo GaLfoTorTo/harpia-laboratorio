@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Documentos_internos;
-use App\Models\Setor;
 
 class DocumentosInternosController extends Controller
 {   
@@ -19,21 +18,17 @@ class DocumentosInternosController extends Controller
         } else {
             $documento = Documentos_internos::paginate(10);
         }
-        return view('documentos_internos\index', compact('documento', 'pesquisa'));
+        return view('documentos_internos\index', compact('documento'));
     } 
     public function novo() {
         $tipos = $this->tipos;
-        $setores = Setor::select('setor')->get();
-        return view('documentos_internos\form', compact('tipos', 'setores'));
+        return view('documentos_internos\form', compact('tipos'));
     }
     public function editar($id) {
         $tipos = $this->tipos;
-        $setores = Setor::select('setor')->get();
         $documento = Documentos_internos::find($id);
-        return view('documentos_internos\form', compact('documento', 'tipos', 'setores'));
+        return view('documentos_internos\form', compact('documento', 'tipos'));
     }
-   
-
     public function salvar(Request $request) {
        // dd($request->all());
 
@@ -47,7 +42,6 @@ class DocumentosInternosController extends Controller
             $request->documento_temp->move(public_path('uploads/doc_internos'), $nome_documento);
         }
 
-        
         if($request->id != '') {
             $documento = Documentos_internos::find($request->id);
             $documento->update($request->all());

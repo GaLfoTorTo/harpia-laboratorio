@@ -54,7 +54,7 @@
         <div class="col-6">
             <div class="form-group cardSenha">
                 <label for="password" class="form-label lableSenha">Senha:</label>
-                <input type="password" name="password" class="form-control password" required value="@if(isset($user)){{$user->password}}@else{{ old('password') }}@endif">
+                <input type="password" name="password" class="form-control password" value="">
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
       <div class="col-6">
         <div class="form-group">
           <label for="foto" class="form-label">Carregar Foto:</label>
-          <input type="file" name="foto" class="form-control" value="@if(isset($user)){{$user->foto}}@else{{old('foto')}} @endif">
+          <input type="file" name="foto_temp" class="form-control" value="@if(isset($user)){{$user->foto}}@else{{old('foto')}} @endif">
           @if(isset($user) && $user->foto != '')
               <a href="{{ $user->foto }}" target="_blank">Ver Foto</a>
           @endif
@@ -120,6 +120,7 @@
           }else if(id == 'nao'){
             $('.password').attr('readonly', true);
             $('.password').attr('value', senha);
+            $('.password').removeAttr('required');
           }
         })
       }

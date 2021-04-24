@@ -33,7 +33,6 @@
             Novo setor
             <i class="fas fa-plus"></i>
           </a>
-          
 
           <div class="card-tools">
             <form action="">
@@ -57,7 +56,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th>Setor</th>
-                    <th>Setor Pai</th>
+                    <th>Sub-Setor</th>
                     <th>Ações</th>
                 </tr>
               </thead>
@@ -66,7 +65,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->setor }}</td>
-                    <td>{{ $item->setor_pai->setor ?? ''}}</td>
+                    <td>{{ $item->sub_setor }}</td>
                     <td>
                       <a href="setores/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
@@ -80,7 +79,6 @@
                 </tr>
               </tbody>
               @endforeach
-
           </table>
           </div>
           <!-- /.card-body -->

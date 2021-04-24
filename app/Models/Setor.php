@@ -10,12 +10,8 @@ class Setor extends Model
     use HasFactory;
     protected $fillable = [
         'setor',
-        'setors_id'  
+        'setors_id'
+        
     ];
 
-    public function setor_pai()
-    {
-        return $this->hasOne(Setor::class, 'id','setors_id');
-    }
-
-}   
+}
