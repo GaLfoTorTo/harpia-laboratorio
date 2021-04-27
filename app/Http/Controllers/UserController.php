@@ -41,10 +41,10 @@ class UserController extends Controller
         }
 
         $ehvalido = $request->validated();
-        if($request->password != ''){
+        if($request->password != '' ){
             $request['password'] = bcrypt($request['password']);
         }else{
-            unset($request->password);
+            unset($request['password']);
         }
 
         if($request->id != '') {

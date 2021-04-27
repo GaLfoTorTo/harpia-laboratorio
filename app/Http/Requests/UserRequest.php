@@ -26,8 +26,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required',
-            'password' => Rule::requiredIf(function () use ($request) {
-                return $request->password != '' ? 'required' : '';
+            'password' => "required_if:password,!=,''"
         ];
     }
     public function messages()
