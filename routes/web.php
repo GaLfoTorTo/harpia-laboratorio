@@ -15,6 +15,7 @@ use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\CargosController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -84,5 +85,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/setores/editar/{id}', [SetoresController::class, 'editar'])->name('setores.editar');
     Route::post('setores/salvar', [SetoresController::class, 'salvar'])->name('setores.salvar');
     Route::get('/setores/deletar/{id}', [SetoresController::class, 'deletar'])->name('setores.deletar');
+
+    Route::get('/cargos', [CargosController::class, 'index'])->name('cargos');
+    Route::get('/cargos/novo', [CargosController::class, 'novo'])->name('cargos.novo');
+    Route::get('/cargos/editar/{id}', [CargosController::class, 'editar'])->name('cargos.editar');
+    Route::post('cargos/salvar', [CargosController::class, 'salvar'])->name('cargos.salvar');
+    Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
 
 });
