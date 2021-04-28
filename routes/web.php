@@ -15,6 +15,7 @@ use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
@@ -107,5 +108,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cargos/editar/{id}', [CargosController::class, 'editar'])->name('cargos.editar');
     Route::post('cargos/salvar', [CargosController::class, 'salvar'])->name('cargos.salvar');
     Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
+
+    Route::get('/procedimento', [ProcedimentoController::class, 'index'])->name('procedimento');
+    Route::get('/procedimento/novo', [ProcedimentoController::class, 'novo'])->name('procedimento.novo');
+    Route::get('/procedimento/editar/{id}', [ProcedimentoController::class, 'editar'])->name('procedimento.editar');
+    Route::post('procedimento/salvar', [ProcedimentoController::class, 'salvar'])->name('procedimento.salvar');
+    Route::get('/procedimento/deletar/{id}', [ProcedimentoController::class, 'deletar'])->name('procedimento.deletar');
 
 });
