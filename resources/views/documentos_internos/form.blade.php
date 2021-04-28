@@ -75,7 +75,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="num_copias" class="form-label">Nº de cópias:</label>
-                                    <input type="number" name="num_copias" class="form-control" required value="@if(isset($documento)){{$documento->num_copias}}@else{{ old('num_copias')}}@endif">
+                                    <input type="text" name="num_copias" class="form-control" required value="@if(isset($documento)){{$documento->num_copias}}@else{{ old('num_copias')}}@endif">
                                 </div>
                             </div>
                         </div>
