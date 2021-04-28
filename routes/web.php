@@ -15,6 +15,8 @@ use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\RegistroTreinamentoController;
+use App\Http\Controllers\ParticipantesTreinamentoController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -84,5 +86,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/setores/editar/{id}', [SetoresController::class, 'editar'])->name('setores.editar');
     Route::post('setores/salvar', [SetoresController::class, 'salvar'])->name('setores.salvar');
     Route::get('/setores/deletar/{id}', [SetoresController::class, 'deletar'])->name('setores.deletar');
+    
+    Route::get('/registro_treinamento', [RegistroTreinamentoController::class, 'index'])->name('registro_treinamento');
+    Route::get('/registro_treinamento/novo', [RegistroTreinamentoController::class, 'novo'])->name('registro_treinamento.novo');
+    Route::get('/registro_treinamento/editar/{id}', [RegistroTreinamentoController::class, 'editar'])->name('registro_treinamento.editar');
+    Route::post('registro_treinamento/salvar', [RegistroTreinamentoController::class, 'salvar'])->name('registro_treinamento.salvar');
+    Route::get('/registro_treinamento/deletar/{id}', [RegistroTreinamentoController::class, 'deletar'])->name('registro_treinamento.deletar');
+
+    Route::get('/participantes_treinamento', [ParticipantesTreinamentoController::class, 'index'])->name('participantes_treinamento');
+    Route::get('/participantes_treinamento/novo', [ParticipantesTreinamentoController::class, 'novo'])->name('participantes_treinamento.novo');
+    Route::get('/participantes_treinamento/editar/{id}', [ParticipantesTreinamentoController::class, 'editar'])->name('participantes_treinamento.editar');
+    Route::post('participantes_treinamento/salvar', [ParticipantesTreinamentoController::class, 'salvar'])->name('participantes_treinamento.salvar');
+    Route::get('/participantes_treinamento/deletar/{id}', [ParticipantesTreinamentoController::class, 'deletar'])->name('participantes_treinamento.deletar');
+
+
 
 });
