@@ -11,15 +11,11 @@ class DExternoController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $documento = D_externo::where('titulo', 'like', "%".$pesquisa."%")->paginate(1000);
-            $documento = D_externo::where('localizacao', 'like', "%".$pesquisa."%")->paginate(1000);
-            $documento = D_externo::where('codigo', 'like', "%".$pesquisa."%")->paginate(1000);
+            $documento = D_externo::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
             $documento = D_externo::paginate(10);
         }
-        $documento = D_externo::paginate();
-
-        return view('documentos_externos/index', compact('documento','pesquisa'));
+        return view('documentos_externos/index', compact('documento'));
     } 
     public function novo() {
         return view('documentos_externos/form');
@@ -29,7 +25,6 @@ class DExternoController extends Controller
         return view('documentos_externos/form', compact('documento'));
     }
     public function salvar(Request $request) {
-        //dd($request->all());
  
          if($request->hasFile('documento_temp')) {
             echo 'tem documento';
@@ -37,7 +32,7 @@ class DExternoController extends Controller
             $nome_documento = date('YmdHmi').'.'.$request->documento_temp->getClientOriginalExtension();
  
             $request['documento'] = '/uploads/doc_externos/' . $nome_documento;
-            
+            dd($request->documento);
             $request->documento_temp->move(public_path('uploads/doc_externos'), $nome_documento);
          }
  

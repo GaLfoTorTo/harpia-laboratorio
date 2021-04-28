@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="titulo" class="form-label">Título:</label>
+                                    <label for="titulo" class="form-label">Titulo:</label>
                                     <input type="text" name="titulo" class="form-control" required value="@if(isset($documento)){{$documento->titulo}}@else{{ old('titulo')}}@endif">
                                 </div>
                             </div>
