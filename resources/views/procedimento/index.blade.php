@@ -29,7 +29,7 @@
   <div class="card">
           <div class="card-header">
             <a href="/Procedimento/novo" class="btn btn-primary">
-              Novo documento 
+              Novo Procedimento
               <i class="fas fa-plus"></i>
             </a>
 
