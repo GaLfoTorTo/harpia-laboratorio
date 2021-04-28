@@ -15,6 +15,7 @@ use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\ProcedimentoController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -84,5 +85,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/setores/editar/{id}', [SetoresController::class, 'editar'])->name('setores.editar');
     Route::post('setores/salvar', [SetoresController::class, 'salvar'])->name('setores.salvar');
     Route::get('/setores/deletar/{id}', [SetoresController::class, 'deletar'])->name('setores.deletar');
+
+    Route::get('/procedimento', [ProcedimentoController::class, 'index'])->name('procedimento');
+    Route::get('/procedimento/novo', [ProcedimentoController::class, 'novo'])->name('procedimento.novo');
+    Route::get('/procedimento/editar/{id}', [ProcedimentoController::class, 'editar'])->name('procedimento.editar');
+    Route::post('procedimento/salvar', [ProcedimentoController::class, 'salvar'])->name('procedimento.salvar');
+    Route::get('/procedimento/deletar/{id}', [ProcedimentoController::class, 'deletar'])->name('procedimento.deletar');
 
 });

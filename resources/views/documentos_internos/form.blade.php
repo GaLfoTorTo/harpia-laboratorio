@@ -14,7 +14,7 @@
                 </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/documentos_internos">Documento Externo</a></li>
+                            <li class="breadcrumb-item"><a href="/documentos_internos">Documento Interno</a></li>
                             <li class="breadcrumb-item active">{{ isset($documentos_internos) ? 'Editar' : 'Novo' }}</li>
                         </ol>
                     </div><!-- /.col -->
