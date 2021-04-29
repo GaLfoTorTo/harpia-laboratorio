@@ -15,6 +15,8 @@ use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\ListaMestraController;
+
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -84,5 +86,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/setores/editar/{id}', [SetoresController::class, 'editar'])->name('setores.editar');
     Route::post('setores/salvar', [SetoresController::class, 'salvar'])->name('setores.salvar');
     Route::get('/setores/deletar/{id}', [SetoresController::class, 'deletar'])->name('setores.deletar');
+
+    Route::get('/lista_mestras', [ListaMestraController::class, 'index'])->name('lista_mestra');
+    Route::get('/lista_mestras/novo', [ListaMestraController::class, 'novo'])->name('lista_mestra.novo');
+    Route::get('/lista_mestras/editar/{id}', [ListaMestraController::class, 'editar'])->name('lista_mestra.editar');
+    Route::post('lista_mestras/salvar', [ListaMestraController::class, 'salvar'])->name('lista_mestra.salvar');
+    Route::get('/lista_mestras/deletar/{id}', [ListaMestraController::class, 'deletar'])->name('lista_mestra.deletar');
 
 });
