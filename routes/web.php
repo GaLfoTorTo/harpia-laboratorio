@@ -15,8 +15,10 @@ use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
+use App\Http\Controllers\CargosController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -44,11 +46,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/clientes/salvar', [ClienteController::class, 'salvar'])->name('clientes.salvar');
     Route::get('/clientes/deletar/{id}', [ClienteController::class, 'deletar'])->name('clientes.deletar');
 
-    Route::get('/equipamentos_medicao', [EquipamentoController::class, 'index'])->name('equipamentos_medicao');
-    Route::get('/equipamentos_medicao/novo', [EquipamentoController::class, 'novo'])->name('equipamentos_medicao.novo');
-    Route::get('/equipamentos_medicao/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos_medicao.editar');
-    Route::post('/equipamentos_medicao/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos_medicao.salvar');
-    Route::get('/equipamentos_medicao/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos_medicao.deletar');
+    Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos');
+    Route::get('/equipamentos/novo', [EquipamentoController::class, 'novo'])->name('equipamentos.novo');
+    Route::get('/equipamentos/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos.editar');
+    Route::post('/equipamentos/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos.salvar');
+    Route::get('/equipamentos/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos.deletar');
 
 
     Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores');
@@ -100,5 +102,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/participantes_treinamento/deletar/{id}', [ParticipantesTreinamentoController::class, 'deletar'])->name('participantes_treinamento.deletar');
 
 
+
+    Route::get('/cargos', [CargosController::class, 'index'])->name('cargos');
+    Route::get('/cargos/novo', [CargosController::class, 'novo'])->name('cargos.novo');
+    Route::get('/cargos/editar/{id}', [CargosController::class, 'editar'])->name('cargos.editar');
+    Route::post('cargos/salvar', [CargosController::class, 'salvar'])->name('cargos.salvar');
+    Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
+
+    Route::get('/procedimento', [ProcedimentoController::class, 'index'])->name('procedimento');
+    Route::get('/procedimento/novo', [ProcedimentoController::class, 'novo'])->name('procedimento.novo');
+    Route::get('/procedimento/editar/{id}', [ProcedimentoController::class, 'editar'])->name('procedimento.editar');
+    Route::post('procedimento/salvar', [ProcedimentoController::class, 'salvar'])->name('procedimento.salvar');
+    Route::get('/procedimento/deletar/{id}', [ProcedimentoController::class, 'deletar'])->name('procedimento.deletar');
 
 });

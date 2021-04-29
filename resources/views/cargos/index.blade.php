@@ -9,12 +9,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Setores</h1>
+          <h1 class="m-0">Cargos</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-            <li class="breadcrumb-item active">Setores</li>
+            <li class="breadcrumb-item active">Cargos</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -29,10 +29,11 @@
 
       <div class="card">
         <div class="card-header">
-          <a href="/setores/novo" class="btn btn-primary">
-            Novo setor
+          <a href="/cargos/novo" class="btn btn-primary">
+            Novo Cargo
             <i class="fas fa-plus"></i>
           </a>
+          
 
           <div class="card-tools">
             <form action="">
@@ -55,37 +56,42 @@
            <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Setor</th>
-                    <th>Sub-Setor</th>
+                    <th>Cargo</th>
+                    <th>Formação</th>
+                    <th>Descrição</th>
+                    <th>Pré-Requisitos</th>
+                    <th>Treinamentos</th>
                     <th>Ações</th>
                 </tr>
               </thead>
-              @foreach ($setores as $item)
+              @foreach ($cargos as $item)
               <tbody>
                 <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->setor }}</td>
-                    <td>{{ $item->sub_setor }}</td>
+                  <td>{!! nl2br($item->id) !!}</td>
+                  <td>{!! nl2br($item->cargo) !!}</td>
+                  <td>{!! nl2br($item->formacao) !!}</td>
+                  <td>{!! nl2br($item->descricao) !!}</td>
+                  <td>{!! nl2br($item->requisitos) !!}</td>
+                  <td>{!! nl2br($item->treinamentos) !!}</td>
                     <td>
-                      <a href="setores/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="cargos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="setores/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="cargos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
-
-
                     </td>
                 </tr>
               </tbody>
               @endforeach
+
           </table>
           </div>
           <!-- /.card-body -->
       </div>
       <div class="row">
         <div class="col">
-          {{ $setores->links() }}
+          {{ $cargos->links() }}
         </div>
       </div>
       

@@ -29,31 +29,30 @@ class UserController extends Controller
     }
     public function salvar(UserRequest $request) {
 
-        if($request->hasFile('foto')) {
+        if($request->hasFile('foto_temp')) {
             
             //echo 'tem documento';
             // renomeando documento 
-            $nome_documento = date('YmdHmi').'.'.$request->foto->getClientOriginalExtension();
+            $nome_documento = date('YmdHmi').'.'.$request->foto_temp->getClientOriginalExtension();
 
             $request['foto'] = '/uploads/user/' . $nome_documento;
-            dd($request['foto']);
-            $request->foto->move(public_path('uploads/user'), $nome_documento);
+
+            $request->foto_temp->move(public_path('uploads/user'), $nome_documento);
         }
 
         $ehvalido = $request->validated();
+        if($request->password != '' ){
+            $request['password'] = bcrypt($request['password']);
+        }else{
+            unset($request['password']);
+        }
+
         if($request->id != '') {
             $user = User::find($request->id);
-            if($request->input('password') == $user['password']){
-                $user->update($request->all());
-            }else{
-                $user['password'] = bcrypt($user['password']);
-                dd($user->password);
-                $user->update($request->all());
-            }
+            $user->update($request->all());
             
         }else{
             $user = $request->all();
-            $user['password'] = bcrypt($user['password']);
             $user = User::create($user);
         }
         return redirect('/user/editar/'. $user->id)->with('success', 'Salvo com sucesso!');
