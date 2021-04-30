@@ -14,7 +14,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/servicos">Setor</a></li>
+            <li class="breadcrumb-item"><a href="/setores">Setor</a></li>
             <li class="breadcrumb-item active">{{ isset($setor) ? 'Editar' : 'Novo' }}</li>
           </ol>
         </div><!-- /.col -->
@@ -34,7 +34,6 @@
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">×</span>
               </button>
-      
               @foreach($errors->all() as $error)
                   {{ $error }}<br/>
               @endforeach

@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Documentos Internos</h1>
+            <h1 class="m-0">Procedimento</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Documentos Internos</li>
+              <li class="breadcrumb-item active">Procedimento</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,8 +28,8 @@
 
   <div class="card">
           <div class="card-header">
-            <a href="/documentos_internos/novo" class="btn btn-primary">
-              Novo documento 
+            <a href="/Procedimento/novo" class="btn btn-primary">
+              Novo Procedimento
               <i class="fas fa-plus"></i>
             </a>
 
@@ -53,35 +53,29 @@
               <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Tipo</th>
-                    <th>Código</th>
-                    <th>Título</th>
-                    <th>Revisão Edição</th>
-                    <th>Data Aprovação</th>
-                    <th>Num Copias</th>
-                    <th>Localização</th>
-                    <th>Documento</th>
+                    <th>Rev</th>
+                    <th>Data</th>
+                    <th>Analista</th>
+                    <th>Lote</th>
+                    <th>Responsável</th>
                 </tr>
               </thead>
-              @foreach ($documento as $item)
+              @foreach ($procedimento as $item)
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->tipo }}</td>
-                    <td>{{ $item->codigo}}</td>
-                    <td>{{ $item->titulo }}</td>
-                    <td>{{ $item->revisao_edicao}}</td>
-                    <td>{{ $item->data_aprovacao}}</td>
-                    <td>{{ $item->num_copias}}</td>
-                    <td>{{ $item->localizacao}}</td>
-                    <td>{{ $item->documento}}</td>
-
+                    <td>{{ $item->rev}}</td>
+                    <td>{{ $item->data}}</td>
+                    <td>{{ $item->analista}}</td>
+                    <td>{{ $item->lote}}</td>
+                    <td>{{ $item->responsavel}}</td>
+                    
                     <td>
                   
-                      <a href="documentos_internos/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="procedimento/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="documentos_internos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="procedimento/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
 
@@ -94,7 +88,7 @@
 
         </div>
         <div>
-          {{ $documento->links() }}
+          {{ $procedimento->links() }}
         </div>
   </div>
 </div>
