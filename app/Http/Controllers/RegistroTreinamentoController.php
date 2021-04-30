@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RegistroTreinamentoRequest;
 use App\Models\RegistroTreinamento;
-
 
 class RegistroTreinamentoController extends Controller
 {  
@@ -21,37 +21,20 @@ class RegistroTreinamentoController extends Controller
         return view('registro_treinamento.index', compact('registro_treinamento', 'pesquisa'));
 } 
         public function novo() {
-
-            $titulo = RegistroTreinamento::select('titulo')
-            ->groupBy('titulo')
-            ->get();
-            $carga_horaria = RegistroTreinamento::select('carga_horaria')
-            ->groupBy('carga_horaria')
-            ->get();
-            $data = RegistroTreinamento::select('data')
-
-            ->groupBy('data')
-            ->get();
-        return view('registro_treinamento.form', compact('titulo', 'carga_horaria', 'data'));
+        return view('registro_treinamento.form');
         }
+
         public function editar($id) {
 
+            $registro_treinamento = RegistroTreinamento::select('titulo', 'carga_horaria', 'data', 'conteudo')->get();
 
             $registro_treinamento = RegistroTreinamento::find($id);
-            $titulo = RegistroTreinamento::select('titulo')
-                                    ->groupBy('titulo')
-                                    ->get();
-            $carga_horaria = RegistroTreinamento::select('carga_horaria')
-                                    ->groupBy('carga_horaria')
-                                    ->get();
-            $data = RegistroTreinamento::select('data')
-                                    ->groupBy('data')
-                                    ->get();
-            return view('registro_treinamento.form', compact('equipamento_proprio', 'carga_horaria', 'data'));
+            return view('registro_treinamento.form', compact('registro_treinamento'));
         }
-        public function salvar(EquipamentoRequest $request) {
 
-            $ehvalido = $request->validated();
+        public function salvar(Request $request) {
+
+            //$ehvalido = $request->validated();
 
             if($request->id != '') {
                 $registro_treinamento = RegistroTreinamento::find($request->id);
