@@ -15,6 +15,7 @@ use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\ListaMestraController;
 use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
@@ -102,8 +103,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('participantes_treinamento/salvar', [ParticipantesTreinamentoController::class, 'salvar'])->name('participantes_treinamento.salvar');
     Route::get('/participantes_treinamento/deletar/{id}', [ParticipantesTreinamentoController::class, 'deletar'])->name('participantes_treinamento.deletar');
 
-
-
     Route::get('/cargos', [CargosController::class, 'index'])->name('cargos');
     Route::get('/cargos/novo', [CargosController::class, 'novo'])->name('cargos.novo');
     Route::get('/cargos/editar/{id}', [CargosController::class, 'editar'])->name('cargos.editar');
@@ -121,5 +120,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/novo_rnc/editar/{id}', [NovoRncController::class, 'editar'])->name('novo_rnc.editar');
     Route::post('novo_rnc/salvar', [NovoRncController::class, 'salvar'])->name('novo_rnc.salvar');
     Route::get('/novo_rnc/deletar/{id}', [NovoRncController::class, 'deletar'])->name('novo_rnc.deletar');
+
+    Route::get('/lista_mestras', [ListaMestraController::class, 'index'])->name('lista_mestra');
+    Route::get('/lista_mestras/novo', [ListaMestraController::class, 'novo'])->name('lista_mestra.novo');
+    Route::get('/lista_mestras/editar/{id}', [ListaMestraController::class, 'editar'])->name('lista_mestra.editar');
+    Route::post('lista_mestras/salvar', [ListaMestraController::class, 'salvar'])->name('lista_mestra.salvar');
+    Route::get('/lista_mestras/deletar/{id}', [ListaMestraController::class, 'deletar'])->name('lista_mestra.deletar');
+
 
 });
