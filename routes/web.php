@@ -19,6 +19,7 @@ use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
+use App\Http\Controllers\NovoRncController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -114,5 +115,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/procedimento/editar/{id}', [ProcedimentoController::class, 'editar'])->name('procedimento.editar');
     Route::post('procedimento/salvar', [ProcedimentoController::class, 'salvar'])->name('procedimento.salvar');
     Route::get('/procedimento/deletar/{id}', [ProcedimentoController::class, 'deletar'])->name('procedimento.deletar');
+
+    Route::get('/novo_rnc', [NovoRncController::class, 'index'])->name('novo_rnc');
+    Route::get('/novo_rnc/novo', [NovoRncController::class, 'novo'])->name('novo_rnc.novo');
+    Route::get('/novo_rnc/editar/{id}', [NovoRncController::class, 'editar'])->name('novo_rnc.editar');
+    Route::post('novo_rnc/salvar', [NovoRncController::class, 'salvar'])->name('novo_rnc.salvar');
+    Route::get('/novo_rnc/deletar/{id}', [NovoRncController::class, 'deletar'])->name('novo_rnc.deletar');
 
 });
