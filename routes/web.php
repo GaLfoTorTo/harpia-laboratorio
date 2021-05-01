@@ -15,6 +15,8 @@ use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\InspecaoRecebidosController;
+
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -84,5 +86,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/setores/editar/{id}', [SetoresController::class, 'editar'])->name('setores.editar');
     Route::post('setores/salvar', [SetoresController::class, 'salvar'])->name('setores.salvar');
     Route::get('/setores/deletar/{id}', [SetoresController::class, 'deletar'])->name('setores.deletar');
+
+    Route::get('/inspecao_recebidos', [InspecaoRecebidosController::class, 'index'])->name('inspecao_recebidos');
+    Route::get('/inspecao_recebidos/novo', [InspecaoRecebidosController::class, 'novo'])->name('inspecao_recebidos.novo');
+    Route::get('/inspecao_recebidos/editar/{id}', [InspecaoRecebidosController::class, 'editar'])->name('inspecao_recebidos.editar');
+    Route::post('/inspecao_recebidos/salvar', [InspecaoRecebidosController::class, 'salvar'])->name('inspecao_recebidos.salvar');
+    Route::get('/inspecao_recebidos/deletar/{id}', [InspecaoRecebidosController::class, 'deletar'])->name('inspecao_recebidos.deletar');
 
 });
