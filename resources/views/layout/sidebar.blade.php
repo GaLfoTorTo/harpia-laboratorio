@@ -345,6 +345,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Novo RNC
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/novo_rnc/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/novo_rnc" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
