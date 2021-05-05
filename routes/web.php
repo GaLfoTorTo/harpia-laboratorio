@@ -20,6 +20,7 @@ use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
+use App\Http\Controllers\ReclamacoesController;
 use App\Http\Controllers\NovoRncController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
@@ -108,6 +109,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cargos/editar/{id}', [CargosController::class, 'editar'])->name('cargos.editar');
     Route::post('cargos/salvar', [CargosController::class, 'salvar'])->name('cargos.salvar');
     Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
+    
+    Route::get('/reclamacoes', [ReclamacoesController::class, 'index'])->name('reclamacoes');
+    Route::get('/reclamacoes/novo', [ReclamacoesController::class, 'novo'])->name('reclamacoes.novo');
+    Route::get('/reclamacoes/editar/{id}', [ReclamacoesController::class, 'editar'])->name('reclamacoes.editar');
+    Route::post('reclamacoes/salvar', [ReclamacoesController::class, 'salvar'])->name('reclamacoes.salvar');
+    Route::get('/reclamacoes/deletar/{id}', [ReclamacoesController::class, 'deletar'])->name('reclamacoes.deletar');
 
     Route::get('/procedimento', [ProcedimentoController::class, 'index'])->name('procedimento');
     Route::get('/procedimento/novo', [ProcedimentoController::class, 'novo'])->name('procedimento.novo');
