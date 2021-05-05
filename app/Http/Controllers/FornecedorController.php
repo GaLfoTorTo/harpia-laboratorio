@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\FornecedoresRequest;
+use App\Http\Requests\FornecedorRequest;
 use App\Models\Fornecedor;
 
 class FornecedorController extends Controller
 {
-    public $tipos = ['servico', 'produto', ];
+    public $tipos = ['servico', 'produto'];
 
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
