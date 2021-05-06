@@ -123,11 +123,24 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <label for="servico">SIM</label><br>
-            <input type="radio" class="tipo" name="tipo" id="sim">
+        <div class="col-10">
+            <label for="servico">Insumo liberado para uso?</label><br>
+        </div>
+        <div class="col-2" align="center">
+            <label for="servico">SIM</label>
+            <input type="radio" class="tipo" name="escolha" id="sim">
+            <label for="servico">NÃO</label>
+            <input type="radio" class="tipo" required name="escolha" id="nao">
         </div>
     </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <label for="descricao">Se não, justificativa:</label>
+            <textarea name="descricao" readonly class="form-control"id="descricao" rows="5"></textarea>
+        </div>
+    </div>
+    <br>
     <div class="row">
         <div class="col" align="end">
             <button type="submit" class="btn btn-success w-25 hover-shadow">
