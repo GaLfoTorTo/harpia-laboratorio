@@ -252,6 +252,30 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                Lista Mestra
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/lista_mestras/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/lista_mestras" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
            <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
@@ -269,6 +293,30 @@
               </li>
               <li class="nav-item">
                 <a href="/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+         
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+               Reclamações e Sugestões
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/reclamacoes/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/reclamacoes" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
@@ -338,6 +386,29 @@
               </li>
               <li class="nav-item">
                 <a href="/novo_rnc" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Cargo
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/cargos/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/cargos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>

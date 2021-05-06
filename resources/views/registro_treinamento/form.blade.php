@@ -50,46 +50,49 @@
     <div class="row">
     <div class="col-4">
     <div class="form-group">
-                <label for="titulo" class="form-label">Título:</label>
-                <select name="titulo" id="titulo" class="form-control">
-                    @foreach ($titulo as $key => $t)
-                    <option value="{{ $t->titulo }}" @if(isset($registro_treinamento) && $registro_treinamento->titulo == $t)  selected @elseif(old('titulo') == $t) selected @endif >{{$t->titulo}}</option>
-                @endforeach
-                </select>
+      <label for="titulo" class="form-label">Título:</label>
+      <input type="text" name="titulo" class="form-control titulo" value="@if(isset($registro_treinamento) && $registro_treinamento){{$registro_treinamento->titulo}}@else{{old("titulo")}}@endif">
             </div>
         </div>
         <div class="col-4">
         <div class="form-group">
                 <label for="carga_horaria" class="form-label">Carga Horária:</label>
-                <input type="number" name="carga_horaria" class="form-control carga_horaria" required value="@if(isset($registro_treinamento) && $registro_treinamento){{$registro_treinamento->carga_horaria}}@else{{old("carga_horaria")}}@endif">
+                <input type="number" name="carga_horaria" class="form-control carga_horaria" value="@if(isset($registro_treinamento) && $registro_treinamento){{$registro_treinamento->carga_horaria}}@else{{old("carga_horaria")}}@endif">
             </div>
         </div>
         <div class="col-4">
         <div class="form-group">
                 <label for="data" class="form-label">Data:</label>
-                <input type="text" name="data" class="form-control" value="@if(isset($registro_treinamento) && $registro_treinamento){{$registro_treinamento->data}}@else{{old("data")}}@endif">
+                <input type="date" name="data" class="form-control data" value="@if(isset($registro_treinamento) && $registro_treinamento){{$registro_treinamento->data}}@else{{old("data")}}@endif">
             </div>
             </div>
-    </div>
+            </div>
+        <div class="row">
+          <div class="col-12">
+          <div class="form-group">
+          <label for="conteudo">Conteúdo:</label>
+          <textarea class="form-control" name="conteudo" id="conteudo" rows="3" required> @if(isset($registro_treinamento)){{$registro_treinamento->conteudo}}@else{{ old('conteudo')}}@endif</textarea>
+              </div>
+               </div>
+              </div>
     <div class="row">
-        <div class="col" align="end">
-            <button type="submit" class="btn btn-success w-25 hover-shadow">
+      <div class="col" align="end">
+          <br>
+          <button type="submit" class="btn btn-success w-25 hover-shadow">
                 Salvar 
-                <i class="fas fa-save"></i>
-            </button>
+          <i class="fas fa-save"></i>
+      </button>
         </div>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
-         
-</div>
-<!-- /.row (main row) -->
-</div><!-- /.container-fluid -->
-</section>
-<!-- /.content -->
-</div>
-
-
-  
-
-@include('layout.footer')
+    </div>
+            
+    </div>
+    <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    
+    @include('layout.footer')

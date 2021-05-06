@@ -38,6 +38,6 @@ class ColaboradorRequest extends FormRequest
                 'email.required' => 'E-mail do Colaborador é obrigatório!',
                 'cpf.required' => 'CPF do Colaborador é obrigatório!',
                 'telefone.required' => 'telefone do Colaborador é obrigatório!',
-        ]
+        ];
     }
 }

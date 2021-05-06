@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ParticipantesRequest;
 use App\Models\ParticipantesTreinamento;
+use App\Models\Setor;
 
 
 class ParticipantesTreinamentoController extends Controller
@@ -22,6 +23,8 @@ class ParticipantesTreinamentoController extends Controller
             return view('participantes_treinamento.index', compact('participantes_treinamento', 'pesquisa'));
         } 
         public function novo() {
+            $setores = Setor::select('setor')->get();
+            return view('participantes_treinamento/form',  compact('setores'));
 
             $numero = ParticipantesTreinamento::select('numero')
             ->groupBy('numero')
