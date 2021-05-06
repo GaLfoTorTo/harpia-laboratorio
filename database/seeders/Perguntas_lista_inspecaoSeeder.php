@@ -29,7 +29,7 @@ class Perguntas_lista_inspecaoSeeder extends Seeder
                     'pergunta' => 'Lacre esta em condições adequada?'
                 ],
                 [
-                    'pergunta' => 'Temperatura de transporte e recebimentos está em condições adequadas/'
+                    'pergunta' => 'Temperatura de transporte e recebimentos está em condições adequadas?'
                 ],
                 [
                     'pergunta' => 'Aspectos cor e odor estão adequados?'
