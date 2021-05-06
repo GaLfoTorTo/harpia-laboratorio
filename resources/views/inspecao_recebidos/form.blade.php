@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ isset($cliente) ? 'Editar' : 'Novo' }} cliente</h1>
+            <h1 class="m-0">{{ isset($inspecao_recebidos) ? 'Editar' : 'Novo' }} Inspecao Recebidos</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/clientes">Clientes</a></li>
-            <li class="breadcrumb-item active">{{ isset($cliente) ? 'Editar' : 'Novo' }}</li>
+            <li class="breadcrumb-item"><a href="/inspecao_recebidos">Inspecao Recebidos</a></li>
+            <li class="breadcrumb-item active">{{ isset($inspecao_recebidos) ? 'Editar' : 'Novo' }}</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -43,101 +43,89 @@
 
   <form action="/clientes/salvar" method="POST">
     @csrf
-    <input type="hidden" name="id" value="@if(isset($cliente)){{$cliente->id}}@else{{ old('id') }}@endif">
-    <input type="hidden" name="codigo_cliente" value="@isset($cliente){{$cliente->codigo_cliente}}@else {{rand($min = 100000000, $max = 999999999)}}@endisset">
+    <input type="hidden" name="id" value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->id}}@else{{ old('id') }}@endif">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <div class="form-group">
-                <label for="nome" class="form-label">Nome:</label>
-                <input type="text" name="nome" class="form-control" required value="@if(isset($cliente)){{$cliente->nome}}@else{{ old('nome') }}@endif">
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-group">
-                <label for="servico">CPF</label>
-                <input type="radio" class="tipo" name="tipo" id="tipo_cpf">
-                <label for="servico">CNPJ</label>
-                <input type="radio" class="tipo" name="tipo" id="tipo_cnpj">
-                <input type="text" name="cpf_cnpj" class="form-control cpf_cnpj" id="cpf_cnpj" readonly required value="@if(isset($cliente)){{$cliente->cpf_cnpj}}@else{{old('cpf_cnpj')}}@endisset">
+                <label for="produto" class="form-label">Produto:</label>
+                <input type="text" name="produto" class="form-control" required value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->produto}}@else{{ old('produto') }}@endif">
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-8">
+        <div class="col-6">
             <div class="form-group">
-                <label for="email" class="form-label">E-mail:</label>
-                <input type="email" name="email" class="form-control" value="@if(isset($cliente)){{$cliente->email}}@else{{old('email')}} @endif" >
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="telefone" class="form-label">Telefone:</label>
-                <input type="text" name="telefone" class="form-control telefone" value="@if(isset($cliente)){{$cliente->telefone}}@else{{ old('telefone') }}@endif">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
-            <div class="form-group">
-                <label for="cep" class="form-label">CEP</label>
-                <input type="text" name="cep" class="form-control cep" value="@if(isset($cliente)){{$cliente->cep}}@else{{old('cep')}}@endif">
+                <label for="fornecedor" class="form-label">Fornecedor:</label>
+                <input type="text" name="fornecedor" class="form-control" value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->fornecedor}}@else{{old('fornecedor')}} @endif" >
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
-                <label for="logradouro" class="form-label">Logradouro</label>
-                <input type="text" name="logradouro" class="form-control" value="@if(isset($cliente)){{$cliente->logradouro}}@else{{old('logradouro')}}@endif">
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="form-group">
-                <label for="numero" class="form-label">Numero</label>
-                <input type="number" name="numero" class="form-control" value="@if(isset($cliente)){{$cliente->numero}}@else{{old('numero')}}@endif">
+                <label for="fabricante" class="form-label">Fabricante:</label>
+                <input type="text" name="fabricante" class="form-control fabricante" value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->fabricante}}@else{{ old('fabricante') }}@endif">
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <div class="form-group">
-                <label for="cidade" class="form-label">Cidade</label>
-                <input type="text" name="cidade" class="form-control" value="@if(isset($cliente)){{$cliente->cidade}}@else{{old('cidade')}}@endif">
+                <label for="nota_fiscal" class="form-label">N°. da nota fiscal:</label>
+                <input type="text" name="nota_fiscal" class="form-control nota_fiscal" value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->nota_fiscal}}@else{{old('nota_fiscal')}}@endif">
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-6">
             <div class="form-group">
-                <label for="bairro" class="form-label">Bairro</label>
-                <input type="text" name="bairro" class="form-control" value="@if(isset($cliente)){{$cliente->bairro}}@else{{old('bairro')}}@endif">
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
-                <label for="uf" class="form-label">UF</label>
-                <input type="text" name="uf" class="form-control" value="@if(isset($cliente)){{$cliente->uf}}@else{{old('uf')}}@endif">
+                <label for="lote" class="form-label">Lote:</label>
+                <input type="text" name="lote" class="form-control" value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->lote}}@else{{old('lote')}}@endif">
             </div>
         </div>
     </div>
-     <div class="row">
-        <div class="col-4">
+    <hr />
+    <div class="row">
+        <div class="col" align="center">
+            <h2>Lista de Verificação de Insumos</h2>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            @foreach ($pergunta as $item)
+            <tbody>
+                <th>
+                    <div class="row">
+                        <div class="col-9" >
+                            <label for="lote" class="form-label">{{$item->pergunta}}</label>
+                        </div>
+                        <div class="col-1" align="center">
+                            <label for="servico">SIM</label><br>
+                            <input type="radio" class="tipo" required name="tipo[{{$item->id}}]" id="sim">
+                        </div>
+                        <div class="col-1" align="center">
+                            <label for="servico">NÃO</label><br>
+                            <input type="radio" class="tipo" name="tipo[{{$item->id}}]" id="nao">
+                        </div>
+                        <div class="col-1" align="center">
+                            <label for="servico">NDA</label><br>
+                            <input type="radio" class="tipo" name="tipo[{{$item->id}}]" id="nada">
+                        </div>
+                    </div>
+                </th>
+            </tbody>
+            @endforeach
+        </table>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col">
             <div class="form-group">
-                <label for="responsavel_tecnico" class="form-label">Responsável Técnico:</label>
-                <input type="text" name="responsavel_tecnico" class="form-control" value="@if(isset($cliente)){{$cliente->responsavel_tecnico}}@else{{old('responsavel_tecnico')}}@endif">
+                <label for="descricao">Descrição:</label>
+                <textarea name="descricao" class="form-control"id="descricao" rows="7"></textarea>
             </div>
         </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="responsavel_financeiro" class="form-label">Responsável Financeiro:</label>
-                <input type="text" name="responsavel_financeiro" class="form-control" value="@if(isset($cliente)){{$cliente->responsavel_financeiro}}@else{{old('responsavel_financeiro')}}@endif">
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="tipo_unidade" class="form-label">Tipo de Unidade:</label>
-                <select name="tipo_unidade" id="tipo_unidade" class="form-control">
-                    @foreach ($tipos_unidade as $key => $tipo)
-                        <option class=" tipo_unidade" value="{{$tipo}}"@if(isset($cliente) && $cliente->tipo_unidade == $tipo) selected @elseif(old('tipo_unidade') == $tipo) selected @endif>{{$tipo}}</option>
-                    @endforeach
-                </select>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="servico">SIM</label><br>
+            <input type="radio" class="tipo" name="tipo" id="sim">
         </div>
     </div>
     <div class="row">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRespostasListaInspecao extends Migration
+class CreateRespostaListaInspecaos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRespostasListaInspecao extends Migration
      */
     public function up()
     {
-        Schema::create('respostas_lista_inspecao', function (Blueprint $table) {
+        Schema::create('resposta_lista_inspecaos', function (Blueprint $table) {
             $table->id();
             $table->enum('resposta',['sim','nao','na']);
             $table->bigInteger('produto_id');
@@ -29,6 +29,6 @@ class CreateRespostasListaInspecao extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('respostas_lista_inspecao');
+        Schema::dropIfExists('resposta_lista_inspecaos');
     }
 }

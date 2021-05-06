@@ -11,7 +11,8 @@ class Respostas_lista_inspecao extends Model
 {
     use HasFactory;
 
-    public $fillable= 
+    protected $table = 'resposta_lista_inspecaos';
+    protected $fillable= 
     [
         'resposta',
         'produto_id',

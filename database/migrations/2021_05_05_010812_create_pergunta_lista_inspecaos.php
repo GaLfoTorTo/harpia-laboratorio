@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInpecaoRecebidosTable extends Migration
+class CreatePerguntaListaInspecaos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateInpecaoRecebidosTable extends Migration
      */
     public function up()
     {
-        Schema::create('inpecao_recebidos', function (Blueprint $table) {
+        Schema::create('pergunta_lista_inspecaos', function (Blueprint $table) {
             $table->id();
-            $table->string('produto', 70);
-            $table->bigInteger('fornecedor_id');
-            $table->string('fabricante', 70);
-            $table->integer('nota_fiscal', 30);
-            $table->string('lote', 30);
+            $table->text('pergunta');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateInpecaoRecebidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inpecao_recebidos');
+        Schema::dropIfExists('pergunta_lista_inspecaos');
     }
 }

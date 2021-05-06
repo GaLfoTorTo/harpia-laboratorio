@@ -9,7 +9,9 @@ class Perguntas_lista_inspecao extends Model
 {
     use HasFactory;
 
-    public $fillable = 
+    protected $table = 'pergunta_lista_inspecaos';
+
+    protected $fillable = 
     [
         'pergunta'
     ];

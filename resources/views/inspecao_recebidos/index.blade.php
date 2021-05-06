@@ -30,7 +30,7 @@
 
       <div class="card">
         <div class="card-header">
-          <a href="/clientes/novo" class="btn btn-primary">
+          <a href="/inspecao_recebidos/novo" class="btn btn-primary">
             Novo Produto 
             <i class="fas fa-plus"></i>
           </a>
