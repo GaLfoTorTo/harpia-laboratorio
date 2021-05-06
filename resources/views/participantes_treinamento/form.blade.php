@@ -51,7 +51,7 @@
       <div class="col-2">
         <div class="form-group">
                 <label for="numero" class="form-label">N°:</label>
-                <input type="number" name="numero" class="form-control numero" required value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->numero}}@else{{old("numero")}}@endif">
+                <input type="number" name="numero" class="form-control" value="@if(isset($participantes_treinamento)){{$participantes_treinamento->numero}}@else{{ old('numero')}}@endif">
             </div>
         </div>
         <div class="col-4">

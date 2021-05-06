@@ -141,7 +141,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-                Equipamentos
+                Equipamentos Medição
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -277,7 +277,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon far fa-clipboard"></i>
               <p>
                 Registro Treinamento
                 <i class="right fas fa-angle-left"></i>
@@ -300,7 +300,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Participantes Treinamento
                 <i class="right fas fa-angle-left"></i>
@@ -323,7 +323,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon far fa-clipboard"></i>
               <p>
                 Novo RNC
                 <i class="right fas fa-angle-left"></i>
