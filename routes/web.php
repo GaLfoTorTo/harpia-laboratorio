@@ -19,6 +19,7 @@ use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
+use App\Http\Controllers\AnaliseCriticaController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -114,5 +115,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/procedimento/editar/{id}', [ProcedimentoController::class, 'editar'])->name('procedimento.editar');
     Route::post('procedimento/salvar', [ProcedimentoController::class, 'salvar'])->name('procedimento.salvar');
     Route::get('/procedimento/deletar/{id}', [ProcedimentoController::class, 'deletar'])->name('procedimento.deletar');
+
+    Route::get('/analise_critica', [AnaliseCriticaController::class, 'index'])->name('analise_critica');
+    Route::get('/analise_critica/novo', [AnaliseCriticaController::class, 'novo'])->name('analise_critica.novo');
+    Route::get('/analise_critica/editar/{id}', [AnaliseCriticaController::class, 'editar'])->name('analise_critica.editar');
+    Route::post('analise_critica/salvar', [AnaliseCriticaController::class, 'salvar'])->name('analise_critica.salvar');
+    Route::get('/analise_critica/deletar/{id}', [AnaliseCriticaController::class, 'deletar'])->name('analise_critica.deletar');
 
 });
