@@ -10,11 +10,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ isset($inspecao_recebidos) ? 'Editar' : 'Novo' }} Inspecao Recebidos</h1>
+            <h1 class="m-0">{{ isset($inspecao_recebidos) ? 'Editar' : 'Nova' }} Inspeção de Recebido</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/inspecao_recebidos">Inspecao Recebidos</a></li>
+            <li class="breadcrumb-item"><a href="/inspecao_recebidos">Inspeção de Recebidos</a></li>
             <li class="breadcrumb-item active">{{ isset($inspecao_recebidos) ? 'Editar' : 'Novo' }}</li>
           </ol>
         </div><!-- /.col -->
@@ -41,7 +41,7 @@
                 </div>
             @endif
 
-  <form action="/clientes/salvar" method="POST">
+  <form action="/inspecao_recebidos/salvar" method="POST">
     @csrf
     <input type="hidden" name="id" value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->id}}@else{{ old('id') }}@endif">
     <div class="row">
@@ -55,8 +55,12 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                <label for="fornecedor" class="form-label">Fornecedor:</label>
-                <input type="text" name="fornecedor" class="form-control" value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->fornecedor}}@else{{old('fornecedor')}} @endif" >
+                <label for="fornecedor_id" class="form-label">Fornecedor:</label>
+                <select name="fornecedor_id" id="fornecedor_id" class="form-control">
+                    @foreach ($fornecedor as $key => $tipo)
+                        <option class=" fornecedor_id" value="{{$tipo->id}}"@if(isset($inspecao_recebidos) && $inspecao_recebidos->fornecedor_id == $tipo->id) selected @elseif(old('fornecedor_id') == $tipo->id) selected @endif>{{$tipo->nome_fantasia}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="col-6">
@@ -94,18 +98,18 @@
                     <div class="row">
                         <div class="col-9" >
                             <label for="lote" class="form-label">{{$item->pergunta}}</label>
+                        </div>               
+                        <div class="col-1" align="center">
+                            <label for="resposta">SIM</label><br>
+                            <input type="radio" class="respostas" required name="resposta[{{$item->id}}]" value="@if('checked'){{'sim'}}@endif">
                         </div>
                         <div class="col-1" align="center">
-                            <label for="servico">SIM</label><br>
-                            <input type="radio" class="tipo" required name="tipo[{{$item->id}}]" id="sim">
+                            <label for="resposta">NÃO</label><br>
+                            <input type="radio" class="resposta" name="resposta[{{$item->id}}]" value="@if('checked'){{'nao'}}@endif">
                         </div>
                         <div class="col-1" align="center">
-                            <label for="servico">NÃO</label><br>
-                            <input type="radio" class="tipo" name="tipo[{{$item->id}}]" id="nao">
-                        </div>
-                        <div class="col-1" align="center">
-                            <label for="servico">NDA</label><br>
-                            <input type="radio" class="tipo" name="tipo[{{$item->id}}]" id="nada">
+                            <label for="resposta">NDA</label><br>
+                            <input type="radio" class="resposta" name="resposta[{{$item->id}}]" value="@if('checked'){{'nada'}}@endif">
                         </div>
                     </div>
                 </th>
@@ -118,26 +122,26 @@
         <div class="col">
             <div class="form-group">
                 <label for="descricao">Descrição:</label>
-                <textarea name="descricao" class="form-control"id="descricao" rows="7"></textarea>
+                <textarea name="descricao" class="form-control"id="descricao" rows="7" value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->descricao}}@else{{old('descricao')}}@endif"></textarea>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-10">
-            <label for="servico">Insumo liberado para uso?</label><br>
+            <label for="insumo_liberado">Insumo liberado para uso?</label><br>
         </div>
         <div class="col-2" align="center">
-            <label for="servico">SIM</label>
-            <input type="radio" class="tipo" name="escolha" id="sim">
-            <label for="servico">NÃO</label>
-            <input type="radio" class="tipo" required name="escolha" id="nao">
+            <label for="sim">SIM</label>
+            <input type="radio" name="insumo_liberado" class="insumo_liberado" id="sim" value="@if(isset($inspecao_recebidos) && $inspecao_recebidos->insumo_liberado == 'sim'){{$inspecao_recebidos->insumo_liberado}}@elseif('checked'){{'sim'}}@else{{old('insumo_liberado')}}@endif">
+            <label for="nao">NÃO</label>
+            <input type="radio" required name="insumo_liberado" class="insumo_liberado" id="nao" value="@if(isset($inspecao_recebidos) && $inspecao_recebidos->insumo_liberado == 'não'){{$inspecao_recebidos->insumo_liberado}}@elseif('checked'){{'não'}}@else{{old('insumo_liberado')}}@endif">
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col">
-            <label for="descricao">Se não, justificativa:</label>
-            <textarea name="descricao" readonly class="form-control"id="descricao" rows="5"></textarea>
+            <label for="justificatica">Se não, justificativa:</label>
+            <textarea name="justificativa" readonly class="form-control justificativa" rows="5"  value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->justificativa}}@else{{old('justificativa')}}@endif"></textarea>
         </div>
     </div>
     <br>
@@ -161,3 +165,15 @@
 </div>
 
 @include('layout.footer')
+
+<script>
+    $('.insumo_liberado').click(function(){
+        var valor = $(this).attr('value');
+        if(valor == 'não'){
+            $('.justificativa').removeAttr('readonly');
+        }else if(valor == 'sim'){
+            $('.justificativa').empty('value');
+            $('.justificativa').attr('readonly', true);
+        }
+    })
+</script>    

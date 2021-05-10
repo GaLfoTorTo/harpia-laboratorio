@@ -18,7 +18,7 @@ class CreateInspecaoRecebidos extends Migration
             $table->string('produto', 70);
             $table->bigInteger('fornecedor_id');
             $table->string('fabricante', 70)->nullable();
-            $table->string('nota_fiscal', 30)->nullable();
+            $table->string('nota_fiscal', 30);
             $table->string('lote', 30)->nullable();
             $table->text('descicao_teste')->nullable();
             $table->enum('insumo_liberado',['sim','não'])->nullable();

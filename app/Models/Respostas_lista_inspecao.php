@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Http\Models\Fornecedor;
+use App\Http\Models\Inspecao_recebidos;
 use App\Http\Models\Perguntas_lista_inspecao;
 
 class Respostas_lista_inspecao extends Model
@@ -19,8 +19,8 @@ class Respostas_lista_inspecao extends Model
         'pergunta_id'
     ];
 
-    public function fornecedor(){
-        return $this->hasOne(Fornecedor::class, 'id', 'fornecedor_id');
+    public function produto(){
+        return $this->hasOne(Inspecao_recebidos::class, 'id', 'produto_id');
     }
 
     public function pergunta(){

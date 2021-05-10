@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRespostaListaInspecaos extends Migration
+class CreateRegistroTreinamentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateRespostaListaInspecaos extends Migration
      */
     public function up()
     {
-        Schema::create('resposta_lista_inspecaos', function (Blueprint $table) {
+        Schema::create('registro_treinamento', function (Blueprint $table) {
             $table->id();
-            $table->enum('resposta',['sim','nao','nada']);
-            $table->bigInteger('produto_id');
-            $table->bigInteger('pergunta_id');
+            $table->string('titulo', 100)->nullable();
+            $table->string('carga_horaria', 10)->nullable();
+            $table->date('data', 10)->nullable();
+            $table->string('conteudo', 255);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateRespostaListaInspecaos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resposta_lista_inspecaos');
+        Schema::dropIfExists('registro_treinamento');
     }
 }

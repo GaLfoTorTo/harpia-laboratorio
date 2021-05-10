@@ -5,16 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Setor extends Model
+class ParticipantesTreinamento extends Model
 {
     use HasFactory;
+
+    protected $table = 'participantes_treinamento';
     protected $fillable = [
+
+        'numero',
         'setor',
-        'setors_id'
-    ];
-    public function setor_pai()
-    {
-        return $this->hasOne(Setor::class, 'id','setors_id');
-    }
+        'nome',
+        'assinatura'
+    ]; 
+
+   
+
+
 
 }
