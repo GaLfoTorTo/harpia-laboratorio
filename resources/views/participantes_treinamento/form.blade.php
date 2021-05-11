@@ -54,13 +54,19 @@
                 <input type="number" name="numero" class="form-control numero" required value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->numero}}@else{{old("numero")}}@endif">
             </div>
         </div>
-        <div class="col-4">
-        <div class="form-group">
+        
+          <div class="col-5">
+            <div class="form-group">
                 <label for="setor" class="form-label">Setor:</label>
-                <input type="text" name="setor" class="form-control setor" required value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->setor}}@else{{old("setor")}}@endif">
+                <select name="setor" id="setor" class="form-control">
+                    @foreach ($setores as $key => $tipo)
+                        <option class="setor" value="{{$tipo->setor}}"@if(isset($participantes_treinamentoparticipantes_treinamento) && $participantes_treinamento->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                    @endforeach
+                </select>
             </div>
-          </div>
-        <div class="col-6">
+        </div>
+          
+        <div class="col-5">
         <div class="form-group">
                 <label for="nome" class="form-label">Nome:</label>
                 <input type="text" name="nome" class="form-control" value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->nome}}@else{{old("nome")}}@endif">
