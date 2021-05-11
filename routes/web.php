@@ -22,6 +22,7 @@ use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\ReclamacoesController;
 use App\Http\Controllers\NovoRncController;
+use App\Http\Controllers\C_temperaturaController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -134,5 +135,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('lista_mestras/salvar', [ListaMestraController::class, 'salvar'])->name('lista_mestra.salvar');
     Route::get('/lista_mestras/deletar/{id}', [ListaMestraController::class, 'deletar'])->name('lista_mestra.deletar');
 
+    Route::get('/c_temperatura', [C_temperaturaController::class, 'index'])->name('c_temperatura');
+    Route::get('/c_temperatura/novo', [C_temperaturaController::class, 'novo'])->name('c_temperatura.novo');
+    Route::get('/c_temperatura/editar/{id}', [C_temperaturaController::class, 'editar'])->name('c_temperatura.editar');
+    Route::post('c_temperatura/salvar', [C_temperaturaController::class, 'salvar'])->name('c_temperatura.salvar');
+    Route::get('/c_temperatura/deletar/{id}', [C_temperaturaController::class, 'deletar'])->name('c_temperatura.deletar');
 
 });
