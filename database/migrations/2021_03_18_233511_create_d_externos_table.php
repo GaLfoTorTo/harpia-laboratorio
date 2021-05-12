@@ -19,7 +19,7 @@ class CreateDExternosTable extends Migration
             $table->integer('revisao_edicao_n')->nullable();
             $table->string('codigo', 15);
             $table->string('localizacao', 255)->nullable();
-            $table->date('data_da_atualizacao')->nullable();
+            $table->date('data_da_atualizacao', 10)->nullable();
             $table->string('analise_critica_verificacao', 255);
             $table->date('atualizacao_em')->nullable();
             $table->integer('n_de_exemplares')->nullable();

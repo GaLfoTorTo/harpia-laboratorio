@@ -14,7 +14,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/participantes_treinamento">Registro de Treinamento</a></li>
+            <li class="breadcrumb-item"><a href="/participantes_treinamento">Participantes do Treinamento</a></li>
             <li class="breadcrumb-item active">{{ isset($participantes_treinamento) ? 'Editar' : 'Novo' }}</li>
           </ol>
         </div><!-- /.col -->
@@ -60,7 +60,7 @@
                 <label for="setor" class="form-label">Setor:</label>
                 <select name="setor" id="setor" class="form-control">
                     @foreach ($setores as $key => $tipo)
-                        <option class="setor" value="{{$tipo->setor}}"@if(isset($participantes_treinamentoparticipantes_treinamento) && $participantes_treinamento->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                    <option value="{{ $tipo->setor }}" @if(isset($participantes_treinamento) && $participantes_treinamento->setor == $tipo)  selected @elseif(old('setor') == $tipo) selected @endif >{{$tipo->setor}}</option>
                     @endforeach
                 </select>
             </div>

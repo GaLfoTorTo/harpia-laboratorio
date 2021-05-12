@@ -22,6 +22,7 @@ use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\ReclamacoesController;
 use App\Http\Controllers\NovoRncController;
+use App\Http\Controllers\AcoesPropostasController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -128,11 +129,19 @@ Route::middleware(['auth'])->group(function () {
     Route::post('novo_rnc/salvar', [NovoRncController::class, 'salvar'])->name('novo_rnc.salvar');
     Route::get('/novo_rnc/deletar/{id}', [NovoRncController::class, 'deletar'])->name('novo_rnc.deletar');
 
+    Route::get('/acoes_propostas', [AcoesPropostasController::class, 'index'])->name('acoes_propostas');
+    Route::get('/acoes_propostas/novo', [AcoesPropostasController::class, 'novo'])->name('acoes_propostas.novo');
+    Route::get('/acoes_propostas/editar/{id}', [AcoesPropostasController::class, 'editar'])->name('acoes_propostas.editar');
+    Route::post('acoes_propostas/salvar', [AcoesPropostasController::class, 'salvar'])->name('acoes_propostas.salvar');
+    Route::get('/acoes_propostas/deletar/{id}', [AcoesPropostasController::class, 'deletar'])->name('acoes_propostas.deletar');
+
     Route::get('/lista_mestras', [ListaMestraController::class, 'index'])->name('lista_mestra');
     Route::get('/lista_mestras/novo', [ListaMestraController::class, 'novo'])->name('lista_mestra.novo');
     Route::get('/lista_mestras/editar/{id}', [ListaMestraController::class, 'editar'])->name('lista_mestra.editar');
     Route::post('lista_mestras/salvar', [ListaMestraController::class, 'salvar'])->name('lista_mestra.salvar');
     Route::get('/lista_mestras/deletar/{id}', [ListaMestraController::class, 'deletar'])->name('lista_mestra.deletar');
+
+
 
 
 });
