@@ -16,7 +16,7 @@ class CreateParticipantesTreinamento extends Migration
         Schema::create('participantes_treinamento', function (Blueprint $table) {
             $table->id();
             $table->string('numero', 100);
-            $table->string('setor', 10);
+            $table->string('setor', 100);
             $table->string('nome', 100);
             $table->string('assinatura', 255);
             $table->timestamps();

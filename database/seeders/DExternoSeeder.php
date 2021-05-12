@@ -26,9 +26,7 @@ class DExternoSeeder extends Seeder
                 'codigo' => $faker->numberBetween($min = 1000, $max = 9999),
                 'n_de_exemplares' => $faker->numberBetween($min=100, $max = 999),
                 'localizacao' => $faker->name(),
-                'data_da_atualizacao' => $faker->numberBetween($min = 01, $max = 31).'/'.$faker->numberBetween($min = 01, $max = 12).'/'.$faker->numberBetween($min = 2000, $max = 2021),
                 'analise_critica_verificacao' => $faker->name().' '.$faker->name(),
-                'atualizacao_em' => $faker->numberBetween($min = 01, $max = 31).'/'.$faker->numberBetween($min = 01, $max = 12).'/'.$faker->numberBetween($min = 2000, $max = 2021)
             ]);
         }
     }

@@ -141,7 +141,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-vial"></i>
               <p>
-                Equipamentos
+                Equipamentos Medição
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -325,7 +325,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon far fa-clipboard"></i>
               <p>
                 Registro Treinamento
                 <i class="right fas fa-angle-left"></i>
@@ -348,7 +348,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Participantes Treinamento
                 <i class="right fas fa-angle-left"></i>
@@ -369,9 +369,36 @@
               </li>
             </ul>
           </li>
+       
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Registro de Ocorrencias
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/registro_de_ocorrencia/novo" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Novo</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/registro_de_ocorrencia" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Listar</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+       </li>
+        
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon far fa-clipboard"></i>
               <p>
                 Novo RNC
                 <i class="right fas fa-angle-left"></i>
@@ -386,6 +413,29 @@
               </li>
               <li class="nav-item">
                 <a href="/novo_rnc" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Ações Propostas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/acoes_propostas/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/acoes_propostas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>

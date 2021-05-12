@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EquipamentoRequest;
 use App\Models\Equipamentos;
 use App\Models\Fornecedor;
+use App\Models\Setor;
 
 class EquipamentoController extends Controller
 {  
@@ -24,6 +25,8 @@ class EquipamentoController extends Controller
         public function novo() {
             $fornecedores = Fornecedor::select('razao_social')->get();
 
+            $setores = Setor::select('setor')->get();
+
             $equipamento_proprio = Equipamentos::select('equipamento_proprio')
             ->groupBy('equipamento_proprio')
             ->get();
@@ -34,11 +37,13 @@ class EquipamentoController extends Controller
 
             ->groupBy('manual')
             ->get();
-        return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
+        return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setores'));
         }
         public function editar($id) {
 
             $fornecedores = Fornecedor::select('razao_social')->get();
+
+            $setores = Setor::select('setor')->get();
 
             $equipamentos = Equipamentos::find($id);
             $equipamento_proprio = Equipamentos::select('equipamento_proprio')
@@ -50,7 +55,7 @@ class EquipamentoController extends Controller
             $manual = Equipamentos::select('manual')
                                     ->groupBy('manual')
                                     ->get();
-            return view('equipamentos.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores'));
+            return view('equipamentos.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setores'));
         }
         public function salvar(EquipamentoRequest $request) {
 
