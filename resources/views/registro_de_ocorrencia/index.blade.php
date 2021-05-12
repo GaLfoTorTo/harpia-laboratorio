@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Procedimento</h1>
+            <h1 class="m-0">Registro de ocorrência</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Procedimento</li>
+              <li class="breadcrumb-item active">Registro de ocorrência</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,8 +28,8 @@
 
   <div class="card">
           <div class="card-header">
-            <a href="/procedimento/novo" class="btn btn-primary">
-              Novo Procedimento
+            <a href="/registro_de_ocorrencia/novo" class="btn btn-primary">
+              Novo Registro 
               <i class="fas fa-plus"></i>
             </a>
 
@@ -53,29 +53,44 @@
               <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Rev</th>
-                    <th>Data</th>
-                    <th>Analista</th>
-                    <th>Lote</th>
+                    <th>Número</th>
                     <th>Responsável</th>
+                    <th>Origem</th>
+                    <th>Data de Abertura</th>
+                    <th>Identificacao do Equipamento</th>
+                    <th>Cod Equipamento</th>
+                    <th>Descricao da Ocorrencia</th>
+                    <th>Descrever Correcão</th>
+                    <th>Ocorrencia e um Trabalho NC</th>
+                    <th>Registro de AC n</th>
+                    <th> Parecer Tecnico</th>
+                    <th>Observacões</th>
                 </tr>
               </thead>
-              @foreach ($procedimento as $item)
+              @foreach ($registro as $item)
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->rev}}</td>
-                    <td>{{ $item->data}}</td>
-                    <td>{{ $item->analista}}</td>
-                    <td>{{ $item->lote}}</td>
+                    <td>{{ $item->numero }}</td>
                     <td>{{ $item->responsavel}}</td>
-                    
+                    <td>{{ $item->origem }}</td>
+                    <td>{{ $item->data_de_abertura}}</td>
+                    <td>{{ $item->identificacao_do_equipamento}}</td>
+                    <td>{{ $item->cod_equipamento}}</td>
+                    <td>{{ $item->descricao_da_ocorrencia}}</td>
+                    <td>{{ $item->necessario_correcao_imediata}}</td>
+                    <td>{{ $item->descrever_correcao}}</td>
+                    <td>{{ $item->ocorrencia_e_um_trabalho_NC}}</td>
+                    <td>{{ $item->registro_de_AC_n}}</td>
+                    <td>{{ $item->parecer_tecnico}}</td>
+                    <td>{{ $item->observacoes}}</td>
+
                     <td>
                   
-                      <a href="procedimento/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="registro_de_ocorrencia/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="procedimento/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="registro_de_ocorrencia/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
 
@@ -88,7 +103,7 @@
 
         </div>
         <div>
-          {{ $procedimento->links() }}
+          {{ $registro->links() }}
         </div>
   </div>
 </div>

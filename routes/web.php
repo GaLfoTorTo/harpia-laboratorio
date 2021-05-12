@@ -20,6 +20,7 @@ use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
+use App\Http\Controllers\RegistroOcorrenciaController;
 use App\Http\Controllers\ReclamacoesController;
 use App\Http\Controllers\NovoRncController;
 use App\Http\Controllers\AcoesPropostasController;
@@ -123,6 +124,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('procedimento/salvar', [ProcedimentoController::class, 'salvar'])->name('procedimento.salvar');
     Route::get('/procedimento/deletar/{id}', [ProcedimentoController::class, 'deletar'])->name('procedimento.deletar');
 
+    Route::get('/registro_de_ocorrencia', [RegistroOcorrenciaController::class, 'index'])->name('registro_de_ocorrencia');
+    Route::get('/registro_de_ocorrencia/novo', [RegistroOcorrenciaController::class, 'novo'])->name('registro_de_ocorrencia.novo');
+    Route::get('/registro_de_ocorrencia/editar/{id}', [RegistroOcorrenciaController::class, 'editar'])->name('registro_de_ocorrencia.editar');
+    Route::post('registro_de_ocorrencia/salvar', [RegistroOcorrenciaController::class, 'salvar'])->name('registro_de_ocorrencia.salvar');
+    Route::get('/registro_de_ocorrencia/deletar/{id}', [RegistroOcorrenciaController::class, 'deletar'])->name('registro_de_ocorrencia.deletar');
+
     Route::get('/novo_rnc', [NovoRncController::class, 'index'])->name('novo_rnc');
     Route::get('/novo_rnc/novo', [NovoRncController::class, 'novo'])->name('novo_rnc.novo');
     Route::get('/novo_rnc/editar/{id}', [NovoRncController::class, 'editar'])->name('novo_rnc.editar');
@@ -140,8 +147,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lista_mestras/editar/{id}', [ListaMestraController::class, 'editar'])->name('lista_mestra.editar');
     Route::post('lista_mestras/salvar', [ListaMestraController::class, 'salvar'])->name('lista_mestra.salvar');
     Route::get('/lista_mestras/deletar/{id}', [ListaMestraController::class, 'deletar'])->name('lista_mestra.deletar');
-
-
-
-
+  
 });
