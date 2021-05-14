@@ -8,7 +8,8 @@ use App\Models\RegistroOcorrencia;
 
 class RegistroOcorrenciaController extends Controller
 {
-    public $tipos = ['servico', 'produto', ];
+    public $tipos = ['serviço', 'produto', ];
+    public $necessario_correcao_imediata = ['Sim', 'Não', ];
 
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
@@ -22,12 +23,14 @@ class RegistroOcorrenciaController extends Controller
     } 
     public function novo() {
         $tipos = $this->tipos;
-        return view('registro_de_ocorrencia.form', compact('tipos'));
+        $necessario_correcao_imediata = $this->necessario_correcao_imediata;
+        return view('registro_de_ocorrencia.form', compact('tipos', 'necessario_correcao_imediata'));
     }
     public function editar($id) {
         $tipos = $this->tipos;
+        $necessario_correcao_imediata = $this->necessario_correcao_imediata;
         $registro = RegistroOcorrencia::find($id);
-        return view('registro_de_ocorrencia.form', compact('registro', 'tipos'));
+        return view('registro_de_ocorrencia.form', compact('registro', 'tipos', 'necessario_correcao_imediata'));
     }
     public function salvar(Request $request) {
         
