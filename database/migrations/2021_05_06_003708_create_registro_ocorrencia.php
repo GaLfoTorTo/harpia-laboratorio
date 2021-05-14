@@ -21,13 +21,13 @@ class CreateRegistroOcorrencia extends Migration
             $table->date('data_de_abertura')->nullable();
             $table->string('identificacao_do_equipamento')->nullable();
             $table->string('cod_equipamento')->nullable();
-            $table->string('descricao_da_ocorrencia')->nullable();
-            $table->string('necessario_correcao_imediata')->nullable();
-            $table->string('descrever_correcao')->nullable();
+            $table->text('descricao_da_ocorrencia')->nullable();
+            $table->enum('necessario_correcao_imediata', ['Sim', 'Não'])->nullable();
+            $table->text('descrever_correcao')->nullable();
             $table->string('ocorrencia_e_um_trabalho_NC')->nullable();
             $table->string('registro_de_AC_n')->nullable();
-            $table->string('parecer_tecnico')->nullable();
-            $table->string('observacoes')->nullable();
+            $table->text('parecer_tecnico')->nullable();
+            $table->text('observacoes')->nullable();
             $table->timestamps(); 
         });
     }
