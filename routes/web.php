@@ -20,6 +20,7 @@ use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\RegistroOcorrenciaController;
+use App\Http\Controllers\DocumentoController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -121,6 +122,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/registro_de_ocorrencia/editar/{id}', [RegistroOcorrenciaController::class, 'editar'])->name('registro_de_ocorrencia.editar');
     Route::post('registro_de_ocorrencia/salvar', [RegistroOcorrenciaController::class, 'salvar'])->name('registro_de_ocorrencia.salvar');
     Route::get('/registro_de_ocorrencia/deletar/{id}', [RegistroOcorrenciaController::class, 'deletar'])->name('registro_de_ocorrencia.deletar');
+
+
+
+
+    Route::get('/documento', [DocumentosInternosController::class, 'index'])->name('documento');
+    Route::get('/documento/novo', [DocumentosInternosController::class, 'novo'])->name('documento.novo');
+    Route::get('/documento/editar/{id}', [DocumentosInternosController::class, 'editar'])->name('documento.editar');
+    Route::post('documento/salvar', [DocumentosInternosController::class, 'salvar'])->name('documento.salvar');
+    Route::get('/documento/deletar/{id}', [DocumentosInternosController::class, 'deletar'])->name('documento.deletar');
 
 
 });
