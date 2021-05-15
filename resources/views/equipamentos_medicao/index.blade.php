@@ -71,7 +71,7 @@
                     <td>{{ $item->marca }}</td>
                     <td>{{ $item->modelo }}</td>
                     <td>{{ $item->fabricante }}</td>
-                    <td>{{ $item->fornecedor }}</td>
+                    <td>{{ $item->fornecedor->razao_social }}</td>
                     <td>
                       <a href="equipamentos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>

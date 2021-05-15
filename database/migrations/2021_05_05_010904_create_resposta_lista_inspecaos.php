@@ -15,8 +15,12 @@ class CreateRespostaListaInspecaos extends Migration
     {
         Schema::create('resposta_lista_inspecaos', function (Blueprint $table) {
             $table->id();
-            $table->enum('resposta',['sim','nao','nada']);
-            $table->bigInteger('produto_id');
+            $table->enum('resposta',['sim','nao','na']);
+            $table->unsignedBigInteger('inspecao_id');
+            $table->foreign('inspecao_id')
+                    ->references('id')
+                    ->on('inspecao_recebidos')
+                    ->unsigned();
             $table->bigInteger('pergunta_id');
             $table->timestamps();
         });

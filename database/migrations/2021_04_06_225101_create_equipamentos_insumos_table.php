@@ -15,12 +15,11 @@ class CreateEquipamentosInsumosTable extends Migration
     {
             Schema::create('equipamentos_insumos', function (Blueprint $table) {
                 $table->id();
-
                 $table->enum('materiais', ['Consumíveis', 'Reagente', 'Insumo', 'Materiais de Referência'])->nullable();
                 $table->string('nome', 100)->nullable();
                 $table->string('codigo', 50)->nullable();
                 $table->string('fabricante', 50)->nullable();
-                $table->string('fornecedor', 50)->nullable();
+                $table->bigInteger('fornecedor_id');
                 $table->enum('produto_critico', ['Sim', 'Não'])->nullable();
                 $table->enum('materiais_referencia', ['MR', 'MRC'])->nullable();
                 $table->string('desc_produto', 90)->nullable();

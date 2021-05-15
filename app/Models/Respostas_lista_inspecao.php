@@ -15,12 +15,12 @@ class Respostas_lista_inspecao extends Model
     protected $fillable= 
     [
         'resposta',
-        'produto_id',
+        'inspecao_id',
         'pergunta_id'
     ];
 
-    public function produto(){
-        return $this->hasOne(Inspecao_recebidos::class, 'id', 'produto_id');
+    public function inspecaoRecebido(){
+        return $this->hasOne(Inspecao_recebidos::class, 'id', 'inspecao_id');
     }
 
     public function pergunta(){

@@ -53,7 +53,7 @@
                 <label for="equipamento_proprio" class="form-label">Equipamento Próprio:</label>
                 <select name="equipamento_proprio" id="equipamento_proprio" class="form-control">
                     @foreach ($equipamento_proprio as $key => $t)
-                    <option value="{{ $t->equipamento_proprio }}" @if(isset($equipamentos) && $equipamentos->equipamento_proprio == $t)  selected @elseif(old('equipamento_proprio') == $t) selected @endif >{{$t->equipamento_proprio}}</option>
+                    <option value="{{ $t}}" @if(isset($equipamentos) && $equipamentos->equipamento_proprio == $t)  selected @elseif(old('equipamento_proprio') == $t) selected @endif >{{$t}}</option>
                 @endforeach
                 </select>
             </div>
@@ -83,7 +83,7 @@
                 <label for="tensao" class="form-label">Tensão:</label>
                 <select name="tensao" id="tensao" class="form-control selecao">
                         @foreach ($tensao as $key => $t)
-                        <option value="{{ $t->tensao }}" @if(isset($equipamentos) && $equipamentos->tensao == $t)  selected @elseif(old('tensao') == $t) selected @endif >{{$t->tensao}}</option>
+                        <option value="{{ $t }}" @if(isset($equipamentos) && $equipamentos->tensao == $t)  selected @elseif(old('tensao') == $t) selected @endif >{{$t}}</option>
                     @endforeach
                 </select>
             </div>
@@ -93,27 +93,27 @@
                 <label for="manual" class="form-label">Manual:</label>
                 <select name="manual" id="manual" class="form-control selecao alteraManual">
                         @foreach ($manual as $key => $t)
-                        <option value="{{ $t->manual }}" @if(isset($equipamentos) && $equipamentos->manual == $t)  selected @elseif(old('manual') == $t) selected @endif >{{$t->manual}}</option>
+                        <option value="{{ $t }}" @if(isset($equipamentos) && $equipamentos->manual == $t)  selected @elseif(old('manual') == $t) selected @endif >{{$t}}</option>
                     @endforeach
                 </select>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-2">
-        <div class="form-group">
+        <div class="col-4">
+            <div class="form-group">
                 <label for="num_serie" class="form-label">Número de Série:</label>
                 <input type="number" name="num_serie" class="form-control" value="@if(isset($equipamentos) && $equipamentos){{$equipamentos->num_serie}}@else{{old("num_serie")}}@endif">
             </div>
         </div>
-        <div class="col-6 camposLocalizacao" >
-        <div class="form-group">
+        <div class="col-4 camposLocalizacao" >
+            <div class="form-group">
                 <label for="localizacao_manual" class="form-label">Localização Manual:</label>
                 <input type="text" name="localizacao_manual" class="form-control" value="@if(isset($equipamentos) && $equipamentos){{$equipamentos->localizacao_manual}}@else{{old("localizacao_manual")}}@endif">
             </div>
         </div>
         <div class="col-4">
-        <div class="form-group">
+            <div class="form-group">
                 <label for="doc_instrucao" class="form-label">Documento de Instrução:</label>
                 <input type="text" name="doc_instrucao" class="form-control" value="@if(isset($equipamentos) && $equipamentos){{$equipamentos->doc_instrucao}}@else{{old("doc_instrucao")}}@endif">
             </div>
@@ -121,19 +121,19 @@
     </div>
     <div class="row">
         <div class="col-4">
-        <div class="form-group">
+            <div class="form-group">
                 <label for="codigo" class="form-label">Código:</label>
                 <input type="text" name="codigo" class="form-control" value="@if(isset($equipamentos) && $equipamentos){{$equipamentos->codigo}}@else{{old("codigo")}}@endif">
             </div>
         </div>
         <div class="col-4">
-        <div class="form-group">
+            <div class="form-group">
                 <label for="patrimonio" class="form-label">Patrimônio:</label>
                 <input type="text" name="patrimonio" class="form-control" value="@if(isset($equipamentos) && $equipamentos){{$equipamentos->patrimonio}}@else{{old("patrimonio")}}@endif">
             </div>
         </div>
         <div class="col-4">
-        <div class="form-group">
+            <div class="form-group">
                 <label for="fabricante" class="form-label">Fabricante:</label>
                 <input type="text" name="fabricante" class="form-control" value="@if(isset($equipamentos) && $equipamentos){{$equipamentos->fabricante}}@else{{old("fabricante")}}@endif">
             </div>
@@ -141,35 +141,35 @@
     </div>
      <div class="row">
         <div class="col-5">
-        <div class="form-group">
-            <label for="fornecedor" class="form-label">Fornecedor:</label>
-            <select name="fornecedor" id="fornecedor" class="form-control selecao">
+            <div class="form-group">
+            <label for="fornecedor_id" class="form-label">Fornecedor:</label>
+            <select name="fornecedor_id" id="fornecedor_id" class="form-control selecao">
                 @foreach ($fornecedores as $key => $t)
-                  <option value="{{ $t->razao_social }}" @if(isset($equipamentos) && $equipamentos->fornecedores == $t)  selected @elseif(old('fornecedores') == $t) selected @endif >{{$t->razao_social}}</option> 
+                  <option value="{{ $t->razao_social }}" @if(isset($equipamentos) && $equipamentos->fornecedores_id == $t->id)  selected @elseif(old('fornecedores_id') == $t->id) selected @endif >{{$t->razao_social}}</option> 
               @endforeach
             </select>
+        </div>
+    </div>
+        <div class="col-7">
+            <div class="form-group">
+                <label for="localizacao_equipamento" class="form-label">Localizacao Equipamento:</label>
+                <select name="localizacao_equipamento" id="localizacao_equipamento" class="form-control">
+                    @foreach ($setor as $key => $tipo)
+                        <option class=" localizacao" value="{{$tipo->id}}"@if(isset($equipamentos) && $equipamentos->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
-            <div class="col-7">
-                <div class="form-group">
-                    <label for="localizacao_equipamento" class="form-label">Localizacao Equipamento:</label>
-                    <select name="localizacao_equipamento" id="localizacao_equipamento" class="form-control">
-                        @foreach ($setores as $key => $tipo)
-                            <option class=" localizacao" value="{{$tipo->setor}}"@if(isset($equipamentos) && $equipamentos->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col" align="end">
-                    <button type="submit" class="btn btn-success w-25 hover-shadow">
-                        Salvar 
-                        <i class="fas fa-save"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+    </div>
+    <div class="row">
+        <div class="col" align="end">
+            <button type="submit" class="btn btn-success w-25 hover-shadow">
+                Salvar 
+                <i class="fas fa-save"></i>
+            </button>
+        </div>
+    </div>
+    </form>
     </div>
     <!-- /.row (main row) -->
 </div><!-- /.container-fluid -->

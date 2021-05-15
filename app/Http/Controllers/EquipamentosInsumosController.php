@@ -20,7 +20,7 @@ class EquipamentosInsumosController extends Controller
         $equipamentos_insumos = Equipamentos_Insumos::where('equipamentos_insumos', 'like', "%".$pesquisa."%")->paginate(1000);
 
         } else {
-        $equipamentos_insumos = Equipamentos_Insumos::paginate(10);
+        $equipamentos_insumos = Equipamentos_Insumos::with('fornecedor')->paginate(10);
         }
         return view('equipamentos_insumos.index', compact('equipamentos_insumos', 'pesquisa'));
 } 
@@ -31,7 +31,6 @@ class EquipamentosInsumosController extends Controller
             $produto_critico = $this->produto_critico;
             $unidade = $this->unidade;
             $fornecedor = Fornecedor::select('id', 'razao_social')->get();
-
             return view('equipamentos_insumos.form', compact('materiais', 'materiais_referencia', 'produto_critico', 'unidade','fornecedor'));
         }
         public function editar($id) {
@@ -40,7 +39,7 @@ class EquipamentosInsumosController extends Controller
             $materiais_referencia = $this->materiais_referencia;
             $produto_critico = $this->produto_critico;
             $unidade = $this->unidade;
-            $fornecedor = Fornecedor::select('razao_social')->get();
+            $fornecedor = Fornecedor::select('id','razao_social')->get();
 
             return view('equipamentos_insumos.form', compact('equipamentos_insumos','materiais', 'materiais_referencia', 'produto_critico', 'unidade','fornecedor'));
         }

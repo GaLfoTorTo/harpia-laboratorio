@@ -50,11 +50,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/clientes/salvar', [ClienteController::class, 'salvar'])->name('clientes.salvar');
     Route::get('/clientes/deletar/{id}', [ClienteController::class, 'deletar'])->name('clientes.deletar');
 
-    Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos');
-    Route::get('/equipamentos/novo', [EquipamentoController::class, 'novo'])->name('equipamentos.novo');
-    Route::get('/equipamentos/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos.editar');
-    Route::post('/equipamentos/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos.salvar');
-    Route::get('/equipamentos/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos.deletar');
+    Route::get('/equipamentos_medicao', [EquipamentoController::class, 'index'])->name('equipamentos_medicao');
+    Route::get('/equipamentos_medicao/novo', [EquipamentoController::class, 'novo'])->name('equipamentos_medicao.novo');
+    Route::get('/equipamentos_medicao/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos_medicao.editar');
+    Route::post('/equipamentos_medicao/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos_medicao.salvar');
+    Route::get('/equipamentos_medicao/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos_medicao.deletar');
 
 
     Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores');

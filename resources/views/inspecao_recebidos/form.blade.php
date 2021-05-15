@@ -15,7 +15,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/inspecao_recebidos">Inspeção de Recebidos</a></li>
-            <li class="breadcrumb-item active">{{ isset($inspecao_recebidos) ? 'Editar' : 'Novo' }}</li>
+            <li class="breadcrumb-item active">{{ isset($inspecao_recebidos) ? 'Editar' : 'Nova' }}</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -40,6 +40,10 @@
                     @endforeach
                 </div>
             @endif
+            <a href="/inspecao_recebidos/novo" class="btn btn-primary">
+                Nova Inspeção 
+                <i class="fas fa-plus"></i>
+            </a>
 
   <form action="/inspecao_recebidos/salvar" method="POST">
     @csrf
@@ -47,8 +51,14 @@
     <div class="row">
         <div class="col-12">
             <div class="form-group">
-                <label for="produto" class="form-label">Produto:</label>
-                <input type="text" name="produto" class="form-control" required value="@if(isset($inspecao_recebidos)){{$inspecao_recebidos->produto}}@else{{ old('produto') }}@endif">
+                <label for="produto_id" class="form-label">Produto:</label>
+                <option value="">selecione</option>
+                <select name="produto_id" id="produto_id" class="form-control">
+                    <option value="">selecione</option>
+                    @foreach ($produto as $key => $tipo)
+                        <option class=" produto_id" value="{{$tipo->id}}"@if(isset($inspecao_recebidos) && $inspecao_recebidos->produto_id == $tipo->id) selected @elseif(old('produto_id') == $tipo->id) selected @endif>{{$tipo->nome}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
     </div>
@@ -57,6 +67,7 @@
             <div class="form-group">
                 <label for="fornecedor_id" class="form-label">Fornecedor:</label>
                 <select name="fornecedor_id" id="fornecedor_id" class="form-control">
+                    <option value="">selecione</option>
                     @foreach ($fornecedor as $key => $tipo)
                         <option class=" fornecedor_id" value="{{$tipo->id}}"@if(isset($inspecao_recebidos) && $inspecao_recebidos->fornecedor_id == $tipo->id) selected @elseif(old('fornecedor_id') == $tipo->id) selected @endif>{{$tipo->nome_fantasia}}</option>
                     @endforeach
@@ -92,28 +103,28 @@
     </div>
     <div class="row">
         <table class="table">
-            @foreach ($pergunta as $item)
-            <tbody>
-                <th>
-                    <div class="row">
-                        <div class="col-9" >
-                            <label for="lote" class="form-label">{{$item->pergunta}}</label>
-                        </div>               
-                        <div class="col-1" align="center">
-                            <label for="resposta">SIM</label><br>
-                            <input type="radio" class="respostas" required name="resposta[{{$item->id}}]" value="@if('checked'){{'sim'}}@endif">
+            @foreach ($pergunta as $key => $item)     
+                <tbody>
+                    <th>
+                        <div class="row">
+                            <div class="col-9" >
+                                <label for="lote" class="form-label">{{$item->pergunta}}</label>
+                            </div>
+                            <div class="col-1" align="center">
+                                <label for="resposta">SIM</label><br>
+                                <input type="radio" class="respostas" required name="resposta[{{$item->id}}]" value="sim" @if(isset($resposta) && $resposta[$key]->resposta == "sim") checked @elseif(old('resposta[{{$item->id}}]') == 'sim')checked @endif>
+                            </div>
+                            <div class="col-1" align="center">
+                                <label for="resposta">NÃO</label><br>
+                                <input type="radio" class="resposta" name="resposta[{{$item->id}}]" value="nao" @if(isset($resposta) && $resposta[$key]->resposta == "nao") checked @elseif(old('resposta[{{$item->id}}]') == 'nao')checked @endif>
+                            </div>
+                            <div class="col-1" align="center">
+                                <label for="resposta">NA</label><br>
+                                <input type="radio" class="resposta" name="resposta[{{$item->id}}]" value="na" @if(isset($resposta) && $resposta[$key]->resposta == "na") checked @elseif(old('resposta[{{$item->id}}]') == 'na')checked @endif
+                            </div>         
                         </div>
-                        <div class="col-1" align="center">
-                            <label for="resposta">NÃO</label><br>
-                            <input type="radio" class="resposta" name="resposta[{{$item->id}}]" value="@if('checked'){{'nao'}}@endif">
-                        </div>
-                        <div class="col-1" align="center">
-                            <label for="resposta">NDA</label><br>
-                            <input type="radio" class="resposta" name="resposta[{{$item->id}}]" value="@if('checked'){{'nada'}}@endif">
-                        </div>
-                    </div>
-                </th>
-            </tbody>
+                    </th>
+                </tbody>
             @endforeach
         </table>
     </div>
@@ -132,9 +143,9 @@
         </div>
         <div class="col-2" align="center">
             <label for="sim">SIM</label>
-            <input type="radio" name="insumo_liberado" class="insumo_liberado" id="sim" value="@if(isset($inspecao_recebidos) && $inspecao_recebidos->insumo_liberado == 'sim'){{$inspecao_recebidos->insumo_liberado}}@elseif('checked'){{'sim'}}@else{{old('insumo_liberado')}}@endif">
+            <input type="radio" name="insumo_liberado" class="insumo_liberado" id="sim" value="sim" @if(isset($inspecao_recebido->insumo_lieberado) && $inspecao_recebido->insumo_lieberado == "sim") checked @elseif(old('insumo_liberado') == 'sim')checked @endif>
             <label for="nao">NÃO</label>
-            <input type="radio" required name="insumo_liberado" class="insumo_liberado" id="nao" value="@if(isset($inspecao_recebidos) && $inspecao_recebidos->insumo_liberado == 'não'){{$inspecao_recebidos->insumo_liberado}}@elseif('checked'){{'não'}}@else{{old('insumo_liberado')}}@endif">
+            <input type="radio" required name="insumo_liberado" class="insumo_liberado" id="nao" value="nao" @if(isset($inspecao_recebido->insumo_lieberado) && $inspecao_recebido->insumo_lieberado == "nao") checked @elseif(old('insumo_liberado') == 'nao')checked @endif>
         </div>
     </div>
     <br>
@@ -172,7 +183,7 @@
         if(valor == 'não'){
             $('.justificativa').removeAttr('readonly');
         }else if(valor == 'sim'){
-            $('.justificativa').empty('value');
+            $('.justificativa').val('');
             $('.justificativa').attr('readonly', true);
         }
     })
