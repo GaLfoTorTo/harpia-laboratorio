@@ -25,20 +25,19 @@ class ParticipantesResquest extends FormRequest
     public function rules()
     {
         return [
-            'numero' => 'required',
             'setor' => 'required',
-            'nome' => 'required',
-            'assinatura' => 'required'
+            'nome' => 'required'
+            
             
         ];
     }
     public function messages()
     {
         return [
-            'numero.required' => 'O número é obrigatório',
+            
             'setor.required' => 'O setor é obrigatório',
-            'nome.required' => 'O nome é obrigatório ',
-            'assinatura.required' => 'A assinatura é obrigatória'            
+            'nome.required' => 'O nome é obrigatório '
+                    
         ];
     }
 }

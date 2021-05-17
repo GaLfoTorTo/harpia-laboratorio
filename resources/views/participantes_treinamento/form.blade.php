@@ -22,13 +22,21 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-
+  <div class="card">
+    <div class="card-header">
+      <a href="/participantes_treinamento/novo" class="btn btn-primary">
+        Novo Participante do Treinamento 
+        <i class="fas fa-plus"></i>
+      </a>
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
           <!-- Main row -->
           <div class="row card">
             <div class="col card-body">
+
+
+      
                 
 @if($errors->any())
      <div class="alert alert-danger" role="alert">
@@ -48,14 +56,7 @@
     <input type="hidden" name="id" value="@isset($participantes_treinamento){{$participantes_treinamento->id}}@endisset">
     
     <div class="row">
-      <div class="col-2">
-        <div class="form-group">
-                <label for="numero" class="form-label">N°:</label>
-                <input type="number" name="numero" class="form-control" value="@if(isset($participantes_treinamento)){{$participantes_treinamento->numero}}@else{{ old('numero')}}@endif">
-            </div>
-        </div>
-        
-          <div class="col-5">
+          <div class="col-6">
             <div class="form-group">
                 <label for="setor" class="form-label">Setor:</label>
                 <select name="setor" id="setor" class="form-control">
@@ -66,21 +67,14 @@
             </div>
         </div>
           
-        <div class="col-5">
+        <div class="col-6">
         <div class="form-group">
                 <label for="nome" class="form-label">Nome:</label>
                 <input type="text" name="nome" class="form-control" value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->nome}}@else{{old("nome")}}@endif">
             </div>
             </div>
             </div>
-            <div class="row">
-            <div class="col-12">
-            <div class="form-group">
-                <label for="assinatura" class="form-label">Assinatura:</label>
-                <input type="text" name="assinatura" class="form-control" value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->assinatura}}@else{{old("assinatura")}}@endif">
-            </div>
-            </div>
-          </div>
+           
         </div>
     </div>
     <div class="row">
