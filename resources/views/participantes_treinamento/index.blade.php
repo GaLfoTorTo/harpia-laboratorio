@@ -55,10 +55,8 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th>N°</th>
                   <th>Setor</th>
                   <th>Nome</th>
-                  <th>Assinatura</th>
                   <th>Opções</th>
                 </tr>
               </thead>
@@ -66,10 +64,8 @@
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->numero }}</td>
                     <td>{{ $item->setor }}</td>
                     <td>{{ $item->nome }}</td>
-                    <td>{{ $item->assinatura }}</td>
                     <td>
                       <a href="participantes_treinamento/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>

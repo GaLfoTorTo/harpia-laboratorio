@@ -26,32 +26,22 @@ class ParticipantesTreinamentoController extends Controller
 
             $setores = Setor::select('setor')->get();
 
-            $numero = ParticipantesTreinamento::select('numero')
-            ->groupBy('numero')
-            ->get();
             $nome = ParticipantesTreinamento::select('nome')
             ->groupBy('nome')
             ->get();
-            $assinatura = ParticipantesTreinamento::select('assinatura')
-            ->groupBy('assinatura')
-            ->get();
-        return view('participantes_treinamento.form', compact('setores', 'numero', 'nome', 'assinatura'));
+        return view('participantes_treinamento.form', compact('setores', 'nome'));
         }
         public function editar($id) {
 
             $setores = Setor::select('setor')->get();
 
             $participantes_treinamento = ParticipantesTreinamento::find($id);
-            $numero = ParticipantesTreinamento::select('numero')
-                                    ->groupBy('numero')
-                                    ->get();
+
             $nome = ParticipantesTreinamento::select('nome')
                                     ->groupBy('nome')
                                     ->get();
-             $assinatura = ParticipantesTreinamento::select('assinatura')
-                                     ->groupBy('assinatura')
-                                     ->get();
-            return view('participantes_treinamento.form', compact('setores', 'participantes_treinamento', 'numero', 'nome', 'assinatura'));
+
+            return view('participantes_treinamento.form', compact('setores', 'participantes_treinamento', 'nome'));
         }
         public function salvar(ParticipantesResquest $request) {
 
