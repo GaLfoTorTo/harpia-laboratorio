@@ -20,7 +20,13 @@
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
-  </div>
+    <div class="card">
+      <div class="card-header">
+        <a href="/registro_treinamento/novo" class="btn btn-primary">
+          Novo Registro de Treinamento 
+          <i class="fas fa-plus"></i>
+        </a>
+        <br><br>
   <!-- /.content-header -->
 
     <!-- Main content -->

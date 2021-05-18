@@ -15,6 +15,8 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+
+      @if(Request::segment(2) != 'editar' && Request::segment(2) != 'novo')
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -36,7 +38,8 @@
           </form>
         </div>
       </li>
-
+      @endif
+      
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">

@@ -21,6 +21,13 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+  <div class="card">
+    <div class="card-header">
+      <a href="/acoes_propostas/novo" class="btn btn-primary">
+          Novas Ações Propostas
+        <i class="fas fa-plus"></i>
+      </a>
+      <br><br>
   <!-- /.content-header -->
 
     <!-- Main content -->
