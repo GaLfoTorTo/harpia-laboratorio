@@ -21,6 +21,17 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+  <div class="card">
+    @isset($acoes_propostas->id)
+      
+    <div class="card-header">
+      <a href="/acoes_propostas/novo" class="btn btn-primary">
+          Novas Ações Propostas
+        <i class="fas fa-plus"></i>
+      </a>
+      @endisset
+      <br><br>
+      
   <!-- /.content-header -->
 
     <!-- Main content -->

@@ -21,6 +21,16 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+  <div class="card">
+    @isset($novo_rnc->id)
+      
+    <div class="card-header">
+      <a href="/novo_rnc/novo" class="btn btn-primary">
+        Novo RNC 
+        <i class="fas fa-plus"></i>
+      </a>
+      @endisset
+      <br><br>
   <!-- /.content-header -->
 
     <!-- Main content -->
@@ -76,7 +86,11 @@
     <div class="col-4">
       <div class="form-group">
         <label for="responsavel" class="form-label">Responsável:</label>
-        <input type="text" name="responsavel" class="form-control" value="@isset($novo_rnc){{$novo_rnc->responsavel}}@endisset">
+        <select name="responsavel" id="responsavel" class="form-control selecao">
+          @foreach ($colaborador as $key => $t)
+            <option value="{{ $t->nome }}" @if(isset($novo_rnc) && $novo_rnc->responsavel == $t->nome)  selected @elseif(old('responsavel') == $t->nome) selected @endif >{{$t->nome}}</option> 
+        @endforeach
+      </select>
           </div>
       </div>
     <div class="col-4">
@@ -227,7 +241,11 @@
       <div class="col-5">
         <div class="form-group">
             <label for="responsavel_encerramento" class="form-label">Responsável Pelo Encerramento:</label>
-            <input type="text" name="responsavel_encerramento" class="form-control" value="@isset($novo_rnc){{$novo_rnc->responsavel_encerramento}}@endisset">
+            <select name="responsavel_encerramento" id="responsavel_encerramento" class="form-control selecao">
+              @foreach ($colaborador as $key => $t)
+                <option value="{{ $t->nome }}" @if(isset($novo_rnc) && $novo_rnc->responsavel_encerramento == $t->nome)  selected @elseif(old('responsavel_encerramento') == $t->nome) selected @endif >{{$t->nome}}</option> 
+            @endforeach
+          </select>
             </div>
         </div>
       <div class="col-3">

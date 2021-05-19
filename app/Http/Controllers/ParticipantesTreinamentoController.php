@@ -15,8 +15,11 @@ class ParticipantesTreinamentoController extends Controller
             $pesquisa = $request->pesquisa;
 
             if($pesquisa != '') {
-            $participantes_treinamento = ParticipantesTreinamento::where('titulo', 'like', "%".$pesquisa."%")->paginate(1000);
-
+            $participantes_treinamento = ParticipantesTreinamento::where('numero', 'like', "%".$pesquisa."%")
+                                                                   ->orWhere('setor', 'like', "%".$pesquisa."%")
+                                                                   ->orWhere('nome', 'like', "%".$pesquisa."%")
+                                                                   ->orWhere('assinatura', 'like', "%".$pesquisa."%")->paginate(1000);
+            
             } else {
             $participantes_treinamento = ParticipantesTreinamento::paginate(10);
             }
