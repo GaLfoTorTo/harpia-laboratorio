@@ -17,7 +17,13 @@ class ReclamacoesController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $reclamacoes = Reclamacao::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $reclamacoes = Reclamacao::with('colaborador', 'rep_analise')
+                                    ->where('descricao','like', "%".$pesquisa."%")
+                                    ->orWhere('reclamante','like', "%".$pesquisa."%")
+                                    ->orWhereHas('colaborador', function($query) use ($pesquisa){
+                                        $query->where('nome','like', "%".$pesquisa."%");
+                                    })
+                                    ->paginate(1000);
         } else {
             $reclamacoes = Reclamacao::with('colaborador', 'rep_analise')->paginate(10);
             
@@ -47,6 +53,7 @@ class ReclamacoesController extends Controller
             $reclamacao = Reclamacao::find($request->id);
             $reclamacao->update($request->all());
         } else {
+            
             $reclamacao = Reclamacao::create($request->all());
         }
 

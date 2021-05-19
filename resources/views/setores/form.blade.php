@@ -28,7 +28,20 @@
       <!-- Main row -->
       <div class="row card">
         <div class="col card-body">
-
+          <div class="row">
+            <div class="col">
+              @isset($setor->id)
+             
+              <a href="/setores/novo" class="btn btn-primary">
+                Novo Setor
+                <i class="fas fa-plus"></i>
+              </a> 
+              @endisset
+              
+            </div>
+          </div>
+          <br>
+          
           @if($errors->any())
           <div class="alert alert-danger" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -44,22 +57,23 @@
     @csrf
     <input type="hidden" name="id" value="@isset($setor){{$setor->id}}@endisset">
     <div class="row">
+      <div class="col-6">
+        <div class="form-outline">
+          <label for="sub_setor" class="form-label">Setor Pai:</label>
+          <select name="setors_id" class="form-control" id="setors_id">
+            <option value=""></option>
+            @foreach ($setores as $set)
+              <option value="{{ $set->id }}" @if(isset($setor) && $setor->setors_id == $set->id) selected @elseif( old('setors_id') == $set->id) selected @endif >{{ $set->setor }}</option>
+            @endforeach
+          </select>
+        </div>
+    </div>
         <div class="col-6">
             <div class="form-outline">
-              <label for="setor" class="form-label">Setor:</label>
+              <label for="setor" class="form-label">Setor Filho:</label>
               <input type="text" name="setor" class="form-control" required value="@if(isset($setor)){{$setor->setor}}@else{{ old('setor')}}@endif">                  </div>
         </div>
-        <div class="col-6">
-            <div class="form-outline">
-              <label for="sub_setor" class="form-label">Setor pai:</label>
-              <select name="setors_id" class="form-control" id="setors_id">
-                <option value=""></option>
-                @foreach ($setores as $set)
-                  <option value="{{ $set->id }}" @if(isset($setor) && $setor->setors_id == $set->id) selected @elseif( old('setors_id') == $set->id) selected @endif >{{ $set->setor }}</option>
-                @endforeach
-              </select>
-            </div>
-        </div>
+      
     </div>
        <div class="row">
         <div class="col" align="end">
