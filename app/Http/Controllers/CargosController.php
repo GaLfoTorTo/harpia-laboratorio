@@ -12,11 +12,17 @@ class CargosController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $cargos = Cargo::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $cargos = Cargo::where('cargo', 'like', "%".$pesquisa."%")
+            ->orWhere('formacao','like', "%".$pesquisa."%")
+            ->orWhere('descricao','like', "%".$pesquisa."%")
+            ->orWhere('formacao','like', "%".$pesquisa."%")
+            ->orWhere('treinamentos','like', "%".$pesquisa."%")
+            ->orWhere('requisitos','like', "%".$pesquisa."%")
+            ->paginate(1000);
         } else {
             $cargos= Cargo::paginate(10);
         }
-        $cargos = Cargo::paginate();
+       
 
         return view('cargos.index', compact('cargos','pesquisa'));
     }

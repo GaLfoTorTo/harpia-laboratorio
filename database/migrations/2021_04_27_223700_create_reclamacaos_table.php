@@ -15,23 +15,23 @@ class CreateReclamacaosTable extends Migration
     {
         Schema::create('reclamacaos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('colaborador_id')->nullable();
+            $table->bigInteger('colaborador_id');
             $table->string('n_registro')->nullable();
-            $table->enum('manifestacao', ['Reclamação', 'Sugestão'])->nullable();
-            $table->string('data_abertura')->nullable();
+            $table->enum('manifestacao', ['Reclamação', 'Sugestão']);
+            $table->string('data_abertura');
             $table->string('reclamante' , 100);
             $table->string('telefone', 15);
             $table->string('email', 70);
             $table->text('descricao');
             $table->enum('tipo_nc', ['Sim', 'Não']);
             $table->string('n_acao_corretiva');
-            $table->text('retorno');
-            $table->text('solucao');
-            $table->text('analise');
-            $table->text('feedback');
+            $table->text('retorno')->nullable();
+            $table->text('solucao')->nullable();
+            $table->text('analise')->nullable();
+            $table->text('feedback')->nullable();
             $table->bigInteger('rep_analise_id')->nullable();
-            $table->string('data_encerramento') ->nullable();
-            $table->text('observacao');
+            $table->string('data_encerramento')->nullable();
+            $table->text('observacao')->nullable();
             $table->timestamps();
         });
     }

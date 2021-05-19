@@ -28,6 +28,19 @@
       <!-- Main row -->
       <div class="row card">
         <div class="col card-body">
+          <div class="row">
+            <div class="col">
+              @isset($cargo->id)
+             
+              <a href="/cargos/novo" class="btn btn-primary">
+                Novo Cargo
+                <i class="fas fa-plus"></i>
+              </a> 
+              @endisset
+              
+            </div>
+          </div>
+          <br>
 
           @if($errors->any())
           <div class="alert alert-danger" role="alert">
@@ -56,7 +69,7 @@
       <div class="col-6">
         <div class="form-group">
           <label for="formacao">Formação:</label>
-          <textarea class="form-control" name="formacao" id="formacao" rows="3" required> @if(isset($cargo)){{$cargo->formacao}}@else{{ old('formacao')}}@endif</textarea>
+          <textarea class="form-control" name="formacao" id="formacao" rows="3" required > @if(isset($cargo)){{$cargo->formacao}}@else{{ old('formacao')}}@endif</textarea>
         </div>
       </div>
       <div class="col-6">

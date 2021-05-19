@@ -26,7 +26,7 @@ class C_temperaturaRequest extends FormRequest
         return [
             'colaborador_id' => 'required',
             'equipamento_id' => 'required',
-            'numero' => 'required',
+            're_numero' => 'required',
             'dia' => 'required',
             'hora' => 'required',
             't_min' => 'required',
@@ -41,7 +41,7 @@ class C_temperaturaRequest extends FormRequest
         return [
                 'colaborador_id.required' => 'Nome do Colaborador é obrigatório!',
                 'equipamento_id.required' => 'O equipamento  é obrigatório!',
-                'numero.required' => 'O número é obrigatório!',
+                're_numero.required' => 'O número é obrigatório!',
                 'hora.required' => 'Hora  é obrigatório!',
                 't_min.required' => 'Temperatura mínima  é obrigatória!',
                 't_atual.required' => 'Temperatura atual é obrigatório',

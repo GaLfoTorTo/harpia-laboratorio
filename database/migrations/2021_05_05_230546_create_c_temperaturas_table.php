@@ -15,16 +15,16 @@ class CreateCTemperaturasTable extends Migration
     {
         Schema::create('c_temperaturas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('equipamento_id')->nullable();
-            $table->string('re_numero')->nullable();
-            $table->string('mes_ano')->nullable();
-            $table->string('dia')->nullable();
-            $table->string('hora')->nullable();
-            $table->bigInteger('colaborador_id')->nullable();
-            $table->string('t_min')->nullable();
-            $table->string('t_atual')->nullable();
-            $table->string('t_max')->nullable();
-            $table->text('observacoes');
+            $table->bigInteger('equipamento_id');
+            $table->string('re_numero');
+            $table->string('mes_ano');
+            $table->string('dia');
+            $table->string('hora');
+            $table->bigInteger('colaborador_id');
+            $table->string('t_min');
+            $table->string('t_atual');
+            $table->string('t_max');
+            $table->text('observacoes')->nullable();
             $table->string('decongela_dia')->nullable();
             $table->bigInteger('d_colaborador_id')->nullable();
             $table->string('limpeza_dia')->nullable();
@@ -32,8 +32,8 @@ class CreateCTemperaturasTable extends Migration
             $table->string('comprovacao_dia')->nullable();
             $table->bigInteger('c_colaborador_id')->nullable();
             $table->string('n_registro')->nullable();
-            $table->text('analise_critica');
-            $table->text('observacao');
+            $table->text('analise_critica')->nullable();
+            $table->text('observacao')->nullable();
             $table->timestamps();
         });
     }

@@ -18,7 +18,14 @@ class C_temperaturaController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $c_temperaturas = C_temperatura::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $c_temperaturas = C_temperatura::with('colaborador', 'd_colaborador_id', 'l_colaborador_id', 'c_colaborador_id', 'equipamento_id')
+                                    ->where('dia','like', "%".$pesquisa."%")
+                                    ->orWhere('hora','like', "%".$pesquisa."%")
+                                    ->orWhere('observacoes','like', "%".$pesquisa."%")
+                                    ->orWhereHas('colaborador', function($query) use ($pesquisa){
+                                        $query->where('nome','like', "%".$pesquisa."%");
+                                    })
+                                    ->paginate(1000);
         } else {
             $c_temperaturas = C_temperatura::with('colaborador', 'd_colaborador_id', 'l_colaborador_id','c_colaborador_id', 'equipamento_id')->paginate(10);
             
