@@ -13,8 +13,10 @@ class RegistroTreinamentoController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-        $registro_treinamento = RegistroTreinamento::where('titulo', 'like', "%".$pesquisa."%")->paginate(1000);
-
+        $registro_treinamento = RegistroTreinamento::where('titulo', 'like', "%".$pesquisa."%")
+                                                     ->orWhere('carga_horaria', 'like', "%".$pesquisa."%")
+                                                     ->orWhere('data', 'like', "%".$pesquisa."%") ->paginate(1000);
+        
         } else {
         $registro_treinamento = RegistroTreinamento::paginate(10);
         }

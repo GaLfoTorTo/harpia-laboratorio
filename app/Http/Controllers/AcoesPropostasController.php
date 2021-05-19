@@ -16,8 +16,12 @@ class AcoesPropostasController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-        $acoes_propostas = AcoesPropostas::where('titulo', 'like', "%".$pesquisa."%")->paginate(1000);
-
+        $acoes_propostas = AcoesPropostas::where('acao', 'like', "%".$pesquisa."%")
+                                           ->orWhere('responsavel', 'like', "%".$pesquisa."%")
+                                           ->orWhere('prazo', 'like', "%".$pesquisa."%") 
+                                           ->orWhere('prazo_final', 'like', "%".$pesquisa."%") 
+                                           ->orWhere('necessario_prorrogacao', 'like', "%".$pesquisa."%") 
+                                           ->orWhere('data_encerramento', 'like', "%".$pesquisa."%")->paginate(1000);  
         } else {
         $acoes_propostas = AcoesPropostas::paginate(10);
         }

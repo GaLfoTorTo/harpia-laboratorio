@@ -20,13 +20,17 @@
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
-     <div class="card">
-        <div class="card-header">
-          <a href="/equipamentos/novo" class="btn btn-primary">
-            Novo Equipamento 
-            <i class="fas fa-plus"></i>
-          </a>
-          <br><br>
+    <div class="card">
+        @isset($equipamentos->id)
+
+    <div class="card-header">
+      <a href="/equipamentos/novo" class="btn btn-primary">
+        Novo Equipamento 
+        <i class="fas fa-plus"></i>
+      </a>
+      @endisset
+      <br><br>
+     
   <!-- /.content-header -->
 
     <!-- Main content -->

@@ -21,6 +21,16 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+  <div class="card">
+    @isset($participantes_treinamento->id)
+      
+    <div class="card-header">
+      <a href="/participantes_treinamento/novo" class="btn btn-primary">
+        Novo Participante do Treinamento 
+        <i class="fas fa-plus"></i>
+      </a>
+      <br><br>
+      @endisset
   <!-- /.content-header -->
 
     <!-- Main content -->

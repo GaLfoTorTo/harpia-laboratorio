@@ -22,11 +22,14 @@
     </div><!-- /.container-fluid -->
   </div>
   <div class="card">
+    @isset($novo_rnc->id)
+      
     <div class="card-header">
       <a href="/novo_rnc/novo" class="btn btn-primary">
         Novo RNC 
         <i class="fas fa-plus"></i>
       </a>
+      @endisset
       <br><br>
   <!-- /.content-header -->
 

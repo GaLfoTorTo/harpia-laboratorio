@@ -21,11 +21,14 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
     <div class="card">
+      @isset($registro_treinamento->id)
+          
       <div class="card-header">
         <a href="/registro_treinamento/novo" class="btn btn-primary">
           Novo Registro de Treinamento 
           <i class="fas fa-plus"></i>
         </a>
+        @endisset
         <br><br>
   <!-- /.content-header -->
 

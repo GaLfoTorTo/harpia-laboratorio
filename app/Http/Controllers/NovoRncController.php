@@ -22,7 +22,14 @@ class NovoRncController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $novo_rnc = Novo_Rnc::where('codigo', 'like', "%".$pesquisa."%")->paginate(1000);
+            $novo_rnc = Novo_Rnc::where('codigo', 'like', "%".$pesquisa."%")
+                                  ->orWhere('revisao', 'like', "%".$pesquisa."%")
+                                  ->orWhere('numero', 'like', "%".$pesquisa."%")
+                                  ->orWhere('data_abertura', 'like', "%".$pesquisa."%")
+                                  ->orWhere('responsavel', 'like', "%".$pesquisa."%")
+                                  ->orWhere('classificacao_acao', 'like', "%".$pesquisa."%")
+                                  ->orWhere('origem', 'like', "%".$pesquisa."%")->paginate(1000);
+
         } else {
             $novo_rnc = Novo_Rnc::paginate(10);
         }
