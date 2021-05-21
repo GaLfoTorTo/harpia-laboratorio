@@ -14,7 +14,7 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/participantes_treinamento">Registro de Treinamento</a></li>
+            <li class="breadcrumb-item"><a href="/participantes_treinamento">Participantes do Treinamento</a></li>
             <li class="breadcrumb-item active">{{ isset($participantes_treinamento) ? 'Editar' : 'Novo' }}</li>
           </ol>
         </div><!-- /.col -->
@@ -51,16 +51,22 @@
       <div class="col-2">
         <div class="form-group">
                 <label for="numero" class="form-label">N°:</label>
-                <input type="number" name="numero" class="form-control numero" required value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->numero}}@else{{old("numero")}}@endif">
+                <input type="number" name="numero" class="form-control" value="@if(isset($participantes_treinamento)){{$participantes_treinamento->numero}}@else{{ old('numero')}}@endif">
             </div>
         </div>
-        <div class="col-4">
-        <div class="form-group">
+        
+          <div class="col-5">
+            <div class="form-group">
                 <label for="setor" class="form-label">Setor:</label>
-                <input type="text" name="setor" class="form-control setor" required value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->setor}}@else{{old("setor")}}@endif">
+                <select name="setor" id="setor" class="form-control">
+                    @foreach ($setores as $key => $tipo)
+                    <option value="{{ $tipo->setor }}" @if(isset($participantes_treinamento) && $participantes_treinamento->setor == $tipo)  selected @elseif(old('setor') == $tipo) selected @endif >{{$tipo->setor}}</option>
+                    @endforeach
+                </select>
             </div>
-          </div>
-        <div class="col-6">
+        </div>
+          
+        <div class="col-5">
         <div class="form-group">
                 <label for="nome" class="form-label">Nome:</label>
                 <input type="text" name="nome" class="form-control" value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->nome}}@else{{old("nome")}}@endif">

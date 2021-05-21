@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ParticipantesRequest;
+use App\Http\Requests\ParticipantesResquest;
 use App\Models\ParticipantesTreinamento;
+use App\Models\Setor;
 
 
 class ParticipantesTreinamentoController extends Controller
@@ -23,11 +24,10 @@ class ParticipantesTreinamentoController extends Controller
         } 
         public function novo() {
 
+            $setores = Setor::select('setor')->get();
+
             $numero = ParticipantesTreinamento::select('numero')
             ->groupBy('numero')
-            ->get();
-            $setor = ParticipantesTreinamento::select('setor')
-            ->groupBy('setor')
             ->get();
             $nome = ParticipantesTreinamento::select('nome')
             ->groupBy('nome')
@@ -35,17 +35,15 @@ class ParticipantesTreinamentoController extends Controller
             $assinatura = ParticipantesTreinamento::select('assinatura')
             ->groupBy('assinatura')
             ->get();
-        return view('participantes_treinamento.form', compact('numero', 'setor', 'nome', 'assinatura'));
+        return view('participantes_treinamento.form', compact('setores', 'numero', 'nome', 'assinatura'));
         }
         public function editar($id) {
 
+            $setores = Setor::select('setor')->get();
 
             $participantes_treinamento = ParticipantesTreinamento::find($id);
             $numero = ParticipantesTreinamento::select('numero')
                                     ->groupBy('numero')
-                                    ->get();
-            $setor = ParticipantesTreinamento::select('setor')
-                                    ->groupBy('setor')
                                     ->get();
             $nome = ParticipantesTreinamento::select('nome')
                                     ->groupBy('nome')
@@ -53,11 +51,11 @@ class ParticipantesTreinamentoController extends Controller
              $assinatura = ParticipantesTreinamento::select('assinatura')
                                      ->groupBy('assinatura')
                                      ->get();
-            return view('participantes_treinamento.form', compact('numero', 'setor', 'nome', 'assinatura'));
+            return view('participantes_treinamento.form', compact('setores', 'participantes_treinamento', 'numero', 'nome', 'assinatura'));
         }
-        public function salvar(Request $request) {
+        public function salvar(ParticipantesResquest $request) {
 
-           // $ehvalido = $request->validated();
+            $ehvalido = $request->validated();
 
             if($request->id != '') {
                 $participantes_treinamento = ParticipantesTreinamento::find($request->id);

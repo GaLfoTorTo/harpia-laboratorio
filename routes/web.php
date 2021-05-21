@@ -4,23 +4,26 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
 
-use App\Http\Controllers\documentos_internos;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\DExternoController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\EquipamentosInsumosController;
-use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
+use App\Http\Controllers\ListaMestraController;
 use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\RegistroOcorrenciaController;
 use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\ReclamacoesController;
+use App\Http\Controllers\NovoRncController;
+use App\Http\Controllers\C_temperaturaController;
+use App\Http\Controllers\AcoesPropostasController;
 
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
@@ -67,12 +70,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('servicos/salvar', [ServicoController::class, 'salvar'])->name('servicos.salvar');
     Route::get('/servicos/deletar/{id}', [ServicoController::class, 'deletar'])->name('servicos.deletar');
 
-    Route::get('/documentos_internos', [DocumentosInternosController::class, 'index'])->name('documentos_internos');
-    Route::get('/documentos_internos/novo', [DocumentosInternosController::class, 'novo'])->name('documentos_internos.novo');
-    Route::get('/documentos_internos/editar/{id}', [DocumentosInternosController::class, 'editar'])->name('documentos_internos.editar');
-    Route::post('documentos_internos/salvar', [DocumentosInternosController::class, 'salvar'])->name('documentos_internos.salvar');
-    Route::get('/documentos_internos/deletar/{id}', [DocumentosInternosController::class, 'deletar'])->name('documentos_internos.deletar');
-
     Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('fornecedores');
     Route::get('/fornecedores/novo', [FornecedorController::class, 'novo'])->name('fornecedores.novo');
     Route::get('/fornecedores/editar/{id}', [FornecedorController::class, 'editar'])->name('fornecedores.editar');
@@ -103,13 +100,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('participantes_treinamento/salvar', [ParticipantesTreinamentoController::class, 'salvar'])->name('participantes_treinamento.salvar');
     Route::get('/participantes_treinamento/deletar/{id}', [ParticipantesTreinamentoController::class, 'deletar'])->name('participantes_treinamento.deletar');
 
-
-
     Route::get('/cargos', [CargosController::class, 'index'])->name('cargos');
     Route::get('/cargos/novo', [CargosController::class, 'novo'])->name('cargos.novo');
     Route::get('/cargos/editar/{id}', [CargosController::class, 'editar'])->name('cargos.editar');
     Route::post('cargos/salvar', [CargosController::class, 'salvar'])->name('cargos.salvar');
     Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
+    
+    Route::get('/reclamacoes', [ReclamacoesController::class, 'index'])->name('reclamacoes');
+    Route::get('/reclamacoes/novo', [ReclamacoesController::class, 'novo'])->name('reclamacoes.novo');
+    Route::get('/reclamacoes/editar/{id}', [ReclamacoesController::class, 'editar'])->name('reclamacoes.editar');
+    Route::post('reclamacoes/salvar', [ReclamacoesController::class, 'salvar'])->name('reclamacoes.salvar');
+    Route::get('/reclamacoes/deletar/{id}', [ReclamacoesController::class, 'deletar'])->name('reclamacoes.deletar');
 
     Route::get('/procedimento', [ProcedimentoController::class, 'index'])->name('procedimento');
     Route::get('/procedimento/novo', [ProcedimentoController::class, 'novo'])->name('procedimento.novo');
@@ -123,14 +124,33 @@ Route::middleware(['auth'])->group(function () {
     Route::post('registro_de_ocorrencia/salvar', [RegistroOcorrenciaController::class, 'salvar'])->name('registro_de_ocorrencia.salvar');
     Route::get('/registro_de_ocorrencia/deletar/{id}', [RegistroOcorrenciaController::class, 'deletar'])->name('registro_de_ocorrencia.deletar');
 
+    Route::get('/novo_rnc', [NovoRncController::class, 'index'])->name('novo_rnc');
+    Route::get('/novo_rnc/novo', [NovoRncController::class, 'novo'])->name('novo_rnc.novo');
+    Route::get('/novo_rnc/editar/{id}', [NovoRncController::class, 'editar'])->name('novo_rnc.editar');
+    Route::post('novo_rnc/salvar', [NovoRncController::class, 'salvar'])->name('novo_rnc.salvar');
+    Route::get('/novo_rnc/deletar/{id}', [NovoRncController::class, 'deletar'])->name('novo_rnc.deletar');
 
+    Route::get('/acoes_propostas', [AcoesPropostasController::class, 'index'])->name('acoes_propostas');
+    Route::get('/acoes_propostas/novo', [AcoesPropostasController::class, 'novo'])->name('acoes_propostas.novo');
+    Route::get('/acoes_propostas/editar/{id}', [AcoesPropostasController::class, 'editar'])->name('acoes_propostas.editar');
+    Route::post('acoes_propostas/salvar', [AcoesPropostasController::class, 'salvar'])->name('acoes_propostas.salvar');
+    Route::get('/acoes_propostas/deletar/{id}', [AcoesPropostasController::class, 'deletar'])->name('acoes_propostas.deletar');
 
+    Route::get('/lista_mestras', [ListaMestraController::class, 'index'])->name('lista_mestra');
+    Route::get('/lista_mestras/novo', [ListaMestraController::class, 'novo'])->name('lista_mestra.novo');
+    Route::get('/lista_mestras/editar/{id}', [ListaMestraController::class, 'editar'])->name('lista_mestra.editar');
+    Route::post('lista_mestras/salvar', [ListaMestraController::class, 'salvar'])->name('lista_mestra.salvar');
+    Route::get('/lista_mestras/deletar/{id}', [ListaMestraController::class, 'deletar'])->name('lista_mestra.deletar');
 
-    Route::get('/documento', [DocumentosInternosController::class, 'index'])->name('documento');
-    Route::get('/documento/novo', [DocumentosInternosController::class, 'novo'])->name('documento.novo');
-    Route::get('/documento/editar/{id}', [DocumentosInternosController::class, 'editar'])->name('documento.editar');
-    Route::post('documento/salvar', [DocumentosInternosController::class, 'salvar'])->name('documento.salvar');
-    Route::get('/documento/deletar/{id}', [DocumentosInternosController::class, 'deletar'])->name('documento.deletar');
+    Route::get('/c_temperatura', [C_temperaturaController::class, 'index'])->name('c_temperatura');
+    Route::get('/c_temperatura/novo', [C_temperaturaController::class, 'novo'])->name('c_temperatura.novo');
+    Route::get('/c_temperatura/editar/{id}', [C_temperaturaController::class, 'editar'])->name('c_temperatura.editar');
+    Route::post('c_temperatura/salvar', [C_temperaturaController::class, 'salvar'])->name('c_temperatura.salvar');
+    Route::get('/c_temperatura/deletar/{id}', [C_temperaturaController::class, 'deletar'])->name('c_temperatura.deletar');
 
-
+    Route::get('/documento', [DocumentoController::class, 'index'])->name('documento');
+    Route::get('/documento/novo', [DocumentoController::class, 'novo'])->name('documento.novo');
+    Route::get('/documento/editar/{id}', [DocumentoController::class, 'editar'])->name('documento.editar');
+    Route::post('/documento/salvar', [DocumentoController::class, 'salvar'])->name('documento.salvar');
+    Route::get('/documento/deletar/{id}', [DocumentoController::class, 'deletar'])->name('documento.deletar');
 });

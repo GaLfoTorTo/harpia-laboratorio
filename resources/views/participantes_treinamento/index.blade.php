@@ -59,6 +59,7 @@
                   <th>Setor</th>
                   <th>Nome</th>
                   <th>Assinatura</th>
+                  <th>Opções</th>
                 </tr>
               </thead>
               @foreach ($participantes_treinamento as $item)

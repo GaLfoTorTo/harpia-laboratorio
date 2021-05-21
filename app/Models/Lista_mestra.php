@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Documentos_internos extends Model
+class Lista_mestra extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,17 @@ class Documentos_internos extends Model
         'tipo',
         'codigo',
         'titulo',
-        'revisao_edicao',
+        'revisao_n',
         'data_aprovacao',
-        'num_copias',
+        'n_copias',
         'localizacao',
+        'data_analise',
+        'atualizacao_em',
         'documento'
-
     ];
+
+    public function documento_relacionado()
+    {
+        return $this->hasOne(Documentos_internos::class, 'codigo', 'codigo');
+    }
 }

@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Equipamentos Medição</h1>
+            <h1 class="m-0">Novo RNC</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Equipamentos Medição</li>
+              <li class="breadcrumb-item active">Novo RNC</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,8 +30,8 @@
 
         <div class="card">
           <div class="card-header">
-            <a href="/equipamentos_medicao/novo" class="btn btn-primary">
-              Novo Equipamento 
+            <a href="/novo_rnc/novo" class="btn btn-primary">
+              Novo RNC 
               <i class="fas fa-plus"></i>
             </a>
 
@@ -55,28 +55,32 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th>Equipamento</th>
-                  <th>Marca</th>
-                  <th>Modelo</th>
-                  <th>Fabricante</th>
-                  <th>Fornecedor</th>
+                  <th>Código</th>
+                  <th>Revisão</th>
+                  <th>Número</th>
+                  <th>Data de Abertura</th>
+                  <th>Responsável</th>
+                  <th>Classificação da Ação</th>
+                  <th>Origem</th>
                   <th>Ações</th>
                 </tr>
               </thead>
-              @foreach ($equipamentos as $item)
+              @foreach ($novo_rnc as $item)
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->equipamento }}</td>
-                    <td>{{ $item->marca }}</td>
-                    <td>{{ $item->modelo }}</td>
-                    <td>{{ $item->fabricante }}</td>
-                    <td>{{ $item->fornecedor }}</td>
+                    <td>{{ $item->codigo }}</td>
+                    <td>{{ $item->revisao }}</td>
+                    <td>{{ $item->numero }}</td>
+                    <td>{{ $item->data_abertura }}</td>
+                    <td>{{ $item->responsavel }}</td>
+                    <td>{{ $item->classificacao_acao }}</td>
+                    <td>{{ $item->origem }}</td>
                     <td>
-                      <a href="equipamentos/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="novo_rnc/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="equipamentos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="novo_rnc/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
 
@@ -91,7 +95,7 @@
         </div>
   <div class="row">
     <div class="col">
-      {{ $equipamentos->links() }}
+      {{ $novo_rnc->links() }}
     </div>
   </div>
 

@@ -51,6 +51,7 @@
 <script>
     $('.telefone').mask('(99) 99999-9999');
     $('.cep').mask('99999-999');
+    
     $(document).ready(function(){
       var valor = document.querySelector('.cpf_cnpj');
       if(valor.value == ''){

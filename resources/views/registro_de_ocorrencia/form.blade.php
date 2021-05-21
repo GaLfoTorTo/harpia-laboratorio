@@ -21,13 +21,21 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
+    
     <!-- /.content-header -->
-
+    
 
     <div class="container corpo">
         <div class="container-fluid">
             <div class="row card">
                 <div class="col card-body">
+
+                        <div class="card-header">
+                          <a href="/registro_de_ocorrencia/novo" class="btn btn-primary">
+                            Novo Registro 
+                            <i class="fas fa-plus"></i>
+                          </a>
+                          <br><br>
                     
                     <form action="/registro_de_ocorrencia/salvar/" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -40,90 +48,83 @@
                         </div>                       
                         <div class="col-4">
                             <div class="form-group">
-                                <label for="responsavel" class="form-label">Responsável:</label>
-                                <input type="text" name="responsavel" class="form-control"  required value="@if(isset($registro)){{$registro->responsavel}}@else{{ old('responsavel')}}@endif">
-                            
-                            </div>
-                        </div>    
-                        <div class="col-4">
-                            <div class="form-group">
                                 <label for="origem" class="form-label">Origem:</label>
                                 <input type="text" name="origem" class="form-control" required value="@if(isset($registro)){{$registro->origem}}@else{{ old('origem')}}@endif">
                             
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="data_de_abertura" class="form-label">Data de Abertura:</label>
                                 <input type="date" name="data_de_abertura" class="form-control" required value="@if(isset($registro)){{$registro->data_de_abertura}}@else{{ old('data_de_abertura')}}@endif">
                             </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <label for="identificacao_do_equipamento" class="form-label">Identificacao do Equipamento:</label>
-                                <input type="text" name="identificacao_do_equipamento" class="form-control" required value="@if(isset($registro)){{$registro->identificacao_do_equipamento}}@else{{ old('identificacao_do_equipamento')}}@endif">
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label for="cod_equipamento" class="form-label">Cod Equipamento:</label>
-                            <input type="text" name="cod_equipamento" class="form-control" required value="@if(isset($registro)){{$registro->cod_equipamento}}@else{{ old('cod_equipamento')}}@endif">
                     </div>
                 </div>
-                    </div>
                     <div class="row">
-                          <div class="col-4">
-                              <div class="form-group">
-                                        <label for="descricao_da_ocorrencia" class="form-label">Descricao da Ocorrencia:</label>
-                                        <input type="text" name="descricao_da_ocorrencia" class="form-control" required value="@if(isset($registro)){{$registro->descricao_da_ocorrencia}}@else{{ old('descricao_da_ocorrencia')}}@endif">
-                                    </div>
-                                </div>
-                            
-                                    <div class="col-4">
-                                        <div class="form-group">
-                                            <label for="necessario_correcao_imediata" class="form-label">Necessario Correcao Imediata:</label>
-                                            <input type="text" name="necessario_correcao_imediata" class="form-control" required value="@if(isset($registro)){{$registro->necessario_correcao_imediata}}@else{{ old('necessario_correcao_imediata')}}@endif">
-                                        </div>
-                                    </div>
-                                      <div class="col-4">
-                                            <div class="form-group">
-                                                <label for="descrever_correcao" class="form-label">Descrever Correcao:</label>
-                                                <input type="text" name="descrever_correcao" class="form-control" required value="@if(isset($registro)){{$registro->descrever_correcao}}@else{{ old('descrever_correcao')}}@endif">
-                                            </div>
-                                        </div>
-                                      </div>
-                                         <div class="row">
-                                               <div class="col-4">
-                                                   <div class="form-group">
-                                                            <label for="ocorrencia_e_um_trabalho_NC" class="form-label">Ocorrencia e um Trabalho NC:</label>
-                                                            <input type="text" name="ocorrencia_e_um_trabalho_NC" class="form-control" required value="@if(isset($registro)){{$registro->ocorrencia_e_um_trabalho_NC}}@else{{ old('ocorrencia_e_um_trabalho_NC')}}@endif">
-                                                        </div>
-                                                    </div>
-                                                   <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label for="registro_de_AC_n" class="form-label">Registro de AC n:</label>
-                                                                <input type="text" name="registro_de_AC_n" class="form-control" required value="@if(isset($registro)){{$registro->registro_de_AC_n}}@else{{ old('registro_de_AC_n')}}@endif">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <div class="form-group">
-                                                                <label for="parecer_tecnico" class="form-label">Parecer Tecnico:</label>
-                                                                <input type="text" name="parecer_tecnico" class="form-control" required value="@if(isset($registro)){{$registro->parecer_tecnico}}@else{{ old('parecer_tecnico')}}@endif">
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <label for="observacoes" class="form-label">Observacoes:</label>
-                                                                <input type="text" name="observacoes" class="form-control" required value="@if(isset($registro)){{$registro->observacoes}}@else{{ old('observacoes')}}@endif">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="identificacao_do_equipamento" class="form-label">Identificacao/Cod. Equipamento:</label>
+                                <input type="text" name="identificacao_do_equipamento" class="form-control" required value="@if(isset($registro)){{$registro->identificacao_do_equipamento}}@else{{ old('identificacao_do_equipamento')}}@endif">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                             <div class="form-group">
+                             <label for="ocorrencia_e_um_trabalho_NC" class="form-label">Ocorrencia e um Trabalho NC:</label>
+                             <input type="text" name="ocorrencia_e_um_trabalho_NC" class="form-control" required value="@if(isset($registro)){{$registro->ocorrencia_e_um_trabalho_NC}}@else{{ old('ocorrencia_e_um_trabalho_NC')}}@endif">
+                        </div>
+                 </div>
+                </div>
+                <div class="row">
+                 <div class="col-6">
+                        <div class="form-group">
+                            <label for="necessario_correcao_imediata" class="form-label">Necessário correção imediata:</label>
+                            <select name="necessario_correcao_imediata" id="necessario_correcao_imediata" class="form-control selecao">
+                                <option value="">Selecione:</option>
+                                @foreach ($necessario_correcao_imediata as $key => $t)
+                                    <option value="{{ $t }}" @if(isset($registro) && $registro->necessario_correcao_imediata == $t)  selected @elseif(old('necessario_correcao_imediata') == $t) selected @endif >{{$t}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                          <label for="registro_de_AC_n" class="form-label">Registro de AC n:</label>
+                         <input type="text" name="registro_de_AC_n" class="form-control" required value="@if(isset($registro)){{$registro->registro_de_AC_n}}@else{{ old('registro_de_AC_n')}}@endif">
+                 </div>
+                </div>
+              </div>
+                    <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="descrever_correcao">Descrição da ocorrência:</label>
+                            <textarea class="form-control" name="descrever_correcao" id="descrever_correcao" rows="3" required> @if(isset($registro)){{$registro->descrever_correcao}}@else{{ old('descrever_correcao')}}@endif</textarea>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-12">
+                        <div class="form-group">
+                            <label for="descrever_correcao">Descrever correção:</label>
+                            <textarea class="form-control" name="descrever_correcao" id="descrever_correcao" rows="3" required> @if(isset($registro)){{$registro->descrever_correcao}}@else{{ old('descrever_correcao')}}@endif</textarea>
+                        </div>
+                    </div>
+                </div> 
+                        <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="parecer_tecnico">Parecer tecnico:</label>
+                            <textarea class="form-control" name="parecer_tecnico" id="parecer_tecnico" rows="3" required> @if(isset($registro)){{$registro->parecer_tecnico}}@else{{ old('parecer_tecnico')}}@endif</textarea>
+                        </div>
+                    </div>
+                </div>
+                        <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="observacoes">Observações:</label>
+                            <textarea class="form-control" name="observacoes" id="observacoes" rows="3" required> @if(isset($registro)){{$registro->observacoes}}@else{{ old('observacoes')}}@endif</textarea>
+                        </div>
+                   </div>
+                </div>                         
                             
                             <div class="col">
                                 <button type="submit" class="btn btn-success w-100">
@@ -135,12 +136,11 @@
                     </div>
                 </div>
             </div>
+        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-                               
-</div>
-     
+                                    
 @include('layout.footer')

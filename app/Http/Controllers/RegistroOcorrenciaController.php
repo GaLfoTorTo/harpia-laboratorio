@@ -8,13 +8,22 @@ use App\Models\RegistroOcorrencia;
 
 class RegistroOcorrenciaController extends Controller
 {
-    public $tipos = ['servico', 'produto', ];
+    public $tipos = ['serviço', 'produto', ];
+    public $necessario_correcao_imediata = ['Sim', 'Não', ];
 
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
         
         if($pesquisa != '') {
-            $registro = RegistroOcorrencia::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $registro = RegistroOcorrencia::where('numero', 'like', "%".$pesquisa."%")
+                                            ->orWhere('origem', 'like', "%".$pesquisa."%")
+                                            ->orWhere('data_de_abertura', 'like', "%".$pesquisa."%")
+                                            ->orWhere('identificacao_do_equipamento', 'like', "%".$pesquisa."%")
+                                            ->orWhere('descrever_correcao', 'like', "%".$pesquisa."%")
+                                            ->orWhere('ocorrencia_e_um_trabalho_NC', 'like', "%".$pesquisa."%")
+                                            ->orWhere('registro_de_AC_n', 'like', "%".$pesquisa."%")
+                                            ->orWhere('parecer_tecnico', 'like', "%".$pesquisa."%")
+                                            ->orWhere('observacoes', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
             $registro = RegistroOcorrencia::paginate(10);
         }
@@ -22,12 +31,14 @@ class RegistroOcorrenciaController extends Controller
     } 
     public function novo() {
         $tipos = $this->tipos;
-        return view('registro_de_ocorrencia.form', compact('tipos'));
+        $necessario_correcao_imediata = $this->necessario_correcao_imediata;
+        return view('registro_de_ocorrencia.form', compact('tipos', 'necessario_correcao_imediata'));
     }
     public function editar($id) {
         $tipos = $this->tipos;
+        $necessario_correcao_imediata = $this->necessario_correcao_imediata;
         $registro = RegistroOcorrencia::find($id);
-        return view('registro_de_ocorrencia.form', compact('registro', 'tipos'));
+        return view('registro_de_ocorrencia.form', compact('registro', 'tipos', 'necessario_correcao_imediata'));
     }
     public function salvar(Request $request) {
         
