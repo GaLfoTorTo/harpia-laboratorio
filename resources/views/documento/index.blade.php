@@ -10,25 +10,27 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Documentos Internos</h1>
+            <h1 class="m-0">Documento</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Documentos Internos</li>
+              <li class="breadcrumb-item active">Documento</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
 
+<div class="container corpo">
+  
 
   <section class="content">
       <div class="container-fluid">
 
   <div class="card">
           <div class="card-header">
-            <a href="/documentos_internos/novo" class="btn btn-primary">
+            <a href="/documento/novo" class="btn btn-primary">
               Novo documento 
               <i class="fas fa-plus"></i>
             </a>
@@ -53,13 +55,14 @@
               <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Tipo</th>
-                    <th>Código</th>
-                    <th>Título</th>
-                    <th>Revisão Edição</th>
-                    <th>Data Aprovação</th>
-                    <th>Num Copias</th>
+                    <th>Título:</th>
+                    <th>Revisão/Edição n°:</th>
+                    <th>Código:</th>
                     <th>Localização</th>
+                    <th>Data da atualização</th>
+                    <th>Análise critica/verificação</th>
+                    <th>Atualização em</th>
+                    <th>N° de Exemplares</th>
                     <th>Documento</th>
                 </tr>
               </thead>
@@ -67,25 +70,22 @@
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->tipo }}</td>
-                    <td>{{ $item->codigo}}</td>
                     <td>{{ $item->titulo }}</td>
-                    <td>{{ $item->revisao_edicao}}</td>
-                    <td>{{ $item->data_aprovacao}}</td>
-                    <td>{{ $item->num_copias}}</td>
-                    <td>{{ $item->localizacao}}</td>
+                    <td>{{ $item->revisao_edicao_n }}</td>
+                    <td>{{ $item->codigo }}</td>
+                    <td>{{ $item->localizacao }}</td>
+                    <td>{{ $item->data_da_atualizacao }}</td>
+                    <td>{{ $item->analise_critica_verificacao }}</td>
+                    <td>{{ $item->atualizacao_em }}</td>
+                    <td>{{ $item->n_de_exemplares}}</td>
                     <td>{{ $item->documento}}</td>
-
                     <td>
-                  
-                      <a href="documentos_internos/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="documento/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="documentos_internos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="documento/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
-
-
                     </td>
                 </tr>
               </tbody>
@@ -99,8 +99,7 @@
   </div>
 </div>
 </div>
-</div>
-
-
-
+  </div>
 @include('layout.footer')
+
+

@@ -4,14 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
 
-use App\Http\Controllers\documentos_internos;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\DExternoController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ServicoController;
 use App\Http\Controllers\EquipamentosInsumosController;
-use App\Http\Controllers\DocumentosInternosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
@@ -21,6 +19,7 @@ use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\RegistroOcorrenciaController;
+use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\ReclamacoesController;
 use App\Http\Controllers\NovoRncController;
 use App\Http\Controllers\C_temperaturaController;
@@ -70,12 +69,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/servicos/editar/{id}', [ServicoController::class, 'editar'])->name('servicos.editar');
     Route::post('servicos/salvar', [ServicoController::class, 'salvar'])->name('servicos.salvar');
     Route::get('/servicos/deletar/{id}', [ServicoController::class, 'deletar'])->name('servicos.deletar');
-
-    Route::get('/documentos_internos', [DocumentosInternosController::class, 'index'])->name('documentos_internos');
-    Route::get('/documentos_internos/novo', [DocumentosInternosController::class, 'novo'])->name('documentos_internos.novo');
-    Route::get('/documentos_internos/editar/{id}', [DocumentosInternosController::class, 'editar'])->name('documentos_internos.editar');
-    Route::post('documentos_internos/salvar', [DocumentosInternosController::class, 'salvar'])->name('documentos_internos.salvar');
-    Route::get('/documentos_internos/deletar/{id}', [DocumentosInternosController::class, 'deletar'])->name('documentos_internos.deletar');
 
     Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('fornecedores');
     Route::get('/fornecedores/novo', [FornecedorController::class, 'novo'])->name('fornecedores.novo');
@@ -154,4 +147,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/c_temperatura/editar/{id}', [C_temperaturaController::class, 'editar'])->name('c_temperatura.editar');
     Route::post('c_temperatura/salvar', [C_temperaturaController::class, 'salvar'])->name('c_temperatura.salvar');
     Route::get('/c_temperatura/deletar/{id}', [C_temperaturaController::class, 'deletar'])->name('c_temperatura.deletar');
+
+    Route::get('/documento', [DocumentoController::class, 'index'])->name('documento');
+    Route::get('/documento/novo', [DocumentoController::class, 'novo'])->name('documento.novo');
+    Route::get('/documento/editar/{id}', [DocumentoController::class, 'editar'])->name('documento.editar');
+    Route::post('/documento/salvar', [DocumentoController::class, 'salvar'])->name('documento.salvar');
+    Route::get('/documento/deletar/{id}', [DocumentoController::class, 'deletar'])->name('documento.deletar');
 });

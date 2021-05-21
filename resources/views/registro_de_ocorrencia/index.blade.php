@@ -54,16 +54,13 @@
                 <tr>
                     <th scope="col">#</th>
                     <th>Número</th>
-                    <th>Responsável</th>
                     <th>Origem</th>
                     <th>Data de Abertura</th>
                     <th>Identificacao do Equipamento</th>
-                    <th>Cod Equipamento</th>
-                    <th>Descricao da Ocorrencia</th>
                     <th>Descrever Correcão</th>
                     <th>Ocorrencia e um Trabalho NC</th>
                     <th>Registro de AC n</th>
-                    <th> Parecer Tecnico</th>
+                    <th>Parecer Tecnico</th>
                     <th>Observacões</th>
                 </tr>
               </thead>
@@ -72,13 +69,9 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->numero }}</td>
-                    <td>{{ $item->responsavel}}</td>
                     <td>{{ $item->origem }}</td>
                     <td>{{ $item->data_de_abertura}}</td>
                     <td>{{ $item->identificacao_do_equipamento}}</td>
-                    <td>{{ $item->cod_equipamento}}</td>
-                    <td>{{ $item->descricao_da_ocorrencia}}</td>
-                    <td>{{ $item->necessario_correcao_imediata}}</td>
                     <td>{{ $item->descrever_correcao}}</td>
                     <td>{{ $item->ocorrencia_e_um_trabalho_NC}}</td>
                     <td>{{ $item->registro_de_AC_n}}</td>

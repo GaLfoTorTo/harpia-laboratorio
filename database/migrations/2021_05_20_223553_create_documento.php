@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDExternosTable extends Migration
+class CreateDocumento extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,21 @@ class CreateDExternosTable extends Migration
      */
     public function up()
     {
-        Schema::create('d_externos', function (Blueprint $table) {
+        Schema::create('documento', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo', 100);
-            $table->integer('revisao_edicao_n')->nullable();
-            $table->string('codigo', 15);
+            $table->string('titulo', 100)->nullable();
+            $table->string('revisao_edicao_n')->nullable();
+            $table->string('codigo', 15)->nullable();
             $table->string('localizacao', 255)->nullable();
             $table->date('data_da_atualizacao', 10)->nullable();
-            $table->string('analise_critica_verificacao', 255);
+            $table->string('analise_critica_verificacao', 255)->nullable();
             $table->date('atualizacao_em')->nullable();
             $table->integer('n_de_exemplares')->nullable();
             $table->string('documento', 255)->nullable();
+            $table->enum('tipo', ['Manual','Procedimento','Anexo','Instrução de uso/trabalho','Formulário'])->nullable();
+            $table->string('revisao_edicao', 50)->nullable();
+            $table->date('data_aprovacao')->nullable();
+            $table->integer('num_copias')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +39,6 @@ class CreateDExternosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('d_externos');
+        Schema::dropIfExists('documento');
     }
 }

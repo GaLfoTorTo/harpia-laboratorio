@@ -5,11 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Documentos_internos extends Model
+class Documento extends Model
 {
     use HasFactory;
 
+    protected $table = 'documento';
     protected $fillable = [
+        'titulo',
+        'revisao_edicao_n',
+        'codigo',
+        'localizacao',
+        'data_da_atualizacao',
+        'analise_critica_verificacao',
+        'atualizacao_em',
+        'n_de_exemplares',
+        'documento',
         'tipo',
         'codigo',
         'titulo',
@@ -18,6 +28,8 @@ class Documentos_internos extends Model
         'num_copias',
         'localizacao',
         'documento'
+        
+    ]; 
 
-    ];
+    
 }
