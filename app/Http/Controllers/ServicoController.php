@@ -15,11 +15,15 @@ class ServicoController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $servicos = Servico::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $servicos = Servico::where('descricao', 'like', "%".$pesquisa."%")
+            ->orWhere('tipo_servico','like', "%".$pesquisa."%")
+            ->orWhere('tipo_material','like', "%".$pesquisa."%")
+            ->orWhere('servico_critico','like', "%".$pesquisa."%")
+            ->paginate(1000);
         } else {
             $servicos = Servico::paginate(10);
         }
-        $servicos = Servico::paginate();
+      
 
         return view('servicos.index', compact('servicos','pesquisa'));
     }

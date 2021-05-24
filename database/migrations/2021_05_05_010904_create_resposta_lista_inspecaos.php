@@ -15,8 +15,8 @@ class CreateRespostaListaInspecaos extends Migration
     {
         Schema::create('resposta_lista_inspecaos', function (Blueprint $table) {
             $table->id();
-            $table->enum('resposta',['sim','nao','nada']);
-            $table->bigInteger('produto_id');
+            $table->enum('resposta',['sim','nao','na']);
+            $table->bigInteger('inspecao_id');
             $table->bigInteger('pergunta_id');
             $table->timestamps();
         });

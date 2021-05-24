@@ -28,6 +28,19 @@
       <!-- Main row -->
       <div class="row card">
         <div class="col card-body">
+          <div class="row">
+            <div class="col">
+              @isset($servico->id)
+             
+              <a href="/servicos/novo" class="btn btn-primary">
+                Novo Serviço
+                <i class="fas fa-plus"></i>
+              </a> 
+              @endisset
+              
+            </div>
+          </div>
+          <br>
 
           @if($errors->any())
           <div class="alert alert-danger" role="alert">
@@ -52,11 +65,11 @@
         </div>
         <div class="col-6">
             <div class="form-outline">
-              <label for="descricao" class="form-label">Tipo Material</label>
-                <select name="tipo_material" id="tipo_material" class="form-control">
+              <label for="tipo_material" class="form-label">Tipo Material</label>
+                <select required name="tipo_material" id="tipo_material" class="form-control">
                     <option value="">Selecione tipo material</option>
                     @foreach ($tipo_material as $key => $tipo)
-                    <option class="tipo_material" value="{{$tipo}}" @if(@isset($servico) && $servico->tipo_material == $tipo)selected @elseif(old('tipo_material') == $tipo) selected @endif >{{$tipo}}   
+                    <option  value="{{$tipo}}" @if(@isset($servico) && $servico->tipo_material == $tipo)selected @elseif(old('tipo_material') == $tipo) selected @endif >{{$tipo}}   
                     </option>
                     @endforeach
                     
@@ -67,11 +80,11 @@
     <div class="row">
         <div class="col-6">
             <div class="form-outline">
-              <label for="descricao" class="form-label">Tipo Serviço</label>
-                <select name="tipo_servico" id="tipo_servico" class="form-control">
+              <label for="tipo_servico" class="form-label">Tipo Serviço</label>
+                <select required name="tipo_servico" id="tipo_servico" class="form-control">
                     <option value="">Selecione o tipo do serviço</option>
                     @foreach ($tipo_servico as $key => $tipo)
-                    <option class="tipo_servico" value="{{$tipo}}" @if(@isset($servico) && $servico->tipo_servico == $tipo)selected @elseif(old('tipo_servico') == $tipo) selected @endif >{{$tipo}}   
+                    <option value="{{$tipo}}" @if(@isset($servico) && $servico->tipo_servico == $tipo)selected @elseif(old('tipo_servico') == $tipo) selected @endif >{{$tipo}}   
                     </option>
                     @endforeach
                     
@@ -80,9 +93,9 @@
         </div>
         <div class="col-6">
             <div class="form-outline">
-              <label for="descricao" class="form-label">Serviço Crítico</label>
-                <select name="servico_critico" id="servico_critico" class="form-control">
-                    <option value="">Serviço crítico?</option>
+              <label for="servico_critico" class="form-label">Serviço Crítico</label>
+                <select required name="servico_critico" id="servico_critico" class="form-control">
+                    <option value="">Selecione</option>
                     <option value="Sim" {{ isset($servico) && $servico->servico_critico == 'Sim'  || old('servico_critico') == 'Sim' ? 'selected' : '' }}>Sim</option>
                     <option value="Não" {{ isset($servico) && $servico->servico_critico == 'Não' || old('servico_critico') == 'Não' ? 'selected' : '' }}>Não</option>
                     

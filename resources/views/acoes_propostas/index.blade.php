@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Equipamentos Medição</h1>
+            <h1 class="m-0">Novas Ações Propostas</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Equipamentos Medição</li>
+              <li class="breadcrumb-item active">Novas Ações Propostas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -30,8 +30,8 @@
 
         <div class="card">
           <div class="card-header">
-            <a href="/equipamentos_medicao/novo" class="btn btn-primary">
-              Novo Equipamento 
+            <a href="/acoes_propostas/novo" class="btn btn-primary">
+                Novas Ações Propostas
               <i class="fas fa-plus"></i>
             </a>
 
@@ -55,28 +55,30 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th>Equipamento</th>
-                  <th>Marca</th>
-                  <th>Modelo</th>
-                  <th>Fabricante</th>
-                  <th>Fornecedor</th>
+                  <th>Ação</th>
+                  <th>Responsável</th>
+                  <th>Prazo</th>
+                  <th>Prazo Final</th>
+                  <th>Necessário Prorrogação</th>
+                  <th>Data de Encerramento</th>
                   <th>Ações</th>
                 </tr>
               </thead>
-              @foreach ($equipamentos as $item)
+              @foreach ($acoes_propostas as $item)
               <tbody>
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->equipamento }}</td>
-                    <td>{{ $item->marca }}</td>
-                    <td>{{ $item->modelo }}</td>
-                    <td>{{ $item->fabricante }}</td>
-                    <td>{{ $item->fornecedor }}</td>
+                    <td>{{ $item->acao }}</td>
+                    <td>{{ $item->responsavel }}</td>
+                    <td>{{ $item->prazo }}</td>
+                    <td>{{ $item->prazo_final }}</td>
+                    <td>{{ $item->necessario_prorrogacao }}</td>
+                    <td>{{ $item->data_encerramento }}</td>
                     <td>
-                      <a href="equipamentos/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="acoes_propostas/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="equipamentos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="acoes_propostas/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                         <i class="fas fa-trash"></i>
                       </a>
 
@@ -86,12 +88,19 @@
               </tbody>
               @endforeach
             </table>
+            <br>
+            @if(count($acoes_propostas) < 1)
+            <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
+              Nenhum registro encontrado!
+            </div>
+            @endif
           </div>
+          
           <!-- /.card-body -->
         </div>
   <div class="row">
     <div class="col">
-      {{ $equipamentos->links() }}
+      {{ $acoes_propostas->links() }}
     </div>
   </div>
 

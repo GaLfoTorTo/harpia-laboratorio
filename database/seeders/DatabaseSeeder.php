@@ -16,11 +16,13 @@ class DatabaseSeeder extends Seeder
         $this->call(UserAdminSeeder::class);
         $this->call(ClientesSeeder::class);
         $this->call(ColaboradorSeeder::class);
-        //$this->call(DExternoSeeder::class);
-        //$this->call(DocumentosInternosSeeder::class);
         $this->call(EquipamentosInsumosSeeder::class);
         $this->call(EquipamentosSeeder::class);
         $this->call(FornecedorSeeder::class);
+<<<<<<< HEAD
         $this->call(Perguntas_lista_inspecaoSeeder::class);
+=======
+        $this->call(SetorsSeeder::class);
+>>>>>>> de1c057e150672c92a17d187466abfaa0c203554
     }
 }

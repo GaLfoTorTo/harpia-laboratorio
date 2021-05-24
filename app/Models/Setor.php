@@ -16,5 +16,9 @@ class Setor extends Model
     {
         return $this->hasOne(Setor::class, 'id','setors_id');
     }
+    public function filhos()
+    {
+        return $this->hasMany(Setor::class,'setors_id');
+    }
 
 }

@@ -15,6 +15,16 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+
+      <li>
+        <button type="button" class="btn btn-light" >
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#menuModal">
+            <i class="fas fa-th-list"></i>
+          </a>
+        </button>
+      </li>
+
+      @if(Request::segment(2) != 'editar' && Request::segment(2) != 'novo')
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -23,7 +33,7 @@
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -36,7 +46,8 @@
           </form>
         </div>
       </li>
-
+      @endif
+      
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">

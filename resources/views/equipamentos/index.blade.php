@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Equipamentos</h1>
+            <h1 class="m-0">Equipamentos Medição</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Equipamentos</li>
+              <li class="breadcrumb-item active">Equipamentos Medição</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -86,6 +86,12 @@
               </tbody>
               @endforeach
             </table>
+            <br>
+            @if(count($equipamentos) < 1)
+              <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
+              Nenhum registro encontrado!
+              </div>
+            @endif
           </div>
           <!-- /.card-body -->
         </div>

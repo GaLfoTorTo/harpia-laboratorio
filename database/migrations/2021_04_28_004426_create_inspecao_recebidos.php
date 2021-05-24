@@ -15,13 +15,13 @@ class CreateInspecaoRecebidos extends Migration
     {
         Schema::create('inspecao_recebidos', function (Blueprint $table) {
             $table->id();
-            $table->string('produto', 70);
-            $table->bigInteger('fornecedor_id');
-            $table->string('fabricante', 70)->nullable();
+            $table->bigInteger('produto_id');
+            $table->string('fornecedor', 70);
+            $table->string('fabricante', 70);
             $table->string('nota_fiscal', 30);
             $table->string('lote', 30)->nullable();
-            $table->text('descicao_teste')->nullable();
-            $table->enum('insumo_liberado',['sim','não'])->nullable();
+            $table->text('descricao_teste')->nullable();
+            $table->enum('insumo_liberado',['sim','não']);
             $table->text('justificativa')->nullable();
             $table->timestamps();
         });
