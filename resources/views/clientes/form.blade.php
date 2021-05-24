@@ -40,6 +40,10 @@
                     @endforeach
                 </div>
             @endif
+            <a href="/clientes/novo" class="btn btn-primary">
+                Novo Cliente
+                <i class="fas fa-plus"></i>
+            </a>
 
   <form action="/clientes/salvar" method="POST">
     @csrf
@@ -133,6 +137,7 @@
             <div class="form-group">
                 <label for="tipo_unidade" class="form-label">Tipo de Unidade:</label>
                 <select name="tipo_unidade" id="tipo_unidade" class="form-control">
+                    <option value="">selecione</option>
                     @foreach ($tipos_unidade as $key => $tipo)
                         <option class=" tipo_unidade" value="{{$tipo}}"@if(isset($cliente) && $cliente->tipo_unidade == $tipo) selected @elseif(old('tipo_unidade') == $tipo) selected @endif>{{$tipo}}</option>
                     @endforeach

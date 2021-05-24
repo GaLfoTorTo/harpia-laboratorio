@@ -49,19 +49,31 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chalkboard-teacher"></i>
               <p>
+<<<<<<< HEAD
                 Ações Propostas
+=======
+                Equipamentos Medição
+>>>>>>> 28d920a187d56c4018474835ac2699507944170b
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href="/acoes_propostas/novo" class="nav-link">
+=======
+                <a href="/equipamentos_medicao/novo" class="nav-link">
+>>>>>>> 28d920a187d56c4018474835ac2699507944170b
                   <i class="far fa-circle nav-icon"></i>
                   <p>Novo</p>
                 </a>
               </li>
               <li class="nav-item">
+<<<<<<< HEAD
                 <a href="/acoes_propostas" class="nav-link">
+=======
+                <a href="/equipamentos_medicao" class="nav-link">
+>>>>>>> 28d920a187d56c4018474835ac2699507944170b
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>

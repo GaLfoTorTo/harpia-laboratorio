@@ -64,14 +64,14 @@
             <tbody>
               <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->produto }}</td>
-                  <td>{{ $item->fornecedor }}</td>
+                  <td>{{ $item->produto->nome}}</td>
+                  <td>{{ $item->fornecedor->razao_social }}</td>
                   <td>{{ $item->fabricante }}</td>
                   <td>
-                    <a href="clientes/editar/{{ $item->id }}" class="btn btn-warning">
+                    <a href="inspecao_recebidos/editar/{{ $item->id }}" class="btn btn-warning">
                       <i class="fas fa-edit"></i>
                     </a>
-                    <a href="clientes/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                    <a href="inspecao_recebidos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
                       <i class="fas fa-trash"></i>
                     </a>
                   </td>
