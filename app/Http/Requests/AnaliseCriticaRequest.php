@@ -29,7 +29,7 @@ class AnaliseCriticaRequest extends FormRequest
             'capacidade_recursos' => 'required',
             'metodo_ensaio' => 'required',
             'aprovado' => 'required',
-            'justificativa_reprovacao' => 'required',
+            //'justificativa_reprovacao' => 'required',
             'colaborador_id' => 'required',
             'data' => 'required'
         ];
@@ -37,14 +37,13 @@ class AnaliseCriticaRequest extends FormRequest
     public function messages()
     {
         return [
-            'metodos_definidos.required' => 'Este campo é obrigatório',
-            'pessoal_qualificado.required' => 'Este campo é obrigatório',
-            'capacidade_recursos.required' => 'Este campo é obrigatório',
-            'metodo_ensaio.required' => 'Este campo é obrigatório',
-            'aprovado.required' => 'Este campo é obrigatório',
-            'justificativa_reprovacao.required' => 'Este campo é obrigatório',
-            'colaborador_id.required' => 'Este campo é obrigatório',
-            'data.required' => 'Este campo é obrigatório'
+            'metodos_definidos.required' => 'Métodos definidos é obrigatório',
+            'pessoal_qualificado.required' => 'Pessoal qualificado é obrigatório',
+            'capacidade_recursos.required' => 'Capacidade de recursos é obrigatório',
+            'metodo_ensaio.required' => 'Método de ensaio é obrigatório',
+            'aprovado.required' => 'Aprovado ou não, é obrigatório',
+            'colaborador_id.required' => 'Responsável é obrigatório',
+            'data.required' => 'Data é obrigatório'
         ];
     }
 }

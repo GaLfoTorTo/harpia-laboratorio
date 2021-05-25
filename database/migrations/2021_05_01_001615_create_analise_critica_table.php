@@ -15,14 +15,14 @@ class CreateAnaliseCriticaTable extends Migration
     {
         Schema::create('analise_critica', function (Blueprint $table) {
             $table->id();
-            $table->enum('metodos_definidos', ['sim', 'nao'])->nullable();
-            $table->enum('pessoal_qualificado', ['sim', 'nao'])->nullable();
-            $table->enum('capacidade_recursos', ['sim', 'nao'])->nullable();
-            $table->enum('metodo_ensaio', ['sim', 'nao'])->nullable();
-            $table->enum('aprovado', ['sim', 'nao'])->nullable();
+            $table->enum('metodos_definidos', ['sim', 'nao']);
+            $table->enum('pessoal_qualificado', ['sim', 'nao']);
+            $table->enum('capacidade_recursos', ['sim', 'nao']);
+            $table->enum('metodo_ensaio', ['sim', 'nao']);
+            $table->enum('aprovado', ['sim', 'nao']);
             $table->text('justificativa_reprovacao')->nullable();
-            $table->bigInteger('colaborador_id')->nullable();
-            $table->date('data')->nullable();
+            $table->bigInteger('colaborador_id');
+            $table->date('data');
             $table->timestamps();
         });
     }

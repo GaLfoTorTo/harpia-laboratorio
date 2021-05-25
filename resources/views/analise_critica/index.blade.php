@@ -52,10 +52,10 @@
          <!-- /.card-header -->
          <div class="card-body table-responsive p-0">
           <table class="table table-hover text-nowrap table-bordered ">
-
            <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th>Responsável</th>
                     <th>Métodos Definidos</th>
                     <th>Pessoal Qualificado</th>
                     <th>Capacidade de Recursos</th>
@@ -65,10 +65,12 @@
               @foreach ($analise_criticas as $item)
               <tbody>
                 <tr>
-                  <td>{!! nl2br($item->id) !!}</td>
-                  <td>{!! nl2br($item->metodos_definidos) !!}</td>
-                  <td>{!! nl2br($item->pessoal_qualificado) !!}</td>
-                  <td>{!! nl2br($item->capacidade_recursos) !!}</td>
+                  <td>{{ $item->id }}</td>
+                  <td>{{ $item->colaborador->nome }}</td>
+                  <td>{{ $item->metodos_definidos  }}</td>
+                  <td>{{ $item->pessoal_qualificado }}</td>
+                  <td>{{ $item->capacidade_recursos }}</td>
+                  
                     <td>
                       <a href="analise_critica/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
@@ -80,8 +82,12 @@
                 </tr>
               </tbody>
               @endforeach
-
-          </table>
+            </table> 
+            @if(count($analise_criticas) <1 )
+              <div class="alert alert-info">Nenhuma análise encontrada</div>
+            @endif
+              
+            </div>     
           </div>
           <!-- /.card-body -->
       </div>

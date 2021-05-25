@@ -21,4 +21,7 @@ class Analise_critica extends Model
         'colaborador_id',
         'data'
     ]; 
+    public function colaborador() {
+        return $this->hasOne(Colaborador::class, 'id', 'colaborador_id');
+    }
 }
