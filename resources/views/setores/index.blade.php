@@ -56,7 +56,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th>Setor</th>
-                    <th>Sub-Setor</th>
+                    <th>Setor Pai</th>
                     <th>Ações</th>
                 </tr>
               </thead>
@@ -65,7 +65,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->setor }}</td>
-                    <td>{{ $item->sub_setor }}</td>
+                    <td>{{ $item->setor_pai->setor ?? ''}}</td>
                     <td>
                       <a href="setores/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>

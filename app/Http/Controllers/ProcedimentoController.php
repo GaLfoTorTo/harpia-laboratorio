@@ -13,7 +13,12 @@ class ProcedimentoController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $procedimento = Procedimento::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $procedimento = Procedimento::where('rev', 'like', "%".$pesquisa."%")
+                                        ->orWhere('data', 'like', "%".$pesquisa."%") 
+                                        ->orWhere('analista', 'like', "%".$pesquisa."%") 
+                                        ->orWhere('lote', 'like', "%".$pesquisa."%") 
+                                        ->orWhere('responsavel', 'like', "%".$pesquisa."%") ->paginate(1000);
+                                                                   
         } else {
             $procedimento = Procedimento::paginate(10);
         }

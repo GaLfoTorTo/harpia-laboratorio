@@ -24,7 +24,11 @@ class CargosRequest extends FormRequest
     public function rules()
     {
         return [
-                'cargo' => 'required'
+                'cargo' => 'required',
+                'formacao' => 'required',
+                'descricao' => 'required',
+                'requisitos' => 'required',
+                'treinamentos' => 'required'
                 
         ];
     }
@@ -32,7 +36,11 @@ class CargosRequest extends FormRequest
     public function messages()
     {
         return [
-            'cargo.required' => 'O cargo é obrigatório'
+            'cargo.required' => 'O cargo é obrigatório',
+            'formacao.required' => 'A formação é obrigatória',
+            'descricao.required' => 'A descrição é obrigatória',
+            'requisitos.required' => 'O requisito é obrigatório',
+            'treinamentos.required' => 'O treinamentos é obrigatório'
             
         ];
     }

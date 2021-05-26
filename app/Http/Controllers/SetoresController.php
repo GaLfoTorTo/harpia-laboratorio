@@ -13,12 +13,16 @@ class SetoresController extends Controller
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
-            $setores = Setor::where('setor', 'like', "%".$pesquisa."%")->paginate(1000);
+            $setores = Setor::with('setor_pai', 'filhos')
+                                    ->where('setor','like', "%".$pesquisa."%")
+                                    ->orWhereHas('setor_pai', function($query) use ($pesquisa){
+                                        $query->where('setor','like', "%".$pesquisa."%");
+                                    })
+                                    ->paginate(1000);
         } else {
-            $setores = Setor::paginate(10);
+            $setores = Setor::with('setor_pai','filhos')->paginate(10);
         }
-        $setores = Setor::paginate();
-
+      
         return view('setores.index', compact('setores','pesquisa'));
     }
     public function novo() {
@@ -48,8 +52,15 @@ class SetoresController extends Controller
     }
     public function deletar($id) {
         $setor = Setor::find($id);
-        $setor->delete();
+       
+        if($setor->filhos->count() == 0 )
+        {
+            $setor->delete();
+            return redirect('setores')->with('success', 'Deletado com sucesso!');
+        }
+        return redirect('setores')->with('danger', 'Não é possível deletar!');
 
-        return redirect('setores')->with('success', 'Deletado com sucesso!');
+        
+
     }
 }

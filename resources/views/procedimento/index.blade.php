@@ -28,7 +28,7 @@
 
   <div class="card">
           <div class="card-header">
-            <a href="/Procedimento/novo" class="btn btn-primary">
+            <a href="/procedimento/novo" class="btn btn-primary">
               Novo Procedimento
               <i class="fas fa-plus"></i>
             </a>

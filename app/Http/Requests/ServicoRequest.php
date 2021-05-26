@@ -26,7 +26,8 @@ class ServicoRequest extends FormRequest
         return [
                 'descricao' => 'required',
                 'tipo_material' => 'required',
-                'servico_critico' => 'required'
+                'servico_critico' => 'required',
+                'tipo_servico' => 'required'
         ];
     }
 
@@ -35,7 +36,8 @@ class ServicoRequest extends FormRequest
         return [
             'descricao.required' => 'A descrição é obrigatório',
             'tipo_material.required' => 'O tipo de material é obrigatório',
-            'servico_critico.required' => 'Informe se o serviço é crítico ou não'
+            'servico_critico.required' => 'Informe se o serviço é crítico ou não',
+            'tipo_servico.required' => 'O tipo de serviço é obrigatório',
         ];
     }
 }

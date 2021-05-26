@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class D_externo extends Model
+class Documento extends Model
 {
     use HasFactory;
 
+    protected $table = 'documento';
     protected $fillable = [
         'titulo',
         'revisao_edicao_n',
@@ -18,6 +19,14 @@ class D_externo extends Model
         'analise_critica_verificacao',
         'atualizacao_em',
         'n_de_exemplares',
+        'documento',
+        'tipo',
+        'codigo',
+        'titulo',
+        'revisao_edicao',
+        'data_aprovacao',
+        'num_copias',
+        'localizacao',
         'documento'
         
     ]; 

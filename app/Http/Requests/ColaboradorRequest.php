@@ -24,11 +24,15 @@ class ColaboradorRequest extends FormRequest
     public function rules()
     {
         return [
-                'nome'=> 'required',
-                'email'=> 'required | email',
-                'cpf'=> 'required',
-                'telefone'=> 'required',
-        ];
+            'titulo' => 'required',
+            'revisao_edicao_n' => 'required',
+            'codigo' => 'required',
+            'n_de_exemplares' => 'required',
+            'localizacao' => 'required',
+            'data_da_atualizacao' => 'required',
+            'analise_critica_verificacao' => 'required',
+            'atualizacao_em' => 'required'
+    ];
     }
 
     public function messages()
@@ -38,6 +42,6 @@ class ColaboradorRequest extends FormRequest
                 'email.required' => 'E-mail do Colaborador é obrigatório!',
                 'cpf.required' => 'CPF do Colaborador é obrigatório!',
                 'telefone.required' => 'telefone do Colaborador é obrigatório!',
-        ]
+        ];
     }
 }

@@ -27,69 +27,83 @@
     <section class="content">
         <div class="container-fluid">
           <!-- Main row -->
-          <div class="row card">
-            <div class="col card-body">
-
-            @if($errors->any())
-                <div class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    @foreach($errors->all() as $error)
-                        {{ $error }}<br/>
-                    @endforeach
+          <div class="row">
+            <div class="col-9">
+              <div class="row card">
+                <div class="col card-body">
+    
+                @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        @foreach($errors->all() as $error)
+                            {{ $error }}<br/>
+                        @endforeach
+                    </div>
+                @endif
+    
+      <form action="/user/salvar" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="id" value="@if(isset($user)){{$user->id}}@else{{ old('id') }}@endif">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="name" class="form-label">Nome:</label>
+                    <input type="text" name="name" class="form-control" required value="@if(isset($user)){{$user->name}}@else{{ old('name') }}@endif">
                 </div>
-            @endif
-
-  <form action="/user/salvar" method="POST" enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" name="id" value="@if(isset($user)){{$user->id}}@else{{ old('id') }}@endif">
-    <div class="row">
-        <div class="col-6">
+            </div>
+            <div class="col-6">
+                <div class="form-group cardSenha">
+                    <label for="password" class="form-label lableSenha">Senha:</label>
+                    <input type="password" name="password" class="form-control password" value="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" name="email" class="form-control" value="@if(isset($user)){{$user->email}}@else{{old('email')}} @endif" >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
             <div class="form-group">
-                <label for="name" class="form-label">Nome:</label>
-                <input type="text" name="name" class="form-control" required value="@if(isset($user)){{$user->name}}@else{{ old('name') }}@endif">
+              <label for="foto" class="form-label">Carregar Foto:</label>
+              <input type="file" name="foto_temp" class="form-control" value="@if(isset($user)){{$user->foto}}@else{{old('foto')}} @endif">
+              
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col" align="end">
+                <button type="submit" class="btn btn-success w-25 hover-shadow">
+                    Salvar 
+                    <i class="fas fa-save"></i>
+                </button>
             </div>
         </div>
-        <div class="col-6">
-            <div class="form-group cardSenha">
-                <label for="password" class="form-label lableSenha">Senha:</label>
-                <input type="password" name="password" class="form-control password" value="">
+      </form>
+    
+    </div>
+             
+    </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <label for="email" class="form-label">E-mail:</label>
-                <input type="email" name="email" class="form-control" value="@if(isset($user)){{$user->email}}@else{{old('email')}} @endif" >
-            </div>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <div class="form-group">
-          <label for="foto" class="form-label">Carregar Foto:</label>
-          <input type="file" name="foto_temp" class="form-control" value="@if(isset($user)){{$user->foto}}@else{{old('foto')}} @endif">
-          @if(isset($user) && $user->foto != '')
-              <a href="{{ $user->foto }}" target="_blank">Ver Foto</a>
-          @endif
-        </div>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col" align="end">
-            <button type="submit" class="btn btn-success w-25 hover-shadow">
-                Salvar 
-                <i class="fas fa-save"></i>
-            </button>
-        </div>
-    </div>
-  </form>
 
-</div>
-         
-</div>
+            <div class="col-3">
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <div class="text-center">
+                    @if(isset($user) && $user->foto != '')
+                    <img class="profile-user-img img-fluid img-circle" src="{{ $user->foto }}" alt="">
+                  @endif
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 <!-- /.row (main row) -->
 </div><!-- /.container-fluid -->
 </section>
