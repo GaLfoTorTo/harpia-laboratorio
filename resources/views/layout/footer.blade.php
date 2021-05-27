@@ -1,272 +1,4 @@
 @include('layout.modal')
-              {{-- <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-users iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Clientes
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/clientes/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/clientes" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-              <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-user-friends iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Colaboradores
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/colaboradores/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/colaboradores" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4 cardModalMenu">
-                <li class="nav-">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-copy iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Documentos
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/documento/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/documento" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-              <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-vial iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Equipamentos
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/equipamentos/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/equipamentos" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-              <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-dolly-flatbed iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Fornecedores
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/fornecedores/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/fornecedores" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-building iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Lista Mestra
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/lista_mestras/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/lista_mestras" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-              <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-toolbox iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Serviços
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/equipamentos/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/equipamentos" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-              <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-building iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Setores
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/fornecedores/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/fornecedores" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-            </div>
-            <div class="row justify-content-center">
-              <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-user iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Usuários
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/fornecedores/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/fornecedores" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-            </div> --}}
   <footer class="main-footer">
     <strong>Copyright &copy; {{ date('Y') }} Harpia Laboratório.</strong>
     Todos os direitos reservados.
@@ -319,35 +51,42 @@
 <script src="/js/alertify.min.js"></script>
 
 <script>
-    $('.telefone').mask('(99) 99999-9999');
-    $('.cep').mask('99999-999');
+  //mascaras input
+  $('.telefone').mask('(99) 99999-9999');
+  $('.cep').mask('99999-999');
+  $(".cpf").mask("999.999.999-99");
+  $(".cnpj").mask("99.999.999/9999-99");
+  
+  //verificação das mascaras de cpf/cnpj
+  $(document).ready(function(){
+    var valor = document.querySelector('.cpf_cnpj');
+    if(valor.value == ''){
+      $('.tipo').click(function(){
+        var id = $(this).attr('id');
+        if(id == 'tipo_cpf'){
+          $('.cpf_cnpj').removeAttr('readonly');
+          $(".cpf_cnpj").mask("999.999.999-99");
+        }else if(id == 'tipo_cnpj'){
+          $('.cpf_cnpj').removeAttr('readonly');
+          $(".cpf_cnpj").mask("99.999.999/9999-99");
+        }
+      });
+    }else if( valor.value.length > 0 && valor.value.length <= 14){
+      $('.cpf_cnpj').removeAttr('readonly');
+      $('#tipo_cpf').attr('checked', true);
+
+    }else if(valor.value.length > 14){
+      $('.cpf_cnpj').removeAttr('readonly');
+      $('#tipo_cnpj').attr('checked', true);
+    }
     
-    $(document).ready(function(){
-      var valor = document.querySelector('.cpf_cnpj');
-      if(valor.value == ''){
-        $('.tipo').click(function(){
-          var id = $(this).attr('id');
-          if(id == 'tipo_cpf'){
-            $('.cpf_cnpj').removeAttr('readonly');
-            $(".cpf_cnpj").mask("999.999.999-99");
-          }else if(id == 'tipo_cnpj'){
-            $('.cpf_cnpj').removeAttr('readonly');
-            $(".cpf_cnpj").mask("99.999.999/9999-99");
-          }
-        });
-      }else if( valor.value.length > 0 && valor.value.length <= 14){
-        $('.cpf_cnpj').removeAttr('readonly');
-        $('#tipo_cpf').attr('checked', true);
+  });
 
-      }else if(valor.value.length > 14){
-        $('.cpf_cnpj').removeAttr('readonly');
-        $('#tipo_cnpj').attr('checked', true);
-      }
-      
-    });
-    $(".cpf").mask("999.999.999-99");
-    $(".cnpj").mask("99.999.999/9999-99");
-
+  //focus item modal
+  $('.cardModalMenu').click(function(){
+    $(this).toggleClass('iconeHovered');
+  });
+  
 </script>
 <script>
   $('.alteraManual').on('change', function(){
