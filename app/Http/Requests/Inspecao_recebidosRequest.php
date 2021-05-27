@@ -24,7 +24,7 @@ class Inspecao_recebidosRequest extends FormRequest
     public function rules()
     {
         return [
-            'fornecedor_id' => 'required',
+            'fornecedor' => 'required',
             'fabricante' => 'required',
             'nota_fiscal' => 'required',
         ];
@@ -32,7 +32,7 @@ class Inspecao_recebidosRequest extends FormRequest
     public function messages()
     {
         return [
-            'fornecedor_id.required' => 'Nome do fornecedor é obrigatório',
+            'fornecedor.required' => 'Nome do fornecedor é obrigatório',
             'fabricante.required' => 'Nome do fabricante é obrigatório',
             'nota_fiscal.required' => 'Número da nota fiscal é obrigatório!',
         ];

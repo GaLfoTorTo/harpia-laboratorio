@@ -15,6 +15,7 @@ class CreateDocumento extends Migration
     {
         Schema::create('documento', function (Blueprint $table) {
             $table->id();
+            $table->enum('tipo_documento',['interno', 'externo'])->nullable();
             $table->string('titulo', 100)->nullable();
             $table->string('revisao_edicao_n')->nullable();
             $table->string('codigo', 15)->nullable();

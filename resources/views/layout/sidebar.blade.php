@@ -70,9 +70,32 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chalkboard-teacher"></i>
+              <p>
+                Análise Crítica
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/analise_critica/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/analise_critica" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-clipboard-check"></i>
               <p>
-                Inspeção de Recebidos
+                Inspeção de Recebido
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

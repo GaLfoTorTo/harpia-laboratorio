@@ -1,48 +1,5 @@
-  <div class="modal fade" tabindex="-1" id="menuModal"role="dialog" aria-labelledby="titulo-modal" aria-hidden="true">
-  <div class="modal-dialog  modal-xl" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#menuModal">
-          <a class="nav-link" href="#" >
-            <i class="fas fa-times" style="font-size: 27px !important; color: grey"></i>
-          </a>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <div class="row">
-              <div class="col-4 cardModalMenu">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <div class="row justify-content-center">
-                      <i class="nav-icon fas fa-user-tie iconeMenu col-12 offset-10"></i>
-                      <p>
-                        Cargos
-                      </p>
-                    </div>
-                    <i class="right fas fa-angle-left"></i>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <div class="row justify-content-center">
-                      <li class="nav-item">
-                        <a href="/cargos/novo" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Novo</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="/cargos" class="nav-link">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Listar</p>
-                        </a>
-                      </li>
-                    </div>
-                  </ul>
-                </li>
-              </div>
-              <div class="col-4 cardModalMenu">
+@include('layout.modal')
+              {{-- <div class="col-4 cardModalMenu">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <div class="row justify-content-center">
@@ -53,7 +10,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/clientes/novo" class="nav-link">
@@ -82,7 +39,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/colaboradores/novo" class="nav-link">
@@ -103,7 +60,7 @@
             </div>
             <div class="row">
               <div class="col-4 cardModalMenu">
-                <li class="nav-item treeview">
+                <li class="nav-">
                   <a href="#" class="nav-link">
                     <div class="row justify-content-center">
                       <i class="nav-icon fas fa-copy iconeMenu col-12 offset-10"></i>
@@ -113,7 +70,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/documento/novo" class="nav-link">
@@ -142,7 +99,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/equipamentos/novo" class="nav-link">
@@ -171,7 +128,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/fornecedores/novo" class="nav-link">
@@ -202,7 +159,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/lista_mestras/novo" class="nav-link">
@@ -231,7 +188,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/equipamentos/novo" class="nav-link">
@@ -260,7 +217,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/fornecedores/novo" class="nav-link">
@@ -291,7 +248,7 @@
                     </div>
                     <i class="right fas fa-angle-left"></i>
                   </a>
-                  <ul class="nav nav-treeview">
+                  <ul class="nav">
                     <div class="row justify-content-center">
                       <li class="nav-item">
                         <a href="/fornecedores/novo" class="nav-link">
@@ -309,13 +266,7 @@
                   </ul>
                 </li>
               </div>
-            </div>
-          </ul>          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+            </div> --}}
   <footer class="main-footer">
     <strong>Copyright &copy; {{ date('Y') }} Harpia Laboratório.</strong>
     Todos os direitos reservados.

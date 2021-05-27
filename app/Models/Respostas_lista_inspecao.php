@@ -19,11 +19,7 @@ class Respostas_lista_inspecao extends Model
         'pergunta_id'
     ];
 
-<<<<<<< HEAD
-    public function inspecao(){
-=======
     public function inspecaoRecebido(){
->>>>>>> 28d920a187d56c4018474835ac2699507944170b
         return $this->hasOne(Inspecao_recebidos::class, 'id', 'inspecao_id');
     }
 

@@ -19,23 +19,21 @@ class InspecaoRecebidosController extends Controller
         if($pesquisa != '') {
             $inspecao_recebidos = Inspecao_recebidos::where('produto', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
-            $inspecao_recebidos = Inspecao_recebidos::with('produto','fornecedor')->paginate(10);
+            $inspecao_recebidos = Inspecao_recebidos::with('produto')->paginate(10);
         }
         return view('inspecao_recebidos.index', compact('inspecao_recebidos','pesquisa'));
     } 
     public function novo() {
         $pergunta = Perguntas_lista_inspecao::get();
-        $fornecedor = Fornecedor::select('nome_fantasia', 'id')->get();
-        $produto = Equipamentos_Insumos::select('nome', 'id')->get();
-        return view('inspecao_recebidos.form', compact('pergunta','fornecedor', 'produto'));
+        $produto = Equipamentos_Insumos::with('fornecedor')->get();
+        return view('inspecao_recebidos.form', compact('pergunta','produto'));
     }
     public function editar($id) {
         $pergunta = Perguntas_lista_inspecao::get();
         $inspecao_recebidos = Inspecao_recebidos::find($id);
-        $fornecedor = Fornecedor::select('nome_fantasia', 'id')->get();
         $resposta = Respostas_lista_inspecao::select('pergunta_id','resposta')->get();
-        $produto = Equipamentos_Insumos::select('nome', 'id')->get();
-        return view('inspecao_recebidos.form', compact('inspecao_recebidos','pergunta','fornecedor', 'produto','resposta'));
+        $produto = Equipamentos_Insumos::with('fornecedor')->get();
+        return view('inspecao_recebidos.form', compact('inspecao_recebidos','pergunta','produto','resposta'));
     }
     public function salvar(Inspecao_recebidosRequest $request) {
         $ehvalido = $request->validated();
@@ -43,20 +41,35 @@ class InspecaoRecebidosController extends Controller
         if($request->id != '') {
             $inspecao_recebidos = Inspecao_recebidos::find($request->id);
             $resposta_lista_inspecao = Respostas_lista_inspecao::find($request->id);
-            $inspecao_recebidos = Inspecao_recebidos::update($request->id);
+
+            $campos_inspecao = [
+                'produto_id' => $request->produto_id,
+                'fornecedor' => $request->fornecedor,
+                'fabricante' => $request->fabricante,
+                'nota_fiscal' => $request->nota_fiscal,
+                'lote' => $request->lote, 
+                'descricao_teste' => $request->descricao_teste,
+                'insumo_liberado' => $request->insumo_liberado,
+                'justificativa' => $request->justificativa
+            ];
+            $inspecao_recebidos->update($campos_inspecao);
 
             foreach ($request->resposta as $key => $value) {
                 $respostas['inspecao_id'] = $resposta_lista_inspecao->id;
                 $respostas['pergunta_id'] = $key;
                 $respostas['resposta'] = $value;
-                $resposta_lista_inspecao = Respostas_lista_inspecao::update($resposta);
+                $resposta_lista_inspecao->update($respostas);
             }
         } else {
             $campos_inspecao = [
-                $request->fornecedor_id, $request->fabricante,
-                $request->nota_fiscal, $request->lote, 
-                $request->descricao_teste, $request->insumo_liberado,
-                $request->justificativa
+                'produto_id' => $request->produto_id,
+                'fornecedor' => $request->fornecedor,
+                'fabricante' => $request->fabricante,
+                'nota_fiscal' => $request->nota_fiscal,
+                'lote' => $request->lote, 
+                'descricao_teste' => $request->descricao_teste,
+                'insumo_liberado' => $request->insumo_liberado,
+                'justificativa' => $request->justificativa
             ];
             $inspecao_recebidos = Inspecao_recebidos::create($campos_inspecao);
             foreach ($request->resposta as $key => $value) {

@@ -56,13 +56,8 @@
                 <tr>
                     <th scope="col">#</th>
                     <th>Título:</th>
-                    <th>Revisão/Edição n°:</th>
                     <th>Código:</th>
                     <th>Localização</th>
-                    <th>Data da atualização</th>
-                    <th>Análise critica/verificação</th>
-                    <th>Atualização em</th>
-                    <th>N° de Exemplares</th>
                     <th>Documento</th>
                 </tr>
               </thead>
@@ -71,13 +66,8 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->titulo }}</td>
-                    <td>{{ $item->revisao_edicao_n }}</td>
                     <td>{{ $item->codigo }}</td>
                     <td>{{ $item->localizacao }}</td>
-                    <td>{{ $item->data_da_atualizacao }}</td>
-                    <td>{{ $item->analise_critica_verificacao }}</td>
-                    <td>{{ $item->atualizacao_em }}</td>
-                    <td>{{ $item->n_de_exemplares}}</td>
                     <td>{{ $item->documento}}</td>
                     <td>
                       <a href="documento/editar/{{ $item->id }}" class="btn btn-warning">

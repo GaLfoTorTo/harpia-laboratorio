@@ -65,7 +65,7 @@
               <tr>
                   <td>{{ $item->id }}</td>
                   <td>{{ $item->produto->nome}}</td>
-                  <td>{{ $item->fornecedor->razao_social }}</td>
+                  <td>{{ $item->fornecedor }}</td>
                   <td>{{ $item->fabricante }}</td>
                   <td>
                     <a href="inspecao_recebidos/editar/{{ $item->id }}" class="btn btn-warning">

@@ -17,6 +17,7 @@ use App\Http\Controllers\ProcedimentoController;
 use App\Http\Controllers\RegistroTreinamentoController;
 use App\Http\Controllers\ParticipantesTreinamentoController;
 use App\Http\Controllers\CargosController;
+use App\Http\Controllers\AnaliseCriticaController;
 use App\Http\Controllers\RegistroOcorrenciaController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\ReclamacoesController;
@@ -112,6 +113,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('procedimento/salvar', [ProcedimentoController::class, 'salvar'])->name('procedimento.salvar');
     Route::get('/procedimento/deletar/{id}', [ProcedimentoController::class, 'deletar'])->name('procedimento.deletar');
 
+    Route::get('/analise_critica', [AnaliseCriticaController::class, 'index'])->name('analise_critica');
+    Route::get('/analise_critica/novo', [AnaliseCriticaController::class, 'novo'])->name('analise_critica.novo');
+    Route::get('/analise_critica/editar/{id}', [AnaliseCriticaController::class, 'editar'])->name('analise_critica.editar');
+    Route::post('analise_critica/salvar', [AnaliseCriticaController::class, 'salvar'])->name('analise_critica.salvar');
+    Route::get('/analise_critica/deletar/{id}', [AnaliseCriticaController::class, 'deletar'])->name('analise_critica.deletar');
+
     Route::get('/registro_de_ocorrencia', [RegistroOcorrenciaController::class, 'index'])->name('registro_de_ocorrencia');
     Route::get('/registro_de_ocorrencia/novo', [RegistroOcorrenciaController::class, 'novo'])->name('registro_de_ocorrencia.novo');
     Route::get('/registro_de_ocorrencia/editar/{id}', [RegistroOcorrenciaController::class, 'editar'])->name('registro_de_ocorrencia.editar');
@@ -153,4 +160,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/documento/editar/{id}', [DocumentoController::class, 'editar'])->name('documento.editar');
     Route::post('/documento/salvar', [DocumentoController::class, 'salvar'])->name('documento.salvar');
     Route::get('/documento/deletar/{id}', [DocumentoController::class, 'deletar'])->name('documento.deletar');
+
 });
