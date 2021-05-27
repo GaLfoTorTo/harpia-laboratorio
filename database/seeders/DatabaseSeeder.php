@@ -19,10 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EquipamentosInsumosSeeder::class);
         $this->call(EquipamentosSeeder::class);
         $this->call(FornecedorSeeder::class);
-<<<<<<< HEAD
         $this->call(Perguntas_lista_inspecaoSeeder::class);
-=======
         $this->call(SetorsSeeder::class);
->>>>>>> de1c057e150672c92a17d187466abfaa0c203554
+        $this->call(AnalisecriticaSeeder::class);
     }
 }
