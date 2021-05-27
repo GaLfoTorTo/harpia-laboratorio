@@ -25,10 +25,10 @@ class CreateEquipamentosTable extends Migration
             $table->string('localizacao_manual')->nullable();
             $table->string('doc_instrucao')->nullable();
             $table->string('codigo', 100);
-            $table->string('patrimonio', 100);
-            $table->string('fabricante', 100);
-            $table->string('fornecedor', 100);
-            $table->string('localizacao_equipamento', 255);
+            $table->string('patrimonio', 100)->nullable();
+            $table->string('fabricante', 100)->nullable();
+            $table->string('fornecedor', 100)->nullable();
+            $table->string('localizacao_equipamento', 255)->nullable();
             $table->timestamps();
         });
     }
