@@ -8,7 +8,7 @@ use Faker\Factory;
 use Faker\Provider\pt_BR\Person;
 use Faker\Provider\ar_SA\Payment;
 
-class CreatAnalisecriticaSeeder extends Seeder
+class AnalisecriticaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,17 +19,17 @@ class CreatAnalisecriticaSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for ($i=0; $i < 50; $i++) { 
+        for ($i=0; $i < 75; $i++) { 
             DB::table('analise_critica')->insert([
            
             'metodos_definidos' => rand(1,0) == 0 ? 'Sim' : 'Não',
             'pessoal_qualificado' => rand(1,0) == 0 ? 'Sim' : 'Não',
             'capacidade_recursos' => rand(1,0) == 0 ? 'Sim' : 'Não',
-            'metodo_ensaio', => rand(1,0) == 0 ? 'Sim' : 'Não',
+            'metodo_ensaio' => rand(1,0) == 0 ? 'Sim' : 'Não',
             'aprovado' => rand(1,0) == 0 ? 'Sim' : 'Não',
-            'justificativa_reprovacao' => $fake->enum()
+            'justificativa_reprovacao' => $faker->name(),
             'colaborador_id' => rand(1,0) == 0 ? 1 : 5,
-            'data' => $fake->date()
+            'data' => $faker->date()
             
             ]);
         }
