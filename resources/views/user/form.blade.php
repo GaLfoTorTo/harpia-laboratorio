@@ -42,6 +42,12 @@
                         @endforeach
                     </div>
                 @endif
+                @isset($user)
+                  <a href="/user/novo" class="btn btn-primary">
+                      Novo Usuário
+                      <i class="fas fa-plus"></i>
+                  </a>
+              @endisset
     
       <form action="/user/salvar" method="POST" enctype="multipart/form-data">
         @csrf

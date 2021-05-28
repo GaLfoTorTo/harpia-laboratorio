@@ -35,7 +35,10 @@ class EquipamentosSeeder extends Seeder
             'doc_instrucao' => $faker->name(),
             'codigo' => $faker->bankAccounTNumber(),
             'patrimonio' => $faker->name(),
-            'fabricante' => $faker->name()
+            'fabricante' => $faker->name(),
+            'fornecedor_id' => rand(1,0) == 0 ? 1 : 2,
+            'localizacao_equipamento' => rand(1,0) == 0 ? 1 : 2
+
 
       ]
 

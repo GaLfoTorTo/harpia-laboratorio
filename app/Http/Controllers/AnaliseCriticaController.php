@@ -16,12 +16,9 @@ class AnaliseCriticaController extends Controller
 		
 		if($pesquisa != '') {
 			$analise_criticas = Analise_critica::with('colaborador')
-																					->where('metodos_definidos', 'like', "%".$pesquisa."%")
-																					->orWhereHas('colaborador', function($query) use ($pesquisa){
-																						$query->where('nome','like', "%".$pesquisa."%");
-																				})
-																					
-																					->paginate(1000);
+								->where('metodos_definidos', 'like', "%".$pesquisa."%")
+								->orWhereHas('colaborador', function($query) use ($pesquisa){$query->where('nome','like', "%".$pesquisa."%");})
+								->paginate(1000);
 		} else {
 			$analise_criticas = Analise_critica::
 			with('colaborador')->paginate(10);

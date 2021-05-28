@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Fornecedor;
+use App\Models\Setor;
 
 class Equipamentos extends Model
 {
@@ -22,7 +24,15 @@ class Equipamentos extends Model
         'codigo',
         'patrimonio',
         'fabricante',
-        'fornecedor',
+        'fornecedor_id',
         'localizacao_equipamento'
     ];
+
+    public function fornecedor(){
+        return $this->hasOne(Fornecedor::class, 'id', 'fornecedor_id');
+    }
+
+    public function setor(){
+        return $this->hasOne(Setor::class, 'id', 'localizacao_equipamento');
+    }
 }

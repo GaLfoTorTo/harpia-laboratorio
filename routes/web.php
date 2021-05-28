@@ -5,7 +5,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
 
 use App\Http\Controllers\FornecedorController;
-use App\Http\Controllers\DExternoController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ServicoController;
@@ -23,6 +22,7 @@ use App\Http\Controllers\RegistroOcorrenciaController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\ReclamacoesController;
 use App\Http\Controllers\NovoRncController;
+use App\Http\Controllers\InspecaoRecebidosController;
 use App\Http\Controllers\C_temperaturaController;
 use App\Http\Controllers\AcoesPropostasController;
 
@@ -33,12 +33,6 @@ Route::get('/logout', [AutenticacaoController::class, 'logout'])->name('logout')
 Route::middleware(['auth'])->group(function () { 
 
     Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
-
-    Route::get('/documentos_externos', [DExternoController::class, 'index'])->name('documentos_externos');
-    Route::get('/documentos_externos/novo', [DExternoController::class, 'novo'])->name('documentos_externos.novo');
-    Route::get('/documentos_externos/editar/{id}', [DExternoController::class, 'editar'])->name('documentos_externos.editar');
-    Route::post('/documentos_externos/salvar', [DExternoController::class, 'salvar'])->name('documentos_externos.salvar');
-    Route::get('/documentos_externos/deletar/{id}', [DExternoController::class, 'deletar'])->name('documentos_externos.deletar');
 
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/user/novo', [UserController::class, 'novo'])->name('user.novo');
@@ -52,11 +46,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/clientes/salvar', [ClienteController::class, 'salvar'])->name('clientes.salvar');
     Route::get('/clientes/deletar/{id}', [ClienteController::class, 'deletar'])->name('clientes.deletar');
 
-    Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos');
-    Route::get('/equipamentos/novo', [EquipamentoController::class, 'novo'])->name('equipamentos.novo');
-    Route::get('/equipamentos/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos.editar');
-    Route::post('/equipamentos/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos.salvar');
-    Route::get('/equipamentos/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos.deletar');
+    Route::get('/equipamentos_medicao', [EquipamentoController::class, 'index'])->name('equipamentos_medicao');
+    Route::get('/equipamentos_medicao/novo', [EquipamentoController::class, 'novo'])->name('equipamentos_medicao.novo');
+    Route::get('/equipamentos_medicao/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos_medicao.editar');
+    Route::post('/equipamentos_medicao/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos_medicao.salvar');
+    Route::get('/equipamentos_medicao/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos_medicao.deletar');
 
 
     Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores');
@@ -148,6 +142,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/lista_mestras/editar/{id}', [ListaMestraController::class, 'editar'])->name('lista_mestra.editar');
     Route::post('lista_mestras/salvar', [ListaMestraController::class, 'salvar'])->name('lista_mestra.salvar');
     Route::get('/lista_mestras/deletar/{id}', [ListaMestraController::class, 'deletar'])->name('lista_mestra.deletar');
+
+    Route::get('/inspecao_recebidos', [InspecaoRecebidosController::class, 'index'])->name('inspecao_recebidos');
+    Route::get('/inspecao_recebidos/novo', [InspecaoRecebidosController::class, 'novo'])->name('inspecao_recebidos.novo');
+    Route::get('/inspecao_recebidos/editar/{id}', [InspecaoRecebidosController::class, 'editar'])->name('inspecao_recebidos.editar');
+    Route::post('/inspecao_recebidos/salvar', [InspecaoRecebidosController::class, 'salvar'])->name('inspecao_recebidos.salvar');
+    Route::get('/inspecao_recebidos/deletar/{id}', [InspecaoRecebidosController::class, 'deletar'])->name('inspecao_recebidos.deletar');
 
     Route::get('/c_temperatura', [C_temperaturaController::class, 'index'])->name('c_temperatura');
     Route::get('/c_temperatura/novo', [C_temperaturaController::class, 'novo'])->name('c_temperatura.novo');
