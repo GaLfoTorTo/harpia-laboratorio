@@ -84,12 +84,14 @@
 
         </div>
         <div>
-          {{ $documento->links() }}
+           {{ $documento->links() }}
         </div>
   </div>
 </div>
 </div>
   </div>
+</div>
+</div>
 @include('layout.footer')
 
 
