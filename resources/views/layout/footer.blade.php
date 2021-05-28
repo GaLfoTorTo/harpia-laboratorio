@@ -1,3 +1,4 @@
+@include('layout.modal')
   <footer class="main-footer">
     <strong>Copyright &copy; {{ date('Y') }} Harpia Laboratório.</strong>
     Todos os direitos reservados.
@@ -58,35 +59,42 @@
 
 
 <script>
-    $('.telefone').mask('(99) 99999-9999');
-    $('.cep').mask('99999-999');
-    
-    $(document).ready(function(){
-      var valor = document.querySelector('.cpf_cnpj');
-      if(valor.value == ''){
-        $('.tipo').click(function(){
-          var id = $(this).attr('id');
-          if(id == 'tipo_cpf'){
-            $('.cpf_cnpj').removeAttr('readonly');
-            $(".cpf_cnpj").mask("999.999.999-99");
-          }else if(id == 'tipo_cnpj'){
-            $('.cpf_cnpj').removeAttr('readonly');
-            $(".cpf_cnpj").mask("99.999.999/9999-99");
-          }
-        });
-      }else if( valor.value.length > 0 && valor.value.length <= 14){
-        $('.cpf_cnpj').removeAttr('readonly');
-        $('#tipo_cpf').attr('checked', true);
+  //mascaras input
+  $('.telefone').mask('(99) 99999-9999');
+  $('.cep').mask('99999-999');
+  $(".cpf").mask("999.999.999-99");
+  $(".cnpj").mask("99.999.999/9999-99");
+  
+  //verificação das mascaras de cpf/cnpj
+  $(document).ready(function(){
+    var valor = document.querySelector('.cpf_cnpj');
+    if(valor.value == ''){
+      $('.tipo').click(function(){
+        var id = $(this).attr('id');
+        if(id == 'tipo_cpf'){
+          $('.cpf_cnpj').removeAttr('readonly');
+          $(".cpf_cnpj").mask("999.999.999-99");
+        }else if(id == 'tipo_cnpj'){
+          $('.cpf_cnpj').removeAttr('readonly');
+          $(".cpf_cnpj").mask("99.999.999/9999-99");
+        }
+      });
+    }else if( valor.value.length > 0 && valor.value.length <= 14){
+      $('.cpf_cnpj').removeAttr('readonly');
+      $('#tipo_cpf').attr('checked', true);
 
-      }else if(valor.value.length > 14){
-        $('.cpf_cnpj').removeAttr('readonly');
-        $('#tipo_cnpj').attr('checked', true);
-      }
-      
-    });
-    $(".cpf").mask("999.999.999-99");
-    $(".cnpj").mask("99.999.999/9999-99");
-     
+    }else if(valor.value.length > 14){
+      $('.cpf_cnpj').removeAttr('readonly');
+      $('#tipo_cnpj').attr('checked', true);
+    }
+    
+  });
+
+  //focus item modal
+  $('.cardModalMenu').click(function(){
+    $(this).toggleClass('iconeHovered');
+  });
+  
 </script>
 <script>
   $('.alteraManual').on('change', function(){
