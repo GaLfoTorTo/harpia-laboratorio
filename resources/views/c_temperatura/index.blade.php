@@ -75,7 +75,7 @@
                       <a href="c_temperatura/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="c_temperatura/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="#" class="btn btn-danger" onclick="deleta('/c_temperatura/deletar/{{ $item->id }}')">
                         <i class="fas fa-trash"></i>
                       </a>
                     </td>
