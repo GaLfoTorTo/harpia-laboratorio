@@ -26,13 +26,83 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Main row -->
+        
+
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{ $data['procedimentos'] }}</h3>
+
+                <p>Procedimentos</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-check-double"></i>
+              </div>
+              <a href="/procedimento" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{ $data['servicos'] }}</h3>
+
+                <p>Serviços</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="/servicos" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ $data['colaboradores'] }}</h3>
+
+                <p>Colaboradores</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="/colaboradores" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ $data['equipamentos'] }}</h3>
+
+                <p>Equipamentos</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-vial"></i>
+              </div>
+              <a href="/equipamentos" class="small-box-footer">Visualizar <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+
+
         <div class="row">
           <div class="col">
-            Conteúdo
-            {{ \Auth::user() }}
+            <div id="grafico-container"></div>
           </div>
-         
         </div>
+
+
+
+
+
+
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
@@ -40,4 +110,75 @@
   </div>
 
 @include('layout.footer')
+
+<script>
+
+  Highcharts.chart('grafico-container', {
+
+title: {
+    text: 'Titulo do grafico'
+},
+credits: false,
+
+subtitle: {
+    text: 'Teste'
+},
+
+yAxis: {
+    title: {
+        text: 'Número de análises críticas'
+    }
+},
+
+legend: {
+    layout: 'horizontal',
+    align: 'center',
+    verticalAlign: 'bottom'
+},
+
+plotOptions: {
+    series: {
+        label: {
+            connectorAllowed: false
+        },
+        pointStart: 2010
+    }
+},
+
+series: [{
+    name: 'Exemplo',
+    data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+ }, 
+//{
+//     name: 'Manufacturing',
+//     data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+// }, {
+//     name: 'Sales & Distribution',
+//     data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+// }, {
+//     name: 'Project Development',
+//     data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+// }, {
+//     name: 'Other',
+//     data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+// }
+],
+
+responsive: {
+    rules: [{
+        condition: {
+            maxWidth: 500
+        },
+        chartOptions: {
+            legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom'
+            }
+        }
+    }]
+}
+
+});
+  </script>
   

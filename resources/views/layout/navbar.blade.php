@@ -16,6 +16,14 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
 
+      <li>
+        <button type="button" class="btn btn-light" >
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#menuModal">
+            <i class="fas fa-th-list"></i>
+          </a>
+        </button>
+      </li>
+
       @if(Request::segment(2) != 'editar' && Request::segment(2) != 'novo')
       <!-- Navbar Search -->
       <li class="nav-item">

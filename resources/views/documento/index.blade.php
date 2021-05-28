@@ -56,13 +56,8 @@
                 <tr>
                     <th scope="col">#</th>
                     <th>Título:</th>
-                    <th>Revisão/Edição n°:</th>
                     <th>Código:</th>
                     <th>Localização</th>
-                    <th>Data da atualização</th>
-                    <th>Análise critica/verificação</th>
-                    <th>Atualização em</th>
-                    <th>N° de Exemplares</th>
                     <th>Documento</th>
                 </tr>
               </thead>
@@ -71,19 +66,14 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->titulo }}</td>
-                    <td>{{ $item->revisao_edicao_n }}</td>
                     <td>{{ $item->codigo }}</td>
                     <td>{{ $item->localizacao }}</td>
-                    <td>{{ $item->data_da_atualizacao }}</td>
-                    <td>{{ $item->analise_critica_verificacao }}</td>
-                    <td>{{ $item->atualizacao_em }}</td>
-                    <td>{{ $item->n_de_exemplares}}</td>
                     <td>{{ $item->documento}}</td>
                     <td>
                       <a href="documento/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="documento/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="#" class="btn btn-danger" onclick="deleta('/documento/deletar/{{ $item->id }}')">
                         <i class="fas fa-trash"></i>
                       </a>
                     </td>
@@ -91,15 +81,23 @@
               </tbody>
               @endforeach
           </table>
+          <br>
+          @if(count($documento) < 1)
+              <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
+              Nenhum registro encontrado!
+              </div>
+            @endif
 
         </div>
         <div>
-          {{ $documento->links() }}
+           {{ $documento->links() }}
         </div>
   </div>
 </div>
 </div>
   </div>
+</div>
+</div>
 @include('layout.footer')
 
 

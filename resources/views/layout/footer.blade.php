@@ -1,3 +1,4 @@
+@include('layout.modal')
   <footer class="main-footer">
     <strong>Copyright &copy; {{ date('Y') }} Harpia Laboratório.</strong>
     Todos os direitos reservados.
@@ -49,36 +50,52 @@
 <script src="/js/jquery.maskedinput.js"></script>
 <script src="/js/alertify.min.js"></script>
 
-<script>
-    $('.telefone').mask('(99) 99999-9999');
-    $('.cep').mask('99999-999');
-    
-    $(document).ready(function(){
-      var valor = document.querySelector('.cpf_cnpj');
-      if(valor.value == ''){
-        $('.tipo').click(function(){
-          var id = $(this).attr('id');
-          if(id == 'tipo_cpf'){
-            $('.cpf_cnpj').removeAttr('readonly');
-            $(".cpf_cnpj").mask("999.999.999-99");
-          }else if(id == 'tipo_cnpj'){
-            $('.cpf_cnpj').removeAttr('readonly');
-            $(".cpf_cnpj").mask("99.999.999/9999-99");
-          }
-        });
-      }else if( valor.value.length > 0 && valor.value.length <= 14){
-        $('.cpf_cnpj').removeAttr('readonly');
-        $('#tipo_cpf').attr('checked', true);
 
-      }else if(valor.value.length > 14){
-        $('.cpf_cnpj').removeAttr('readonly');
-        $('#tipo_cnpj').attr('checked', true);
-      }
-      
-    });
-    $(".cpf").mask("999.999.999-99");
-    $(".cnpj").mask("99.999.999/9999-99");
-     
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+
+
+<script>
+  //mascaras input
+  $('.telefone').mask('(99) 99999-9999');
+  $('.cep').mask('99999-999');
+  $(".cpf").mask("999.999.999-99");
+  $(".cnpj").mask("99.999.999/9999-99");
+  
+  //verificação das mascaras de cpf/cnpj
+  $(document).ready(function(){
+    var valor = document.querySelector('.cpf_cnpj');
+    if(valor.value == ''){
+      $('.tipo').click(function(){
+        var id = $(this).attr('id');
+        if(id == 'tipo_cpf'){
+          $('.cpf_cnpj').removeAttr('readonly');
+          $(".cpf_cnpj").mask("999.999.999-99");
+        }else if(id == 'tipo_cnpj'){
+          $('.cpf_cnpj').removeAttr('readonly');
+          $(".cpf_cnpj").mask("99.999.999/9999-99");
+        }
+      });
+    }else if( valor.value.length > 0 && valor.value.length <= 14){
+      $('.cpf_cnpj').removeAttr('readonly');
+      $('#tipo_cpf').attr('checked', true);
+
+    }else if(valor.value.length > 14){
+      $('.cpf_cnpj').removeAttr('readonly');
+      $('#tipo_cnpj').attr('checked', true);
+    }
+    
+  });
+
+  //focus item modal
+  $('.cardModalMenu').click(function(){
+    $(this).toggleClass('iconeHovered');
+  });
+  
 </script>
 <script>
   $('.alteraManual').on('change', function(){
@@ -98,6 +115,31 @@
   alertify.error('{{session('danger')}}');
 @endif
 
+//Sweealert
+
+  function deleta(url) {
+      Swal.fire({
+          title: 'Tem Certeza?',
+          text: "Esta ação não pode ser desfeita!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sim, Deletar!'
+      }).then((result) => {
+          console.log(result)
+          if (result.isConfirmed) {
+            window.location.href = url
+              // Swal.fire(
+              //     'Deletado!',
+              //     'O registro foi deletado!',
+              //     'success'
+              // )
+
+          }
+      })
+
+  }
 
 </script>
 </body>

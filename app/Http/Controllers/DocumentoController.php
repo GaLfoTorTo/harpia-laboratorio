@@ -56,10 +56,10 @@ class DocumentoController extends Controller
          }
  
          if($request->id != '') {
-             $documento = Documento::find($request->id);
-             $documento->update($request->all());
+            $documento = Documento::find($request->id);
+            $documento->update($request->all());
          } else {
-             $documento = Documento::create($request->all());
+            $documento = Documento::create($request->all());
          }
          return redirect('/documento/editar/'. $documento->id)->with('success', 'Salvo com sucesso!');
      }

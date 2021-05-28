@@ -74,7 +74,7 @@
                       <a href="servicos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="servicos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="#" class="btn btn-danger" onclick="deleta('/servicos/deletar/{{ $item->id }}')">
                         <i class="fas fa-trash"></i>
                       </a>
 

@@ -31,6 +31,22 @@
           <!-- Main row -->
           <div class="row card">
             <div class="col card-body">
+                @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        @foreach($errors->all() as $error)
+                            {{ $error }}<br/>
+                        @endforeach
+                    </div>
+                @endif
+                @isset($colaborador)
+                    <a href="/colaboradores/novo" class="btn btn-primary">
+                        Novo Colaborador
+                        <i class="fas fa-plus"></i>
+                    </a>
+                @endisset
                 <form action="/colaboradores/salvar" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="@if(isset($colaborador)){{$colaborador->id}}@else{{ old('id') }}@endif">
@@ -77,22 +93,22 @@
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <label for="numero" class="form-label">Numero</label>
+                                <label for="numero" class="form-label">Número</label>
                                 <input type="number" name="numero" class="form-control" value="@if(isset($colaborador)){{$colaborador->numero}}@else{{ old('numero') }}@endif">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4">
-                            <div class="form-outline">
-                                <label for="cidade" class="form-label">Cidade</label>
-                                <input type="text" name="cidade" class="form-control" value="@if(isset($colaborador)){{$colaborador->cidade}}@else{{ old('cidade') }}@endif">
-                            </div>
-                        </div>
                         <div class="col-5">
                             <div class="form-outline">
                                 <label for="bairro" class="form-label">Bairro</label>
                                 <input type="text" name="bairro" class="form-control" value="@if(isset($colaborador)){{$colaborador->bairro}}@else{{ old('bairro') }}@endif">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-outline">
+                                <label for="cidade" class="form-label">Cidade</label>
+                                <input type="text" name="cidade" class="form-control" value="@if(isset($colaborador)){{$colaborador->cidade}}@else{{ old('cidade') }}@endif">
                             </div>
                         </div>
                         <div class="col-3">
@@ -111,7 +127,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-outline">
-                                <label for="funcao" class="form-label">Funcao:</label>
+                                <label for="funcao" class="form-label">Função:</label>
                                 <input type="text" name="funcao" class="form-control" value="@if(isset($colaborador)){{$colaborador->funcao}}@else{{ old('funcao') }}@endif">
                             </div>
                         </div>
@@ -121,6 +137,7 @@
                             <div class="form-group">
                                 <label for="setor" class="form-label">Setor:</label>
                                 <select name="setor" id="setor" class="form-control">
+                                    <option value="">selecione</option>
                                     @foreach ($setores as $key => $tipo)
                                         <option class=" setor" value="{{$tipo->setor}}"@if(isset($colaborador) && $colaborador->setor == $tipo->setor) selected @elseif(old('setor') == $tipo->setor) selected @endif>{{$tipo->setor}}</option>
                                     @endforeach

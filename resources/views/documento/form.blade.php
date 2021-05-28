@@ -3,9 +3,15 @@
 @include('layout.sidebar')
 
 <style>
+@if(isset($documento) && $documento->tipo_documento == 'externo')
+    .documentos_internos{
+        display: none;
+    }
+@else
     .documentos_externos{
         display: none;
     }
+@endif
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -41,7 +47,14 @@
 
     <div class="container corpo">
         <div class="container-fluid">
+        
             <div class="row card">
+            <div class="card">
+          <div class="card-header">
+            <a href="/documento/novo" class="btn btn-primary">
+              Novo documento 
+              <i class="fas fa-plus"></i>
+            </a>
                 <div class="col card-body">
 
                     <form action="/documento/salvar" method="POST" enctype="multipart/form-data">
@@ -50,9 +63,9 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="interno" onclick="alteraTipo('interno')">Interno</label>
-                                <input type="radio" class="tipo_documento" checked name="tipo_documento" id="interno" onclick="alteraTipo('interno')">
+                                <input type="radio" class="tipo_documento" checked name="tipo_documento" id="interno" onclick="alteraTipo('interno')" value="interno" @if(isset($documento) && $documento->tipo_documento == 'interno') checked @elseif(old('tipo_documento') == "interno") checked @endif>
                                 <label for="externo" onclick="alteraTipo('externo')">Externo</label>
-                                <input type="radio" class="tipo_documento" name="tipo_documento" id="externo" onclick="alteraTipo('externo')">
+                                <input type="radio" class="tipo_documento" name="tipo_documento" id="externo" onclick="alteraTipo('externo')" value="externo" @if(isset($documento) && $documento->tipo_documento == 'externo') checked @elseif(old('tipo_documento') == "externo") checked @endif>
                             </div>
                         </div>
                         <div class="row">
@@ -145,6 +158,9 @@
                                 </div>
                             </div>                                        
                         </div>
+                        </div>
+          </div>
+            </div>
                         <div class="row">
                             <div class="col">
                                 <button type="submit" class="btn btn-success w-100">
@@ -164,6 +180,7 @@
 @include('layout.footer')
 <script>
     function alteraTipo(tipo) {
+
         if(tipo == 'interno') {
             $('.documentos_internos').show();
             $('.documentos_externos').hide();
@@ -172,5 +189,11 @@
             $('.documentos_externos').show();
         }
     }
+
+    $(document).ready(function(){
+        var tipo_doc = $('.tipo_documento').Chilldren().is('checked');
+        console.log(tipo_doc);
+    })
+    
 
 </script>

@@ -7,3 +7,29 @@
     font-weight: bold;
     border-radius: 5px;
 }
+
+/* estilo menu modal */
+
+.cardModalMenu {
+    border: 1px solid rgb(200, 200, 200);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-color: white;
+}
+.divModal {
+    height: 1px;
+    color: rgb(200, 200, 200);
+}
+.iconeColor {
+    color: rgb(100,121,118);
+}
+.iconeColor:hover{
+    color: rgb(0,123,255);
+}
+.iconeHovered{
+    color: rgb(0,123,255);
+}
+.iconeMenu{
+    font-size: 35px;
+    margin-right: 12px;
+}

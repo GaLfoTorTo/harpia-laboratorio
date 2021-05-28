@@ -11,6 +11,7 @@ class Documento extends Model
 
     protected $table = 'documento';
     protected $fillable = [
+        'tipo_documento',
         'titulo',
         'revisao_edicao_n',
         'codigo',

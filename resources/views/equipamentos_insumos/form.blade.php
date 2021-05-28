@@ -93,11 +93,11 @@
     <div class="row">
       <div class="col-4">
         <div class="form-group">
-            <label for="fornecedor" class="form-label">Fornecedor:</label>
-            <select name="fornecedor" id="fornecedor" class="form-control selecao">
+            <label for="fornecedor_id" class="form-label">Fornecedor:</label>
+            <select name="fornecedor_id" id="fornecedor" class="form-control selecao">
               <option value="">Selecione</option>
                 @foreach ($fornecedor as $key => $t)
-                  <option value="{{ $t->razao_social }}" @if(isset($equipamentos_insumos) && $equipamentos_insumos->fornecedor == $t->razao_social)  selected @elseif(old('fornecedor') == $t->razao_social) selected @endif >{{$t->razao_social}}</option>
+                  <option value="{{ $t->id }}" @if(isset($equipamentos_insumos) && $equipamentos_insumos->fornecedor_id == $t->id)  selected @elseif(old('fornecedor_id') == $t->id) selected @endif >{{$t->razao_social}}</option>
               @endforeach
           </select>
         </div>

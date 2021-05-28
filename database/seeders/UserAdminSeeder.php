@@ -17,7 +17,8 @@ class UserAdminSeeder extends Seeder
         User::create([
             'name' => 'Administrador',
             'email' => 'admin@harpia.com',
-            'password' => bcrypt('harpia@321')
+            'password' => bcrypt('harpia@321'),
+            'foto' => '/uploads/user/20210527140559.png'
         ]);
     }
 }
