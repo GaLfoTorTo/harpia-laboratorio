@@ -84,7 +84,7 @@
 
         </div>
         <div>
-          {{ $documento->links() }}
+           {{ $documento->links() }}
         </div>
   </div>
 </div>
