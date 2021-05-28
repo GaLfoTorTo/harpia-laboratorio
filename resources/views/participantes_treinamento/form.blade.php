@@ -97,7 +97,7 @@
     </div>
   </form>
 </div>
-         
+</div>    
 </div>
 <!-- /.row (main row) -->
 </div><!-- /.container-fluid -->

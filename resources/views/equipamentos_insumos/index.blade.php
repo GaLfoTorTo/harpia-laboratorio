@@ -76,7 +76,7 @@
                       <a href="equipamentos_insumos/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="equipamentos_insumos/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                      <a href="#" class="btn btn-danger" onclick="deleta('/equipamentos_insumos/deletar/{{ $item->id }}')">
                         <i class="fas fa-trash"></i>
                       </a>
 
