@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="/css/alertify.min.css">
   <link rel="stylesheet" href="/css/estilo-admin.css">
+  <link rel="stylesheet" href="/plugins/sweetalert/dist/sweetalert2.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

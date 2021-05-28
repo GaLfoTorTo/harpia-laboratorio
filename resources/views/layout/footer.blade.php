@@ -55,6 +55,7 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
 
 
 <script>
@@ -106,6 +107,29 @@
   alertify.error('{{session('danger')}}');
 @endif
 
+//Sweealert
+
+  function alerta() {
+      Swal.fire({
+          title: 'Tem Certeza?',
+          text: "Esta ação não pode ser desfeita!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sim, Deletar!'
+      }).then((result) => {
+          console.log(result)
+          if (result.isConfirmed) {
+              Swal.fire(
+                  'Deletado!',
+                  'O registro foi deletado!',
+                  'success'
+              )
+          }
+      })
+
+  }
 
 </script>
 </body>
