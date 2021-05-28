@@ -117,7 +117,7 @@
 
 //Sweealert
 
-  function alerta() {
+  function deleta(url) {
       Swal.fire({
           title: 'Tem Certeza?',
           text: "Esta ação não pode ser desfeita!",
@@ -129,11 +129,13 @@
       }).then((result) => {
           console.log(result)
           if (result.isConfirmed) {
-              Swal.fire(
-                  'Deletado!',
-                  'O registro foi deletado!',
-                  'success'
-              )
+            window.location.href = url
+              // Swal.fire(
+              //     'Deletado!',
+              //     'O registro foi deletado!',
+              //     'success'
+              // )
+
           }
       })
 

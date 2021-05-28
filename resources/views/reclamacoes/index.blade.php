@@ -77,7 +77,7 @@
                         <a href="reclamacoes/editar/{{ $item->id }}" class="btn btn-warning">
                           <i class="fas fa-edit"></i>
                         </a>
-                        <a href="reclamacoes/deletar/{{ $item->id }}" class="btn btn-danger" data-reclamacoes="reclamacoes" onclick="alerta()">
+                        <a href="reclamacoes/deletar/{{ $item->id }}" class="btn btn-danger" onclick="deleta()">
                           <i class="fas fa-trash"></i>
                         </a>
 
