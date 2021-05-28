@@ -3,7 +3,7 @@
         "Cargos" => ["links" => "cargos", "icone" => "fas fa-user-tie" ],
         "Clientes" => ["links" => "clientes", "icone" => "fas fa-users" ],
         "Colaboradores" => ["links" => "colaboradores", "icone" => "fas fa-user-friends" ],
-        "Documentos" => ["links" => "documentos", "icone" => "fas fa-copy" ],
+        "Documentos" => ["links" => "documento", "icone" => "fas fa-copy" ],
         "Equipamentos" => ["links" => "equipamentos", "icone" => "fas fa-microscope" ],
         "Fornecedores" => ["links" => "fornecedores", "icone" => "fas fa-dolly-flatbed" ],
         "Listra Mestra" => ["links" => "lista_mestras", "icone" => "fas fa-building" ],
