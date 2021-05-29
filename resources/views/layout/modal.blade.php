@@ -17,7 +17,7 @@
     <div class="modal-dialog  modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Menu</h5>
+          <h5 class="modal-title">Cadastros</h5>
           <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#menuModal">
             <a class="nav-link" href="#" >
               <i class="fas fa-times" style="font-size: 27px !important; color: grey"></i>
