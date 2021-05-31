@@ -86,6 +86,12 @@
               @endforeach
 
           </table>
+          <br>
+            @if(count($cargos) < 1)
+            <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
+              Nenhum registro encontrado!
+            </div>
+            @endif
           </div>
           <!-- /.card-body -->
       </div>

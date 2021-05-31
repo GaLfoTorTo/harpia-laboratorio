@@ -4,7 +4,7 @@
         "Clientes" => ["links" => "clientes", "icone" => "fas fa-users" ],
         "Colaboradores" => ["links" => "colaboradores", "icone" => "fas fa-user-friends" ],
         "Documentos" => ["links" => "documento", "icone" => "fas fa-copy" ],
-        "Equipamentos" => ["links" => "equipamentos", "icone" => "fas fa-microscope" ],
+        "Equipamento" => ["links" => "equipamentos", "icone" => "fas fa-microscope" ],
         "Fornecedores" => ["links" => "fornecedores", "icone" => "fas fa-dolly-flatbed" ],
         "Listra Mestra" => ["links" => "lista_mestras", "icone" => "fas fa-building" ],
         "Serviços" => ["links" => "servicos", "icone" => "fas fa-toolbox" ],
