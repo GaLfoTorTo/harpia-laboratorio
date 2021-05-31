@@ -26,8 +26,6 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Main row -->
-        
-
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
@@ -110,24 +108,36 @@
   </div>
 
 @include('layout.footer')
+@php
+  $meses_array = [];
+  $valores_array = [];
 
+foreach ($data['analises_criticas'] as $key => $value ){
+    $meses_array[] = ucfirst($value->mes);
+    $valores_array[] = $value->total;
+}
+$meses = "'".implode("','", $meses_array)."'";
+$valores = implode(",", $valores_array);
+@endphp
 <script>
 
   Highcharts.chart('grafico-container', {
 
 title: {
-    text: 'Titulo do grafico'
+    text: 'Análises Críticas por mês em {{ date('Y') }}'
 },
 credits: false,
 
-subtitle: {
-    text: 'Teste'
+// subtitle: {
+//     text: 'Teste'
+// },
+xAxis: {
+        categories: [{!! $meses !!}],
 },
-
 yAxis: {
     title: {
         text: 'Número de análises críticas'
-    }
+    },
 },
 
 legend: {
@@ -137,17 +147,12 @@ legend: {
 },
 
 plotOptions: {
-    series: {
-        label: {
-            connectorAllowed: false
-        },
-        pointStart: 2010
-    }
+
 },
 
 series: [{
-    name: 'Exemplo',
-    data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    name: 'Total',
+    data: [ {!! $valores !!}]
  }, 
 //{
 //     name: 'Manufacturing',
