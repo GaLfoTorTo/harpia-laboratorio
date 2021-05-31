@@ -150,12 +150,3 @@
   
 
 @include('layout.footer')
-
-
-        
-
-
-            
-
-            
-            
