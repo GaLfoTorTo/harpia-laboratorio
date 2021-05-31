@@ -40,10 +40,12 @@
                     @endforeach
                 </div>
             @endif
-            <a href="/clientes/novo" class="btn btn-primary">
-                Novo Cliente
-                <i class="fas fa-plus"></i>
-            </a>
+            @isset($cliente)
+                <a href="/clientes/novo" class="btn btn-primary">
+                    Novo Cliente
+                    <i class="fas fa-plus"></i>
+                </a>
+            @endisset
 
   <form action="/clientes/salvar" method="POST">
     @csrf

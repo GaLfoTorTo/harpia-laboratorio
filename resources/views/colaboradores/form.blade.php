@@ -31,10 +31,22 @@
           <!-- Main row -->
           <div class="row card">
             <div class="col card-body">
-                <a href="/colaboradores/novo" class="btn btn-primary">
-                    Novo Colaborador
-                    <i class="fas fa-plus"></i>
-                </a>
+                @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        @foreach($errors->all() as $error)
+                            {{ $error }}<br/>
+                        @endforeach
+                    </div>
+                @endif
+                @isset($colaborador)
+                    <a href="/colaboradores/novo" class="btn btn-primary">
+                        Novo Colaborador
+                        <i class="fas fa-plus"></i>
+                    </a>
+                @endisset
                 <form action="/colaboradores/salvar" method="POST">
                     @csrf
                     <input type="hidden" name="id" value="@if(isset($colaborador)){{$colaborador->id}}@else{{ old('id') }}@endif">
