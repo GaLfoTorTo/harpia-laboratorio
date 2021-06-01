@@ -77,7 +77,7 @@
                             </div>
                             <div class="col-6 documentos_externos">
                                 <div class="form-group">
-                                    <label for="revisao_edicao_n" class="form-label">Revisão/Edição/N°:</label>
+                                    <label for="revisao_edicao_n" class="form-label">Data da Revisão/Edição/N°:</label>
                                     <input type="text" name="revisao_edicao_n" class="form-control "  value="@if(isset($documento)){{$documento->revisao_edicao_n}}@else{{ old('revisao_edicao_n')}}@endif">
                                 </div>
                             </div>
@@ -108,15 +108,22 @@
 
                             <div class="col-6 documentos_externos">
                                 <div class="form-group">
-                                    <label for="data_da_atualizacao" class="form-label">Data da atualização:</label>
-                                    <input type="date" name="data_da_atualizacao" class="form-control"  value="@if(isset($documento)){{$documento->data_da_atualizacao}}@else{{ old('data_da_atualizacao')}}@endif">
+                                    <label for="data_da_ultima_analise_critica" class="form-label">Data da última análise crítica:</label>
+                                    <input type="date" name="data_da_ultima_analise_critica" class="form-control"  value="@if(isset($documento)){{$documento->data_da_ultima_analise_critica}}@else{{ old('data_da_ultima_analise_critica')}}@endif">
+                                </div>
+                            </div>
+
+                            <div class="col-6 documentos_externos">
+                                <div class="form-group">
+                                    <label for="proxima_analise_critica_em" class="form-label">Próxima análise crítica em</label>
+                                    <input type="date" name="proxima_analise_critica_em" class="form-control"  value="@if(isset($documento)){{$documento->proxima_analise_critica_em}}@else{{ old('proxima_analise_critica_em')}}@endif">
                                 </div>
                             </div>
                      
                             <div class="col-6 documentos_externos">
                                 <div class="form-group">
-                                    <label for="analise_critica_verificacao" class="form-label">Análise Critica/Verificação:</label>
-                                    <input type="text" name="analise_critica_verificacao" class="form-control"  value="@if(isset($documento)){{$documento->analise_critica_verificacao}}@else{{ old('analise_critica_verificacao')}}@endif">
+                                    <label for="frequencia_da_analise_critica_verificacao" class="form-label">Frequência da análise crítica/verificação:</label>
+                                    <input type="text" name="frequencia_da_analise_critica_verificacao" class="form-control"  value="@if(isset($documento)){{$documento->frequencia_da_analise_critica_verificacao}}@else{{ old('frequencia_da_analise_critica_verificacao')}}@endif">
                                 </div>
                             </div>
                             <div class="col-6 documentos_externos">
