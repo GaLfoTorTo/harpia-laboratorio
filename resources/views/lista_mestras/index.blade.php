@@ -33,7 +33,6 @@
             Nova Lista 
             <i class="fas fa-plus"></i>
           </a>
-
           <div class="card-tools">
             <form action="">
               <div class="input-group input-group" style="width: 150px;">
@@ -83,6 +82,11 @@
               @endforeach
 
           </table>
+            @if(count($lista_mestras) < 1)
+                <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
+                  Nenhum registro encontrado!
+                </div>
+              @endif
           </div>
           <!-- /.card-body -->
       </div>

@@ -81,7 +81,17 @@
                                     <input type="text" name="revisao_edicao_n" class="form-control "  value="@if(isset($documento)){{$documento->revisao_edicao_n}}@else{{ old('revisao_edicao_n')}}@endif">
                                 </div>
                             </div>
-                        
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="localizacao" class="form-label">Tipo:</label>
+                                    <select name="tipo" id="tipo" class="form-control">
+                                        <option value="">Selecione</option>
+                                        @foreach ($tipo as $key => $item)
+                                          <option value="{{ $item }}" @if(isset($documento) && $documento->item == $item)  selected @elseif(old('item') == $item) selected @endif >{{$item}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-6 ">
                                 <div class="form-group">
                                     <label for="codigo" class="form-label">Código:</label>
@@ -99,13 +109,13 @@
                                 <div class="form-group">
                                     <label for="localizacao" class="form-label">Localização:</label>
                                     <select name="localizacao" id="localizacao" class="form-control">
+                                    <option value="">Selecione</option>
                                         @foreach ($setores as $key => $tipo)
                                           <option value="{{ $tipo->setor }}" @if(isset($documento) && $documento->setor == $tipo)  selected @elseif(old('setor') == $tipo) selected @endif >{{$tipo->setor}}</option>
-                                          @endforeach
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
-
                             <div class="col-6 documentos_externos">
                                 <div class="form-group">
                                     <label for="data_da_atualizacao" class="form-label">Data da atualização:</label>
