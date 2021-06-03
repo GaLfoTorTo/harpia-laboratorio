@@ -24,7 +24,7 @@ class CreateReclamacaosTable extends Migration
             $table->string('email', 70);
             $table->text('descricao');
             $table->enum('tipo_nc', ['Sim', 'Não']);
-            $table->string('n_acao_corretiva');
+            $table->string('n_acao_corretiva')->nullable();
             $table->text('retorno')->nullable();
             $table->text('solucao')->nullable();
             $table->text('analise')->nullable();
