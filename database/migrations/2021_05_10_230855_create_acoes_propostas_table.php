@@ -15,11 +15,12 @@ class CreateAcoesPropostasTable extends Migration
     {
         Schema::create('acoes_propostas', function (Blueprint $table) {
             $table->id();
+            $table->string('origem', 255);
             $table->string('acao', 255);
             $table->string('responsavel', 100)->nullable();
             $table->string('prazo', 100)->nullable();
             $table->date('prazo_final', 10)->nullable();
-            $table->enum('necessario_prorrogacao', ['Sim', 'Não'])->nullable();
+            $table->enum('necessaria_prorrogacao', ['Sim', 'Não'])->nullable();
             $table->text('justificativa')->nullable();
             $table->date('data_encerramento', 10)->nullable();
             $table->timestamps();

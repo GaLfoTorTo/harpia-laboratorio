@@ -28,7 +28,7 @@ class RegistroTreinamentoController extends Controller
 
         public function editar($id) {
 
-            $registro_treinamento = RegistroTreinamento::select('titulo', 'carga_horaria', 'data', 'conteudo')->get();
+            $registro_treinamento = RegistroTreinamento::get();
 
             $registro_treinamento = RegistroTreinamento::find($id);
             return view('registro_treinamento.form', compact('registro_treinamento'));

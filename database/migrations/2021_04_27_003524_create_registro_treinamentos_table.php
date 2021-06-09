@@ -17,7 +17,8 @@ class CreateRegistroTreinamentosTable extends Migration
             $table->id();
             $table->string('titulo', 100)->nullable();
             $table->string('carga_horaria', 10)->nullable();
-            $table->date('data', 10)->nullable();
+            $table->date('data_inicial', 10)->nullable();
+            $table->date('data_final', 10)->nullable();
             $table->string('conteudo', 255);
             $table->timestamps();
         });

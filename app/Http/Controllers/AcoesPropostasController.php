@@ -9,18 +9,16 @@ use App\Models\Novo_Rnc;
 
 class AcoesPropostasController extends Controller
 {  
-
-        public $necessario_prorrogacao = ['Sim', 'Não'];
-
         public function index(Request $request) {
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
         $acoes_propostas = AcoesPropostas::where('acao', 'like', "%".$pesquisa."%")
+                                           ->orWhere('origem', 'like', "%".$pesquisa."%")
                                            ->orWhere('responsavel', 'like', "%".$pesquisa."%")
                                            ->orWhere('prazo', 'like', "%".$pesquisa."%") 
                                            ->orWhere('prazo_final', 'like', "%".$pesquisa."%") 
-                                           ->orWhere('necessario_prorrogacao', 'like', "%".$pesquisa."%") 
+                                           ->orWhere('necessaria_prorrogacao', 'like', "%".$pesquisa."%") 
                                            ->orWhere('data_encerramento', 'like', "%".$pesquisa."%")->paginate(1000);  
         } else {
         $acoes_propostas = AcoesPropostas::paginate(10);
@@ -31,9 +29,8 @@ class AcoesPropostasController extends Controller
 
         $novos_rncs = Novo_Rnc::select('responsavel')->get();    
 
-        $necessario_prorrogacao = $this->necessario_prorrogacao;
 
-        return view('acoes_propostas.form', compact('novos_rncs', 'necessario_prorrogacao'));
+        return view('acoes_propostas.form', compact('novos_rncs'));
         }
 
         public function editar($id) {
@@ -41,9 +38,8 @@ class AcoesPropostasController extends Controller
             $novos_rncs = Novo_Rnc::select('responsavel')->get(); 
 
             $acoes_propostas = AcoesPropostas::find($id);
-            $necessario_prorrogacao = $this->necessario_prorrogacao;
 
-            return view('acoes_propostas.form', compact('novos_rncs', 'acoes_propostas','necessario_prorrogacao'));
+            return view('acoes_propostas.form', compact('novos_rncs', 'acoes_propostas'));
         }
 
         public function salvar(AcoesPropostasRequest $request) {
