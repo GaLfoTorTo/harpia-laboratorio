@@ -13,10 +13,7 @@ class EquipamentoController extends Controller
         public $equipamento_proprio = ['Sim','não'];
         public $tensao = ['110','220','bivolt'];
         public $manual = ['Sim','Não'];
-
-        public $equipamento_proprio = ['Sim', 'Não'];
-        public $tensao = ['110', '220'];
-        public $manual = ['Sim', 'Não'];
+        
 
         public function index(Request $request) {
         $pesquisa = $request->pesquisa;
@@ -35,30 +32,6 @@ class EquipamentoController extends Controller
         return view('equipamentos_medicao.index', compact('equipamentos', 'pesquisa'));
 } 
         public function novo() {
-<<<<<<< HEAD
-            $fornecedores = Fornecedor::select('razao_social')->get();
-
-            $setores = Setor::select('setor')->get();
-
-            $equipamento_proprio = $this->equipamento_proprio;
-            $tensao = $this->tensao;
-            $manual = $this->manual;
-
-        return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setores'));
-        }
-        public function editar($id) {
-
-            $fornecedores = Fornecedor::select('razao_social')->get();
-
-            $setores = Setor::select('setor')->get();
-
-            $equipamentos = Equipamentos::find($id);
-            $equipamento_proprio = $this->equipamento_proprio;
-            $tensao = $this->tensao;
-            $manual = $this->manual;
-
-            return view('equipamentos.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setores'));
-=======
             $fornecedores = Fornecedor::select('id','razao_social')->get();
             $setor = Setor::select('id','setor')->get();
             $equipamento_proprio = $this->equipamento_proprio;
@@ -75,7 +48,6 @@ class EquipamentoController extends Controller
             $tensao = $this->tensao;
             $manual = $this->manual;
             return view('equipamentos_medicao.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setor'));
->>>>>>> 28d920a187d56c4018474835ac2699507944170b
         }
         public function salvar(EquipamentoRequest $request) {
 
