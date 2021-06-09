@@ -15,6 +15,7 @@ class AddCamposUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('foto')->nullable();
+            $tabel->bigInteger('colaborador_id');
         });
     }
 
