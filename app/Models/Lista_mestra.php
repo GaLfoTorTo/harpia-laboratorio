@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Documento;
 
 class Lista_mestra extends Model
 {
@@ -11,6 +12,7 @@ class Lista_mestra extends Model
 
     protected $fillable = [
         'tipo',
+        'documento_id',
         'codigo',
         'titulo',
         'revisao_n',
@@ -24,6 +26,6 @@ class Lista_mestra extends Model
 
     public function documento_relacionado()
     {
-        return $this->hasOne(Documentos_internos::class, 'codigo', 'codigo');
+        return $this->hasOne(Documento::class, 'id', 'documento_id');
     }
 }

@@ -15,7 +15,7 @@ class CreateEquipamentosTable extends Migration
     {
         Schema::create('equipamentos', function (Blueprint $table) {
             $table->id();
-            $table->enum('equipamento_proprio', ['sim', 'não']);
+            $table->enum('equipamento_proprio', ['Sim', 'Não']);
             $table->string('equipamento', 100);
             $table->string('marca', 50);
             $table->string('modelo', 50);
@@ -27,8 +27,8 @@ class CreateEquipamentosTable extends Migration
             $table->string('codigo', 100);
             $table->string('patrimonio', 100);
             $table->string('fabricante', 100);
-            $table->bigInteger('fornecedor_id');
-            $table->bigInteger('localizacao_equipamento');
+            $table->string('fornecedor', 200)->nullable();
+            $table->string('localizacao_equipamento')->nullable();
             $table->timestamps();
         });
     }

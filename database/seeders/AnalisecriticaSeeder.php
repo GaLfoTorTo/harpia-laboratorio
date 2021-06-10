@@ -29,7 +29,7 @@ class AnalisecriticaSeeder extends Seeder
             'aprovado' => rand(1,0) == 0 ? 'Sim' : 'Não',
             'justificativa_reprovacao' => $faker->name(),
             'colaborador_id' => rand(1,0) == 0 ? 1 : 5,
-            'data' => $faker->date()
+            'data' => $faker->dateTimeThisYear()
             
             ]);
         }

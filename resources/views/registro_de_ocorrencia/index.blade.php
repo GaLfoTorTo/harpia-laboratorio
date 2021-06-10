@@ -83,8 +83,8 @@
                       <a href="registro_de_ocorrencia/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="#" class="btn btn-danger" onclick="deleta()">
-                        <i class="fas fa-trash"></i>
+                      <a href="#" class="btn btn-danger" onclick="deleta('/registro_de_ocorrencia/deletar/{{ $item->id }}')">
+                       <i class="fas fa-trash"></i>
                       </a>
 
 
@@ -93,6 +93,13 @@
               </tbody>
               @endforeach
           </table>
+            <br>
+            @if(count($registro) < 1)
+              <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
+              Nenhum registro encontrado!
+              </div>
+            @endif
+
 
         </div>
         <div>
