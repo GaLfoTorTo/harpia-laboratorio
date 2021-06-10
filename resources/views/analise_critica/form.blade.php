@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">{{ isset($analise_criticas) ? 'Editar' : 'Nova' }} Análise Crítica</h1>
+                    <h1 class="m-0">{{ isset($analise_criticas) ? 'Editar' : 'Nova' }} Análise Crítica de Pedidos, Propostas e Contratos</h1>
                 </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -105,9 +105,9 @@
                                 <div class="card-body">
                                         <div class="form-group">
                                             <label for="codigo" class="form-label">Aprovado ?   </label>                                                
-                                                <label for="sim">SIM</label>
+                                                <label for="sim">SIM</label>'
                                                 <input type="radio" class="moto" name="aprovado" id="sim" value="sim"style="
-																								margin-left: 3px;
+																				'				margin-left: 3px;
 																								margin-right: 14px" @if(isset($analise_criticas) && $analise_criticas->aprovado == "sim") checked @elseif(old("aprovado") == "1") checked @endif>
                                                 <label for="nao">NÃO</label>
                                                 <input type="radio" class="moto" name="aprovado" id="nao" value="nao" style="

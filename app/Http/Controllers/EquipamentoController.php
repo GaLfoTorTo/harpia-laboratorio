@@ -29,15 +29,16 @@ class EquipamentoController extends Controller
         } else {
         $equipamentos = Equipamentos::with('fornecedor')->paginate(10);
         }
-        return view('equipamentos_medicao.index', compact('equipamentos', 'pesquisa'));
-} 
+        return view('equipamentos.index', compact('equipamentos', 'pesquisa'));
+    }
         public function novo() {
             $fornecedores = Fornecedor::select('id','razao_social')->get();
             $setor = Setor::select('id','setor')->get();
             $equipamento_proprio = $this->equipamento_proprio;
             $tensao = $this->tensao;
             $manual = $this->manual;
-        return view('equipamentos_medicao.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setor'));
+
+        return view('equipamentos.form', compact('equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setor'));
         }
         public function editar($id) {
 
@@ -47,13 +48,15 @@ class EquipamentoController extends Controller
             $equipamento_proprio = $this->equipamento_proprio;
             $tensao = $this->tensao;
             $manual = $this->manual;
-            return view('equipamentos_medicao.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setor'));
+
+            return view('equipamentos.form', compact('equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setor'));
         }
         public function salvar(EquipamentoRequest $request) {
 
-            $ehvalido = $request->validated();
-
             if($request->id != '') {
+
+                $ehvalido = $request->validated();
+                
                 $equipamentos = Equipamentos::find($request->id);
                 $equipamentos->update($request->all());
             } else {

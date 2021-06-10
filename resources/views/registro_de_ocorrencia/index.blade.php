@@ -84,7 +84,7 @@
                         <i class="fas fa-edit"></i>
                       </a>
                       <a href="#" class="btn btn-danger" onclick="deleta('/registro_de_ocorrencia/deletar/{{ $item->id }}')">
-                        <i class="fas fa-trash"></i>
+                       <i class="fas fa-trash"></i>
                       </a>
 
 

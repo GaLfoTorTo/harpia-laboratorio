@@ -57,7 +57,8 @@
                   <th scope="col">#</th>
                   <th>Título</th>
                   <th>Carga Horária</th>
-                  <th>Data</th>
+                  <th>Data Inicial</th>
+                  <th>Data Final</th>
                   <th>Ações</th>
                 </tr>
               </thead>
@@ -67,7 +68,8 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->titulo }}</td>
                     <td>{{ $item->carga_horaria }}</td>
-                    <td>{{ $item->data }}</td>
+                    <td>{{ $item->data_inicial }}</td>
+                    <td>{{ $item->data_final }}</td>
                     <td>
                       <a href="registro_treinamento/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
