@@ -12,11 +12,12 @@ class AcoesPropostas extends Model
     protected $table = 'acoes_propostas';
     protected $fillable = [
 
+        'origem',
         'acao',
         'responsavel',
         'prazo',
         'prazo_final',
-        'necessario_prorrogacao',
+        'necessaria_prorrogacao',
         'justificativa',
         'data_encerramento'
     ]; 
