@@ -100,7 +100,7 @@
                                     <label for="localizacao" class="form-label">Localização:</label>
                                     <select name="localizacao" id="localizacao" class="form-control">
                                         @foreach ($setores as $key => $tipo)
-                                          <option value="{{ $tipo->setor }}" @if(isset($documento) && $documento->setor == $tipo)  selected @elseif(old('setor') == $tipo) selected @endif >{{$tipo->setor}}</option>
+                                          <option value="{{ $tipo->setor }}" @if(isset($documento) && $documento->localizacao == $tipo->setor)  selected @elseif(old('localizacao') == $tipo) selected @endif >{{$tipo->setor}}</option>
                                           @endforeach
                                     </select>
                                 </div>
