@@ -99,16 +99,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-5">
-                            <div class="form-outline">
-                                <label for="bairro" class="form-label">Bairro</label>
-                                <input type="text" name="bairro" class="form-control" value="@if(isset($colaborador)){{$colaborador->bairro}}@else{{ old('bairro') }}@endif">
-                            </div>
-                        </div>
                         <div class="col-4">
                             <div class="form-outline">
                                 <label for="cidade" class="form-label">Cidade</label>
                                 <input type="text" name="cidade" class="form-control" value="@if(isset($colaborador)){{$colaborador->cidade}}@else{{ old('cidade') }}@endif">
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="form-outline">
+                                <label for="bairro" class="form-label">Bairro</label>
+                                <input type="text" name="bairro" class="form-control" value="@if(isset($colaborador)){{$colaborador->bairro}}@else{{ old('bairro') }}@endif">
                             </div>
                         </div>
                         <div class="col-3">

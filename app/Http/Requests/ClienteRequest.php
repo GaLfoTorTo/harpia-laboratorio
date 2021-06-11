@@ -27,9 +27,7 @@ class ClienteRequest extends FormRequest
             'nome' => 'required',
             'cpf_cnpj' => 'required',
             'tipo_unidade' => 'required',
-            'codigo_cliente' => 'required',
-            'responsavel_tecnico' => 'required',
-            'responsavel_financeiro' => 'required'
+            'codigo_cliente' => 'required'
         ];
     }
     public function messages()
@@ -38,9 +36,7 @@ class ClienteRequest extends FormRequest
             'nome.required' => 'Nome do cliente é obrigatório',
             'cpf_cnpj.required' => 'CPF OU CNPJ do cliente é obrigatório',
             'tipo_unidade.required' => 'Nome da Unidade é obrigatório',
-            'codigo_cliente.required' => 'Codigo do cliente nao foi gerado com sucesso!',
-            'responsavel_tecnico.required' => 'Responsável tecnico é obrigatório',
-            'responsavel_financeiro.required' => 'Responsável financeiro é obrigatório',
+            'codigo_cliente.required' => 'Codigo do cliente nao foi gerado com sucesso!'
         ];
     }
 }

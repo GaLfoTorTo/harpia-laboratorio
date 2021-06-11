@@ -17,7 +17,7 @@ class AutenticacaoController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/')->with('success', 'Login efetuado com sucesso!');
-        } 
+        }
 
         return back()->withErrors([
             'email' => 'As credenciais informadas não foram encontradas, tente novamente.',
@@ -32,5 +32,13 @@ class AutenticacaoController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login');
+    }
+    
+    public function logarApp(Request $request){
+        $credentials = $request->only('email', 'password');
+        if(Auth::attempt($credentials)){
+            $authentication = Auth::user();
+            return response()->json([$authentication],200);
+        }
     }
 }
