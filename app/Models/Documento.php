@@ -19,6 +19,7 @@ class Documento extends Model
         'data_da_atualizacao',
         'analise_critica_verificacao',
         'atualizacao_em',
+        'frequencia_da_analise_critica_verificacao',
         'n_de_exemplares',
         'documento',
         'tipo',
@@ -26,6 +27,8 @@ class Documento extends Model
         'titulo',
         'revisao_edicao',
         'data_aprovacao',
+        'data_da_ultima_analise_critica',
+        'proxima_analise_critica_em',
         'num_copias',
         'localizacao',
         'documento'
