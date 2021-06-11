@@ -28,6 +28,7 @@ class CreateEquipamentosInsumosTable extends Migration
                 $table->timestamps();
                 
             });
+            
     }
 
     /**

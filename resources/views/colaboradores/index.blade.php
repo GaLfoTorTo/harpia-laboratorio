@@ -67,7 +67,7 @@
                     <a href="colaboradores/editar/{{ $item->id }}" class="btn btn-warning">
                       <i class="fas fa-edit"></i>
                     </a>
-                    <a href="colaboradores/deletar/{{ $item->id }}" class="btn btn-danger" onclick="return confirm('Deseja realmente deletar?')">
+                    <a href="#" class="btn btn-danger" onclick="deleta('/colaboradores/deletar/{{ $item->id }}')">
                       <i class="fas fa-trash"></i>
                     </a>
                   </td>
@@ -75,6 +75,12 @@
             </tbody>
             @endforeach
           </table>
+          <br>
+            @if(count($colaboradores) < 1)
+            <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
+              Nenhum registro encontrado!
+            </div>
+            @endif
         </div>
         <!-- /.card-body -->
       </div>
