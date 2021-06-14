@@ -10,16 +10,16 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Esqueci a senha
             <br>
-            <small>Informe seu e-mail abaixo:</small>
+            <small>Informe o e-mail para a redefinição da senha:</small>
         </p>
         @if(session('status') != '')
-            <div class="alert alert-success">{{ session('status') }}</div>
+          <div class="alert alert-success" align="center">{{ session('status') }}</div>
         @endif
-        {{ session('status') ?? '' }}
-        @if(session('email'))
-            <div class="alert alert-info">{{ session('email') }}</div>
-        @endif
-        <form action="/forgot-password" method="post">
+
+        {{-- @if(session('email'))
+          <div class="alert alert-info">{{ session('email') }}</div>
+        @endif --}}
+        <form action="/esqueci-senha" method="post">
             @csrf
           <div class="input-group mb-3">
             <input type="email" class="form-control" name="email" placeholder="Email">

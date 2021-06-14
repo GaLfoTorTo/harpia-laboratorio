@@ -35,6 +35,13 @@
             </div>
             <!-- /.col -->
         </div>
+        <div class="row">
+          <div class="col">
+            <button type="submit" class="btn btn-link btn-block">
+              <a href="/esqueci-senha">Esqueci minha senha</a>
+            </button>
+          </div>
+        </div>
         </form>
       </div>
       <!-- /.login-card-body -->
