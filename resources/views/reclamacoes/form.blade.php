@@ -75,14 +75,14 @@
       </div>
       <div class="col-4">
         <div class="form-group">
-          <label for="n_registro" class="form-label">Número do registro:</label>
-          <input required type="text" name="n_registro" class="form-control" value="@if(isset($reclamacao)){{$reclamacao->n_registro}}@else{{old('n_registro')}} @endif" >
+          <label class="form-label">Número do registro:</label>
+          <input type="text" name="id" class="form-control" readonly value="@if(isset($reclamacao)){{$reclamacao->id}}@else{{old('id')}} @endif" >
       </div> 
       </div>
       <div class="col-4">
-        <div class="form-group">
+        <div  class="form-group">
           <label  for="" class="form-label">Data de abertura:</label>
-          <input required  type="date" name="data_abertura" class="form-control" value="@if(isset($reclamacao)){{$reclamacao->data_abertura}}@else{{old('data_abertura')}} @endif" >
+          <input required  type="date" min="{{ date('Y-m-d') }}" name="data_abertura" class="form-control" value="@if(isset($reclamacao)){{$reclamacao->data_abertura}}@else{{old('data_abertura')}}@endif" >
       </div> 
       </div>
     </div>
@@ -180,7 +180,7 @@
       <select  name="rep_analise_id" id="rep_analise_id" class="form-control">
         <option value="">Selecione um Responsável</option>
           @foreach($rep_analise_id as $item)
-            <option value="{{$item->id}}" @if(isset($reclamacao) &&$reclamacao->rep_analise_id == $item->id) selected @elseif(old('rep_analise_id') == $item->id) selected @endif>{{$item->nome}}
+            <option  value="{{$item->id}}" @if(isset($reclamacao) &&$reclamacao->rep_analise_id == $item->id) selected @elseif(old('rep_analise_id') == $item->id) selected @endif>{{$item->nome}}
             </option>
           @endforeach
       </select>
@@ -190,7 +190,7 @@
   <div class="col-6">
     <div class="form-group">
       <label for="data_encerramento" class="form-label">Data de encerramento:</label>
-      <input  type="date" name="data_encerramento" class="form-control" value="@if(isset($reclamacao)){{$reclamacao->data_encerramento}}@else{{old('data_encerramento')}} @endif" >
+      <input  type="date" name="data_encerramento" class="form-control" value="@if(isset($reclamacao)){{$reclamacao->data_encerramento}}@else{{old('data_encerramento')}} @endif" @if(!isset($reclamacao->id)) disabled @endif  @if(isset($reclamacao->data_abertura)) min="{{ $reclamacao->data_abertura }}" @endif>
   </div> 
   </div>
 </div>
@@ -225,3 +225,16 @@
 </div>
 
 @include('layout.footer')
+
+
+<script>
+ $(function () {
+
+$('#teste').datetimepicker({
+
+    minDate:new Date()
+
+});
+
+});
+</script>

@@ -9,12 +9,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Cargos</h1>
+          <h1 class="m-0">Retorno ao reclamante</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-            <li class="breadcrumb-item active">Cargos</li>
+            <li class="breadcrumb-item active">Retorno ao reclamante</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -29,11 +29,10 @@
 
       <div class="card">
         <div class="card-header">
-          <a href="/cargos/novo" class="btn btn-primary">
-            Novo Cargo
+          <a href="/retorno/novo" class="btn btn-primary">
+            Novo retorno ao reclamante
             <i class="fas fa-plus"></i>
           </a>
-          
 
           <div class="card-tools">
             <form action="">
@@ -56,38 +55,36 @@
            <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th>Cargo</th>
-                    <th>Formação</th>
+                    <th>Responsável</th>
+                    <th>Data</th>
                     <th>Descrição</th>
-                    <th>Pré-Requisitos</th>
-                    <th>Treinamentos</th>
                     <th>Ações</th>
                 </tr>
               </thead>
-              @foreach ($cargos as $item)
+              @foreach ($retornos as $item)
               <tbody>
                 <tr>
-                  <td>{!! nl2br($item->id) !!}</td>
-                  <td>{!! nl2br($item->cargo) !!}</td>
-                  <td>{!! nl2br($item->tipo_formacao) !!}</td>
-                  <td>{!! nl2br($item->descricao) !!}</td>
-                  <td>{!! nl2br($item->qualificacao) !!}</td>
-                  <td>{!! nl2br($item->habilidades) !!}</td>
+                    <td>{{ $item->id }}</td>
+                    <td>{{$item->colaborador->nome}}</td>
+                    <td>{{ $item->data_retorno }}</td>
+                    <td>{{ $item->descricao }}</td>
                     <td>
-                      <a href="cargos/editar/{{ $item->id }}" class="btn btn-warning">
+                      <a href="retorno/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>
-                      <a href="#" class="btn btn-danger" onclick="deleta('/cargos/deletar/{{ $item->id }}')">
+                      <a href="#" class="btn btn-danger" onclick="deleta('/retorno/deletar/{{ $item->id }}')">
                         <i class="fas fa-trash"></i>
                       </a>
+
+
                     </td>
                 </tr>
               </tbody>
               @endforeach
-
+              
           </table>
           <br>
-            @if(count($cargos) < 1)
+            @if(count($retornos) < 1)
             <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
               Nenhum registro encontrado!
             </div>
@@ -97,7 +94,7 @@
       </div>
       <div class="row">
         <div class="col">
-          {{ $cargos->links() }}
+          {{ $retornos->links() }}
         </div>
       </div>
       

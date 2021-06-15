@@ -10,10 +10,14 @@ class Cargo extends Model
     use HasFactory;
     protected $fillable = [
         'cargo',
-        'formacao',
-        'descricao',
-        'requisitos',
-        'treinamentos'
+        'tipo_formacao',
+        'qualificacao',
+        'xp_minima',
+        'treinamentos',
+        'habilidades',
+        'con_tecnico',
+        'descricao'
+        
         
     ];
 }
