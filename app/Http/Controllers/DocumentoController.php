@@ -39,7 +39,7 @@ class DocumentoController extends Controller
 
     }
     public function editar($id) {
-
+        $tipo = ['Manual','Procedimento','Anexo','Instrução de uso/trabalho','Formulário'];
         $setores = Setor::select('setor')->get();
         $documento = Documento::find($id);
         $tipo = $this->tipo;
@@ -50,7 +50,7 @@ class DocumentoController extends Controller
         if($request->hasFile('documento_temp')) {
             // renomeando documento 
         $nome_documento = date('YmdHmi').'.'.$request->documento_temp->getClientOriginalExtension();
-
+        $tipo = ['Manual','Procedimento','Anexo','Instrução de uso/trabalho','Formulário'];
         $request['documento'] = '/uploads/documento/' . $nome_documento;
         ($request->documento);
         $request->documento_temp->move(public_path('uploads/documento'), $nome_documento);
