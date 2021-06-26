@@ -87,7 +87,7 @@
                                     <select name="tipo" id="tipo" class="form-control">
                                         <option value="">Selecione</option>
                                         @foreach ($tipo as $key => $item)
-                                          <option value="{{ $item }}" @if(isset($documento) && $documento->item == $item)  selected @elseif(old('item') == $item) selected @endif >{{$item}}</option>
+                                          <option value="{{ $item }}" @if(isset($documento) && $documento->tipo == $item)  selected @elseif(old('tipo') == $item) selected @endif >{{$item}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -111,8 +111,8 @@
                                     <select name="localizacao" id="localizacao" class="form-control">
                                     <option value="">Selecione</option>
                                         @foreach ($setores as $key => $tipo)
-                                          <option value="{{ $tipo->setor }}" @if(isset($documento) && $documento->setor == $tipo)  selected @elseif(old('setor') == $tipo) selected @endif >{{$tipo->setor}}</option>
-                                        @endforeach
+                                          <option value="{{ $tipo->setor }}" @if(isset($documento) && $documento->localizacao == $tipo->setor)  selected @elseif(old('localizacao') == $tipo) selected @endif >{{$tipo->setor}}</option>
+                                          @endforeach
                                     </select>
                                 </div>
                             </div>

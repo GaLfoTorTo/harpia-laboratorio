@@ -27,6 +27,7 @@ class CreateDocumento extends Migration
             $table->string('documento', 255)->nullable();
             $table->enum('tipo', ['Manual','Procedimento','Anexo','Instrução de uso/trabalho','Formulário'])->nullable();
             $table->string('revisao_edicao', 50)->nullable();
+            $table->string('revisao_edicao_n', 50)->nullable();
             $table->date('data_aprovacao')->nullable();
             $table->date('proxima_analise_critica_em')->nullable();
             $table->integer('num_copias')->nullable();

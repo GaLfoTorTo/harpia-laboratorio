@@ -13,6 +13,7 @@ class EquipamentoController extends Controller
         public $equipamento_proprio = ['Sim','não'];
         public $tensao = ['110','220','bivolt'];
         public $manual = ['Sim','Não'];
+        
 
         public function index(Request $request) {
         $pesquisa = $request->pesquisa;
@@ -31,7 +32,6 @@ class EquipamentoController extends Controller
         return view('equipamentos.index', compact('equipamentos', 'pesquisa'));
     }
         public function novo() {
-
             $fornecedores = Fornecedor::select('id','razao_social')->get();
             $setor = Setor::select('id','setor')->get();
             $equipamento_proprio = $this->equipamento_proprio;
