@@ -12,13 +12,19 @@ class ClienteController extends Controller
 
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
+        //dd($request);
 
         if($pesquisa != '') {
             $clientes = Cliente::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
             $clientes = Cliente::paginate(10);
         }
-        return view('clientes.index', compact('clientes','pesquisa'));
+
+        if($request->is('api/clientes')){
+            return response()->json([$clientes],200);
+        }else{
+            return view('clientes.index', compact('clientes','pesquisa'));
+        }
     } 
     public function novo() {
 
