@@ -51,4 +51,15 @@ class ClienteController extends Controller
             return redirect('clientes')->with('danger', 'Registro não encontrado!');
         }
     }
+
+    public function indexApp(Request $request) {
+        $pesquisa = $request->pesquisa;
+
+        if($pesquisa != '') {
+            $clientes = Cliente::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+        } else {
+            $clientes = Cliente::paginate(10);
+        }
+        return response()->json([$clientes],200);
+    } 
 }
