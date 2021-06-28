@@ -12,7 +12,6 @@ class ClienteController extends Controller
 
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
-        //dd($request);
 
         if($pesquisa != '') {
             $clientes = Cliente::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);

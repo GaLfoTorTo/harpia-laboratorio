@@ -16,7 +16,11 @@ class UserController extends Controller
         } else {
             $users = User::paginate(10);
         }
-        return view('user.index', compact('users','pesquisa'));
+        if($request->is('api/users')){
+            return response()->json([$users],200);
+        }else{
+            return view('user.index', compact('users','pesquisa'));
+        }
     } 
     public function novo() {
 

@@ -28,12 +28,20 @@ use App\Http\Controllers\C_temperaturaController;
 use App\Http\Controllers\AcoesPropostasController;
 
 Route::post('/logarApp', [AutenticacaoController::class, 'logarApp'])->name('logarApp');
+
 Route::get('/logout', [AutenticacaoController::class, 'logout'])->name('logout');
 
 Route::get('/equipamentos', [EquipamentoController::class, 'list'])->name('equipamentos.list');
 
+Route::get('/cargos', [CargosController::class, 'index'])->name('cargos');
 Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes');
+Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores');
+Route::get('/documentos', [DocumentoController::class, 'index'])->name('documentos');
+Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos');
+Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('fornecedores');
+Route::get('/servicos', [ServicoController::class, 'index'])->name('servicos');
+Route::get('/setores', [SetoresController::class, 'index'])->name('setores');
+Route::get('/users', [UserController::class, 'index'])->name('users');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function(){
 });

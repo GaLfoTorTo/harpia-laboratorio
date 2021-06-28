@@ -13,7 +13,7 @@
                 <!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/colaboradores">Colaaboradores</a></li>
+                        <li class="breadcrumb-item"><a href="/colaboradores">Colaboradores</a></li>
                         <li class="breadcrumb-item active">{{ isset($colaboradores) ? 'Editar' : 'Novo' }}</li>
                     </ol>
                 </div>

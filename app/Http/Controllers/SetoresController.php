@@ -22,8 +22,11 @@ class SetoresController extends Controller
         } else {
             $setores = Setor::with('setor_pai','filhos')->paginate(10);
         }
-      
-        return view('setores.index', compact('setores','pesquisa'));
+        if($request->is('api/setores')){
+            return response()->json([$setores],200);
+        }else{
+            return view('setores.index', compact('setores','pesquisa'));
+        }
     }
     public function novo() {
        

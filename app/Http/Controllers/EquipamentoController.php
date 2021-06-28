@@ -29,7 +29,11 @@ class EquipamentoController extends Controller
         } else {
         $equipamentos = Equipamentos::with('fornecedor')->paginate(10);
         }
-        return view('equipamentos.index', compact('equipamentos', 'pesquisa'));
+        if($request->is('api/equipamentos')){
+            return response()->json([$equipamentos],200);
+        }else{
+            return view('equipamentos.index', compact('equipamentos', 'pesquisa'));
+        }
     }
         public function novo() {
             $fornecedores = Fornecedor::select('id','razao_social')->get();
