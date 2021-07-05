@@ -53,17 +53,24 @@ class SetoresController extends Controller
         $setor = Setor::find($id);
         return view('setores.form', compact('setor', 'setores'));
     }
-    public function deletar($id) {
+    public function deletar(Request $request, $id) {
         $setor = Setor::find($id);
        
         if($setor->filhos->count() == 0 )
         {
             $setor->delete();
-            return redirect('setores')->with('success', 'Deletado com sucesso!');
+            if($request->path == `api/setores/deletar/${id}`){
+                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('setores')->with('success', 'Deletado com sucesso!');
+            }
+        }else {
+            if($request->path == `api/setores/deletar/${id}`){
+                return response()->json(['error' => 'Não é possível deletar!'], 404);
+            }else{
+                return redirect('setores')->with('danger', 'Não é possível deletar!');
+            }
         }
-        return redirect('setores')->with('danger', 'Não é possível deletar!');
-
-        
 
     }
 }

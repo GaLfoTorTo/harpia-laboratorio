@@ -59,13 +59,21 @@ class ColaboradorController extends Controller
         return redirect('/colaboradores/editar/'.$colaborador->id)->with('success', 'Salvo com sucesso!');
     }
 
-    public function deletar($id){
+    public function deletar(Request $request, $id){
         $colaborador = Colaborador::find($id);
         if(!empty($colaborador)){
             $colaborador->delete();
-            return redirect('colaboradores')->with('success', 'Deletado com sucesso!');
-        }else{
-            return redirect('colaboradores')->with('danger', 'Registro não encontrado!');
+            if($request->path == `api/colaboradores/deletar/${id}`){
+                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('colaboradores')->with('success', 'Deletado com sucesso!');
+            }
+        } else {
+            if($request->path == `api/colaboradores/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('colaboradores')->with('danger', 'Registro não encontrado!');
+            }
         }
     }
 }

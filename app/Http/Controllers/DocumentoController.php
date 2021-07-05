@@ -69,13 +69,21 @@ class DocumentoController extends Controller
         return redirect('/documento/editar/'. $documento->id)->with('success', 'Salvo com sucesso!');
     }
  
-    public function deletar($id) {
+    public function deletar(Request $request, $id) {
         $documento = Documento::find($id);
         if(!empty($documento)){
             $documento->delete();
-            return redirect('documento')->with('success', 'Deletado com sucesso!');
+            if($request->path == `api/documentos/deletar/${id}`){
+                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('documento')->with('success', 'Deletado com sucesso!');
+            }
         } else {
-            return redirect('documento')->with('danger', 'Registro não encontrado!');
+            if($request->path == `api/documentos/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('documento')->with('danger', 'Registro não encontrado!');
+            }
         }
     }
     // public $tipos = ['Manual','Procedimento','Anexo','Instrução de uso/trabalho','Formulário'];

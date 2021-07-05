@@ -68,14 +68,22 @@ class EquipamentoController extends Controller
             }
             return redirect('/equipamentos/editar/'. $equipamentos->id)->with('success', 'Salvo com sucesso!');
         }
-        public function deletar($id) {
+        public function deletar(Request $request, $id) {
             $equipamentos = Equipamentos::find($id);
             if(!empty($equipamentos)){
                 $equipamentos->delete();
-                return redirect('equipamentos')->with('success', 'Deletado com sucesso!');
+                if($request->path == `api/equipamentos/deletar/${id}`){
+                    return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+                }else{
+                    return redirect('equipamentos')->with('success', 'Deletado com sucesso!');
+                }
             } else {
-                return redirect('equipamentos')->with('danger', 'Registro não encontrado!');
-            }
+                if($request->path == `api/equipamentos/deletar/${id}`){
+                    return response()->json(['error' => 'Registro não encontrado!'], 404);
+                }else{
+                    return redirect('equipamentos')->with('danger', 'Registro não encontrado!');
+                }
+        }
     }
     public function list() {
         $equipamentos = Equipamentos::paginate();

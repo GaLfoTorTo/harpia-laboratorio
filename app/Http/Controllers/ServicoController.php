@@ -60,8 +60,19 @@ class ServicoController extends Controller
     }
     public function deletar($id) {
         $servico = Servico::find($id);
-        $servico->delete();
-
-        return redirect('servicos')->with('success', 'Deletado com sucesso!');
+        if(!empty($servico)){
+            $servico->delete();
+            if($request->path == `api/servicos/deletar/${id}`){
+                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('servicos')->with('success', 'Deletado com sucesso!');
+            }
+        } else {
+            if($request->path == `api/servicos/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('servicos')->with('danger', 'Registro não encontrado!');
+            }
+        }
     }
 }

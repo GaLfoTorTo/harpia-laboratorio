@@ -31,17 +31,35 @@ Route::post('/logarApp', [AutenticacaoController::class, 'logarApp'])->name('log
 
 Route::get('/logout', [AutenticacaoController::class, 'logout'])->name('logout');
 
-Route::get('/equipamentos', [EquipamentoController::class, 'list'])->name('equipamentos.list');
+//Route::get('/equipamentos', [EquipamentoController::class, 'list'])->name('equipamentos.list');
 
 Route::get('/cargos', [CargosController::class, 'index'])->name('cargos');
-Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes');
+Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
+
+Route::get('/users', [ClienteController::class, 'index'])->name('clientes');
+Route::get('/clientes/deletar/{id}', [ClienteController::class, 'deletar'])->name('clientes.deletar');
+
 Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores');
+Route::get('/colaboradores/deletar/{id}', [ColaboradorController::class, 'deletar'])->name('colaboradores.deletar');
+
 Route::get('/documentos', [DocumentoController::class, 'index'])->name('documentos');
+Route::get('/documentos/deletar/{id}', [DocumentoController::class, 'deletar'])->name('documentos.deletar');
+
 Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos');
+Route::get('/equipamentos/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos.deletar');
+
 Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('fornecedores');
+Route::get('/fornecedores/deletar/{id}', [FornecedorController::class, 'deletar'])->name('fornecedores.deletar');
+
 Route::get('/servicos', [ServicoController::class, 'index'])->name('servicos');
+Route::get('/servicos/deletar/{id}', [ServicoController::class, 'deletar'])->name('servicos.deletar');
+
 Route::get('/setores', [SetoresController::class, 'index'])->name('setores');
-Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/setores/deletar/{id}', [SetoresController::class, 'deletar'])->name('setores.deletar');
+
+Route::get('/user', [UserController::class, 'index'])->name('user');
+Route::get('/user/deletar/{id}', [UserController::class, 'deletar'])->name('user.deletar');
+
 
 Route::middleware('auth:sanctum')->group(function(){
 });

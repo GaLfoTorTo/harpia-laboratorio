@@ -55,10 +55,21 @@ class CargosController extends Controller
         $cargo = Cargo::find($id);
         return view('cargos.form', compact('cargo', 'cargos')); 
     }
-    public function deletar($id) {
+    public function deletar(Request $request, $id) {
         $cargo = Cargo::find($id);
-        $cargo->delete();
-
-        return redirect('cargos')->with('success', 'Deletado com sucesso!');
+        if(!empty($cargo)){
+            $cargo->delete();
+            if($request->path == `api/cargos/deletar/${id}`){
+                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('cargos')->with('success', 'Deletado com sucesso!');
+            }
+        } else {
+            if($request->path == `api/cargos/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('cargos')->with('danger', 'Registro não encontrado!');
+            }
+        }
     }
 }
