@@ -36,7 +36,7 @@ Route::get('/logout', [AutenticacaoController::class, 'logout'])->name('logout')
 Route::get('/cargos', [CargosController::class, 'index'])->name('cargos');
 Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
 
-Route::get('/users', [ClienteController::class, 'index'])->name('clientes');
+Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes');
 Route::get('/clientes/deletar/{id}', [ClienteController::class, 'deletar'])->name('clientes.deletar');
 
 Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores');
