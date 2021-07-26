@@ -28,10 +28,14 @@ class SetoresController extends Controller
             return view('setores.index', compact('setores','pesquisa'));
         }
     }
-    public function novo() {
+    public function novo(Request $request) {
        
-        $setores = Setor::select('id', 'setor')->get();
-        return view('setores.form', compact('setores'));
+        $setores = Setor::with('setor_pai','filhos')->get();
+        if($request->is('api/setores/novo')){
+            return response()->json([$setores],200);
+        }else{
+            return view('setores.form', compact('setores'));
+        }
     }
     public function salvar(SetoresRequest $request) {
         
@@ -46,7 +50,11 @@ class SetoresController extends Controller
             $setor = Setor::find($request->id);
             $setor->update($request->all());
         }
-        return redirect('setores/editar/' . $setor->id)->with('success', $message);
+        if($request->is('api/setores/salvar')){
+            return response()->json(['success' => 'Salvo com sucesso!'],200);
+        }else{
+            return redirect('setores/editar/' . $setor->id)->with('success', $message);
+        }
     } 
     public function editar($id) {
         $setores = Setor::select('id', 'setor')->get();

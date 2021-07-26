@@ -47,7 +47,11 @@ class CargosController extends Controller
             $cargo = Cargo::find($request->id);
             $cargo->update($request->all());
         }
-        return redirect('cargos/editar/' . $cargo->id)->with('success', $message);
+        if($request->is('api/cargos/salvar')){
+            return response()->json(['success'=> "Salvo com sucesso"],200);
+        }else{
+            return redirect('cargos/editar/' . $cargo->id)->with('success', $message);
+        }
     } 
     public function editar($id) {
         $cargo = Cargo::find($id);
@@ -60,7 +64,7 @@ class CargosController extends Controller
         if(!empty($cargo)){
             $cargo->delete();
             if($request->path == `api/cargos/deletar/${id}`){
-                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+                return response()->json(['success' => 'Deletado com sucesso!'], 200);
             }else{
                 return redirect('cargos')->with('success', 'Deletado com sucesso!');
             }

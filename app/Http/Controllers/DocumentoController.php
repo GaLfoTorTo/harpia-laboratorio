@@ -32,14 +32,18 @@ class DocumentoController extends Controller
         if($request->is('api/documentos')){
             return response()->json([$documento],200);
         }else{
-            return view('documento/index', compact('documento'));
+            return view('documento/index', compact('documento', 'pesquisa'));
         }
     } 
-    public function novo() { 
+    public function novo(Request $request) { 
     
         $setores = Setor::select('setor')->get();
         $tipo = $this->tipo;
-        return view('documento/form', compact('setores', 'tipo'));
+        if($request->path == `api/documentos/novo`){
+            return response()->json([$setores], 200);
+        }else{
+            return view('documento/form', compact('setores', 'tipo'));
+        }
 
     }
     public function editar($id) {
@@ -53,20 +57,23 @@ class DocumentoController extends Controller
  
         if($request->hasFile('documento_temp')) {
             // renomeando documento 
-        $nome_documento = date('YmdHmi').'.'.$request->documento_temp->getClientOriginalExtension();
-        $tipo = ['Manual','Procedimento','Anexo','Instrução de uso/trabalho','Formulário'];
-        $request['documento'] = '/uploads/documento/' . $nome_documento;
-        ($request->documento);
-        $request->documento_temp->move(public_path('uploads/documento'), $nome_documento);
+            $nome_documento = date('YmdHmi').'.'.$request->documento_temp->getClientOriginalExtension();
+            $request['documento'] = '/uploads/documento/' . $nome_documento;
+            ($request->documento);
+            $request->documento_temp->move(public_path('uploads/documento'), $nome_documento);
         }
 
         if($request->id != '') {
-        $documento = Documento::find($request->id);
-        $documento->update($request->all());
+            $documento = Documento::find($request->id);
+                $documento->update($request->all());
         } else {
-        $documento = Documento::create($request->all());
+            $documento = Documento::create($request->all());
         }
-        return redirect('/documento/editar/'. $documento->id)->with('success', 'Salvo com sucesso!');
+        if($request->path == `api/documentos/salvar`){
+            return response()->json(['success' => 'Deletado com sucesso!'], 200);
+        }else{
+            return redirect('/documento/editar/'. $documento->id)->with('success', 'Salvo com sucesso!');
+        }
     }
  
     public function deletar(Request $request, $id) {
@@ -74,7 +81,7 @@ class DocumentoController extends Controller
         if(!empty($documento)){
             $documento->delete();
             if($request->path == `api/documentos/deletar/${id}`){
-                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+                return response()->json(['success' => 'Deletado com sucesso!'], 200);
             }else{
                 return redirect('documento')->with('success', 'Deletado com sucesso!');
             }
