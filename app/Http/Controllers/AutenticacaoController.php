@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AutenticacaoController extends Controller
 {
@@ -36,9 +37,11 @@ class AutenticacaoController extends Controller
     
     public function logarApp(Request $request){
         $credentials = $request->only('email', 'password');
+        $user = User::where('email', $request->email)->first();
         if(Auth::attempt($credentials)){
             $authentication = Auth::user();
-            return response()->json([$authentication],200);
+            $token = $user->createToken($request->device_name.'_'.$user->name)->plainTextToken;
+            return response()->json(['user'=>$authentication, 'token'=>$token],200);
         }
     }
 }

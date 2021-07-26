@@ -18,7 +18,11 @@ class FornecedorController extends Controller
         } else {
             $fornecedores = Fornecedor::paginate(10);
         }
-        return view('fornecedores.index', compact('fornecedores'));
+        if($request->is('api/fornecedores')){
+            return response()->json([$fornecedores],200);
+        }else{
+            return view('fornecedores.index', compact('fornecedores'));
+        }
     } 
     public function novo() {
         $tipos = $this->tipos;

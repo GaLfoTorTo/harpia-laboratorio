@@ -24,8 +24,11 @@ class ServicoController extends Controller
             $servicos = Servico::paginate(10);
         }
       
-
-        return view('servicos.index', compact('servicos','pesquisa'));
+        if($request->is('api/servicos')){
+            return response()->json([$servicos],200);
+        }else{
+            return view('servicos.index', compact('servicos','pesquisa'));
+        }
     }
     public function novo() {
         $tipo_material = $this->tipo_material;

@@ -29,7 +29,11 @@ class DocumentoController extends Controller
         } else {
             $documento = Documento::paginate(10);
         }
-        return view('documento/index', compact('documento'));
+        if($request->is('api/documentos')){
+            return response()->json([$documento],200);
+        }else{
+            return view('documento/index', compact('documento'));
+        }
     } 
     public function novo() { 
     

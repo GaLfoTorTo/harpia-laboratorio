@@ -22,9 +22,11 @@ class CargosController extends Controller
         } else {
             $cargos= Cargo::paginate(10);
         }
-       
-
-        return view('cargos.index', compact('cargos','pesquisa'));
+        if($request->is('api/cargos')){
+            return response()->json([$cargos],200);
+        }else{
+            return view('cargos.index', compact('cargos','pesquisa'));
+        }
     }
 
     public function novo() {

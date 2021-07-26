@@ -18,7 +18,7 @@ class CreateInspecaoRecebidos extends Migration
             $table->unsignedBigInteger('produto_id');
             $table->foreign('produto_id')
                     ->references('id')
-                    ->on('equipamentos_insumos')
+                    ->on('equipamentos')
                     ->unsigned();
             $table->string('fornecedor', 100)->nullable();
             $table->string('fabricante', 70)->nullable();
