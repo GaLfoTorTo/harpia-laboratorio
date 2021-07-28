@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ isset($fornecedor) ? 'Editar' : 'Novo' }}Fornecedor</h1>
+            <h1 class="m-0">{{ isset($fornecedor) ? 'Editar' : 'Novo ' }}Fornecedor</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -53,7 +53,7 @@
                 <select name="tipo" id="tipo" class="form-control">
                     <option value="">Selecione</option>
                     @foreach ($tipos as $item)
-                        <option value="{{ $item }}">{{ $item }}</option>
+                        <option value="{{ $item }}" @if(isset($fornecedor) && $fornecedor->tipo == $item) selected @elseif(old("tipo") == $item ) selected @endif>{{ $item }}</option>
                     @endforeach
                 </select>
             </div>
@@ -89,7 +89,7 @@
         <div class="col-5">
             <div class="form-group">
                 <label for="nome_contato" class="form-label">Nome do contato:</label>
-                <input type="text" name="nome_contato" class="form-control"value="@if(isset($fornecedor)){{$fornecedor->nome_contato}}@else{{ old('nome_contato')}}@endif">
+                <input type="text" name="nome_do_contato" class="form-control"value="@if(isset($fornecedor)){{$fornecedor->nome_contato}}@else{{ old('nome_contato')}}@endif">
             </div>
         </div>
         <div class="col-5">

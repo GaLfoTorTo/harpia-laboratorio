@@ -33,7 +33,6 @@
             Nova Lista 
             <i class="fas fa-plus"></i>
           </a>
-
           <div class="card-tools">
             <form action="">
               <div class="input-group input-group" style="width: 150px;">
@@ -81,7 +80,6 @@
                 </tr>
               </tbody>
               @endforeach
-
           </table>
           <br>
             @if(count($lista_mestras) < 1)

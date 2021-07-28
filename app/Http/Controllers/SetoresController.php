@@ -22,13 +22,20 @@ class SetoresController extends Controller
         } else {
             $setores = Setor::with('setor_pai','filhos')->paginate(10);
         }
-      
-        return view('setores.index', compact('setores','pesquisa'));
+        if($request->is('api/setores')){
+            return response()->json([$setores],200);
+        }else{
+            return view('setores.index', compact('setores','pesquisa'));
+        }
     }
-    public function novo() {
+    public function novo(Request $request) {
        
-        $setores = Setor::select('id', 'setor')->get();
-        return view('setores.form', compact('setores'));
+        $setores = Setor::with('setor_pai','filhos')->get();
+        if($request->is('api/setores/novo')){
+            return response()->json([$setores],200);
+        }else{
+            return view('setores.form', compact('setores'));
+        }
     }
     public function salvar(SetoresRequest $request) {
         
@@ -43,24 +50,35 @@ class SetoresController extends Controller
             $setor = Setor::find($request->id);
             $setor->update($request->all());
         }
-        return redirect('setores/editar/' . $setor->id)->with('success', $message);
+        if($request->is('api/setores/salvar')){
+            return response()->json(['success' => 'Salvo com sucesso!'],200);
+        }else{
+            return redirect('setores/editar/' . $setor->id)->with('success', $message);
+        }
     } 
     public function editar($id) {
         $setores = Setor::select('id', 'setor')->get();
         $setor = Setor::find($id);
         return view('setores.form', compact('setor', 'setores'));
     }
-    public function deletar($id) {
+    public function deletar(Request $request, $id) {
         $setor = Setor::find($id);
        
         if($setor->filhos->count() == 0 )
         {
             $setor->delete();
-            return redirect('setores')->with('success', 'Deletado com sucesso!');
+            if($request->path == `api/setores/deletar/${id}`){
+                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('setores')->with('success', 'Deletado com sucesso!');
+            }
+        }else {
+            if($request->path == `api/setores/deletar/${id}`){
+                return response()->json(['error' => 'Não é possível deletar!'], 404);
+            }else{
+                return redirect('setores')->with('danger', 'Não é possível deletar!');
+            }
         }
-        return redirect('setores')->with('danger', 'Não é possível deletar!');
-
-        
 
     }
 }

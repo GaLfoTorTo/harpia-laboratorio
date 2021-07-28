@@ -14,7 +14,8 @@ class RegistroTreinamento extends Model
 
         'titulo',
         'carga_horaria',
-        'data',
+        'data_inicial',
+        'data_final',
         'conteudo'
     ]; 
 

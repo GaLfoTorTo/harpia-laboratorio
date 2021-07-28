@@ -18,7 +18,12 @@ class ClienteController extends Controller
         } else {
             $clientes = Cliente::paginate(10);
         }
-        return view('clientes.index', compact('clientes','pesquisa'));
+
+        if($request->is('api/clientes')){
+            return response()->json([$clientes],200);
+        }else{
+            return view('clientes.index', compact('clientes','pesquisa'));
+        }
     } 
     public function novo() {
 
@@ -40,15 +45,28 @@ class ClienteController extends Controller
         } else {
             $cliente = Cliente::create($request->all());
         }
-        return redirect('/clientes/editar/'. $cliente->id)->with('success', 'Salvo com sucesso!');
+        if($request->is('api/clientes/salvar')){
+            return response()->json(['success' => 'Salvo com sucesso!'],200);
+        }else{
+            return redirect('/clientes/editar/'. $cliente->id)->with('success', 'Salvo com sucesso!');
+        }
     }
-    public function deletar($id) {
+
+    public function deletar(Request $request, $id) {
         $cliente = Cliente::find($id);
         if(!empty($cliente)){
             $cliente->delete();
-            return redirect('clientes')->with('success', 'Deletado com sucesso!');
+            if($request->path == `api/clientes/deletar/${id}`){
+                return response()->json(['success' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('clientes')->with('success', 'Deletado com sucesso!');
+            }
         } else {
-            return redirect('clientes')->with('danger', 'Registro não encontrado!');
+            if($request->path == `api/clientes/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('clientes')->with('danger', 'Registro não encontrado!');
+            }
         }
     }
 }

@@ -5,34 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lista_mestra;
 use App\Http\Requests\ListaMestraRequest;
-use App\Models\Documentos_internos;
+use App\Models\Documento;
 
 class ListaMestraController extends Controller
 {
-
-    public $tipos = ['Manual','Procedimento','Anexo','Instrução de uso','Formulário'];
-
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
         
         if($pesquisa != '') {
-            $lista_mestras = Lista_mestra::with('documento_relacionado')->where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
+            $lista_mestras = Lista_mestra::where('codigo', 'like', "%".$pesquisa."%")->paginate(1000);
         } else {
-            $lista_mestras = Lista_mestra::with('documento_relacionado')->paginate(10);
+            $lista_mestras = Lista_mestra::with('codigo')->paginate(10);
         }
         return view('lista_mestras.index', compact('lista_mestras','pesquisa'));
     } 
     public function novo() {
-        $tipos = $this->tipos;
-        $documentos = Documentos_internos::select('codigo', 'titulo')->get();
-        return view('lista_mestras.form', compact('tipos', 'documentos'));
+        $documentos = Documento::get();
+        return view('lista_mestras.form', compact("documentos" ));
     }
     public function editar($id) {
-        $tipos = $this->tipos;
         $lista_mestra = Lista_mestra::find($id);
-        $documentos = Documentos_internos::select('codigo','titulo')->get();
-
-        return view('lista_mestras.form', compact('lista_mestra', 'tipos','documentos'));
+        $documentos = Documento::get();
+        return view('lista_mestras.form', compact('lista_mestra', 'documentos'));
     }
     public function salvar(ListaMestraRequest $request) {
         

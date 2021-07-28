@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+//para autenticacao
+
+use App\Http\Controllers\ResetSenhaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
-
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
@@ -27,6 +30,14 @@ use App\Http\Controllers\C_temperaturaController;
 use App\Http\Controllers\AcoesPropostasController;
 use App\Http\Controllers\RetornoController;
 
+
+//reset senha
+Route::get('/esqueci-senha', [ResetSenhaController::class, 'esqueceuSenha'])->middleware('guest')->name('password.request');
+Route::post('/esqueci-senha', [ResetSenhaController::class, 'verificarEmail'])->middleware('guest')->name('password.request');
+Route::get('/reset-password/{token}',[ResetSenhaController::class, 'verificarToken'])->middleware('guest')->name('password.reset');
+Route::post('/reset-password', [ResetSenhaController::class, 'AlterartSenha'])->middleware('guest')->name('password.update');
+
+//Auth::routes();
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
 Route::get('/logout', [AutenticacaoController::class, 'logout'])->name('logout');
@@ -47,11 +58,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/clientes/salvar', [ClienteController::class, 'salvar'])->name('clientes.salvar');
     Route::get('/clientes/deletar/{id}', [ClienteController::class, 'deletar'])->name('clientes.deletar');
 
-    Route::get('/equipamentos_medicao', [EquipamentoController::class, 'index'])->name('equipamentos_medicao');
-    Route::get('/equipamentos_medicao/novo', [EquipamentoController::class, 'novo'])->name('equipamentos_medicao.novo');
-    Route::get('/equipamentos_medicao/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos_medicao.editar');
-    Route::post('/equipamentos_medicao/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos_medicao.salvar');
-    Route::get('/equipamentos_medicao/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos_medicao.deletar');
+    Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos');
+    Route::get('/equipamentos/novo', [EquipamentoController::class, 'novo'])->name('equipamentos.novo');
+    Route::get('/equipamentos/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos.editar');
+    Route::post('/equipamentos/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos.salvar');
+    Route::get('/equipamentos/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos.deletar');
 
 
     Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores');
@@ -169,3 +180,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('retorno/deletar/{id}', [RetornoController::class, 'deletar'])->name('retorno.deletar');
 
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

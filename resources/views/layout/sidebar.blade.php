@@ -83,7 +83,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-exclamation-circle"></i>
               <p>
-                Análise Crítica
+                Análise Crítica de Pedidos, Propostas e Contratos
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -129,7 +129,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-clipboard"></i>
               <p>
-                Novo RNC
+                 RNC
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

@@ -61,7 +61,7 @@
               <tr>
                   <td>{{ $item->id }}</td>
                   <td>{{ $item->nome }}</td>
-                  <td>{{ $item->cpf_cnpj }}</td>
+                  <td>{{ $item->cpf}}</td>
                   <td>{{ $item->email }}</td>
                   <td>
                     <a href="colaboradores/editar/{{ $item->id }}" class="btn btn-warning">
