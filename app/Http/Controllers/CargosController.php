@@ -7,17 +7,18 @@ use App\Http\Requests\CargosRequest;
 use App\Models\Cargo;
 
 class CargosController extends Controller
-{
+{   public $tipo_formacao = [' Ensino Fundamental', 'Ensino Médio', 'Graduação','Pós-Graduação'];
+
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
 
         if($pesquisa != '') {
             $cargos = Cargo::where('cargo', 'like', "%".$pesquisa."%")
-            ->orWhere('formacao','like', "%".$pesquisa."%")
-            ->orWhere('descricao','like', "%".$pesquisa."%")
-            ->orWhere('formacao','like', "%".$pesquisa."%")
+            ->orWhere('tipo_formacao','like', "%".$pesquisa."%")
+            ->orWhere('qualificacao','like', "%".$pesquisa."%")
+            ->orWhere('habilidades','like', "%".$pesquisa."%")
             ->orWhere('treinamentos','like', "%".$pesquisa."%")
-            ->orWhere('requisitos','like', "%".$pesquisa."%")
+            ->orWhere('xp_minima','like', "%".$pesquisa."%")
             ->paginate(1000);
         } else {
             $cargos= Cargo::paginate(10);
@@ -30,12 +31,12 @@ class CargosController extends Controller
     }
 
     public function novo() {
-       
-        return view('cargos.form');
+        $tipo_formacao = $this->tipo_formacao;
+        return view('cargos.form', compact('tipo_formacao'));
     }
 
     public function salvar(CargosRequest $request) {
-
+        $tipo_formacao = $this->tipo_formacao;
         $ehValido = $request->validated();
         $message = '';
 
@@ -54,10 +55,11 @@ class CargosController extends Controller
         }
     } 
     public function editar($id) {
+        $tipo_formacao = $this->tipo_formacao;
         $cargo = Cargo::find($id);
         $cargos = Cargo::select('id', 'cargo')->get();
         $cargo = Cargo::find($id);
-        return view('cargos.form', compact('cargo', 'cargos')); 
+        return view('cargos.form', compact('cargo', 'cargos','tipo_formacao')); 
     }
     public function deletar(Request $request, $id) {
         $cargo = Cargo::find($id);

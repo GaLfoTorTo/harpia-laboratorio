@@ -28,6 +28,7 @@ use App\Http\Controllers\NovoRncController;
 use App\Http\Controllers\InspecaoRecebidosController;
 use App\Http\Controllers\C_temperaturaController;
 use App\Http\Controllers\AcoesPropostasController;
+use App\Http\Controllers\RetornoController;
 
 
 //reset senha
@@ -172,6 +173,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/documento/salvar', [DocumentoController::class, 'salvar'])->name('documento.salvar');
     Route::get('/documento/deletar/{id}', [DocumentoController::class, 'deletar'])->name('documento.deletar');
 
+    Route::get('retorno', [RetornoController::class, 'index'])->name('retorno');
+    Route::get('retorno/novo', [RetornoController::class, 'novo'])->name('retorno.novo');
+    Route::get('retorno/editar/{id}', [RetornoController::class, 'editar'])->name('retorno.editar');
+    Route::post('retorno/salvar', [RetornoController::class, 'salvar'])->name('retorno.salvar');
+    Route::get('retorno/deletar/{id}', [RetornoController::class, 'deletar'])->name('retorno.deletar');
+
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
