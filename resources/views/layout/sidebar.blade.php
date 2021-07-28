@@ -127,52 +127,6 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-clipboard"></i>
-              <p>
-                 RNC
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/novo_rnc/novo" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Novo</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/novo_rnc" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Participantes Treinamento
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/participantes_treinamento/novo" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Novo</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/participantes_treinamento" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Listar</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-check-double"></i>
               <p>
                 Procedimentos
@@ -242,21 +196,21 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file-prescription"></i>
+              <i class="nav-icon far fa-clipboard"></i>
               <p>
-                Registro Treinamento
+                RNC
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/registro_treinamento/novo" class="nav-link">
+                <a href="/novo_rnc/novo" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Novo</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/registro_treinamento" class="nav-link">
+                <a href="/novo_rnc" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
@@ -280,6 +234,29 @@
               </li>
               <li class="nav-item">
                 <a href="/c_temperatura" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-file-prescription"></i>
+              <p>
+                Treinamento
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/registro_treinamento/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/registro_treinamento" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>

@@ -24,14 +24,27 @@ class EquipamentoRequest extends FormRequest
     public function rules()
     {
         return [
-                'equipamento_proprio' => 'required',
-                'equipamento' => 'required',
-                'modelo' => 'required',
-                'manual' => 'required',
-                'codigo' => 'required',
-                'patrimonio' => 'required',
-                'fabricante' => 'required',
-                'fornecedor' => 'required'
+                'equipamento_proprio',
+                'equipamento',
+                'marca',
+                'modelo',
+                'tensao',
+                'manual',
+                'codigo',
+                'num_serie',
+                'localizacao_manual',
+                'doc_instrucao',
+                'patrimonio',
+                'fabricante',
+                'fornecedor',
+                'localizacao_equipamento',
+                'nome',
+                'produto_critico',
+                'materiais_referencia',
+                'materiais',
+                'desc_produto',
+                'quantidade',
+                'unidade'
 
                 
         ];
@@ -40,14 +53,7 @@ class EquipamentoRequest extends FormRequest
     public function messages()
     {
         return [
-            'equipamento_proprio.required' => 'Escolha se o Equipamento é próprio ou não',
-            'equipamento.required' => 'Informe o nome do Equipamento',
-            'modelo.required' => 'Informe o modelo do equipamento',
-            'manual.required' => 'Informe se tem o manual ou não',
-            'codigo.required' => 'Informe o código do equipamento',
-            'patrimonio.required' => 'Informe o patrimonio do equipamento',
-            'fabricante.required' => 'Informe o fabricante do equipamento',
-            'fornecedor.required' => 'Informe o fornecedor do equipamento'
+            
         ];
     }
 }
