@@ -68,6 +68,7 @@
         <div class="form-group">
             <label for="responsavel" class="form-label">Responsável:</label>
             <select name="responsavel" id="responsavel" class="form-control selecao">
+              <option value="">Selecione</option>
                 @foreach ($novos_rncs as $key => $t)
                   <option value="{{ $t->responsavel }}" @if(isset($acoes_propostas) && $acoes_propostas->novos_rncs == $t)  selected @elseif(old('responsavel') == $t) selected @endif >{{$t->responsavel}}</option> 
               @endforeach

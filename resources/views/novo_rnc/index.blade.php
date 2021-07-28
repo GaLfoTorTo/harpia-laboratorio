@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Novo RNC</h1>
+            <h1 class="m-0">RNC</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Novo RNC</li>
+              <li class="breadcrumb-item active">RNC</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,7 +31,7 @@
         <div class="card">
           <div class="card-header">
             <a href="/novo_rnc/novo" class="btn btn-primary">
-              Novo RNC 
+               Novo RNC 
               <i class="fas fa-plus"></i>
             </a>
 
@@ -56,7 +56,6 @@
                 <tr>
                   <th scope="col">#</th>
                   <th>Código</th>
-                  <th>Revisão</th>
                   <th>Número</th>
                   <th>Data de Abertura</th>
                   <th>Responsável</th>
@@ -70,7 +69,6 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->codigo }}</td>
-                    <td>{{ $item->revisao }}</td>
                     <td>{{ $item->numero }}</td>
                     <td>{{ $item->data_abertura }}</td>
                     <td>{{ $item->responsavel }}</td>

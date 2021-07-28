@@ -15,7 +15,8 @@ class RegistroTreinamentoController extends Controller
         if($pesquisa != '') {
         $registro_treinamento = RegistroTreinamento::where('titulo', 'like', "%".$pesquisa."%")
                                                      ->orWhere('carga_horaria', 'like', "%".$pesquisa."%")
-                                                     ->orWhere('data', 'like', "%".$pesquisa."%") ->paginate(1000);
+                                                     ->orWhere('data_inicial', 'like', "%".$pesquisa."%") 
+                                                     ->orWhere('data_final', 'like', "%".$pesquisa."%")->paginate(1000);
         
         } else {
         $registro_treinamento = RegistroTreinamento::paginate(10);
@@ -28,7 +29,7 @@ class RegistroTreinamentoController extends Controller
 
         public function editar($id) {
 
-            $registro_treinamento = RegistroTreinamento::select('titulo', 'carga_horaria', 'data', 'conteudo')->get();
+            $registro_treinamento = RegistroTreinamento::select('titulo', 'carga_horaria', 'data_inicial','data_final', 'conteudo')->get();
 
             $registro_treinamento = RegistroTreinamento::find($id);
             return view('registro_treinamento.form', compact('registro_treinamento'));

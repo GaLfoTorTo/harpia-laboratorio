@@ -15,8 +15,8 @@ class CreateNovosRncsTable extends Migration
     {
         Schema::create('novos_rncs', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo', 10);
-            $table->string('revisao', 10);
+            $table->string('codigo', 10)->nullable();
+            $table->string('revisao', 10)->nullable();
             $table->string('numero', 10);
             $table->date('data_abertura', 10);
             $table->string('responsavel', 100);
@@ -33,11 +33,11 @@ class CreateNovosRncsTable extends Migration
             $table->text('relato_nc')->nullable();
             $table->enum('tratativa_eficaz', ['Sim', 'Não']);
             $table->text('relato_tratativa')->nullable();
-            $table->date('data_avaliacao', 10);
+            $table->date('data_avaliacao', 10)->nullable();
             $table->enum('risco_avaliado', ['Sim, não compromete os resultados', 'Sim, evidenciado na planilha de gestão de risco']);
             $table->string('n_risco', 100)->nullable();
             $table->string('responsavel_encerramento', 100);
-            $table->date('data_responsavel', 10);
+            $table->date('data_responsavel', 10)->nullable();
             $table->text('observacoes')->nullable();
             $table->timestamps();
         });
