@@ -25,10 +25,10 @@ class CargosRequest extends FormRequest
     {
         return [
                 'cargo' => 'required',
-                'formacao' => 'required',
-                'descricao' => 'required',
-                'requisitos' => 'required',
-                'treinamentos' => 'required'
+                'tipo_formacao' => 'required',
+                'qualificacao' => 'required',
+                'xp_minima' => 'required',
+                'habilidades' => 'required'
                 
         ];
     }
@@ -38,9 +38,9 @@ class CargosRequest extends FormRequest
         return [
             'cargo.required' => 'O cargo é obrigatório',
             'formacao.required' => 'A formação é obrigatória',
-            'descricao.required' => 'A descrição é obrigatória',
-            'requisitos.required' => 'O requisito é obrigatório',
-            'treinamentos.required' => 'O treinamentos é obrigatório'
+            'qualificacao.required' => 'A qualificação é obrigatória',
+            'xp_minima.required' => 'A expêriencia mínima é obrigatória',
+            'habilidades.required' => 'Habilidades é obrigatória'
             
         ];
     }

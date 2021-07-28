@@ -59,21 +59,22 @@
     <div class="row">
       <div class="col-6">
         <div class="form-outline">
-          <label for="sub_setor" class="form-label">Setor Pai:</label>
-          <select name="setors_id" class="form-control" id="setors_id">
-            <option value=""></option>
-            @foreach ($setores as $set)
-              <option value="{{ $set->id }}" @if(isset($setor) && $setor->setors_id == $set->id) selected @elseif( old('setors_id') == $set->id) selected @endif >{{ $set->setor }}</option>
-            @endforeach
-          </select>
+          <label for="setor" class="form-label">Setor:</label>
+          <input type="text" name="setor" class="form-control" required value="@if(isset($setor)){{$setor->setor}}@else{{ old('setor')}}@endif">                
         </div>
     </div>
         <div class="col-6">
-            <div class="form-outline">
-              <label for="setor" class="form-label">Setor Filho:</label>
-              <input type="text" name="setor" class="form-control" required value="@if(isset($setor)){{$setor->setor}}@else{{ old('setor')}}@endif">                  </div>
+          <div class="form-outline">
+            <label for="sub_setor" class="form-label">Sub-Setor:</label>
+            <select name="setors_id" class="form-control" id="setors_id">
+              <option value=""></option>
+              @foreach ($setores as $set)
+                <option value="{{ $set->id }}" @if(isset($setor) && $setor->setors_id == $set->id) selected @elseif( old('setors_id') == $set->id) selected @endif >{{ $set->setor }}</option>
+              @endforeach
+            </select>
+          </div>
         </div>
-      
+       
     </div>
        <div class="row">
         <div class="col" align="end">

@@ -12,7 +12,6 @@ class Reclamacao extends Model
 
     protected $fillable = [
         'colaborador_id',
-        'n_registro',
         'manifestacao',
         'data_abertura',
         'reclamante',

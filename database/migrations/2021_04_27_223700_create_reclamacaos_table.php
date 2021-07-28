@@ -16,7 +16,6 @@ class CreateReclamacaosTable extends Migration
         Schema::create('reclamacaos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('colaborador_id');
-            $table->string('n_registro')->nullable();
             $table->enum('manifestacao', ['Reclamação', 'Sugestão']);
             $table->string('data_abertura');
             $table->string('reclamante' , 100);

@@ -16,10 +16,13 @@ class CreateCargosTable extends Migration
         Schema::create('cargos', function (Blueprint $table) {
             $table->id();
             $table->string('cargo');
-            $table->text('formacao');
-            $table->text('descricao');
-            $table->text('requisitos');
+            $table->enum('tipo_formacao', [' Ensino Fundamental', 'Ensino Médio', 'Graduação','Pós-Graduação']);
+            $table->text('qualificacao');
+            $table->text('xp_minima')->nullable();
             $table->text('treinamentos');       
+            $table->text('habilidades')->nullable();
+            $table->text('descricao')->nullable();
+            $table->text('con_tecnico')->nullable();
             $table->timestamps();
         });
     }
