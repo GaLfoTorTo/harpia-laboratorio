@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use APP\Models\User;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -16,7 +16,7 @@ class UserController extends Controller
         } else {
             $users = User::paginate(10);
         }
-        if($request->is('api/users')){
+        if($request->is('api/user')){
             return response()->json([$users],200);
         }else{
             return view('user.index', compact('users','pesquisa'));
@@ -65,9 +65,17 @@ class UserController extends Controller
         $user = User::find($id);
         if(!empty($user)){
             $user->delete();
-            return redirect('user')->with('success', 'Deletado com sucesso!');
+            if($request->path == `api/user/deletar/${id}`){
+                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('user')->with('success', 'Deletado com sucesso!');
+            }
         } else {
-            return redirect('user')->with('danger', 'Registro não encontrado!');
+            if($request->path == `api/user/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('user')->with('danger', 'Registro não encontrado!');
+            }
         }
     }
 }

@@ -49,7 +49,11 @@ class ServicoController extends Controller
             $servico = Servico::find($request->id);
             $servico->update($request->all());
         }
-        return redirect('servicos/editar/' . $servico->id)->with('success', $message);
+        if($request->is('api/servicos/salvar')){
+            return response()->json(['success' => 'Salvo com sucesso!'],200);
+        }else{
+            return redirect('servicos/editar/' . $servico->id)->with('success', $message);
+        }
     } 
     public function editar($id) {
         $servico = Servico::find($id);
@@ -58,10 +62,21 @@ class ServicoController extends Controller
         
         return view('servicos.form', compact('servico','tipo_material', 'tipo_servico'));
     }
-    public function deletar($id) {
+    public function deletar(Request $request, $id) {
         $servico = Servico::find($id);
-        $servico->delete();
-
-        return redirect('servicos')->with('success', 'Deletado com sucesso!');
+        if(!empty($servico)){
+            $servico->delete();
+            if($request->path == `api/servicos/deletar/${id}`){
+                return response()->json(['success' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('servicos')->with('success', 'Deletado com sucesso!');
+            }
+        } else {
+            if($request->path == `api/servicos/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('servicos')->with('danger', 'Registro não encontrado!');
+            }
+        }
     }
 }

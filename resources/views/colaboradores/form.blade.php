@@ -81,19 +81,19 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-outline">
-                                <label for="cep" class="form-label">CEP</label>
+                                <label for="cep" class="form-label">CEP:</label>
                                 <input type="text" name="cep" class="form-control cep" value="@if(isset($colaborador)){{$colaborador->cep}}@else{{ old('cep') }}@endif">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-outline">
-                                <label for="logradouro" class="form-label">Logradouro</label>
+                                <label for="logradouro" class="form-label">Logradouro:</label>
                                 <input type="text" name="logradouro" class="form-control" value="@if(isset($colaborador)){{$colaborador->logradouro}}@else{{ old('logradouro') }}@endif">
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="form-outline">
-                                <label for="numero" class="form-label">Número</label>
+                                <label for="numero" class="form-label">Número:</label>
                                 <input type="number" name="numero" class="form-control" value="@if(isset($colaborador)){{$colaborador->numero}}@else{{ old('numero') }}@endif">
                             </div>
                         </div>
@@ -101,27 +101,27 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="form-outline">
-                                <label for="cidade" class="form-label">Cidade</label>
+                                <label for="cidade" class="form-label">Cidade:</label>
                                 <input type="text" name="cidade" class="form-control" value="@if(isset($colaborador)){{$colaborador->cidade}}@else{{ old('cidade') }}@endif">
                             </div>
                         </div>
                         <div class="col-5">
                             <div class="form-outline">
-                                <label for="bairro" class="form-label">Bairro</label>
+                                <label for="bairro" class="form-label">Bairro:</label>
                                 <input type="text" name="bairro" class="form-control" value="@if(isset($colaborador)){{$colaborador->bairro}}@else{{ old('bairro') }}@endif">
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="form-outline">
-                                <label for="uf" class="form-label">UF</label>
-                                <input type="text" name="uf" class="form-control" value="@if(isset($colaborador)){{$colaborador->uf}}@else{{ old('uf') }}@endif">
+                                <label for="uf" class="form-label">UF:</label>
+                                <input type="text" name="uf" class="form-control" maxlength="2" value="@if(isset($colaborador)){{$colaborador->uf}}@else{{ old('uf') }}@endif">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <div class="form-outline">
-                                <label for="formacao" class="form-label">Formação</label>
+                                <label for="formacao" class="form-label">Formação:</label>
                                 <input type="text" name="formacao" class="form-control" value="@if(isset($colaborador)){{$colaborador->formacao}}@else{{ old('formacao') }}@endif">
                             </div>
                         </div>
