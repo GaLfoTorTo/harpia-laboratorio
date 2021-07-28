@@ -22,9 +22,11 @@ class CargosController extends Controller
         } else {
             $cargos= Cargo::paginate(10);
         }
-       
-
-        return view('cargos.index', compact('cargos','pesquisa'));
+        if($request->is('api/cargos')){
+            return response()->json([$cargos],200);
+        }else{
+            return view('cargos.index', compact('cargos','pesquisa'));
+        }
     }
 
     public function novo() {
@@ -45,7 +47,11 @@ class CargosController extends Controller
             $cargo = Cargo::find($request->id);
             $cargo->update($request->all());
         }
-        return redirect('cargos/editar/' . $cargo->id)->with('success', $message);
+        if($request->is('api/cargos/salvar')){
+            return response()->json(['success'=> "Salvo com sucesso"],200);
+        }else{
+            return redirect('cargos/editar/' . $cargo->id)->with('success', $message);
+        }
     } 
     public function editar($id) {
         $cargo = Cargo::find($id);
@@ -53,10 +59,21 @@ class CargosController extends Controller
         $cargo = Cargo::find($id);
         return view('cargos.form', compact('cargo', 'cargos')); 
     }
-    public function deletar($id) {
+    public function deletar(Request $request, $id) {
         $cargo = Cargo::find($id);
-        $cargo->delete();
-
-        return redirect('cargos')->with('success', 'Deletado com sucesso!');
+        if(!empty($cargo)){
+            $cargo->delete();
+            if($request->path == `api/cargos/deletar/${id}`){
+                return response()->json(['success' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('cargos')->with('success', 'Deletado com sucesso!');
+            }
+        } else {
+            if($request->path == `api/cargos/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('cargos')->with('danger', 'Registro não encontrado!');
+            }
+        }
     }
 }

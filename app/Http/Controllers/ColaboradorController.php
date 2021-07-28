@@ -17,13 +17,20 @@ class ColaboradorController extends Controller
         }else {
             $colaboradores = Colaborador::paginate(10);
         }
-        return view('colaboradores.index', compact('colaboradores', 'pesquisa'));
+        if($request->is('api/colaboradores')){
+            return response()->json([$colaboradores],200);
+        }else{
+            return view('colaboradores.index', compact('colaboradores', 'pesquisa'));
+        }
     }
 
-    public function novo(){
+    public function novo(Request $request){
         $setores = Setor::select('setor')->get();
-        
-        return view('colaboradores.form', compact('setores'));
+        if($request->is('api/colaboradores/novo')){
+            return response()->json([$setores],200);
+        }else{
+            return view('colaboradores.form', compact('setores'));
+        }
     }
 
     public function editar($id){
@@ -52,16 +59,28 @@ class ColaboradorController extends Controller
         }else {
             $colaborador = Colaborador::create($request->all());
         }
-        return redirect('/colaboradores/editar/'.$colaborador->id)->with('success', 'Salvo com sucesso!');
+        if($request->is('api/colaboradores/salvar')){
+            return response()->json(['success' => 'Salvo com sucesso!'],200);
+        }else{
+            return redirect('/colaboradores/editar/'.$colaborador->id)->with('success', 'Salvo com sucesso!');
+        }
     }
 
-    public function deletar($id){
+    public function deletar(Request $request, $id){
         $colaborador = Colaborador::find($id);
         if(!empty($colaborador)){
             $colaborador->delete();
-            return redirect('colaboradores')->with('success', 'Deletado com sucesso!');
-        }else{
-            return redirect('colaboradores')->with('danger', 'Registro não encontrado!');
+            if($request->path == `api/colaboradores/deletar/${id}`){
+                return response()->json(['success' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('colaboradores')->with('success', 'Deletado com sucesso!');
+            }
+        } else {
+            if($request->path == `api/colaboradores/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('colaboradores')->with('danger', 'Registro não encontrado!');
+            }
         }
     }
 }

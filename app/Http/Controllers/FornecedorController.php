@@ -18,7 +18,11 @@ class FornecedorController extends Controller
         } else {
             $fornecedores = Fornecedor::paginate(10);
         }
-        return view('fornecedores.index', compact('fornecedores'));
+        if($request->is('api/fornecedores')){
+            return response()->json([$fornecedores],200);
+        }else{
+            return view('fornecedores.index', compact('fornecedores'));
+        }
     } 
     public function novo() {
         $tipos = $this->tipos;
@@ -41,13 +45,21 @@ class FornecedorController extends Controller
         }
         return redirect('/fornecedores/editar/'. $fornecedor->id)->with('success', 'Salvo com sucesso!');
     }
-    public function deletar($id) {
+    public function deletar(Request $request, $id) {
         $fornecedor = Fornecedor::find($id);
         if(!empty($fornecedor)){
             $fornecedor->delete();
-            return redirect('fornecedores')->with('success', 'Deletado com sucesso!');
+            if($request->path == `api/fornecedores/deletar/${id}`){
+                return response()->json(['sucesso' => 'Deletado com sucesso!'], 200);
+            }else{
+                return redirect('fornecedores')->with('success', 'Deletado com sucesso!');
+            }
         } else {
-            return redirect('fornecedores')->with('danger', 'Registro não encontrado!');
+            if($request->path == `api/fornecedores/deletar/${id}`){
+                return response()->json(['error' => 'Registro não encontrado!'], 404);
+            }else{
+                return redirect('fornecedores')->with('danger', 'Registro não encontrado!');
+            }
         }
     }
 }

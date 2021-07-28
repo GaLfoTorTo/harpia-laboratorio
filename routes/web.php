@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+//para autenticacao
+
+use App\Http\Controllers\ResetSenhaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClienteController;
-
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
@@ -26,6 +29,14 @@ use App\Http\Controllers\InspecaoRecebidosController;
 use App\Http\Controllers\C_temperaturaController;
 use App\Http\Controllers\AcoesPropostasController;
 
+
+//reset senha
+Route::get('/esqueci-senha', [ResetSenhaController::class, 'esqueceuSenha'])->middleware('guest')->name('password.request');
+Route::post('/esqueci-senha', [ResetSenhaController::class, 'verificarEmail'])->middleware('guest')->name('password.request');
+Route::get('/reset-password/{token}',[ResetSenhaController::class, 'verificarToken'])->middleware('guest')->name('password.reset');
+Route::post('/reset-password', [ResetSenhaController::class, 'AlterartSenha'])->middleware('guest')->name('password.update');
+
+//Auth::routes();
 Route::get('/login', [AutenticacaoController::class, 'index'])->name('login');
 Route::post('/logar', [AutenticacaoController::class, 'logar'])->name('logar');
 Route::get('/logout', [AutenticacaoController::class, 'logout'])->name('logout');
@@ -162,3 +173,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/documento/deletar/{id}', [DocumentoController::class, 'deletar'])->name('documento.deletar');
 
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
