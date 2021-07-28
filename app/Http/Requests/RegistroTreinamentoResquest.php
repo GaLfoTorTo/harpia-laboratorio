@@ -27,7 +27,8 @@ class RegistroTreinamentoRequest extends FormRequest
         return [
             'titulo' => 'required',
             'carga_horaria' => 'required',
-            'data' => 'required',
+            'data_inicial' => 'required',
+            'data_final' => 'required',
             'conteudo' => 'required'
             
         ];
@@ -37,7 +38,8 @@ class RegistroTreinamentoRequest extends FormRequest
         return [
             'titulo.required' => 'O título é obrigatório',
             'carga_horaria.required' => 'A Crga Horária é obrigatória',
-            'data.required' => 'A data é obrigatório ',
+            'data_inicial.required' => 'A data Inicial é obrigatória ',
+            'data_final.required' => 'A data final é obrigatória ',
             'conteudo' => 'O Conteúdo é obrigatório'            
         ];
     }

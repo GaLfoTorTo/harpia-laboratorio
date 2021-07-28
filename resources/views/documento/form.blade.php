@@ -2,7 +2,7 @@
 @include('layout.navbar')
 @include('layout.sidebar')
 
-<style>
+<script>
 @if(isset($documento) && $documento->tipo_documento == 'externo')
     .documentos_internos{
         display: none;
@@ -12,7 +12,8 @@
         display: none;
     }
 @endif
-</style>
+</script>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->

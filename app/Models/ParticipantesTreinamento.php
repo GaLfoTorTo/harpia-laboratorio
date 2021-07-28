@@ -11,15 +11,18 @@ class ParticipantesTreinamento extends Model
 
     protected $table = 'participantes_treinamento';
     protected $fillable = [
-
         'numero',
         'setor',
         'nome',
-        'assinatura'
+        'assinatura',
+        'registro_treinamento_id'
     ]; 
 
    
-
+    public function treinamento()
+    {
+        $this->belongsTo(ParticipantesTreinamento::class);
+    }
 
 
 }
