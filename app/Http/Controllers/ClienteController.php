@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ClienteRequest;
 use App\Models\Cliente;
 
+use PDF;
+
 class ClienteController extends Controller
 {
     public $tipos_unidade = ['Matriz', 'Filial'];
@@ -73,6 +75,28 @@ class ClienteController extends Controller
             $clientes = Cliente::all();
         }
         return view('clientes.exportar', compact('clientes'));
+    } 
+    public function exportar_pdf(Request $request) {
+        $pesquisa = $request->pesquisa;
+        
+        if($pesquisa != '') {
+            $clientes = Cliente::where('nome', 'like', "%".$pesquisa."%")->get();
+        } else  {
+            $clientes = Cliente::all();
+        }
+        
+        view()->share('clientes', $clientes);
+
+        // para visualizar antes
+        //return view('clientes.pdf', compact('clientes'));
+
+        $pdf_doc = PDF::loadView('clientes.exportar_pdf', $clientes);
+        //para paisagem
+        //$pdf_doc->setPaper('a4', 'landscape'); 
+       
+        //para download direto
+        //return $pdf_doc->download('clientes.pdf');
+        return $pdf_doc->stream('clientes.pdf');
     } 
     public function novo() {
 

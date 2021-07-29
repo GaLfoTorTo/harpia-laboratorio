@@ -38,6 +38,10 @@
             Exportar
             <i class="fas fa-file-excel"></i>
           </a>
+          <a href="/clientes/exportar_pdf?pesquisa=<?php echo Request::get('pesquisa'); ?>" class="btn btn-danger" target="_blank">
+            Gerar PDF
+            <i class="fas fa-file-pdf"></i>
+          </a>
           <div class="card-tools">
             <form action="">
               <div class="input-group input-group" style="width: 150px;">
