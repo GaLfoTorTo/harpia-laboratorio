@@ -12,18 +12,67 @@ class ClienteController extends Controller
 
     public function index(Request $request) {
         $pesquisa = $request->pesquisa;
+        $tipo = $request->tipo;
 
-        if($pesquisa != '') {
+        if($tipo == 'exportar') {
+            $d = date('d-m-Y-H-m-s');
+            $arquivo = 'clientes-'.$d.'.xls';
+            // Configurações header para forçar o download
+            header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+            header ("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
+            header ("Cache-Control: no-cache, must-revalidate");
+            header ("Pragma: no-cache");
+            //header ("Content-type: application/x-msexcel; charset=UTF-8");
+            header ("Content-type: application/vnd.ms-excel; charset=UTF-8");
+            header ("Content-Disposition: attachment; filename=\"{$arquivo}\"" );
+            header ("Content-Description: PHP Generated Data" );
+            echo "\xEF\xBB\xBF"; //UTF-8 BOM
+
+        }
+
+        if($pesquisa != '' && $tipo != 'exportar') {
             $clientes = Cliente::where('nome', 'like', "%".$pesquisa."%")->paginate(1000);
-        } else {
+        } else if($pesquisa != '' && $tipo == 'exportar') {
+            $clientes = Cliente::where('nome', 'like', "%".$pesquisa."%")->all();
+            return view('clientes.exportar', compact('clientes'));
+        } else if($tipo == 'exportar') {
+            $clientes = Cliente::all();
+            return view('clientes.exportar', compact('clientes'));
+
+        }else{
             $clientes = Cliente::paginate(10);
         }
+
+
 
         if($request->is('api/clientes')){
             return response()->json([$clientes],200);
         }else{
             return view('clientes.index', compact('clientes','pesquisa'));
         }
+    } 
+    public function exportar(Request $request) {
+        $pesquisa = $request->pesquisa;
+         
+        $d = date('d-m-Y-H-m-s');
+        $arquivo = 'clientes-'.$d.'.xls';
+        // Configurações header para forçar o download
+        header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+        header ("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
+        header ("Cache-Control: no-cache, must-revalidate");
+        header ("Pragma: no-cache");
+        header ("Content-type: application/vnd.ms-excel; charset=UTF-8");
+        header ("Content-Disposition: attachment; filename=\"{$arquivo}\"" );
+        header ("Content-Description: PHP Generated Data" );
+        echo "\xEF\xBB\xBF";
+
+
+        if($pesquisa != '') {
+            $clientes = Cliente::where('nome', 'like', "%".$pesquisa."%")->get();
+        } else  {
+            $clientes = Cliente::all();
+        }
+        return view('clientes.exportar', compact('clientes'));
     } 
     public function novo() {
 

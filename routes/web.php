@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/clientes/editar/{id}', [ClienteController::class, 'editar'])->name('clientes.editar');
     Route::post('/clientes/salvar', [ClienteController::class, 'salvar'])->name('clientes.salvar');
     Route::get('/clientes/deletar/{id}', [ClienteController::class, 'deletar'])->name('clientes.deletar');
+    Route::get('/clientes/exportar', [ClienteController::class, 'exportar'])->name('clientes.exportar');
 
     Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos');
     Route::get('/equipamentos/novo', [EquipamentoController::class, 'novo'])->name('equipamentos.novo');
