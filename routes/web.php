@@ -29,6 +29,8 @@ use App\Http\Controllers\InspecaoRecebidosController;
 use App\Http\Controllers\C_temperaturaController;
 use App\Http\Controllers\AcoesPropostasController;
 use App\Http\Controllers\RetornoController;
+use App\Http\Controllers\IndiceDesempenhoController;
+use App\Http\Controllers\PlanoDesempenhoController;
 
 
 //reset senha
@@ -178,6 +180,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('retorno/editar/{id}', [RetornoController::class, 'editar'])->name('retorno.editar');
     Route::post('retorno/salvar', [RetornoController::class, 'salvar'])->name('retorno.salvar');
     Route::get('retorno/deletar/{id}', [RetornoController::class, 'deletar'])->name('retorno.deletar');
+
+    Route::get('indice_desempenho', [IndiceDesempenhoController::class, 'index'])->name('indice_desempenho');
+    Route::get('indice_desempenho/novo', [IndiceDesempenhoController::class, 'novo'])->name('indice_desempenho.novo');
+    Route::get('indice_desempenho/editar/{id}', [IndiceDesempenhoController::class, 'editar'])->name('indice_desempenho.editar');
+    Route::post('indice_desempenho/salvar', [IndiceDesempenhoController::class, 'salvar'])->name('indice_desempenho.salvar');
+    Route::get('indice_desempenho/deletar/{id}', [IndiceDesempenhoController::class, 'deletar'])->name('indice_desempenho.deletar');
+
+    Route::get('plano_desempenho', [PlanoDesempenhoController::class, 'index'])->name('plano_desempenho');
+    Route::get('plano_desempenho/novo', [PlanoDesempenhoController::class, 'novo'])->name('plano_desempenho.novo');
+    Route::get('plano_desempenho/editar/{id}', [PlanoDesempenhoController::class, 'editar'])->name('plano_desempenho.editar');
+    Route::post('plano_desempenho/salvar', [PlanoDesempenhoController::class, 'salvar'])->name('plano_desempenho.salvar');
+    Route::get('plano_desempenho/deletar/{id}', [PlanoDesempenhoController::class, 'deletar'])->name('plano_desempenho.deletar');
 
 });
 

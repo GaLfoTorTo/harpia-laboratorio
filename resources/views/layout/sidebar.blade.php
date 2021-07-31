@@ -104,6 +104,29 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-address-book"></i>
+              <p>
+                Índice de Desempenho
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/indice_desempenho/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/indice_desempenho" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-clipboard-check"></i>
               <p>
                 Inspeção de Recebido
@@ -165,6 +188,29 @@
               </li>
               <li class="nav-item">
                 <a href="/participantes_treinamento" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Listar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Plano de Manutenção
+                <i class="right fas fa-file-powerpoint"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/plano_manutencao/novo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Novo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/plano_manutencao" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Listar</p>
                 </a>
