@@ -73,7 +73,7 @@ class EquipamentoController extends Controller
             $unidade = $this->unidade;
 
             return view('equipamentos.form', compact('materiais','unidade','materiais_referencia','produto_critico','equipamentos', 'equipamento_proprio', 'tensao', 'manual', 'fornecedores', 'setor'));
-        }
+    }
         public function salvar(EquipamentoRequest $request) {
 
         if($request->id != '') {
@@ -90,6 +90,7 @@ class EquipamentoController extends Controller
         }else{
             return redirect('/equipamentos/editar/'. $equipamentos->id)->with('success', 'Salvo com sucesso!');
         }
+        
     }
     public function deletar(Request $request, $id) {
         $equipamentos = Equipamentos::find($id);

@@ -16,7 +16,7 @@ class CreateCargosTable extends Migration
         Schema::create('cargos', function (Blueprint $table) {
             $table->id();
             $table->string('cargo');
-            $table->enum('tipo_formacao', [' Ensino Fundamental', 'Ensino Médio', 'Graduação','Pós-Graduação']);
+            $table->enum('tipo_formacao', ['Ensino Fundamental', 'Ensino Médio', 'Graduação','Pós-Graduação']);
             $table->text('qualificacao');
             $table->text('xp_minima')->nullable();
             $table->text('treinamentos');       
