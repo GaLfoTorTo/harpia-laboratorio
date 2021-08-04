@@ -91,56 +91,89 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <div class="form-group">
                 <label for="pedidos_entregues" class="form-label">Nº de Pedidos Entregues:</label>
-                <input type="number" name="pedidos_entregues" class="form-control pedidos_entregues" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_entregues}}@else{{old('pedidos_entregues')}}@endif">
+                <input type="number" id="pedidos_entregues" name="pedidos_entregues" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_entregues}}@else{{old('pedidos_entregues')}}@endif">
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-6">
             <div class="form-group">
                 <label for="pedidos_entregues_atraso" class="form-label">Nº de Pedidos Entregues com Atraso:</label>
-                <input type="number" name="pedidos_entregues_atraso" class="form-control pedidos_entregues_atraso" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_entregues_atraso}}@else{{old('pedidos_entregues_atraso')}}@endif">
+                <input type="number" id="pedidos_entregues_atraso" name="pedidos_entregues_atraso" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_entregues_atraso}}@else{{old('pedidos_entregues_atraso')}}@endif">
             </div>
         </div>
-        <div class="col-4">
+    </div>
+    <div class="row">
+        <div class="col-6">
             <div class="form-group">
                 <label for="pedidos_devolvidos" class="form-label">Nº de Pedidos Devolvidos:</label>
-                <input type="number" name="pedidos_devolvidos" class="form-control pedidos_devolvidos" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_devolvidos}}@else{{old('pedidos_devolvidos')}}@endif">
+                <input type="number" id="pedidos_devolvidos" name="pedidos_devolvidos" class="form-control " value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_devolvidos}}@else{{old('pedidos_devolvidos')}}@endif">
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <div class="form-group">
                 <label for="pedidos_nao_conforme" class="form-label">Nº Pedidos Não Conforme:</label>
-                <input type="number" name="pedidos_nao_conforme" class="form-control pedidos_nao_conforme" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_nao_conforme}}@else{{old('pedidos_nao_conforme')}}@endif">
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="pontualidade" class="form-label">Pontualidade</label>
-                <input type="text" name="pontualidade" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pontualidade}}@else{{old('pontualidade')}}@endif">
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="form-group">
-                <label for="conformidade" class="form-label">Conformidade no Recebimento (CR):</label>
-                <input type="text" name="conformidade" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->conformidade}}@else{{old('conformidade')}}@endif">
+                <input type="number" id="pedidos_nao_conforme" name="pedidos_nao_conforme" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_nao_conforme}}@else{{old('pedidos_nao_conforme')}}@endif" onchange="algoritmo(this)">
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <div class="form-group">
-                <label for="calculo_idf" class="form-label">Cálculo IDF:</label>
-                <input type="text" name="calculo_idf" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->calculo_idf}}@else{{old('calculo_idf')}}@endif">
+                <label for="pontualidade" class="form-label">Pontualidade</label>
+                <input type="text" name="pontualidade" id="pontualidade" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pontualidade}}@else{{old('pontualidade')}}@endif">
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="conformidade" class="form-label">Conformidade no Recebimento (CR):</label>
+                <input type="text" id="conformidade" name="conformidade" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->conformidade}}@else{{old('conformidade')}}@endif">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="calculo_idf" class="form-label">Cálculo IDF:</label>
+                <input type="text" name="calculo_idf" name="calculo_idf" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->calculo_idf}}@else{{old('calculo_idf')}}@endif">
+            </div>
+        </div>
+        <div class="col-6">
             <div class="form-group">
                 <label for="desempenho_fornecedor" class="form-label">Resultado Desempenho do Fornecedor:</label>
-                <input type="text" name="desempenho_fornecedor" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->desempenho_fornecedor}}@else{{old('desempenho_fornecedor')}}@endif">
+                <input type="text" id="desempenho_fornecedor" name="desempenho_fornecedor" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->desempenho_fornecedor}}@else{{old('desempenho_fornecedor')}}@endif">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card" >
+                <div class="card-header bg-secondary" align='center'>
+                    <h5>Classificação IDF</h5>
+                </div>
+                <div class="card-body">
+                    <table class='table text-nowrap table-bordered '>
+                        <tbody align='center'>
+                            <tr class="bg-success">
+                                <td>Conceito A</td>
+                                <td>≥ 90%</td>
+                            </tr>
+                            <tr class="bg-warning">
+                                <td>Conceito B</td>
+                                <td>≥ 50% a < 90%</td>
+                            </tr>
+                            <tr class="bg-orange">
+                                <td>Conceito C</td>
+                                <td>≥ 20% a < 50%</td>
+                            </tr>
+                            <tr class="bg-danger">
+                                <td>Conceito D</td>
+                                <td>< 20%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -173,6 +206,40 @@
             $('.cnpj').val(cnpj);
         }
     });
-    var pedidos_entregues = $('.pedidos_entregues').onChange().val();
-    console.log(pedidos_entregues);
+
+    const algoritmo = (input) => {
+        
+        var pedidos_entregues = $('#pedidos_entregues').val();
+        var pedidos_entregues_atraso = $('#pedidos_entregues_atraso').val();
+        var pedidos_devolvidos = $('#pedidos_devolvidos').val();
+        var pedidos_nao_conforme = input.value;
+
+        var pontualidade = ((pedidos_entregues - pedidos_entregues_atraso) / pedidos_entregues) * 100;
+        var conformidade = ((pedidos_entregues) - (pedidos_devolvidos * 0.80) - (pedidos_nao_conforme * 0.20) / pedidos_entregues) * 100;
+        var calculo_idf = (pontualidade * 0,60) + (conformidade * 0,40)
+
+        if(calculo_idf >= (calculo_idf * 0.90)){
+                $('#desempenho_fornecedor').removeClass();
+                $('#desempenho_fornecedor').addClass('form-control bg-success');
+                $('#desempenho_fornecedor').val('A');
+        }else if(calculo_idf >= (calculo_idf * 0.50) && calculo_idf < (calculo_idf * 0.90)){
+                $('#desempenho_fornecedor').removeClass();
+                $('#desempenho_fornecedor').addClass('form-control bg-warning');
+                $('#desempenho_fornecedor').val('B');
+        }else if(calculo_idf >= (calculo_idf * 0.20) && calculo_idf < (calculo_idf * 0.50)){
+                $('#desempenho_fornecedor').removeClass();
+                $('#desempenho_fornecedor').addClass('form-control bg-orange');
+                $('#desempenho_fornecedor').val('C');
+        }else if(calculo_idf < (calculo_idf * 0.20)){
+                $('#desempenho_fornecedor').removeClass();
+                $('#desempenho_fornecedor').addClass('form-control bg-danger');
+                $('#desempenho_fornecedor').val('D');
+        }
+
+        $('#pontualidade').val(pontualidade.toFixed(2) + '%');
+        $('#conformidade').val(conformidade.toFixed(2) + '%');
+        $('#calculo_idf').val(calculo_idf.toFixed(2) + '%');
+        
+
+    }
 </script>
