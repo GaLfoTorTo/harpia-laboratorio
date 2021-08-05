@@ -127,15 +127,17 @@ class ClienteController extends Controller
 
     public function deletar(Request $request, $id) {
         $cliente = Cliente::find($id);
+        
+        //dd($request->is(`api/clientes/deletar/${id}`));
         if(!empty($cliente)){
             $cliente->delete();
-            if($request->path == `api/clientes/deletar/${id}`){
+            if($request->is(`api/clientes/deletar/${id}`)){
                 return response()->json(['success' => 'Deletado com sucesso!'], 200);
             }else{
                 return redirect('clientes')->with('success', 'Deletado com sucesso!');
             }
         } else {
-            if($request->path == `api/clientes/deletar/${id}`){
+            if($request->is(`api/clientes/deletar/${id}`)){
                 return response()->json(['error' => 'Registro não encontrado!'], 404);
             }else{
                 return redirect('clientes')->with('danger', 'Registro não encontrado!');

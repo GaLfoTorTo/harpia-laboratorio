@@ -28,6 +28,8 @@
   <link rel="stylesheet" href="/css/alertify.min.css">
   <link rel="stylesheet" href="/css/estilo-admin.css">
   <link rel="stylesheet" href="/plugins/sweetalert/dist/sweetalert2.min.css">
+  <link rel="stylesheet" href="/plugins/select22/dist/css/select2.min.css">
+  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

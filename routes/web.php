@@ -28,6 +28,7 @@ use App\Http\Controllers\InspecaoRecebidosController;
 use App\Http\Controllers\C_temperaturaController;
 use App\Http\Controllers\AcoesPropostasController;
 use App\Http\Controllers\RetornoController;
+use App\Http\Controllers\Responsa_autoController;
 
 
 //reset senha
@@ -107,6 +108,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cargos/editar/{id}', [CargosController::class, 'editar'])->name('cargos.editar');
     Route::post('cargos/salvar', [CargosController::class, 'salvar'])->name('cargos.salvar');
     Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
+    Route::get('cargos/responsabilidades/{cargo}', [CargosController::class, 'responsabilidades'])->name('cargos.responsabilidades');
     
     Route::get('/reclamacoes', [ReclamacoesController::class, 'index'])->name('reclamacoes');
     Route::get('/reclamacoes/novo', [ReclamacoesController::class, 'novo'])->name('reclamacoes.novo');
@@ -173,6 +175,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('retorno/editar/{id}', [RetornoController::class, 'editar'])->name('retorno.editar');
     Route::post('retorno/salvar', [RetornoController::class, 'salvar'])->name('retorno.salvar');
     Route::get('retorno/deletar/{id}', [RetornoController::class, 'deletar'])->name('retorno.deletar');
+
+    Route::get('responsa_auto', [Responsa_autoController::class, 'index'])->name('responsa_auto');
+    Route::get('responsa_auto/novo', [Responsa_autoController::class, 'novo'])->name('responsa_auto.novo');
+    Route::get('responsa_auto/editar/{id}', [Responsa_autoController::class, 'editar'])->name('responsa_auto.editar');
+    Route::post('responsa_auto/salvar', [Responsa_autoController::class, 'salvar'])->name('responsa_auto.salvar');
+    Route::get('responsa_auto/deletar/{id}', [Responsa_autoController::class, 'deletar'])->name('responsa_auto.deletar');
 
 });
 

@@ -57,6 +57,8 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script src="/plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+<script src="/plugins/select22/dist/js/select2.min.js"></script>
+
 
 
 <script>

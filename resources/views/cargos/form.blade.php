@@ -78,6 +78,46 @@
     </div>
     <hr>
     <div align='center'>
+      <h3>Responsabilidades</h3>
+    </div>
+    <br>
+   <div class="row">
+        <div class="col-lg-6">
+          @if(isset($cargo) && count($cargo->responsabilidades) > 0)
+          @foreach ($cargo->responsabilidades as $item)
+          <div id="inputFormRow">
+            <div class="input-group mb-3">
+              <input type="text" name="responsabilidades[]" class="form-control m-input" placeholder="Adicionar responsabilidade" autocomplete="off" value="{{ $item->nome }}">
+              <div class="input-group-append">                
+                <button id="removeRow" type="button" class="btn btn-danger">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>    
+          @endforeach
+          @else
+            <div id="inputFormRow">
+                <div class="input-group mb-3">
+                  <input type="text" name="responsabilidades[]" class="form-control m-input" placeholder="Adicionar responsabilidade" autocomplete="off">
+                  <div class="input-group-append">                
+                    <button id="removeRow" type="button" class="btn btn-danger">
+                      <i class="fas fa-trash"></i>
+                      
+                    </button>
+                  </div>
+                </div>
+              </div>
+            @endif
+
+            <div id="newRow"></div>
+            <button id="addRow" type="button" class="btn btn-info"> 
+              <i class="fas fa-plus"></i>
+              Adicionar</button>
+        </div>
+    </div>
+    <hr>
+    <div align='center'>
       <h3>Pré-Requisitos</h3>
     </div>
     <br>
@@ -145,3 +185,25 @@
 </div>
 
 @include('layout.footer')
+
+
+<script type="text/javascript">
+  // add row
+  $("#addRow").click(function () {
+      var html = '';
+      html += '<div id="inputFormRow">';
+      html += '<div class="input-group mb-3">';
+      html += '<input type="text" name="responsabilidades[]" class="form-control m-input" placeholder="Adicionar responsabilidade" autocomplete="off">';
+      html += '<div class="input-group-append">';
+      html += '<button id="removeRow" type="button" class="btn btn-danger"> <i class="fas fa-trash"></i></button>';
+      html += '</div>';
+      html += '</div>';
+
+      $('#newRow').append(html);
+  });
+
+  // remove row
+  $(document).on('click', '#removeRow', function () {
+      $(this).closest('#inputFormRow').remove();
+  });
+</script>
