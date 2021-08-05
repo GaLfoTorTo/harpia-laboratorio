@@ -7,7 +7,7 @@ use App\Models\Inspecao_recebidos;
 use App\Models\Perguntas_lista_inspecao;
 use App\Models\Respostas_lista_inspecao;
 use App\Models\Fornecedor;
-use App\Models\Equipamentos_insumos;
+use App\Models\Equipamentos;
 use App\Http\Requests\Inspecao_recebidosRequest;
 
 
@@ -25,14 +25,14 @@ class InspecaoRecebidosController extends Controller
     } 
     public function novo() {
         $pergunta = Perguntas_lista_inspecao::get();
-        $produto = Equipamentos_Insumos::with('fornecedor')->get();
+        $produto = Equipamentos::with('fornecedor')->get();
         return view('inspecao_recebidos.form', compact('pergunta','produto'));
     }
     public function editar($id) {
         $pergunta = Perguntas_lista_inspecao::get();
         $inspecao_recebidos = Inspecao_recebidos::find($id);
         $resposta = Respostas_lista_inspecao::select('pergunta_id','resposta')->get();
-        $produto = Equipamentos_Insumos::with('fornecedor')->get();
+        $produto = Equipamentos::with('fornecedor')->get();
         return view('inspecao_recebidos.form', compact('inspecao_recebidos','pergunta','produto','resposta'));
     }
     public function salvar(Inspecao_recebidosRequest $request) {

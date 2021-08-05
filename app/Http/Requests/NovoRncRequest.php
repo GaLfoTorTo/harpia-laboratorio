@@ -24,8 +24,6 @@ class NovoRncRequest extends FormRequest
     public function rules()
     {
         return [
-            'codigo' => 'required',
-            'revisao' => 'required',
             'numero' => 'required',
             'data_abertura' => 'required',
             'responsavel' => 'required',
@@ -35,10 +33,8 @@ class NovoRncRequest extends FormRequest
             'necessario_analise' => 'required',
             'nc_consequencia' => 'required',
             'tratativa_eficaz' => 'required',
-            'data_avaliacao' => 'required',
             'risco_avaliado' => 'required',
-            'responsavel_encerramento' => 'required',
-            'data_responsavel' => 'required'
+            'responsavel_encerramento' => 'required'
             
             
         ];
@@ -46,8 +42,6 @@ class NovoRncRequest extends FormRequest
     public function messages()
     {
         return [
-            'codigo.required' => 'O Código é obrigatório',
-            'revisao.required' => 'O número da revisão é obrigatório',
             'numero.required' => 'O numero é obrigatório',
             'data_abertura.required' => 'A Data de Abertura é obrigatória',   
             'responsavel.required' => 'O nome do responsável é obrigatório',  
@@ -56,11 +50,9 @@ class NovoRncRequest extends FormRequest
             'doc_referencia.required' => 'O Documento de Referência é obrigatório',  
             'necessario_analise.required' => 'Necessário Análise é obrigatório',  
             'nc_consequencia.required' => 'A NC gerou consequência é obrigatório',  
-            'tratativa_eficaz.required' => 'A Tratativa é obrigatória',  
-            'data_avaliacao.required' => 'A Data de Avaliação é obrigatória',           
+            'tratativa_eficaz.required' => 'A Tratativa é obrigatória',          
             'risco_avaliado.required' => 'O Risco Avaliado é obrigatório',  
-            'responsavel_encerramento.required' => 'O responsável pelo encerramento é obrigatório',  
-            'data_responsavel.required' => 'A Data de Encerramento é obrigatória'  
+            'responsavel_encerramento.required' => 'O responsável pelo encerramento é obrigatório'
         ];
     }
 }

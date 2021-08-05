@@ -26,7 +26,7 @@
       
     <div class="card-header">
       <a href="/novo_rnc/novo" class="btn btn-primary">
-        Novo RNC 
+        RNC 
         <i class="fas fa-plus"></i>
       </a>
       @endisset
@@ -57,28 +57,22 @@
     <input type="hidden" name="id" value="@isset($novo_rnc){{$novo_rnc->id}}@endisset">
     
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
         <div class="form-group">
                 <label for="codigo" class="form-label">Código:</label>
-                <input type="text" name="codigo" class="form-control codigo" required value="@isset($novo_rnc){{$novo_rnc->codigo}}@endisset">
+                <input type="number" name="codigo" class="form-control codigo" readonly value="@isset($novo_rnc){{$novo_rnc->id}}@endisset">
             </div>
         </div>
-        <div class="col-3">
-        <div class="form-group">
-                <label for="revisao" class="form-label">Revisão:</label>
-                <input type="number" name="revisao" class="form-control" value="@if(isset($novo_rnc) && $novo_rnc){{$novo_rnc->revisao}}@else{{old("revisao")}}@endif">
-            </div>
-           </div>
-            <div class="col-3">
+            <div class="col-4">
             <div class="form-group">
                 <label for="numero" class="form-label">Número:</label>
                 <input type="number" name="numero" class="form-control" value="@isset($novo_rnc){{$novo_rnc->numero}}@endisset">
             </div>
           </div>
-          <div class="col-3">
+          <div class="col-4">
             <div class="form-group">
               <label for="data_abertura" class="form-label">Data de Abertura:</label>
-              <input type="date" name="data_abertura" class="form-control" value="@isset($novo_rnc){{$novo_rnc->data_abertura}}@endisset">
+              <input required type="date" min="{{ date('Y-m-d')}}" name="data_abertura" class="form-control" value="@isset($novo_rnc){{$novo_rnc->data_abertura}}@endisset">
               </div>
           </div>
     </div>
@@ -87,6 +81,7 @@
       <div class="form-group">
         <label for="responsavel" class="form-label">Responsável:</label>
         <select name="responsavel" id="responsavel" class="form-control selecao">
+          <option value="">Selecione</option>
           @foreach ($colaborador as $key => $t)
             <option value="{{ $t->nome }}" @if(isset($novo_rnc) && $novo_rnc->responsavel == $t->nome)  selected @elseif(old('responsavel') == $t->nome) selected @endif >{{$t->nome}}</option> 
         @endforeach
@@ -97,7 +92,7 @@
       <div class="form-group">
               <label for="classificacao_acao" class="form-label">Classificacão da Ação:</label>
               <select name="classificacao_acao" id="classificacao_acao" class="form-control selecao">
-                <option value="">Selecione:</option>
+                <option value="">Selecione</option>
                   @foreach ($classificacao_acao as $key => $t)
                       <option value="{{ $t }}" @if(isset($novo_rnc) && $novo_rnc->classificacao_acao == $t)  selected @elseif(old('classificacao_acao') == $t) selected @endif >{{$t}}</option>
                   @endforeach
@@ -119,8 +114,8 @@
     <div class="row">
       <div class="col-4">
         <div class="form-group">
-            <label for="identificacao" class="form-label">Identificacão:</label>
-            <input type="number" name="identificacao" class="form-control" value="@isset($novo_rnc){{$novo_rnc->identificacao}}@endisset">
+            <label for="identificacao" class="form-label">Identificação:</label>
+            <input type="text" name="identificacao" class="form-control" value="@isset($novo_rnc){{$novo_rnc->identificacao}}@endisset">
         </div>
       </div>
         <div class="col-4">
@@ -149,6 +144,7 @@
           </div>
         </div>
     </div> 
+    
     <div class="row">
       <div class="col-2">
         <div class="form-group">
@@ -174,8 +170,9 @@
         </div>
       </div>
     </div>
-    <div class="row">
-        <div class="col-3">
+    
+      <div class="row">
+        <div class="col-6">
           <div class="form-group">
               <label for="nc_consequencia" class="form-label">A NC Gerou Consequência?</label>
               <select name="nc_consequencia" id="nc_consequencia" class="form-control selecao">
@@ -186,7 +183,7 @@
           </select>
               </div>
         </div>
-        <div class="col-9">
+        <div class="col-6">
           <div class="form-group">
             <label for="relato_nc">Relato:</label>
             <textarea class="form-control" name="relato_nc" id="relato_nc" rows="3" required> @if(isset($novo_rnc)){{$novo_rnc->relato_nc}}@else{{ old('relato_nc')}}@endif</textarea>
@@ -216,7 +213,9 @@
       <div class="col-3">
         <div class="form-group">
             <label for="data_avaliacao" class="form-label">Data da Avaliação da Eficácia:</label>
-            <input type="date" name="data_avaliacao" class="form-control" value="@isset($novo_rnc){{$novo_rnc->data_avaliacao}}@endisset">
+            <input type="date" name="data_avaliacao" class="form-control" value="@isset($novo_rnc){{$novo_rnc->data_avaliacao}}@endisset"
+            @if (!isset($novo_rnc->id))
+            disabled @endif @if(isset($novo_rnc->data_responsavel)) max="{{ $novo_rnc->data_responsavel}}" @endif>
             </div>
         </div>
       <div class="col-5">
@@ -238,28 +237,30 @@
         </div>
     </div>
     <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+            <label for="observacoes" class="form-label">Observações:</label>
+            <textarea class="form-control" name="observacoes" id="observacoes" rows="3" required> @if(isset($novo_rnc)){{$novo_rnc->observacoes}}@else{{ old('observacoes')}}@endif</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
       <div class="col-5">
         <div class="form-group">
-            <label for="responsavel_encerramento" class="form-label">Responsável Pelo Encerramento:</label>
+            <label for="responsavel_encerramento" class="form-label">Responsável Pelo Encerramento do RNC:</label>
             <select name="responsavel_encerramento" id="responsavel_encerramento" class="form-control selecao">
+              <option value="">Selecione</option>
               @foreach ($colaborador as $key => $t)
                 <option value="{{ $t->nome }}" @if(isset($novo_rnc) && $novo_rnc->responsavel_encerramento == $t->nome)  selected @elseif(old('responsavel_encerramento') == $t->nome) selected @endif >{{$t->nome}}</option> 
             @endforeach
           </select>
             </div>
         </div>
-      <div class="col-3">
+      <div class="col-5">
         <div class="form-group">
-            <label for="data_responsavel" class="form-label">Data:</label>
-            <input type="date" name="data_responsavel" class="form-control" value="@isset($novo_rnc){{$novo_rnc->data_responsavel}}@endisset">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="form-group">
-            <label for="observacoes" class="form-label">Observações:</label>
-            <textarea class="form-control" name="observacoes" id="observacoes" rows="3" required> @if(isset($novo_rnc)){{$novo_rnc->observacoes}}@else{{ old('observacoes')}}@endif</textarea>
+            <label for="data_responsavel" class="form-label">Data para Encerramento do RNC:</label>
+            <input type="date" name="data_responsavel" class="form-control" value="@isset($novo_rnc){{$novo_rnc->data_responsavel}}@endisset" @if (!isset($novo_rnc->id))
+              disabled @endif @if(isset($novo_rnc->data_abertura)) min="{{ $novo_rnc->data_abertura}}" @endif>
             </div>
         </div>
     </div>

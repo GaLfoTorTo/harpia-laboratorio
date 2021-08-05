@@ -10,7 +10,8 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ isset($participantes_treinamento) ? 'Editar' : 'Novo' }} Participantes do Treinamento</h1>
+            <h1 class="m-0">{{ isset($participantes_treinamento) ? 'Editar' : 'Novo' }} Participantes do Treinamento: <br>
+            {{ $treinamento->titulo }}</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -32,12 +33,7 @@
       <br><br>
       @endisset
   <!-- /.content-header -->
-  <div class="card">
-    <div class="card-header">
-      <a href="/participantes_treinamento/novo" class="btn btn-primary">
-        Novo Participante do Treinamento 
-        <i class="fas fa-plus"></i>
-      </a>
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -60,27 +56,33 @@
         </div>
          @endif               
 
-
   <form action="/participantes_treinamento/salvar" method="POST">
     @csrf
     <input type="hidden" name="id" value="@isset($participantes_treinamento){{$participantes_treinamento->id}}@endisset">
+    <input type="hidden" name="registro_treinamento_id" value="{{$treinamento->id}}">
     
     <div class="row">
           <div class="col-6">
             <div class="form-group">
                 <label for="setor" class="form-label">Setor:</label>
                 <select name="setor" id="setor" class="form-control">
+                  <option value="">Selecione:</option>
                     @foreach ($setores as $key => $tipo)
-                    <option value="{{ $tipo->setor }}" @if(isset($participantes_treinamento) && $participantes_treinamento->setor == $tipo)  selected @elseif(old('setor') == $tipo) selected @endif >{{$tipo->setor}}</option>
+                    <option value="{{ $tipo->setor }}" @if(isset($participantes_treinamento) && $participantes_treinamento->setor == $tipo->setor)  selected @elseif(old('setor') == $tipo) selected @endif >{{$tipo->setor}}</option>
                     @endforeach
                 </select>
             </div>
         </div>
-          
+
         <div class="col-6">
         <div class="form-group">
                 <label for="nome" class="form-label">Nome:</label>
-                <input type="text" name="nome" class="form-control" value="@if(isset($participantes_treinamento) && $participantes_treinamento){{$participantes_treinamento->nome}}@else{{old("nome")}}@endif">
+                <select name="nome" id="nome" class="form-control">
+                  <option value="">Selecione:</option>
+                    @foreach ($colaboradores as $key => $tipo)
+                    <option value="{{ $tipo->nome }}" @if(isset($participantes_treinamento) && $participantes_treinamento->nome == $tipo->nome)  selected @elseif(old('nome') == $tipo) selected @endif >{{$tipo->nome}}</option>
+                    @endforeach
+                </select>
             </div>
             </div>
             </div>

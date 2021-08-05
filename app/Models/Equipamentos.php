@@ -18,14 +18,22 @@ class Equipamentos extends Model
         'modelo',
         'tensao',
         'manual',
+        'codigo',
         'num_serie',
         'localizacao_manual',
         'doc_instrucao',
-        'codigo',
         'patrimonio',
         'fabricante',
-        'fornecedor_id',
-        'localizacao_equipamento'
+        'fornecedor',
+        'localizacao_equipamento',
+        'nome',
+        'produto_critico',
+        'materiais_referencia',
+        'materiais',
+        'desc_produto',
+        'quantidade',
+        'unidade'
+
     ];
 
     public function fornecedor(){
