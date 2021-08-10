@@ -136,7 +136,7 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="calculo_idf" class="form-label">Cálculo IDF:</label>
-                <input type="text" name="calculo_idf" name="calculo_idf" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->calculo_idf}}@else{{old('calculo_idf')}}@endif">
+                <input type="text" id="calculo_idf" name="calculo_idf" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->calculo_idf}}@else{{old('calculo_idf')}}@endif">
             </div>
         </div>
         <div class="col-6">
@@ -215,22 +215,24 @@
         var pedidos_nao_conforme = input.value;
 
         var pontualidade = ((pedidos_entregues - pedidos_entregues_atraso) / pedidos_entregues) * 100;
-        var conformidade = ((pedidos_entregues) - (pedidos_devolvidos * 0.80) - (pedidos_nao_conforme * 0.20) / pedidos_entregues) * 100;
-        var calculo_idf = (pontualidade * 0,60) + (conformidade * 0,40)
+        var conformidade = (((pedidos_entregues) - (pedidos_devolvidos * 0.80) - (pedidos_nao_conforme * 0.20)) / pedidos_entregues) * 100;
+        var calculo_idf = (pontualidade * 0.60) + (conformidade * 0.40)
 
-        if(calculo_idf >= (calculo_idf * 0.90)){
+        console.log(calculo_idf, calculo_idf * 0.90)
+
+        if(calculo_idf >= 90){
                 $('#desempenho_fornecedor').removeClass();
                 $('#desempenho_fornecedor').addClass('form-control bg-success');
                 $('#desempenho_fornecedor').val('A');
-        }else if(calculo_idf >= (calculo_idf * 0.50) && calculo_idf < (calculo_idf * 0.90)){
+        }else if(calculo_idf >= 50 && calculo_idf < 90){
                 $('#desempenho_fornecedor').removeClass();
                 $('#desempenho_fornecedor').addClass('form-control bg-warning');
                 $('#desempenho_fornecedor').val('B');
-        }else if(calculo_idf >= (calculo_idf * 0.20) && calculo_idf < (calculo_idf * 0.50)){
+        }else if(calculo_idf >= 20 && calculo_idf < 50){
                 $('#desempenho_fornecedor').removeClass();
                 $('#desempenho_fornecedor').addClass('form-control bg-orange');
                 $('#desempenho_fornecedor').val('C');
-        }else if(calculo_idf < (calculo_idf * 0.20)){
+        }else if(calculo_idf < 20){
                 $('#desempenho_fornecedor').removeClass();
                 $('#desempenho_fornecedor').addClass('form-control bg-danger');
                 $('#desempenho_fornecedor').val('D');

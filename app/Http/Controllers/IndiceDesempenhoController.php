@@ -31,7 +31,7 @@ class IndiceDesempenhoController extends Controller
         return view('indice_desempenho.form');
     }
     public function salvar(ClienteRequest $request) {
-
+        dd($request->all());
         $ehvalido = $request->validated();
         if($request->id != '') {
             $cliente = IndiceDesempenho::find($request->id);
