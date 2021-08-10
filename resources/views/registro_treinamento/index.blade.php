@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Registro de Treinamento</h1>
+            <h1 class="m-0">Treinamento</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item active">Registro de Treinamento</li>
+              <li class="breadcrumb-item active">Treinamento</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,7 +31,7 @@
         <div class="card">
           <div class="card-header">
             <a href="/registro_treinamento/novo" class="btn btn-primary">
-              Novo Registro de Treinamento 
+              Novo Treinamento 
               <i class="fas fa-plus"></i>
             </a>
 
@@ -71,6 +71,9 @@
                     <td>{{ $item->data_inicial }}</td>
                     <td>{{ $item->data_final }}</td>
                     <td>
+                      <a href="participantes_treinamento?treinamento_id={{ $item->id }}" class="btn btn-primary">
+                        <i class="fas fa-users"></i>
+                      </a>
                       <a href="registro_treinamento/editar/{{ $item->id }}" class="btn btn-warning">
                         <i class="fas fa-edit"></i>
                       </a>

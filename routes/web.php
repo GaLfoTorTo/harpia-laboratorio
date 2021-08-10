@@ -11,7 +11,6 @@ use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\ServicoController;
-use App\Http\Controllers\EquipamentosInsumosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\SetoresController;
@@ -31,6 +30,7 @@ use App\Http\Controllers\AcoesPropostasController;
 use App\Http\Controllers\RetornoController;
 use App\Http\Controllers\IndiceDesempenhoController;
 use App\Http\Controllers\PlanoDesempenhoController;
+use App\Http\Controllers\Responsa_autoController;
 
 
 //reset senha
@@ -59,13 +59,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/clientes/editar/{id}', [ClienteController::class, 'editar'])->name('clientes.editar');
     Route::post('/clientes/salvar', [ClienteController::class, 'salvar'])->name('clientes.salvar');
     Route::get('/clientes/deletar/{id}', [ClienteController::class, 'deletar'])->name('clientes.deletar');
+    
+    Route::get('/clientes/exportar', [ClienteController::class, 'exportar'])->name('clientes.exportar');
+    Route::get('/clientes/exportar_pdf', [ClienteController::class, 'exportar_pdf'])->name('clientes.exportar_pdf');
 
     Route::get('/equipamentos', [EquipamentoController::class, 'index'])->name('equipamentos');
     Route::get('/equipamentos/novo', [EquipamentoController::class, 'novo'])->name('equipamentos.novo');
     Route::get('/equipamentos/editar/{id}', [EquipamentoController::class, 'editar'])->name('equipamentos.editar');
     Route::post('/equipamentos/salvar', [EquipamentoController::class, 'salvar'])->name('equipamentos.salvar');
     Route::get('/equipamentos/deletar/{id}', [EquipamentoController::class, 'deletar'])->name('equipamentos.deletar');
-
 
     Route::get('/colaboradores', [ColaboradorController::class, 'index'])->name('colaboradores');
     Route::get('/colaboradores/novo', [ColaboradorController::class, 'novo'])->name('colaboradores.novo');
@@ -84,12 +86,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/fornecedores/editar/{id}', [FornecedorController::class, 'editar'])->name('fornecedores.editar');
     Route::post('fornecedores/salvar', [FornecedorController::class, 'salvar'])->name('fornecedores.salvar');
     Route::get('/fornecedores/deletar/{id}', [FornecedorController::class, 'deletar'])->name('fornecedores.deletar');
-
-    Route::get('/equipamentos_insumos', [EquipamentosInsumosController::class, 'index'])->name('equipamentos_insumos');
-    Route::get('/equipamentos_insumos/novo', [EquipamentosInsumosController::class, 'novo'])->name('equipamentos_insumos.novo');
-    Route::get('/equipamentos_insumos/editar/{id}', [EquipamentosInsumosController::class, 'editar'])->name('equipamentos_insumos.editar');
-    Route::post('equipamentos_insumos/salvar', [EquipamentosInsumosController::class, 'salvar'])->name('equipamentos_insumos.salvar');
-    Route::get('/equipamentos_insumos/deletar/{id}', [EquipamentosInsumosController::class, 'deletar'])->name('equipamentos_insumos.deletar');
 
     Route::get('/setores', [SetoresController::class, 'index'])->name('setores');
     Route::get('/setores/novo', [SetoresController::class, 'novo'])->name('setores.novo');
@@ -114,6 +110,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cargos/editar/{id}', [CargosController::class, 'editar'])->name('cargos.editar');
     Route::post('cargos/salvar', [CargosController::class, 'salvar'])->name('cargos.salvar');
     Route::get('/cargos/deletar/{id}', [CargosController::class, 'deletar'])->name('cargos.deletar');
+    Route::get('cargos/responsabilidades/{cargo}', [CargosController::class, 'responsabilidades'])->name('cargos.responsabilidades');
     
     Route::get('/reclamacoes', [ReclamacoesController::class, 'index'])->name('reclamacoes');
     Route::get('/reclamacoes/novo', [ReclamacoesController::class, 'novo'])->name('reclamacoes.novo');
@@ -181,6 +178,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('retorno/salvar', [RetornoController::class, 'salvar'])->name('retorno.salvar');
     Route::get('retorno/deletar/{id}', [RetornoController::class, 'deletar'])->name('retorno.deletar');
 
+
     Route::get('indice_desempenho', [IndiceDesempenhoController::class, 'index'])->name('indice_desempenho');
     Route::get('indice_desempenho/novo', [IndiceDesempenhoController::class, 'novo'])->name('indice_desempenho.novo');
     Route::get('indice_desempenho/editar/{id}', [IndiceDesempenhoController::class, 'editar'])->name('indice_desempenho.editar');
@@ -192,6 +190,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('plano_desempenho/editar/{id}', [PlanoDesempenhoController::class, 'editar'])->name('plano_desempenho.editar');
     Route::post('plano_desempenho/salvar', [PlanoDesempenhoController::class, 'salvar'])->name('plano_desempenho.salvar');
     Route::get('plano_desempenho/deletar/{id}', [PlanoDesempenhoController::class, 'deletar'])->name('plano_desempenho.deletar');
+
+    Route::get('responsa_auto', [Responsa_autoController::class, 'index'])->name('responsa_auto');
+    Route::get('responsa_auto/novo', [Responsa_autoController::class, 'novo'])->name('responsa_auto.novo');
+    Route::get('responsa_auto/editar/{id}', [Responsa_autoController::class, 'editar'])->name('responsa_auto.editar');
+    Route::post('responsa_auto/salvar', [Responsa_autoController::class, 'salvar'])->name('responsa_auto.salvar');
+    Route::get('responsa_auto/deletar/{id}', [Responsa_autoController::class, 'deletar'])->name('responsa_auto.deletar');
+
 
 });
 

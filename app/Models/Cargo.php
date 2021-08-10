@@ -17,7 +17,9 @@ class Cargo extends Model
         'habilidades',
         'con_tecnico',
         'descricao'
-        
-        
     ];
+
+    public function responsabilidades() {
+        return $this->hasMany(Rep::class, 'cargo_id');
+    }
 }
