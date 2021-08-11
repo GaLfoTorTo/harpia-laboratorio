@@ -13,7 +13,6 @@ class IndiceDesempenho extends Model
     protected $fillable = [
         'fornecedor_id',
         'cnpj',
-        'fornecedor',
         'ano_referencia',
         'pedido_compra',
         'data_entrega',

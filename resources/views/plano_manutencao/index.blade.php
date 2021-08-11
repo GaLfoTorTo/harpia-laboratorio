@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Clientes</h1>
+          <h1 class="m-0">Plano de Manutenção</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item "><a href="/">Dashboard</a></li>
-            <li class="breadcrumb-item active">Clientes</li>
+            <li class="breadcrumb-item active">Plano de Manutenção</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -30,8 +30,8 @@
 
       <div class="card">
         <div class="card-header">
-          <a href="/clientes/novo" class="btn btn-primary">
-            Novo cliente 
+          <a href="/plano_manutencao/novo" class="btn btn-primary">
+            Novo Plano 
             <i class="fas fa-plus"></i>
           </a>
           <div class="card-tools">
@@ -54,24 +54,24 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th>Nome</th>
-                <th>CPF/CNPJ</th>
-                <th>E-mail</th>
+                <th>Código</th>
+                <th>Equipamento</th>
+                <th>Marca</th>
                 <th>Ações</th>
               </tr>
             </thead>
-            @foreach ($clientes as $item)
+            @foreach ($plano_manutencao as $item)
             <tbody>
               <tr>
                   <td>{{ $item->id }}</td>
-                  <td>{{ $item->nome }}</td>
-                  <td>{{ $item->cpf_cnpj }}</td>
-                  <td>{{ $item->email }}</td>
+                  <td>{{ $item->equipamento->codigo }}</td>
+                  <td>{{ $item->equipamento->nome }}</td>
+                  <td>{{ $item->equipamento->marca }}</td>
                   <td>
-                    <a href="clientes/editar/{{ $item->id }}" class="btn btn-warning">
+                    <a href="plano_manutencao/editar/{{ $item->id }}" class="btn btn-warning">
                       <i class="fas fa-edit"></i>
                     </a>
-                    <a href="#" class="btn btn-danger" onclick="deleta('/clientes/deletar/{{ $item->id }}')">
+                    <a href="#" class="btn btn-danger" onclick="deleta('/plano_manutencao/deletar/{{ $item->id }}')">
                       <i class="fas fa-trash"></i>
                     </a>
                   </td>
@@ -80,7 +80,7 @@
             @endforeach
           </table>
           <br>
-            @if(count($clientes) < 1)
+            @if(count($plano_manutencao) < 1)
             <div class="alert alert-info" style="margin-left: 61px; margin-right: 61px;">
               Nenhum registro encontrado!
             </div>
@@ -90,7 +90,7 @@
       </div>
       <div class="row">
         <div class="col">
-          {{ $clientes->links() }}
+          {{ $plano_manutencao->links() }}
         </div>
       </div>
 

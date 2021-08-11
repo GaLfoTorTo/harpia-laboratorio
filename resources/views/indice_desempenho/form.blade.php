@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ isset($indice_desmpenho) ? 'Editar' : 'Novo' }} Índice</h1>
+            <h1 class="m-0">{{ isset($indice_desempenho) ? 'Editar' : 'Novo' }} Índice</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/indice_desempenho">Índice Desempenho</a></li>
-            <li class="breadcrumb-item active">{{ isset($indice_desmpenho) ? 'Editar' : 'Novo' }}</li>
+            <li class="breadcrumb-item active">{{ isset($indice_desempenho) ? 'Editar' : 'Novo' }}</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -40,25 +40,24 @@
                     @endforeach
                 </div>
             @endif
-            @isset($indice_desmpenho)
+            @isset($indice_desempenho)
                 <a href="/indice_desempenho/novo" class="btn btn-primary">
-                    Novo Cliente
+                    Novo Índice de Desempenho
                     <i class="fas fa-plus"></i>
                 </a>
             @endisset
 
   <form action="/indice_desempenho/salvar" method="POST">
     @csrf
-    <input type="hidden" name="id" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->id}}@else{{ old('id') }}@endif">
-    <input type="hidden" name="codigo_cliente" value="@isset($indice_desmpenho){{$indice_desmpenho->codigo_cliente}}@else {{rand($min = 100000000, $max = 999999999)}}@endisset">
+    <input type="hidden" name="id" value="@if(isset($indice_desempenho)){{$indice_desempenho->id}}@else{{ old('id') }}@endif">
     <div class="row">
         <div class="col-6">
             <div class="form-group">
                 <label for="fornecedor" class="form-label ">Fornecedor:</label>
-                <select name="fornecedor" id="fornecedor" class="form-control fornecedor">
+                <select name="fornecedor_id" id="fornecedor_id" class="form-control fornecedor_id">
                     <option value="">selecione</option>
                     @foreach ($fornecedores as $key => $item)
-                        <option value="{{$item->id}}"@if(isset($indice_desmpenho) && $indice_desmpenho->id == $item->id) selected @elseif(old('fornecedor') == $item->id) selected @endif data-fornecedor-cnpj="{{$item->cnpj}}">{{$item->razao_social}}</option>
+                        <option value="{{$item->id}}"@if(isset($indice_desempenho) && $indice_desempenho->id == $item->id) selected @elseif(old('fornecedor_id') == $item->id) selected @endif data-fornecedor-cnpj="{{$item->cnpj}}">{{$item->razao_social}}</option>
                     @endforeach
                 </select>
             </div>
@@ -66,27 +65,32 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="servico">CNPJ</label>
-                <input type="text" name="cnpj" class="form-control cnpj" id="cnpj" readonly required value="@if(isset($indice_desmpenho)){{$indice_desmpenho->cnpj}}@else{{old('cnpj')}}@endisset">
+                <input type="text" name="cnpj" class="form-control cnpj" id="cnpj" readonly required value="@if(isset($indice_desempenho)){{$indice_desempenho->cnpj}}@else{{old('cnpj')}}@endisset">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-4">
             <div class="form-group">
-                <label for="ano_referencia" class="form-label">Ano Referência:</label>
-                <input type="date" name="ano_referencia" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->ano_referencia}}@else{{old('ano_referencia')}} @endif" >
+                <label for="fornecedor" class="form-label ">Ano de Referência:</label>
+                <select name="ano_referencia" id="ano_referencia" class="form-control ano_referencia">
+                    <option value="">selecione</option>
+                    @for ($item = 1970; $item <= 2030; $item ++ )
+                        <option value="{{$item}}"@if(isset($indice_desempenho) && $indice_desempenho->ano_referencia == $item) selected @elseif(old('ano_referencia') == $item) selected @endif>{{$item}}</option>
+                    @endfor
+                </select>
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="pedido_compra" class="form-label">Pedido de Compra:</label>
-                <input type="text" name="pedido_compra" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedido_compra}}@else{{ old('pedido_compra') }}@endif">
+                <input type="text" name="pedido_compra" class="form-control" value="@if(isset($indice_desempenho)){{$indice_desempenho->pedido_compra}}@else{{ old('pedido_compra') }}@endif">
             </div>
         </div>
         <div class="col-4">
             <div class="form-group">
                 <label for="data_entrega" class="form-label">Data de Entrega:</label>
-                <input type="date" name="data_entrega" class="form-control data_entrega" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->data_entrega}}@else{{old('data_entrega')}}@endif">
+                <input type="date" name="data_entrega" class="form-control data_entrega" value="@if(isset($indice_desempenho)){{$indice_desempenho->data_entrega}}@else{{old('data_entrega')}}@endif">
             </div>
         </div>
     </div>
@@ -94,13 +98,13 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="pedidos_entregues" class="form-label">Nº de Pedidos Entregues:</label>
-                <input type="number" id="pedidos_entregues" name="pedidos_entregues" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_entregues}}@else{{old('pedidos_entregues')}}@endif">
+                <input type="number" id="pedidos_entregues" name="pedidos_entregues" class="form-control" value="@if(isset($indice_desempenho)){{$indice_desempenho->pedidos_entregues}}@else{{old('pedidos_entregues')}}@endif">
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="pedidos_entregues_atraso" class="form-label">Nº de Pedidos Entregues com Atraso:</label>
-                <input type="number" id="pedidos_entregues_atraso" name="pedidos_entregues_atraso" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_entregues_atraso}}@else{{old('pedidos_entregues_atraso')}}@endif">
+                <input type="number" id="pedidos_entregues_atraso" name="pedidos_entregues_atraso" class="form-control" value="@if(isset($indice_desempenho)){{$indice_desempenho->pedidos_entregues_atraso}}@else{{old('pedidos_entregues_atraso')}}@endif">
             </div>
         </div>
     </div>
@@ -108,13 +112,13 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="pedidos_devolvidos" class="form-label">Nº de Pedidos Devolvidos:</label>
-                <input type="number" id="pedidos_devolvidos" name="pedidos_devolvidos" class="form-control " value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_devolvidos}}@else{{old('pedidos_devolvidos')}}@endif">
+                <input type="number" id="pedidos_devolvidos" name="pedidos_devolvidos" class="form-control " value="@if(isset($indice_desempenho)){{$indice_desempenho->pedidos_devolvidos}}@else{{old('pedidos_devolvidos')}}@endif">
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="pedidos_nao_conforme" class="form-label">Nº Pedidos Não Conforme:</label>
-                <input type="number" id="pedidos_nao_conforme" name="pedidos_nao_conforme" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pedidos_nao_conforme}}@else{{old('pedidos_nao_conforme')}}@endif" onchange="algoritmo(this)">
+                <input type="number" id="pedidos_nao_conforme" name="pedidos_nao_conforme" class="form-control" value="@if(isset($indice_desempenho)){{$indice_desempenho->pedidos_nao_conforme}}@else{{old('pedidos_nao_conforme')}}@endif" onchange="algoritmo(this)">
             </div>
         </div>
     </div>
@@ -122,13 +126,13 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="pontualidade" class="form-label">Pontualidade</label>
-                <input type="text" name="pontualidade" id="pontualidade" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->pontualidade}}@else{{old('pontualidade')}}@endif">
+                <input type="text" name="pontualidade" id="pontualidade" class="form-control" readonly value="@if(isset($indice_desempenho)){{$indice_desempenho->pontualidade}}@else{{old('pontualidade')}}@endif">
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="conformidade" class="form-label">Conformidade no Recebimento (CR):</label>
-                <input type="text" id="conformidade" name="conformidade" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->conformidade}}@else{{old('conformidade')}}@endif">
+                <input type="text" id="conformidade" name="conformidade" class="form-control" readonly value="@if(isset($indice_desempenho)){{$indice_desempenho->conformidade}}@else{{old('conformidade')}}@endif">
             </div>
         </div>
     </div>
@@ -136,13 +140,13 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="calculo_idf" class="form-label">Cálculo IDF:</label>
-                <input type="text" id="calculo_idf" name="calculo_idf" class="form-control" readonly value="@if(isset($indice_desmpenho)){{$indice_desmpenho->calculo_idf}}@else{{old('calculo_idf')}}@endif">
+                <input type="text" id="calculo_idf" name="calculo_idf" class="form-control" readonly value="@if(isset($indice_desempenho)){{$indice_desempenho->calculo_idf}}@else{{old('calculo_idf')}}@endif">
             </div>
         </div>
         <div class="col-6">
             <div class="form-group">
                 <label for="desempenho_fornecedor" class="form-label">Resultado Desempenho do Fornecedor:</label>
-                <input type="text" id="desempenho_fornecedor" name="desempenho_fornecedor" class="form-control" value="@if(isset($indice_desmpenho)){{$indice_desmpenho->desempenho_fornecedor}}@else{{old('desempenho_fornecedor')}}@endif">
+                <input type="text" id="desempenho_fornecedor" name="desempenho_fornecedor" class="form-control" value="@if(isset($indice_desempenho)){{$indice_desempenho->desempenho_fornecedor}}@else{{old('desempenho_fornecedor')}}@endif">
             </div>
         </div>
     </div>
@@ -199,7 +203,7 @@
 @include('layout.footer')
 
 <script>
-    $('.fornecedor').on('change', function(){
+    $('.fornecedor_id').on('change', function(){
         var cnpj = $(this).children('option:selected').attr('data-fornecedor-cnpj');
         console.warn(cnpj)
         if(cnpj){

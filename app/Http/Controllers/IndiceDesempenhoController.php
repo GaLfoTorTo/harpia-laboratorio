@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\IndiceDesempenho;
 use App\Models\Fornecedor;
+use App\Http\Requests\IndiceDesempenhoRequest;
 
 class IndiceDesempenhoController extends Controller
 {
@@ -27,26 +28,28 @@ class IndiceDesempenhoController extends Controller
     }
     public function editar($id) {
 
-        $cliente = IndiceDesempenho::find($id);
-        return view('indice_desempenho.form');
+        $indice_desempenho = IndiceDesempenho::find($id);
+        $fornecedores = Fornecedor::class::get();
+
+        return view('indice_desempenho.form', compact('indice_desempenho', 'fornecedores'));
     }
-    public function salvar(ClienteRequest $request) {
-        dd($request->all());
+    public function salvar(IndiceDesempenhoRequest $request) {
+        
         $ehvalido = $request->validated();
         if($request->id != '') {
-            $cliente = IndiceDesempenho::find($request->id);
-            $cliente->update($request->all());
+            $indice_desempenho = IndiceDesempenho::find($request->id);
+            $indice_desempenho->update($request->all());
         } else {
-            $cliente = IndiceDesempenho::create($request->all());
+            $indice_desempenho = IndiceDesempenho::create($request->all());
         }
 
-        return redirect('/indice_desempenho/editar/'. $cliente->id)->with('success', 'Salvo com sucesso!');
+        return redirect('/indice_desempenho/editar/'. $indice_desempenho->id)->with('success', 'Salvo com sucesso!');
     }
 
     public function deletar(Request $request, $id) {
-        $cliente = IndiceDesempenho::find($id);
-        if(!empty($cliente)){
-            $cliente->delete();
+        $indice_desempenho = IndiceDesempenho::find($id);
+        if(!empty($indice_desempenho)){
+            $indice_desempenho->delete();
             return redirect('indice_desempenho')->with('success', 'Deletado com sucesso!');
         } else {
             return redirect('indice_desempenho')->with('danger', 'Registro não encontrado!');
